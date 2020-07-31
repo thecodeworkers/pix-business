@@ -19,7 +19,6 @@ const ActionButton = (props: any) => {
             </div>
         </div>
     )
-
 }
 
 export default ActionButton;
