@@ -1,15 +1,23 @@
 import React from 'react';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 import Login from '../Login';
-import Dashboard from '../Dashboard';
+import Home from '../Home';
 import './styles.scss';
 import { SideBar } from '../../components/index'; 
 
 export default () => {
+  const isAuth = true;
   return (
-    <Router>
-      <Login path="/"/>
-      <Dashboard path="/dashboard"/>
-    </Router>
+    <>
+      {
+        isAuth ? (
+          <Home/>
+        ) : (
+          <Router>
+            <Login path="/"/>
+          </Router>
+        )
+      }
+    </>
   );
 }
