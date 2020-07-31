@@ -1,0 +1,29 @@
+._container {
+  display: flex;
+  background-color: rgb(235, 231, 231);
+  padding: 1rem 0;
+}
+
+._subcontainer {
+  flex: 1 50%;
+}
+
+._enterprise {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  > div {
+    margin-right: 1.5rem;
+  }
+}
+
+._actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  > div {
+    margin-left: 1.5rem;
+  }
+}
