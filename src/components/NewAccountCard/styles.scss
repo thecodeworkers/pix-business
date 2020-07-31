@@ -1,0 +1,21 @@
+@import '../../assets/styles';
+
+._new_account {
+  color: #d4d4d4;
+  background: $tableGray;
+  border-radius: 9px;
+  margin-bottom: 2rem;
+  width: 46%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  font-size: $medium;
+
+  ._btn {
+    background: transparent linear-gradient(180deg, $darkBlueToBlue 100%) 0% 0% no-repeat padding-box;
+    border-radius: 7px;
+    color: $white;
+    font-size: $large;
+    padding: 13px 26px;
+  }
+}
