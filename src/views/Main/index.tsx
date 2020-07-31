@@ -1,17 +1,15 @@
 import React, { useEffect, FC } from 'react';
-// import { SideBar } from '../../components/index'; 
-import { Router } from '@reach/router';
 import { ping } from '../../store/actions';
 import { connect } from 'react-redux';
-import Login from '../Login';
-import Home from '../Home';
-import './styles.scss';
 import { StateProps, Props } from './interface';
 import { bindActionCreators } from 'redux';
+import Home from '../Home';
+import Onboarding from '../Onboarding';
+import './styles.scss';
 
 const Main: FC<Props> = ({ action, circle }) => {
   const { result } = circle 
-  const isAuth = true;
+  const isAuth = false;
 
   useEffect(() => {
     if(!result) action.ping();
@@ -24,9 +22,7 @@ const Main: FC<Props> = ({ action, circle }) => {
         isAuth ? (
           <Home/>
         ) : (
-          <Router>
-            <Login path="/"/>
-          </Router>
+          <Onboarding/>
         )
       }
     </>
