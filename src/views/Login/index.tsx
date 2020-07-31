@@ -3,7 +3,7 @@ import { RouteComponentProps } from '@reach/router';
 import { DynamicTable } from '../../components';
 
 const Login: FC<RouteComponentProps> = () => (
-  <DynamicTable/>
+  <div>Login</div>
 );
 
 export default Login;

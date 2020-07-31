@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 
 const Main: FC<Props> = ({ action, circle }) => {
   const { result } = circle 
-  const isAuth = false;
+  const isAuth = true;
 
   useEffect(() => {
     if(!result) action.ping();
