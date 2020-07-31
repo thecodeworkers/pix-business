@@ -1,16 +1,46 @@
-import React from 'react';
-import { Router, Link } from '@reach/router';
+import React, { useEffect, FC } from 'react';
+import { SideBar } from '../../components/index'; 
+import { Router } from '@reach/router';
+import { ping } from '../../store/actions';
+import { connect } from 'react-redux';
 import Login from '../Login';
-import Dashboard from '../Dashboard';
-import Commerce from '../Commerce';
+import Home from '../Home';
 import './styles.scss';
+import { StateProps, Props } from './interface';
+import { bindActionCreators } from 'redux';
 
-export default () => {
+const Main: FC<Props> = ({ action, circle }) => {
+  const { result } = circle 
+  const isAuth = false;
+
+  useEffect(() => {
+    if(!result) action.ping();
+    console.log(result);
+  }, [result]);
+
   return (
-    <Router>
-      <Login path="/"/>
-      <Dashboard path="/dashboard"/>
-      <Commerce path="/commerce"/>
-    </Router>
+    <>
+      {
+        isAuth ? (
+          <Home/>
+        ) : (
+          <Router>
+            <Login path="/"/>
+          </Router>
+        )
+      }
+    </>
   );
 }
+
+const mapStateToProps = ({ circle }: StateProps): StateProps => ({ circle });
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = { ping };
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
