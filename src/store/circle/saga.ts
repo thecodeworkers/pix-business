@@ -1,12 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { fetchService } from '../../utils';
-import { PING } from './action-types';
+import { PING, PING_ASYNC } from './action-types';
 import { ping } from '../../utils/path';
+import { actionObject } from '../../utils';
 
 function* pingAsync() {
   try {
-    const response = yield call(fetchService, ping);
-    console.log(response);
+    const result = yield call(fetchService, ping);
+    yield put(actionObject(PING_ASYNC, { result }));
     
   } catch(error) {
     console.log(error);
