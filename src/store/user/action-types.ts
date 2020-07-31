@@ -1,1 +1,1 @@
-export const GET_USER: string = 'GET_USER';
+export const SAVE_USER: string = 'SAVE_USER';
