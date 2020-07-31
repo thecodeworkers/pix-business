@@ -12,3 +12,4 @@ export { default as Logout } from './Components/logout';
 export { default as Send } from './Components/send';
 export { default as Receive } from './Components/receive';
 export { default as MultiSend } from './Components/multiSend';
+export { default as Export } from './Components/export';

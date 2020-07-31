@@ -5,6 +5,7 @@ import { StateProps, Props } from './interface';
 import { bindActionCreators } from 'redux';
 import Home from '../Home';
 import Onboarding from '../Onboarding';
+import Commerce from '../Commerce';
 import './styles.scss';
 
 const Main: FC<Props> = ({ action, circle }) => {
@@ -20,9 +21,13 @@ const Main: FC<Props> = ({ action, circle }) => {
     <>
       {
         isAuth ? (
+          <>
           <Home/>
+          <Commerce/>
+          </>
         ) : (
           <Onboarding/>
+          
         )
       }
     </>
