@@ -1,4 +1,4 @@
 import { actionObject } from '../../utils/common';
-import { GET_USER } from './action-types';
+import { SAVE_USER } from './action-types';
 
-export const getUser = () => actionObject(GET_USER);
+export const saveUser = () => actionObject(SAVE_USER);

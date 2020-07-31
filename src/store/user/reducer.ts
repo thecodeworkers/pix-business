@@ -1,10 +1,25 @@
+import { DispatchProps, UserProps } from '../../interfaces';
+import { SAVE_USER } from './action-types';
 
-
-const initialState: any = {
-  name: null,
-  email: null,
-  password: null,
-  wallet: null
+type StateProps = {
+  users: Array<UserProps>
 }
 
-export {}
+const initialState: StateProps = {
+  users: []
+}
+
+export default (state: any = initialState, { type, payload }: DispatchProps) => {
+  switch(type) {
+    case SAVE_USER:
+    return {
+      users: [
+        ...state.users,
+        ...payload
+      ]
+    };
+
+    default:
+    return state;
+  }
+}
