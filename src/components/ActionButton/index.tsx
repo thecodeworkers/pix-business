@@ -3,22 +3,22 @@ import './styles.scss';
 import { Link } from '@reach/router'
 
 const ActionButton = (props: any) => {
-    
-    return (
-        <div className='_div'>
-            <div className='_divButton'>
-                <Link to={props.url}>
-                    <button className='_action'>
-                        <img src={props.img} alt="button_image"></img>
-                    </button>
-                </Link>
 
-            </div>
-            <div className='_space'>
-            <span className={'_titleButton'}>{props.title}</span>
-            </div>
-        </div>
-    )
+	return (
+		<div className='_div'>
+			<div className='_divButton'>
+				<Link to={props.url}>
+					<button className='_action'>
+						{props.img}
+					</button>
+				</Link>
+
+			</div>
+			<div className='_space'>
+			<span className={'_titleButton'}>{props.title}</span>
+			</div>
+		</div>
+	)
 
 }
 

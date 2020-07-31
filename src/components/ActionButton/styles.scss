@@ -1,9 +1,9 @@
-@import '../../assets/styles/color.scss';
+@import '../../assets/styles';
 
 ._div{
-display: inline-block;
- text-align: center;
- width:25%;
+  display: inline-block;
+  text-align: center;
+  width:100%;
 }
 
 ._divButton{
@@ -15,17 +15,17 @@ display: inline-block;
   border:0;
   padding: 0;
   width: 180px;
-  height: 48px;
+  height: 40px;
   border-radius: 10px;
   border-color: $tableGray;
   box-shadow: 5px 10px 15px $shadowGray;
-
+  cursor: pointer;
 }
 ._space{
-  margin-top: 20px;
+  margin-top: 15px;
 }
 ._titleButton{
-  font-size: 20px;
+  font-size: $medium;
   color: $black;
   text-align: center;
 }
