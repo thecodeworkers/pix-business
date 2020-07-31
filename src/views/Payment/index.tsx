@@ -19,13 +19,13 @@ const Payment: FC<RouteComponentProps> = ({
 
 	const colors: any = [
 		{ class: '_one1' },
-		{ class: '_two1' },
-		{ class: '_three1' },
-		{ class: '_four1' },
 		{ class: '_five1' },
+		{ class: '_two1' },
 		{ class: '_six1' },
+		{ class: '_five1' },
+		{ class: '_four1' },	
+		{ class: '_three1' },
 		{ class: '_seven1' },
-		{ class: '_eight1' },
 	];
 
 	return (

@@ -27,7 +27,7 @@
 
 ._lineWidth {
 	height:3.5px;
-	width: 95vw;
+	width: 99%;
 	display: flex;
 	margin: 30px auto;
 }
@@ -41,7 +41,7 @@
 }
 
 ._three1 {
-	@include colorWidth($blue);
+	@include colorWidth($perano);
 }
 
 ._four1 {

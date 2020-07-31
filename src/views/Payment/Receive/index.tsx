@@ -25,7 +25,7 @@ const Receive: FC<RouteComponentProps> = () => {
 
 	return (
 		<div>
-			<IconTabs tabs={iconTabs} />
+			<IconTabs tabs={iconTabs} width='25%' height='70px' />
 		</div>
 	);
 };

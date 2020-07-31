@@ -2,7 +2,13 @@ import React, { FC } from 'react';
 import './styles.scss';
 import { Props } from './inteface';
 
-const IconTabs: FC<Props> = ({ location, navigate, tabs = {} }) => {
+const IconTabs: FC<Props> = ({
+	location,
+	navigate,
+	tabs = {},
+	width,
+	height,
+}) => {
 	return (
 		<div className='iconTabComponent'>
 			{Object.keys(tabs).length
@@ -10,14 +16,16 @@ const IconTabs: FC<Props> = ({ location, navigate, tabs = {} }) => {
 						return (
 							<div
 								key={index}
+								style={{ width: width, height: height }}
 								className={tabs[value].route ? 'tab selected' : 'tab'}
 								onClick={() => {
 									console.log(location);
 								}}
 							>
-								{tabs[value].icon}
+								<div className='icon'>{tabs[value].icon}</div>
 								<div>
 									<p>{value}</p>
+									<p>{tabs[value].description}</p>
 								</div>
 							</div>
 						);
