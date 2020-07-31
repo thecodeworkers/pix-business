@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
-import { RouteComponentProps } from "@reach/router"
+import { RouteComponentProps } from "@reach/router";
+import { Header } from "../../components";
 
 const Dashboard: FC<RouteComponentProps> = () => (
-  <div>Dashboard</div>
+  <div>
+    <Header />
+    <div>Dashboard</div>
+  </div>
 );
 
 export default Dashboard;
