@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './styles.scss';
+import { SideBar } from '../../components/index'; 
 
 export default () => {
   return (
@@ -19,6 +20,11 @@ export default () => {
           Learn React
         </a>
       </header>
+
+      <button className='_send'>Send</button> 
+      <SideBar/>
     </div>
+
+    
   );
 }

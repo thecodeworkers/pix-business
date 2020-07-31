@@ -1,2 +1,2 @@
 
-export {};
+export { SideBar } from './SideBar';

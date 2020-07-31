@@ -1,0 +1,29 @@
+//General colors
+
+$blue             :#33A3DC;
+$seaGreen         :#5CD6B1;
+$tableGray        :#f6f6f6;
+$darkBlue         :#0366a2;
+$black            :#0d1216;
+$red              :#d52222;
+$shadowGray       :#f0f0f0;
+$mediumBlue       :#0096c9;
+$grayButton       :#f8f8f8;
+$white            :#ffffff;
+$textGray         :#414141;
+
+//Raimbow line 
+
+$darkGray         :#2e4150;
+$green            :#24c93f;
+$lineBlue         :#0083b0;
+$yellow           :#0083b0;
+$purple           :#0083b0;
+$lightGreen       :#57d6af;
+
+//Gradients 
+
+$darkBlueToBlue   :$darkBlue, $blue;
+$greenToBlue      :$seaGreen, $blue;
+$blueToMediumBlue :$blue, $mediumBlue;
+$grayTowhite      :$grayButton, $white;
