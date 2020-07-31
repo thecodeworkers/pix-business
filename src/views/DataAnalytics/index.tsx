@@ -1,13 +1,22 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from "@reach/router";
-import { Balance, Tabs } from '../../components';
+import { Balance, ActionButton } from '../../components';
+import { Send,Receive, MultiSend } from '../../assets/img';
 import './styles.scss';
 
 const DataAnalytics: FC<RouteComponentProps> = () => (
-  <div>
+  <div className="_topGraphics">
     <div className="_balancecont">
       <Balance />
-      {/* <Tabs /> */}
+    </div>
+    <div className="_buttonAction">
+      <ActionButton url={'dashboard'} img={<Send />} title={'Send'} />
+    </div>
+    <div className="_buttonAction">
+      <ActionButton url={'dashboard'} img={<Receive />} title={'Recieve'} />
+    </div>
+    <div className="_buttonAction">
+      <ActionButton url={'dashboard'} img={<MultiSend />} title={'Multi send'} />
     </div>
   </div>
 )
