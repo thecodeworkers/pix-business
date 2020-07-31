@@ -1,1 +1,9 @@
-export { default as Logo } from './Logo';
+export { default as Logo } from './Components/logo';
+export { default as Add } from './Components/add';
+export { default as DashboardICon } from './Components/dashboard';
+export { default as Analytics } from './Components/analytics';
+export { default as Payment } from './Components/payment';
+export { default as CounterParties } from './Components/counterparties';
+export { default as Activity } from './Components/activity';
+export { default as Commerce } from './Components/commerce';
+export { default as Logout } from './Components/logout';
