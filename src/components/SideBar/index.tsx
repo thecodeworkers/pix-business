@@ -1,13 +1,15 @@
 import React from 'react';
+import { Logo } from '../../assets/img';
 import './styles.scss';
 
 const SideBar = () => {
   return (
     <div>
       <div>
-        
+          
       </div>
       <div className='_links'>
+        <Logo />
           <ul>
             <li>dsfsdfsdf</li>
             <li>dsfsdfsd</li>
@@ -23,4 +25,4 @@ const SideBar = () => {
   )
 }
 
-export { SideBar };
+export default SideBar;

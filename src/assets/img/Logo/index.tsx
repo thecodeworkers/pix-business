@@ -16,6 +16,6 @@ const Logo = () => (
     </g>
     <path id="Trazado_199" data-name="Trazado 199" d="M0,0H33.088V33.088H0Z" transform="translate(146.792 0.583) rotate(90)" fill="url(#linear-gradient)" />
   </svg>
-);
+)
 
-export { Logo };
+export default Logo;
