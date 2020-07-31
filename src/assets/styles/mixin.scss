@@ -3,8 +3,18 @@
 
 @mixin sendButton() {
   width: 11rem;
-  padding: 8px 2px;
+  padding: 10px 2px;
   background: linear-gradient(to left, $greenToBlue);
+  color: $white;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin cancelButton() {
+  width: 11rem;
+  padding: 10px 2px;
+  background: $black;
   color: $white;
   border-radius: 3px;
   border: none;
