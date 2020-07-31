@@ -20,7 +20,7 @@ const Main: FC<Props> = ({ action, circle }) => {
   return (
     <>
       {
-        !isAuth ? (
+        isAuth ? (
           <>
           <Home/>
           <Commerce/>
