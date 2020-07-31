@@ -17,8 +17,16 @@ const Payment: FC<RouteComponentProps> = ({
 		Multisend: { route: 'multisend' },
 	};
 
-	console.log(uri);
-	console.log(path);
+	const colors: any = [
+		{ class: '_one1' },
+		{ class: '_two1' },
+		{ class: '_three1' },
+		{ class: '_four1' },
+		{ class: '_five1' },
+		{ class: '_six1' },
+		{ class: '_seven1' },
+		{ class: '_eight1' },
+	];
 
 	return (
 		<div>
@@ -28,6 +36,11 @@ const Payment: FC<RouteComponentProps> = ({
 					<h3>Total</h3>
 					<h1>$300.000</h1>
 				</div>
+			</div>
+			<div className='_lineWidth'>
+				{colors.map((res: any, index: any) => (
+					<div key={index} className={res.class}></div>
+				))}
 			</div>
 			<Router>
 				<Receive path='/receive' default />

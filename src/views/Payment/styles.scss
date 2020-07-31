@@ -1,5 +1,9 @@
 @import '../../assets/styles/index.scss';
 
+@mixin colorWidth($color) {
+	background-color: $color;
+	width: 12.5%;
+}
 .paymentBanner {
 	display: flex;
 	justify-content: space-around;
@@ -19,4 +23,43 @@
 	h1 {
 		font-size: 4rem;
 	}
+}
+
+._lineWidth {
+	height:3.5px;
+	width: 95vw;
+	display: flex;
+	margin: 30px auto;
+}
+
+._one1 {
+	@include colorWidth($darkGray);
+}
+
+._two1 {
+	@include colorWidth($green);
+}
+
+._three1 {
+	@include colorWidth($blue);
+}
+
+._four1 {
+	@include colorWidth($seaGreen);
+}
+
+._five1 {
+	@include colorWidth($yellow);
+}
+
+._six1 {
+	@include colorWidth($purple);
+}
+
+._seven1 {
+	@include colorWidth($shineYellow);
+}
+
+._eight1 {
+	@include colorWidth($shineYellow);
 }
