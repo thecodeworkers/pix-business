@@ -19,12 +19,14 @@
   justify-content: flex-start;
 
   > div {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
 
   ._image {
     width: 40px;
-    height: 40px;    
+    height: 40px;   
+    display: flex;
+    align-items: center; 
   }
 }
 
