@@ -7,3 +7,4 @@ export { default as CounterParties } from './Components/counterparties';
 export { default as Activity } from './Components/activity';
 export { default as Commerce } from './Components/commerce';
 export { default as Logout } from './Components/logout';
+export { default as Export } from './Components/export';
