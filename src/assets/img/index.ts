@@ -1,4 +1,6 @@
 export { default as Logo } from './Components/logo';
+export { default as Notification } from './Components/notification';
+export { default as User } from './Components/user';
 export { default as Add } from './Components/add';
 export { default as DashboardICon } from './Components/dashboard';
 export { default as Analytics } from './Components/analytics';
