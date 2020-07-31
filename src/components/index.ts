@@ -4,3 +4,4 @@ export { default as Tabs } from './Tabs';
 export { default as Header } from './Header';
 export { default as ActionButton } from './ActionButton'
 export { default as IconTabs } from './IconTabs';
+export { default as Balance } from './Balance';
