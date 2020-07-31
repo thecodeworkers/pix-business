@@ -1,0 +1,27 @@
+@import '../../assets/styles';
+
+._tableContainer {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 1.2rem;
+}
+
+th {
+  color: $lightGreen;
+  padding: 1.6em;
+  border-bottom: 5px solid black;
+}
+
+tr {
+  border: 1px solid $dimGray;
+}
+
+tr:last-child {
+  border: 1px solid #fff;
+}
+
+._flexRow {
+  text-align: center;
+}
