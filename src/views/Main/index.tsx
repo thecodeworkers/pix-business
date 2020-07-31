@@ -1,5 +1,5 @@
 import React, { useEffect, FC } from 'react';
-import { SideBar } from '../../components/index'; 
+// import { SideBar } from '../../components/index'; 
 import { Router } from '@reach/router';
 import { ping } from '../../store/actions';
 import { connect } from 'react-redux';
