@@ -1,4 +1,6 @@
 export { default as Logo } from './Components/logo';
+export { default as Notification } from './Components/notification';
+export { default as User } from './Components/user';
 export { default as Add } from './Components/add';
 export { default as DashboardICon } from './Components/dashboard';
 export { default as Analytics } from './Components/analytics';
@@ -7,4 +9,7 @@ export { default as CounterParties } from './Components/counterparties';
 export { default as Activity } from './Components/activity';
 export { default as Commerce } from './Components/commerce';
 export { default as Logout } from './Components/logout';
+export { default as Send } from './Components/send';
+export { default as Receive } from './Components/receive';
+export { default as MultiSend } from './Components/multiSend';
 export { default as Export } from './Components/export';

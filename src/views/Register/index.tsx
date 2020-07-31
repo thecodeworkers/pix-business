@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
+import { DynamicTable } from '../../components';
 
 const Register: FC<RouteComponentProps> = () => (
-  <div>Register</div>
+  <DynamicTable/>
 );
 
 export default Register;

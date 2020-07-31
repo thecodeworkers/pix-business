@@ -9,7 +9,7 @@ const ActionButton = (props: any) => {
             <div className='_divButton'>
                 <Link to={props.url}>
                     <button className='_action'>
-                        <img src={props.img}></img>
+                        <img src={props.img} alt="button_image"></img>
                     </button>
                 </Link>
 

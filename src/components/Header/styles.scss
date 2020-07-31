@@ -1,0 +1,48 @@
+@import '../../assets/styles/index.scss';
+
+@mixin flexible-container {
+  display: flex;
+  align-items: center;
+}
+
+._container {
+  display: flex;
+  padding: 2rem 0;
+}
+
+._subcontainer {
+  flex: 1 50%;
+}
+
+._enterprise {
+  @include flexible-container;
+  justify-content: flex-start;
+
+  > div {
+    margin-right: 1rem;
+  }
+
+  ._image {
+    width: 40px;
+    height: 40px;   
+    display: flex;
+    align-items: center; 
+  }
+}
+
+._text {
+  color: $black;
+  font-weight: 500;
+  letter-spacing: 0px;
+  size: 23px;
+}
+
+._actions {
+  @include flexible-container;
+  justify-content: flex-end;
+
+  > div {
+    margin-left: 2rem;
+    cursor: pointer;
+  }
+}
