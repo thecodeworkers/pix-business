@@ -1,0 +1,30 @@
+@import '../../assets/styles/color.scss';
+
+._div{
+display: inline-block;
+ text-align: center;
+ width: 20%;
+}
+
+._divButton{
+  text-align: center;
+}
+
+._action{
+  background: $white;
+  width: 240px;
+  height: 48px;
+  border-radius: 10px;
+  border-color: $tableGray;
+  box-shadow: 10px 5px  $shadowGray
+}
+._space{
+  margin-top: 20px;
+}
+._titleButton{
+  font-size: 20px;
+  color: $black;
+  text-align: center;
+}
+
+
