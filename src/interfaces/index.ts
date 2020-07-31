@@ -5,7 +5,13 @@ export interface DispatchProps {
 
 export interface UserProps {
   name: string | null
-  email: string | null
-  password: string | null
   wallet: string | null
+}
+
+export interface CommerceProps {
+  name: string
+  services: string | Array<string>
+  years: string
+  email: string
+  password: string
 }
