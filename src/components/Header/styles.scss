@@ -1,6 +1,10 @@
+@mixin flexible-container {
+  display: flex;
+  align-items: center;
+}
+
 ._container {
   display: flex;
-  background-color: rgb(235, 231, 231);
   padding: 1rem 0;
 }
 
@@ -9,21 +13,25 @@
 }
 
 ._enterprise {
-  display: flex;
-  align-items: center;
+  @include flexible-container;
   justify-content: flex-start;
 
   > div {
     margin-right: 1.5rem;
   }
+
+  ._image {
+    width: 40px;
+    height: 40px;    
+  }
 }
 
 ._actions {
-  display: flex;
-  align-items: center;
+  @include flexible-container;
   justify-content: flex-end;
 
   > div {
     margin-left: 1.5rem;
+    cursor: pointer;
   }
 }
