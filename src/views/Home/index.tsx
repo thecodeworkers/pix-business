@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from '../Dashboard';
+import Profile from '../Profile';
 import { Router } from '@reach/router';
 import { SideBar, Header } from '../../components';
 import './styles.scss';
@@ -12,6 +13,7 @@ export default () => (
         <Header />
         <Router>
           <Dashboard path="/dashboard"/>
+          <Profile path="/profile"/>
         </Router>   
       </div>
     </div>

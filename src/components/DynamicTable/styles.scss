@@ -4,24 +4,32 @@
   border-collapse: collapse;
 }
 
-td {
-  padding: 1.2rem;
-}
-
-th {
+._flexBorder {
   color: $lightGreen;
-  padding: 1.6em;
-  border-bottom: 5px solid black;
+  padding: 1em;
+  border-bottom: 5px solid;
 }
 
 ._flexTable {
-  border: 1px solid $dimGray;
+  border-bottom: 1px solid $dimGray;
 }
 
 ._flexTable:last-child {
-  border: 1px solid #fff;
+  border: none
 }
 
 ._flexRow {
+  padding: 1.2rem;
   text-align: center;
+}
+
+._flexRow > p {
+  font-size: .9rem;
+  color: $subaGrey;
+}
+
+._backgroundRow {
+  background-color: $whiteSmoke;
+  padding: 5px 15px 5px 15px;
+  font-size: .9rem;
 }
