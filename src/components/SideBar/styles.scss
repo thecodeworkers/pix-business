@@ -1,0 +1,150 @@
+@import '../../assets/styles/index.scss';
+
+@mixin color($color) {
+  background-color: $color;
+  height: 14.29%;
+}
+
+._nav {
+  background:$black;
+  width: 15.625rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+._logo {
+  width: 6.25rem;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+._header {
+  padding: 2.813rem 0px;
+}
+
+._list {
+  & li {
+    padding: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    color: $white;
+    list-style: none;
+    transition: all 0.6s;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      border-radius: 5px;
+      background: linear-gradient(to left, ($greenToBlue));
+      transition: all 0.6s;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+._rightContent {
+  // background-color: blue;
+  width: 85%;
+  display: block;
+  margin-left: auto;
+}
+
+._logout {
+  color: $red;
+}
+
+._footer {
+  // background-color: green;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.813rem;
+}
+
+._copyright {
+  color: $white;
+  margin-top: 30px;
+  font-size: 0.65rem;
+}
+
+._add {
+  margin-bottom: 1.25rem;
+
+  & button {
+    background-color: $black;
+    color: $white;
+    border: none;
+    border-bottom: 2px solid $seaGreen;
+    width: 100%;
+    text-align: left;
+    // padding: 10px;
+    color: $seaGreen;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+._icon {
+  // background-color: red;
+  width: 1.25rem;
+  margin-right:0.625rem;
+  margin-top: -3px;
+}
+
+._add {
+  background-color: blue;
+  font-size: 1.25rem;
+}
+
+._parentLogout {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+._main {
+  display: flex;
+}
+
+._line {
+  width: 3.5px;
+  height: 100vh;
+}
+
+._one {
+  @include color($darkGray);
+}
+
+._two {
+  @include color($green);
+}
+
+._three {
+  @include color($blue);
+}
+
+._four {
+  @include color($seaGreen);
+}
+
+._five {
+  @include color($yellow);
+}
+
+._six {
+  @include color($purple);
+}
+
+._seven {
+  @include color($shineYellow);
+}
+
+._redirect {
+  text-decoration: none;
+}
