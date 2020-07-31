@@ -14,11 +14,11 @@ th {
   border-bottom: 5px solid black;
 }
 
-tr {
+._flexTable {
   border: 1px solid $dimGray;
 }
 
-tr:last-child {
+._flexTable:last-child {
   border: 1px solid #fff;
 }
 
