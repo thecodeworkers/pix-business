@@ -1,0 +1,129 @@
+@import '../../../../assets/styles/index.scss';
+
+.bodyCredit {
+	display: flex;
+	height: calc(100vh - 367px);
+	align-items: center;
+	min-height: 500px;
+}
+
+.accountCreditSide {
+	width: 45%;
+
+	.to {
+		display: flex;
+		width: 90%;
+		font-size: 1.2rem;
+		justify-content: space-between;
+		padding: 0rem 1rem;
+		margin: 0 auto;
+		align-items: center;
+		margin-bottom: 10px;
+		.accountButton {
+			font-size: 1rem;
+			background: #efefef;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100px;
+			padding: 0.3rem 0.5rem;
+			border-radius: 5px;
+			color: $textGray;
+		}
+	}
+	._account {
+		margin: 0 auto;
+	}
+
+	.QRWallet {
+		display: flex;
+		margin: 50px auto;
+		width: 85%;
+		justify-content: center;
+
+		.copyWallet {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 1rem;
+			background: #efefef;
+			border-radius: 7px;
+			border: 1px solid $seaGreen;
+			margin-left: 10px;
+			width: 60%;
+			p {
+				width: 80%;
+				overflow: hidden;
+				margin-right: 10px;
+			}
+			.copy {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.inputCreditSide {
+	width: 55%;
+	padding: 2rem;
+}
+
+.creditCard {
+	margin-top: 20px;
+	.creditContent {
+    width: 85%;
+    margin: 0 auto;
+		padding: 1rem;
+		background: #efefef;
+		border-radius: 15px;
+		.creditInputs {
+			width: 100%;
+			display: flex;
+			margin: 15px 0;
+			label {
+				font-weight: bold;
+				&:first-child {
+					width: 60%;
+				}
+				&:last-child {
+					width: 40%;
+				}
+				input {
+					margin-top: 10px;
+					width: 80%;
+				}
+			}
+		}
+
+		.creditLonelyInput {
+			label {
+				font-weight: bold;
+				input {
+					width: 20%;
+					margin-left: 10px;
+				}
+			}
+		}
+
+		input {
+			border: 1px solid $seaGreen;
+			border-radius: 5px;
+			padding: 3px 10px;
+			background: transparent;
+			color: $black;
+		}
+	}
+}
+
+.buttonCreditContent {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	.buttonCancel {
+		@include cancelButton();
+	}
+	.buttonSend {
+		@include sendButton();
+	}
+}

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { RouteComponentProps } from "@reach/router";
 import "./styles.scss";
 
-import Balance from "../../components/Balance";
+import { Balance , Header} from "../../components";
 import ListAccountCard from "../../components/ListAccountCard";
 
 const listAccount = [
@@ -31,11 +31,12 @@ const listAccount = [
 
 const Dashboard: FC<RouteComponentProps> = () => (
   <div id="dashboard">
+    <Header tabs={false} />
     <Balance />
 
     <div id="options">Options</div>
 
-    <ListAccountCard data={listAccount} />
+    {/* <ListAccountCard data={listAccount} /> */}
 
     <div id="activity">Activity</div>
 
