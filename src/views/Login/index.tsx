@@ -104,7 +104,6 @@ const Login: FC<Props> = ({ auth, action }) => {
         </div>
       </div>
     </div>
-
     </div>
   );
 }

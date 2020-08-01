@@ -11,6 +11,7 @@ function* loginAsync({ payload }: DispatchProps) {
 
     if(commerce.email == payload.email && commerce.password == payload.password) {
       yield put(actionObject(LOGIN_ASYNC, true));
+      return ;
     }
 
     throw 'Credentials errors';
