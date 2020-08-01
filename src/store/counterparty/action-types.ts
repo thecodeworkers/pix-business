@@ -1,1 +1,2 @@
 export const GET_COUNTERPARTIES: string = 'GET_COUNTERPARTIES';
+export const SAVE_COUNTERPARTY: string = 'SAVE_COUNTERPARTY';
