@@ -8,9 +8,7 @@ const initialState: AuthProps = {
 export default (state = initialState, { type, payload }: DispatchProps) => {
   switch(type) {
     case LOGIN_ASYNC:
-    return {
-      isAuth: true
-    };
+    return { isAuth: payload };
 
     default:
     return state;

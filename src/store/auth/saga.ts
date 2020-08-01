@@ -1,5 +1,4 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { fetchService } from '../../utils';
 import { LOGIN, LOGIN_ASYNC } from './action-types';
 import { actionObject } from '../../utils';
 import { DispatchProps } from '../../interfaces';
@@ -11,12 +10,10 @@ function* loginAsync({ payload }: DispatchProps) {
     const { commerce } = commerces;
 
     if(commerce.email == payload.email && commerce.password == payload.password) {
-      console.log('enter');
+      yield put(actionObject(LOGIN_ASYNC, true));
     }
-    
-    
-    
-    // yield put(actionObject(LOGIN_ASYNC));
+
+    throw 'Credentials errors';
     
   } catch(error) {
     console.log(error);
