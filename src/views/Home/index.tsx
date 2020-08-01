@@ -14,11 +14,11 @@ export default () => (
     <div className="_dcontainer">
       <Header tabs={false} />
       <Router>
-        <Dashboard path="/dashboard" />
-        <DataAnalytics path="/data-analitycs/" />
-        <Payment path="/payments/*" />
-        <Activity path="/activity" />
-      </Router>
+        <Dashboard path="/dashboard"/>
+        <DataAnalytics path="/data-analitycs/"/>
+        <Payment path='/payments/*' />
+        <Activity path='/activity/*' />
+      </Router>   
     </div>
   </div>
 );
