@@ -1,7 +1,7 @@
+@import '../../assets/styles/';
+
 ._principalContainer {
-  width: calc(100% - 250px);
   display: block;
-  margin-left: auto;
 }
 
 ._balancecont {
@@ -15,6 +15,7 @@
 
 ._parentGraphic {
   width: 100%;
+  margin-bottom: 2rem;
 
   ._row {
     display: flex;
@@ -23,8 +24,28 @@
   }
 
   ._graphicContainer {
-    height: 200px;
-    border: 1px solid black;
+    // height: 200px;
+    padding: 5px;
+    background-color: $tableGray;
+    position: relative;
+    border-radius: 13px;
+  }
+
+  ._filterButton {
+    width: 6rem;
+    height: 1.5rem;
+    background-color: $buttonLightBlue;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    border-radius: 5px;
+    opacity: 1;
+    border: none;
+    color: $white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
   }
 
   ._left {

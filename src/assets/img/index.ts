@@ -19,6 +19,7 @@ export { default as Send } from './Components/send';
 export { default as Receive } from './Components/receive';
 export { default as MultiSend } from './Components/multiSend';
 export { default as Export } from './Components/export';
+export { default as Pixel } from './Components/pixel';
 export { default as DownArrow } from './Components/downArrow';
 export { default as Copy } from './Components/copy';
 export { default as Capsule } from './Components/capsule';
@@ -27,4 +28,8 @@ export { default as Cockie } from './Components/cookie';
 export { default as Taxi } from './Components/taxi';
 export { default as Heart } from './Components/heart';
 export { default as Camera } from './Components/camera';
-
+export { default as Arrow } from './Components/arrow';
+export { default as Check } from './Components/check';
+export { default as XMark } from './Components/XMark';
+export { default as List } from './Components/list';
+export { default as UsdcCard } from './Components/usdc-card';

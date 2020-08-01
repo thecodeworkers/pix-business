@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { StateProps, Props } from './interface';
 import Home from '../Home';
 import Onboarding from '../Onboarding';
-import Commerce from '../Commerce';
 
 const Main: FC<Props> = () => {
-  const isAuth = false;
+  const isAuth = true;
 
   return (
     <>
@@ -14,7 +13,6 @@ const Main: FC<Props> = () => {
         isAuth ? (
           <>
           <Home/>
-          <Commerce/>
           </>
         ) : (
           <Onboarding/>

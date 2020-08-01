@@ -1,5 +1,5 @@
 @import '../../assets/styles/index.scss';
-@import '../../assets/styles/index.scss';
+
 
 @mixin color($color) {
   background-color: $color;
@@ -8,7 +8,7 @@
 
 ._navOne {
   background:$black;
-  width: 30.625rem;
+  width: 35.625rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@
   // background-color: blue;
   width: 85%;
   display: block;
+  margin-left: auto;
 }
 
 ._footerOne{
@@ -167,7 +168,8 @@
 ._tab-title {
   font-size: 0.7rem;
   color: $textGray;
-  margin-left:5px
+  margin-left:5px;
+  margin-top: 4px;
 }
 
 ._input{
@@ -234,6 +236,22 @@
   font-size: 0.75;
   color: $blue;
   margin-bottom: 10px;
+}
+
+.buttonSend {
+  @include sendButton();
+  margin-right: 43px;
+  margin-left: 20px;
+}
+
+.buttonCancel {
+  @include cancelButton();
+}
+._div_left{
+  margin-top: 20px;
+display: flex;
+justify-content: flex-end;
+
 }
 
 

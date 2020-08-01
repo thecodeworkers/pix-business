@@ -1,14 +1,13 @@
-import React, { FC } from 'react';
-import {Notification, User} from '../../assets/img';
-import Pixel from './pixel';
+import React from 'react';
+import { Notification, User, Pixel } from '../../assets/img';
 import Tabs from '../Tabs';
 import './styles.scss';
 
-const Header = ( tabs: any ) => {
+const Header = ( props: any = false ) => {
 
   const minitabs = {
 		Banking: { route: 'transfer' },
-		DataAnalytics: { route: 'send' },
+		"Data Analytics": { route: 'send' },
 	};
 
   return (
@@ -16,15 +15,15 @@ const Header = ( tabs: any ) => {
 
       <div className="_enterprise _subcontainer">
         <div className="_image">
-          <Pixel />
+          <Pixel color={'#2699fb'} width={'32'} height={'24'} />
         </div>
         <div className="_text">Holy chicken</div>
       </div>
 
       {
-        tabs.length ?
+        props.tabs ?
         <div className="_tabs">
-          <Tabs tabs={tabs} />
+          <Tabs tabs={minitabs} />
         </div> : null
       } 
 

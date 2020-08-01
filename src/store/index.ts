@@ -8,7 +8,11 @@ import sagas from './sagas';
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: []
+  blacklist: [
+    'search',
+    'circle',
+    'register'
+  ]
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

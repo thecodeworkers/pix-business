@@ -22,13 +22,42 @@
 
 		p {
 			&:first-child {
-				width: 80px;
+				width: 120px;
 				text-align: center;
 			}
 			&:last-child {
 				width: 200px;
 				text-align: right;
 			}
+		}
+	}
+}
+.Outer{
+	padding: 0 1rem;
+}
+.summaryOuter {
+	display: flex;
+	justify-content: flex-end;
+	padding: 15px 0px;
+	border-top: 0.25px solid $dimGray;
+	border-bottom: 0.25px solid $dimGray;
+
+	&:first-child {
+		border-top: none;
+	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	p {
+		&:first-child {
+			width: 80px;
+			text-align: center;
+		}
+		&:last-child {
+			width: 200px;
+			text-align: right;
 		}
 	}
 }
