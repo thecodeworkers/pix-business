@@ -2,7 +2,7 @@ import React from 'react';
 import Dashboard from '../Dashboard';
 import Profile from '../Profile';
 import { Router } from '@reach/router';
-import { SideBar } from '../../components';
+import { SideBar, Header } from '../../components';
 import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
@@ -11,8 +11,9 @@ import Activity from '../Activity';
 
 export default () => (
   <div className="_parentcont">
-    <SideBar/>
+    <SideBar />
     <div className="_dcontainer">
+      <Header tabs={false} />
       <Router>
         <Dashboard path="/dashboard"/>
         <DataAnalytics path="/data-analitycs/"/>

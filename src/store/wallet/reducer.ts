@@ -1,7 +1,11 @@
-import { DispatchProps } from '../../interfaces';
+import { DispatchProps, WalletProps } from '../../interfaces';
 import { GET_WALLETS_ASYNC, CREATE_WALLET_ASYNC } from './action-types';
 
-const initialState = {
+type StateProps = {
+  wallets: Array<WalletProps>
+}
+
+const initialState: StateProps = {
   wallets : []
 }
 

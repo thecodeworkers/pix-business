@@ -6,9 +6,10 @@
   border-radius: 9px;
   margin-bottom: 2rem;
   width: 46%;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: $medium;
 
   ._btn {
@@ -17,5 +18,9 @@
     color: $white;
     font-size: $large;
     padding: 13px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
   }
 }

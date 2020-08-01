@@ -7,6 +7,8 @@ import search from './search/reducer';
 import activity from './activity/reducer';
 import wallet from './wallet/reducer';
 import register from './register/reducer';
+import bankAccount from './bankAccount/reducer';
+import counterparty from './counterparty/reducer';
 
 const reducers = combineReducers({
   user,
@@ -16,7 +18,9 @@ const reducers = combineReducers({
   search,
   activity,
   wallet,
-  register
+  register,
+  bankAccount,
+  counterparty
 });
 
 export default reducers;
