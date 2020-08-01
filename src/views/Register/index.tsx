@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { Logo } from '../../assets/img';
-import { Capsule, Heart, Coin, Camera, Taxi, Cockie} from '../../assets/img';
+import { Capsule, Heart, Coin, Camera, Taxi, Cockie } from '../../assets/img';
+import checked from '../../assets/img/Static/checked.png';
+import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
 
 const Register: FC<RouteComponentProps> = () => (
@@ -17,9 +19,7 @@ const Register: FC<RouteComponentProps> = () => (
         </div>
         <div className='_linksOne'>
 
-          <h3 className='_title'>Hello! Tell us
-          about your
-business.</h3>
+          <h3 className='_title'>Hello! Tell us about your business.</h3>
 
           <h5 className='_subtitle'>Please let us know your business details.</h5>
         </div>
@@ -68,29 +68,34 @@ business.</h3>
             <h3 className='_form-subtitle'>Select your type of business</h3>
             <div className='_form-tabs'>
               <div className='_divGray'>
-                
+                 <img  className='_checkbox' width='45px' src={checked}></img>
                 <Cockie />
                 <h3 className='_tab-title'>Food Services</h3>
               </div>
               <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
                 <Heart />
-                <h3 className='_tab-title'>Beauty Services</h3>
+                <h3 className='_tab-title' >Beauty Services</h3>
               </div>
               <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
                 <Capsule />
                 <h3 className='_tab-title'>Medicine & Health </h3>
               </div>
             </div>
             <div className='_form-tabs'>
               <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
                 <Camera />
                 <h3 className='_tab-title'>Beauty Services</h3>
               </div>
               <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
                 <Taxi />
                 <h3 className='_tab-title'>Auto Services</h3>
               </div>
               <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
                 <Coin />
                 <h3 className='_tab-title'>Rent and lease </h3>
               </div>

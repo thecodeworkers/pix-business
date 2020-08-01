@@ -225,31 +225,7 @@
 }
 ._checkbox{
   position: absolute;
-  justify-content: left;
-  right: 10px;
-  top: 3px;
+  right: 0px;
+  top: -10px;
 }
 
-/* Centra el input personalizado con el texto */
-.custom-radio-checkbox {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  font-family: arial;
-}
-
-
-
-/* Oculta input original */
-.custom-radio-checkbox > .custom-radio-checkbox__input {
-  display: none;
-}
-
-/* Radio personalizado usando <span> */
-.custom-radio-checkbox > .custom-radio-checkbox__show {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin-right: .5rem;
-  background-size: cover;
-}
