@@ -1,10 +1,10 @@
-import React, { FC, useState , useRef } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Capsule, Heart, Coin, Camera, Taxi, Cockie,Logo } from '../../assets/img';
 import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Props, StateProps } from './interface';
-import { manageService, createCommerce, getWallets } from '../../store/actions';
+import { manageService, createCommerce, createFirstWallet } from '../../store/actions';
 import checked from '../../assets/img/Static/checked.png';
 import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
@@ -12,6 +12,10 @@ import './styles.scss';
 const Register: FC<Props> = ({ register, action }) => {
   const [ checkSecond, setCheckSecond ] = useState(0);
   const [year, setYear] = useState('');
+
+  useEffect(() => {
+    
+  }, []);
 
   const { services } = register;
 
@@ -57,7 +61,7 @@ const Register: FC<Props> = ({ register, action }) => {
     data.years = year;
 
     action.createCommerce(data);
-    action.getWallets();
+    // action.createFirstWallet();
   }
 
   return (
@@ -208,13 +212,13 @@ const Register: FC<Props> = ({ register, action }) => {
   )
 }
 
-const mapStateToProps = ({ register }: StateProps) => ({ register })
+const mapStateToProps = ({ register }: StateProps) => ({ register });
 
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     manageService,
     createCommerce,
-    getWallets
+    createFirstWallet
   }
 
   return {
