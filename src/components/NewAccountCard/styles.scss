@@ -5,7 +5,7 @@
   background: $tableGray;
   border-radius: 9px;
   margin-bottom: 2rem;
-  width: 46%;
+  width: calc(45% - 1rem);
   padding: 24px;
   display: flex;
   align-items: center;
@@ -22,5 +22,11 @@
     align-items: center;
     justify-content: space-between;
     width: 40%;
+  }
+}
+
+@media (max-width: 1400px) {
+  ._new_account {
+    width: 100%;
   }
 }
