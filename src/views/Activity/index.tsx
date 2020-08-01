@@ -1,33 +1,47 @@
-import React, { FC } from 'react';
-import { RouteComponentProps } from '@reach/router';
-import { Header, DynamicTable, ExportButton, Tabs } from '../../components';
+import React, { FC, useEffect } from 'react';
+import { RouteComponentProps, Router, navigate } from '@reach/router';
+import { Header, ExportButton, Tabs } from '../../components';
+import Overview from './Overview';
+import Checking from './Checking';
+import Savings from './Savings';
 import './styles.scss';
 
-// temporary example data
-const dataTest = { 
-  keys: ['Status', 'Account', 'Counterparty', 'Counterparty', 'Type', 'Address', 'Amount', 'Balance'],
-  records: new Array(20).fill(0)
-};
 
-const activityTabs = {
-  Overview: { route: 'overview' },
-  Checking: { route: 'checking' },
-  Savings: { route: 'saving' }
-};
+const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => {} }) => {
 
-const Activity: FC<RouteComponentProps> = () => (
-  <div className='_activityContainer'>
-    <Header />
-    
-    <div className='_activityContent'>
-      <div className='_activityLabel'>Activity</div>
-      <div className='_activityOptions'>
-        <Tabs tabs={ activityTabs } />
-        <ExportButton />
+  useEffect(() => {
+		navigate('overview');
+	}, []);
+
+  const activityTabs = {
+    Overview: { route: 'overview' },
+    Checking: { route: 'checking' },
+    Savings: { route: 'savings' }
+  };
+
+  return (
+    <div className='_activityContainer'>
+      <Header />
+      
+      <div className='_activityContent'>
+        <div className='_activityLabel'> Activity </div>
+        <div className='_activityOptions'>
+          <Tabs tabs={ activityTabs } />
+          <div className="_exportOption"> 
+            <span className='_exportLabel'> Monthly Report </span>
+            <ExportButton />
+          </div>
+        </div>
+  
+        <Router>
+          <Overview path='/overview' />
+          <Checking path='/checking' />
+          <Savings path='/savings' />
+        </Router>
+  
       </div>
-      <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
     </div>
-  </div>
-);
+  );
+}
 
 export default Activity;
