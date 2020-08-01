@@ -9,3 +9,4 @@ export { default as Summary } from './Summary'
 export { default as Balance } from './Balance';
 export { default as ExportButton } from './ExportButton';
 export { default as CodeQR } from './QRcode';
+export { default as Search } from './Search';
