@@ -5,7 +5,7 @@
 	width: 12.5%;
 }
 
-._principalContainer {
+.paymentContainer {
 	width: calc(100% - 250px);
   display: block;
   margin-left: auto;
@@ -16,12 +16,12 @@
 	justify-content: space-around;
 	align-items: flex-end;
 	.tabComponent {
-		width: 50%;
+		width: 60%;
 	}
 }
 
 .totalAmount {
-	width: 50%;
+	width: 40%;
 	color: $black;
 	text-align: center;
 	h3 {
@@ -33,7 +33,7 @@
 }
 
 ._lineWidth {
-	height:3.5px;
+	height: 3.5px;
 	width: 99%;
 	display: flex;
 	margin: 30px auto;
