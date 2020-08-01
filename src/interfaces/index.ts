@@ -13,5 +13,10 @@ export interface CommerceProps {
   services: string | Array<string>
   years: string
   email: string
-  password: string
+  password?: string
+}
+
+export interface AuthProps {
+  isAuth: boolean
+  commerce: CommerceProps | null
 }
