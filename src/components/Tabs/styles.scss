@@ -3,10 +3,13 @@
 .tabComponent {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
 	.tab {
+		min-width: 120px;
+		text-align: center;
 		color: $black;
 		background: #efefef;
-		padding: 0.3rem 2.5rem;
+		padding: 0.3rem 0;
 		border-radius: 5px;
 		font-size: 1rem;
 		cursor: pointer;

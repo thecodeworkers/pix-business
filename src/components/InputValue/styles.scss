@@ -1,0 +1,31 @@
+@import '../../assets/styles/index.scss';
+
+.inputComponent {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 1rem 3rem 1rem 4rem;
+	background: #efefef;
+	border-radius: 7px;
+	border: 1px solid $seaGreen;
+  margin: 20px 0;
+	.input {
+		input {
+			background: transparent;
+			border: none;
+			text-align: right;
+			font-weight: bold;
+			font-size: 2rem;
+			padding: 1.5rem 0px;
+			color: $black;
+			width: 100%;
+		}
+	}
+
+	.lineInput {
+		height: 80px;
+		width: 2px;
+		background: $dimGray;
+		margin: 0 2rem;
+	}
+}

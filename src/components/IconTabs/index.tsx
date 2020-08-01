@@ -22,7 +22,11 @@ const IconTabs: FC<Props> = ({
 									console.log(location);
 								}}
 							>
-								<div className='icon'>{tabs[value].icon}</div>
+								<div className='icon'>
+									{tabs[value].route
+										? tabs[value].iconSelected
+										: tabs[value].icon}
+								</div>
 								<div>
 									<p>{value}</p>
 									<p>{tabs[value].description}</p>
