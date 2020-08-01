@@ -4,8 +4,8 @@ const Logo = () => (
   <svg width="100%" height="100%" viewBox="0 0 152.872 55.491">
   <defs>
     <linearGradient id="linear-gradient" x1="0.142" y1="0.112" x2="1" y2="1" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#5cd6b1"/>
-      <stop offset="1" stop-color="#33a3dc"/>
+      <stop offset="0" stopColor="#5cd6b1"/>
+      <stop offset="1" stopColor="#33a3dc"/>
     </linearGradient>
   </defs>
   <g id="Grupo_235" data-name="Grupo 235" transform="translate(-22 -16.723)">

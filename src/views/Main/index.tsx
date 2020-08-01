@@ -1,21 +1,12 @@
-import React, { useEffect, FC } from 'react';
-import { ping } from '../../store/actions';
+import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { StateProps, Props } from './interface';
-import { bindActionCreators } from 'redux';
 import Home from '../Home';
 import Onboarding from '../Onboarding';
 import Commerce from '../Commerce';
-import './styles.scss';
 
-const Main: FC<Props> = ({ action, circle }) => {
-  const { result } = circle 
-  const isAuth = true;
-
-  useEffect(() => {
-    if(!result) action.ping();
-    console.log(result);
-  }, [result]);
+const Main: FC<Props> = () => {
+  const isAuth = false;
 
   return (
     <>
@@ -27,21 +18,12 @@ const Main: FC<Props> = ({ action, circle }) => {
           </>
         ) : (
           <Onboarding/>
-          
         )
       }
     </>
   );
 }
 
-const mapStateToProps = ({ circle }: StateProps): StateProps => ({ circle });
+const mapStateToProps = ({ auth }: StateProps): StateProps => ({ auth });
 
-const mapDispatchToProps = (dispatch: any) => {
-  const actions = { ping };
-
-  return {
-    action: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

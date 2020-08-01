@@ -1,0 +1,34 @@
+@import '../../assets/styles/index.scss';
+
+.summaryComponent {
+	padding: 0 1rem;
+	background: #efefef;
+	border-radius: 13px;
+	margin: 20px 0;
+	.summaryValues {
+		display: flex;
+		justify-content: flex-end;
+		padding: 15px 0px;
+		border-top: 0.25px solid $dimGray;
+		border-bottom: 0.25px solid $dimGray;
+
+		&:first-child {
+			border-top: none;
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		p {
+			&:first-child {
+				width: 80px;
+				text-align: center;
+			}
+			&:last-child {
+				width: 200px;
+				text-align: right;
+			}
+		}
+	}
+}

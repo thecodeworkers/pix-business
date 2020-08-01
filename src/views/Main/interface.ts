@@ -1,11 +1,9 @@
-interface CircleProps {
-  result: any
-}
+import { AuthProps } from "../../interfaces";
 
 export interface StateProps {
-  circle: CircleProps
+  auth: AuthProps
 }
 
 export interface Props extends StateProps {
-  action: any
+  
 }
