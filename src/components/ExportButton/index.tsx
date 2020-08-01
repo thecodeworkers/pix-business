@@ -12,7 +12,7 @@ const ExportButton = (props: any) => {
   const fileExtension = '.xlsx';
 
   const exportToCSV = (csvData: any, fileName: string) => {
-    if (data && flag == 'csv') {
+    if (data && flag === 'csv') {
       const toJson = XLSX.utils.json_to_sheet(csvData);
       const sheet = { Sheets: { 'data': toJson }, SheetNames: ['data'] };
       const excelBuffer = XLSX.write(sheet, { bookType: 'xlsx', type: 'array' });

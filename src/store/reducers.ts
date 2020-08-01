@@ -4,13 +4,17 @@ import circle from './circle/reducer';
 import commerce from './commerce/reducer';
 import auth from './auth/reducer';
 import search from './search/reducer';
+import activity from './activity/reducer';
+import wallet from './wallet/reducer';
 
 const reducers = combineReducers({
   user,
   circle,
   commerce,
   auth,
-  search
+  search,
+  activity,
+  wallet
 });
 
 export default reducers;
