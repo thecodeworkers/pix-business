@@ -1,0 +1,32 @@
+@import '../../assets/styles/index.scss';
+
+._actionsProfile {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	._icon {
+		margin: 0px 15px;
+	}
+}
+
+.selectedIcon {
+	display: flex;
+	align-items: center;
+	p {
+		margin-left: 10px;
+	}
+}
+
+.ProfileButtons {
+  margin-top: 60px;
+	width: 100%;
+	.addButton {
+    @include cancelButton();
+		width: 50%;
+    display: flex;
+    padding: 10px 20px;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 auto;
+	}
+}
