@@ -29,6 +29,7 @@ const Commerce: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
         </div>
       </div>
 
+      <div className='_colorBar'></div>
       <Router>
         <ProductsServices path='products-services/' />
         <Sales path='sales/' />

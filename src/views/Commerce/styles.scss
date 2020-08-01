@@ -1,3 +1,5 @@
+@import '../../assets/styles/color.scss';
+
 ._commerceContainer {
   padding-top: 25px;
 }
@@ -34,7 +36,7 @@
   justify-content: space-between;
   padding-left: 28px;
   padding-right: 36px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   .tabComponent { 
     width: 36%;
@@ -51,4 +53,19 @@
     background: #F1F1F1;
     border-radius: 7px;
   }
+}
+
+._colorBar {
+  $porcent: 14.4%;
+  background: linear-gradient(to right, 
+    $arsenic $porcent,
+    $sunGlow $porcent $porcent*2,
+    $green $porcent*2 $porcent*3,
+    $lineBlue $porcent*3 $porcent*4,
+    $yellow $porcent*4 $porcent*5,
+    $lightGreen $porcent*5 $porcent*6,
+    $perano $porcent*6 $porcent*7,
+    $shineYellow $porcent*7);
+  height: 4px;
+  margin-bottom: 30px;
 }
