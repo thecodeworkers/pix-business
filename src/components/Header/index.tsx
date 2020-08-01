@@ -4,11 +4,11 @@ import Pixel from './pixel';
 import Tabs from '../Tabs';
 import './styles.scss';
 
-const Header = ( tabs: any ) => {
+const Header = ( props: any = false ) => {
 
   const minitabs = {
 		Banking: { route: 'transfer' },
-		DataAnalytics: { route: 'send' },
+		"Data Analytics": { route: 'send' },
 	};
 
   return (
@@ -22,9 +22,9 @@ const Header = ( tabs: any ) => {
       </div>
 
       {
-        tabs.length ?
+        props.tabs ?
         <div className="_tabs">
-          <Tabs tabs={tabs} />
+          <Tabs tabs={minitabs} />
         </div> : null
       } 
 

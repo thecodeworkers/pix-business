@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RouteComponentProps, Router } from '@reach/router';
-import { Tabs } from '../../components';
+import { Tabs, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 
@@ -30,6 +30,7 @@ const Payment: FC<RouteComponentProps> = ({
 
 	return (
 		<div className="paymentContainer">
+			<Header />
 			<div className='paymentBanner'>
 				<Tabs location={location} navigate={navigate} tabs={tabs} />
 				<div className='totalAmount'>

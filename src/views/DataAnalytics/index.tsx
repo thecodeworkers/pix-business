@@ -1,11 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { RouteComponentProps } from "@reach/router";
-import { Balance, ActionButton } from '../../components';
+import { Balance, ActionButton, Header } from '../../components';
 import { Send,Receive, MultiSend } from '../../assets/img';
 import './styles.scss';
 
-const DataAnalytics: FC<RouteComponentProps> = () => (
+const DataAnalytics: FC<RouteComponentProps> = () => {
+  return (
   <div className="_principalContainer">
+    <Header tabs={true} />
     <div className="_topGraphics">
       <div className="_balancecont">
         <Balance />
@@ -36,6 +38,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => (
       </div>
     </div>
   </div>
-)
+  )
+}
 
 export default DataAnalytics;
