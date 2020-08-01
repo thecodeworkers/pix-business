@@ -1,11 +1,47 @@
+._principalContainer {
+  width: calc(100% - 250px);
+  display: block;
+  margin-left: auto;
+}
+
 ._balancecont {
-  width: 50%;
+  margin: 0 50px;
 }
 
 ._topGraphics {
   display: flex;
+  justify-content: space-between;
 }
 
-._buttonAction {
-  width: 50%;
+._parentGraphic {
+  width: 100%;
+
+  ._row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+
+  ._graphicContainer {
+    height: 200px;
+    border: 1px solid black;
+  }
+
+  ._left {
+    width: 67%;
+  }
+
+  ._bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #_bankAccount, #_profitAndLost {
+    width: 30%;
+  }
+
+    #_lines, #_cake {
+      width: 48%;
+    }
+
 }
