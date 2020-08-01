@@ -4,6 +4,7 @@ import { Tabs, Balance, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
+import Send from './Send';
 
 const Payment: FC<RouteComponentProps> = ({
 	location,
@@ -45,6 +46,7 @@ const Payment: FC<RouteComponentProps> = ({
 			<Router>
 				<Receive path='receive/*' />
 				<Multisend path='multisend/*' />
+				<Send path='send/*' />
 			</Router>
 		</div>
 	);

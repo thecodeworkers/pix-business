@@ -7,8 +7,8 @@ import Confirmation from './Confirmation';
 const Multisend: FC<RouteComponentProps> = () => {
 	return (
 		<Router>
-			{/* <Make path='/' /> */}
-			<Confirmation path='confirmation' default />
+			<Make path='/' default />
+			<Confirmation path='confirmation' />
 		</Router>
 	);
 };
