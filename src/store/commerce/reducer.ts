@@ -12,6 +12,7 @@ const initialState: StateProps = {
 export default (state = initialState, { type, payload }: DispatchProps) => {
   switch(type) {
     case CREATE_COMMERCE:
+      console.log(payload);
     return {
       ...payload
     };
