@@ -5,7 +5,7 @@
   height: 14.29%;
 }
 
-._nav {
+._navOne {
   background:$black;
   width: 30.625rem;
   height: 100vh;
@@ -25,16 +25,16 @@
 }
 
 
-._logotype {
+._logotypeOne {
   width: 8rem;
   display: block;
 }
 
-._header {
+._headerOne {
   padding: 2.813rem 0px;
 }
 
-._list {
+._listOne {
   & li {
     padding: 0.75rem;
     cursor: pointer;
@@ -55,17 +55,13 @@
   }
 }
 
-._rightContent {
+._rightContentOne {
   // background-color: blue;
   width: 85%;
   display: block;
 }
 
-._logout {
-  color: $red;
-}
-
-._footer {
+._footerOne{
   // background-color: green;
   width: 80%;
   display: block;
@@ -74,13 +70,13 @@
   margin-bottom: 2.813rem;
 }
 
-._copyright {
+._copyrightOne {
   color: $white;
   margin-top: 30px;
   font-size: 0.65rem;
 }
 
-._add {
+._addOne {
   margin-bottom: 1.25rem;
 
   & button {
@@ -99,44 +95,44 @@
 }
 
 
-._main {
+._mainOne {
   display: flex;
 }
 
-._line {
+._lineOne {
   width: 3.5px;
   height: 100vh;
 }
 
-._one {
+._one_ {
   @include color($yellow);
 }
 
-._two {
+._two_ {
   @include color($lightGreen);
 }
 
-._three {
+._three_ {
   @include color($perano);
 }
 
-._four {
+._four_ {
   @include color($sunGlow);
 }
 
-._five {
+._five_ {
   @include color($lineBlue);
 }
 
-._six {
+._six_ {
   @include color($green);
 }
 
-._seven {
+._seven_ {
   @include color($arsenic);
 }
 
-._redirect {
+._redirectOne {
   text-decoration: none;
 }
 
@@ -155,22 +151,22 @@
   height: 100vh;
 }
 
-/* ._form {
-  margin-top: 90px;
-  margin-left: 350px;;
-  width: 674px;
-  background-color: red;
-} */
 
 ._form-title {
   font-size: 2.563rem;
-  
 }
+
 ._form-subtitle {
   font-size: 1.563rem;
   color: $textGray;
   font-weight: 100;
   margin-top: 10px;
+}
+
+._tab-title {
+  font-size: 0.7rem;
+  color: $textGray;
+  margin-left:5px
 }
 
 ._input{
@@ -216,5 +212,44 @@
 
 ._divGray{
   background:whiteSmoke;
-  width: 25%;
+  padding: 20px;
+  width: 20%;
+  display: flex;
+  margin: 10px;
+  position: relative;
+}
+._form-tabs{
+  justify-content: space-between;
+  width: 95%;
+  display: flex;
+}
+._checkbox{
+  position: absolute;
+  justify-content: left;
+  right: 10px;
+  top: 3px;
+}
+
+/* Centra el input personalizado con el texto */
+.custom-radio-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: arial;
+}
+
+
+
+/* Oculta input original */
+.custom-radio-checkbox > .custom-radio-checkbox__input {
+  display: none;
+}
+
+/* Radio personalizado usando <span> */
+.custom-radio-checkbox > .custom-radio-checkbox__show {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: .5rem;
+  background-size: cover;
 }

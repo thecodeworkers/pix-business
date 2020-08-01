@@ -1,20 +1,21 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { Logo } from '../../assets/img';
+import { Capsule, Heart, Coin, Camera, Taxi, Cockie} from '../../assets/img';
 import './styles.scss';
 
 const Register: FC<RouteComponentProps> = () => (
 
-  <div className='_main'>
-    <div className='_nav'>
-      <div className='_rightContent'>
-        <div className='_header'>
-          <div className='_logotype'>
+  <div className='_mainOne'>
+    <div className='_navOne'>
+      <div className='_rightContentOne'>
+        <div className='_headerOne'>
+          <div className='_logotypeOne'>
             <Logo />
           </div>
 
         </div>
-        <div className='_links'>
+        <div className='_linksOne'>
 
           <h3 className='_title'>Hello! Tell us
           about your
@@ -24,14 +25,14 @@ business.</h3>
         </div>
       </div>
 
-      <div className='_footer'>
+      <div className='_footerOne'>
 
-        <p className='_copyright'> Copyright 2020 The Pix LLC. All rights reserved.</p>
+        <p className='_copyrightOne'> Copyright 2020 The Pix LLC. All rights reserved.</p>
       </div>
 
     </div>
 
-    <div className='_line'>
+    <div className='_lineOne'>
       {
         colors.map((res: any, index: any) => (
           <div key={index} className={res.class}></div>
@@ -41,52 +42,75 @@ business.</h3>
     </div>
 
     <div className='_formGrandFather'>
-    <div className='_formSon'>
-    <div className='_form'>
-      <div>
-        <h3 className='_form-title'>Business Details</h3>
-        <h3 className='_form-subtitle'>What is the full, legal name of your business?</h3>
+      <div className='_formSon'>
+        <div className='_form'>
+          <div>
+            <h3 className='_form-title'>Business Details</h3>
+            <h3 className='_form-subtitle'>What is the full, legal name of your business?</h3>
+          </div>
+
+          <form>
+            <div>
+              <input className='_input' type="text" name="name" placeholder='Name' />
+            </div>
+            <div className='_form-div-father'>
+              <div className='_form-div'>
+                <h3 className='_form-subtitle'>Username</h3>
+                <input className='_input-half' type="text" name="username" placeholder='Username' />
+
+              </div>
+              <div className='_form-div'>
+                <h3 className='_form-subtitle'>Password</h3>
+                <input className='_input-half' type="password" name="password" placeholder='Password' />
+
+              </div>
+            </div>
+            <h3 className='_form-subtitle'>Select your type of business</h3>
+            <div className='_form-tabs'>
+              <div className='_divGray'>
+                
+                <Cockie />
+                <h3 className='_tab-title'>Food Services</h3>
+              </div>
+              <div className='_divGray'>
+                <Heart />
+                <h3 className='_tab-title'>Beauty Services</h3>
+              </div>
+              <div className='_divGray'>
+                <Capsule />
+                <h3 className='_tab-title'>Medicine & Health </h3>
+              </div>
+            </div>
+            <div className='_form-tabs'>
+              <div className='_divGray'>
+                <Camera />
+                <h3 className='_tab-title'>Beauty Services</h3>
+              </div>
+              <div className='_divGray'>
+                <Taxi />
+                <h3 className='_tab-title'>Auto Services</h3>
+              </div>
+              <div className='_divGray'>
+                <Coin />
+                <h3 className='_tab-title'>Rent and lease </h3>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-
-      <form>
-        <div>
-          <input className='_input' type="text" name="name" placeholder='Name' />
-        </div>
-        <div className='_form-div-father'>
-        <div className='_form-div'>
-          <h3 className='_form-subtitle'>Username</h3>
-          <input className='_input-half' type="text" name="username" placeholder='Username' />
-          
-        </div>
-        <div className='_form-div'>
-        <h3 className='_form-subtitle'>Password</h3>
-          <input className='_input-half' type="password" name="password" placeholder='Password' />
-
-        </div>
-        </div>
-
-        <div>
-        <h3 className='_form-subtitle'>Select your type of business</h3>
-        <div className='_divGray'>
-         <span>hola</span>
-        </div>
-        </div>
-      </form>
-    </div>
-    </div>
     </div>
   </div>
 
 );
 
 const colors: any = [
-  { class: '_one' },
-  { class: '_two' },
-  { class: '_three' },
-  { class: '_four' },
-  { class: '_five' },
-  { class: '_six' },
-  { class: '_seven' }
+  { class: '_one_' },
+  { class: '_two_' },
+  { class: '_three_' },
+  { class: '_four_' },
+  { class: '_five_' },
+  { class: '_six_' },
+  { class: '_seven_' }
 ];
 
 export default Register;
