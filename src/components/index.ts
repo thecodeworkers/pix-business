@@ -10,3 +10,6 @@ export { default as Balance } from './Balance';
 export { default as ExportButton } from './ExportButton';
 export { default as CodeQR } from './QRcode';
 export { default as Search } from './Search';
+export { default as AddNew } from './AddNew';
+export { default as WhiteListButton } from './WhiteList';
+export { default as PasteWallet } from './PasteComponent';  

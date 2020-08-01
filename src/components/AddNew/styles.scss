@@ -1,0 +1,13 @@
+@import '../../assets/styles/index.scss';
+
+._addNewButton {
+  background-color: $black;
+  border:none;
+  color: $white;
+  padding: 0.3rem 0.6rem;
+  width: 6rem;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+@import '../../assets/styles/index.scss';
+
+._cardUsdComponent {
+  background: $whiteSmoke;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 7rem;
+  border: 1px solid $seaGreen;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+}
+
+._logoContent {
+  width: 5rem;
+  height: 5rem;
+}

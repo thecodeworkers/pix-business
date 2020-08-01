@@ -1,5 +1,5 @@
 @import '../../assets/styles/index.scss';
-@import '../../assets/styles/index.scss';
+
 
 @mixin color($color) {
   background-color: $color;
@@ -167,7 +167,8 @@
 ._tab-title {
   font-size: 0.7rem;
   color: $textGray;
-  margin-left:5px
+  margin-left:5px;
+  margin-top: 4px;
 }
 
 ._input{
@@ -234,6 +235,20 @@
   font-size: 0.75;
   color: $blue;
   margin-bottom: 10px;
+}
+
+.buttonSend {
+  @include sendButton();
+}
+
+.buttonCancel {
+  @include cancelButton();
+}
+._div_left{
+display: flex;
+justify-content: space-between;
+align-items: flex-end
+
 }
 
 

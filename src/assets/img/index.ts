@@ -29,4 +29,5 @@ export { default as Taxi } from './Components/taxi';
 export { default as Heart } from './Components/heart';
 export { default as Camera } from './Components/camera';
 export { default as Arrow } from './Components/arrow';
-
+export { default as List } from './Components/list';
+export { default as UsdcCard } from './Components/usdc-card';
