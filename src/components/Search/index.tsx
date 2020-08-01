@@ -43,6 +43,7 @@ const records = [
 const filterRecords = (record: any, searchValue: string) => {
   const keys = Object.keys(record);
   // for(let index = 0; let lengh = keys.length; index++)
+  
   return record['status'].toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
 }
 
