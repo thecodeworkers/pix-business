@@ -30,3 +30,34 @@
     grid-row: 2/4;
   }
 }
+
+@media (max-width: 1400px) {
+  #dashboard {
+    grid-template-columns: repeat(5, 1fr);
+
+    ._options {
+      grid-column: 2/6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    >div:nth-child(3) {
+      grid-column: 1/5;
+    }
+
+    ._activity {
+      background: $tableGray;
+      border-radius: 13px;
+      grid-column: 1/5;
+    }
+
+    ._counterparties {
+      background: $tableGray;
+      border-radius: 13px;
+      grid-column: 5/6;
+      grid-row: 2/4;
+    }
+  }
+}
