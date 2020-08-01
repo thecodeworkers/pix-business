@@ -4,6 +4,7 @@ import { Tabs, Balance, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 import Send from './Send';
+import ConfirmSend  from './Send';
 
 const Payment: FC<RouteComponentProps> = ({
 	location,
@@ -12,6 +13,7 @@ const Payment: FC<RouteComponentProps> = ({
 	useEffect(() => {
 		navigate('transfer');
 	}, []);
+
 	const tabs = {
 		Transfer: { route: 'transfer' },
 		Send: { route: 'send' },
@@ -45,6 +47,7 @@ const Payment: FC<RouteComponentProps> = ({
 			<Router>
 				<Receive path='receive/*' />
 				<Send path='send/*' />
+				<ConfirmSend path='confirm-send/*' />
 			</Router>
 		</div>
 	);

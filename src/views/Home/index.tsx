@@ -6,6 +6,7 @@ import { SideBar } from '../../components';
 import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
+import ConfirmSend from '../Payment/SendConfirm';
 
 export default () => (
   <div className="_parentcont">
@@ -16,6 +17,7 @@ export default () => (
         <Profile path="/profile"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
+        <ConfirmSend path='/confirm-send/*'/>
       </Router>   
     </div>
   </div>

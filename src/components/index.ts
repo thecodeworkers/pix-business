@@ -13,3 +13,6 @@ export { default as Search } from './Search';
 export { default as AddNew } from './AddNew';
 export { default as WhiteListButton } from './WhiteList';
 export { default as PasteWallet } from './PasteComponent';  
+export { default as BankCard } from './BankCard';
+export { default as DestinationAccount } from './DestinationAccount';
+export { default as PinCard } from './PinCard';

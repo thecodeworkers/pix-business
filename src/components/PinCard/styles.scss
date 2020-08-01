@@ -1,0 +1,32 @@
+@import '../../assets/styles/index.scss';
+
+._pinCircle {
+  background: $whiteSmoke;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 5px;
+}
+
+._circleLogo {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+._inputPin {
+  background-color: #DFDFDF;
+  padding: 0.5rem;
+  width: 9rem;
+  border: none;
+  border-radius: 5px;
+
+  &::placeholder {
+    text-align: center;
+    letter-spacing: 3px;
+    color: $darkGray;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
