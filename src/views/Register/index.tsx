@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Capsule, Heart, Coin, Camera, Taxi, Cockie,Logo } from '../../assets/img';
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Props, StateProps } from './interface';
@@ -48,7 +48,7 @@ const Register: FC<Props> = ({ register, action }) => {
     { class: '_seven_' }
   ];
 
-  const registerCommerce = (data: any) => {
+  const registerCommerce = (data: any) => {    
     const allServices = Object.keys(services)
       .filter(serviceKey => services[serviceKey].selected)
       .map(service => services[service].value);
@@ -114,9 +114,9 @@ const Register: FC<Props> = ({ register, action }) => {
               handleSubmit,
               handleChange
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}>
                 <div>
-                  <input className='_input' type="text" name="name" placeholder='Name' onChange={handleChange} value={values.name} />
+                  <Field className='_input' type="text" name="name" placeholder='Name' />
                 </div>
 
                 <div className='_form-div-father'>
@@ -202,7 +202,7 @@ const Register: FC<Props> = ({ register, action }) => {
                   <button className='buttonCancel'>Cancel</button>
                   <button className='buttonSend' type="submit">Done</button>
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
