@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from "@reach/router"
-import { Header, ExportButton, Tabs, DynamicTable, Search } from '../../components';
+import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import './styles.scss';
 
 const CounterParties: FC<RouteComponentProps> = () => {
@@ -19,12 +19,17 @@ const CounterParties: FC<RouteComponentProps> = () => {
 
   return (
     <div className='_activityContainer'>
-      <Header />
 
-      <div className='_activityContent'>
+      <div className='_counterpartiesContent'>
+        <div className='_counterpartiesOptions'>
         <div className='_counterpartiesLabel'> CounterParties </div>
-        <div className='_activityOptions'>
+       <AddNew/>
+        </div>
+        
+        <div className='_counterpartiesOptions'>
+          <div className='_optionsTab'>
           <Tabs tabs={counterPartiesTabs} />
+          </div>
           <div className="_inline_div">
             <Search filter={''} />
             <div className='_div_shadow'>

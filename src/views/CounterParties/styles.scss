@@ -30,6 +30,11 @@
   justify-content: space-between;
   padding-left: 28px;
   padding-right: 36px;
+
+}
+
+._optionsTab{
+  width: 40%;
 }
 
 ._timeLabel {
@@ -60,7 +65,8 @@ align-items: flex-end;
 }
 
 ._div_shadow{
-  background-color: whiteSmoke;
+
   display: flex;
   align-items: flex-end;
+  margin-left: 50px;
 }
