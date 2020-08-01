@@ -15,4 +15,7 @@ export { default as CreditCardWhite } from './Components/creditCardWhite';
 export { default as QrBlue } from './Components/QrBlue';
 export { default as QrWhite } from './Components/QrWhite';
 export { default as Usdc } from './Components/usdc';
-
+export { default as Send } from './Components/send';
+export { default as Receive } from './Components/receive';
+export { default as MultiSend } from './Components/multiSend';
+export { default as Export } from './Components/export';

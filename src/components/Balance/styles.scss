@@ -1,0 +1,19 @@
+@import '../../assets/styles';
+
+._balance {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+
+  ._title {
+    font-size: $large;
+    color: $black;
+  }
+
+  ._amount {
+    color: $textGray;
+    font-size: 2.5rem;
+  }
+}
