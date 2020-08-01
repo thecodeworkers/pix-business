@@ -16,3 +16,5 @@ export { default as PasteWallet } from './PasteComponent';
 export { default as BankCard } from './BankCard';
 export { default as DestinationAccount } from './DestinationAccount';
 export { default as PinCard } from './PinCard';
+
+

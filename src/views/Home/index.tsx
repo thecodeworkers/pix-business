@@ -7,6 +7,7 @@ import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
 import ConfirmSend from '../Payment/SendConfirm';
+import Activity from '../Activity';
 
 export default () => (
   <div className="_parentcont">
@@ -14,10 +15,10 @@ export default () => (
     <div className="_dcontainer">
       <Router>
         <Dashboard path="/dashboard"/>
-        <Profile path="/profile"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
         <ConfirmSend path='/confirm-send/*'/>
+        <Activity path='/activity/*' />
       </Router>   
     </div>
   </div>

@@ -5,7 +5,7 @@ import Home from '../Home';
 import Onboarding from '../Onboarding';
 
 const Main: FC<Props> = () => {
-  const isAuth = false;
+  const isAuth = true;
 
   return (
     <>

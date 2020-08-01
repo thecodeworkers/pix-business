@@ -1,0 +1,180 @@
+@import '../../../../assets/styles/index.scss';
+
+.bodyMultiConfirmation {
+	display: flex;
+	height: calc(100vh - 367px);
+	align-items: center;
+	min-height: 500px;
+}
+
+.accountConfirmationSide {
+	width: 45%;
+
+	.to {
+		display: flex;
+		width: 90%;
+		font-size: 1.2rem;
+		justify-content: space-between;
+		padding: 0rem 1rem;
+		margin: 0 auto;
+		align-items: center;
+		margin-bottom: 10px;
+		.accountButton {
+			font-size: 1rem;
+			background: #efefef;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100px;
+			padding: 0.3rem 0.5rem;
+			border-radius: 5px;
+			color: $textGray;
+		}
+	}
+	._account {
+		margin: 0 auto;
+	}
+
+	.QRWallet {
+		display: flex;
+		margin: 50px auto;
+		width: 85%;
+		justify-content: center;
+
+		.copyWallet {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 1rem;
+			background: #efefef;
+			border-radius: 7px;
+			border: 1px solid $seaGreen;
+			margin-left: 10px;
+			width: 60%;
+			p {
+				width: 80%;
+				overflow: hidden;
+				margin-right: 10px;
+			}
+			.copy {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.multiFormConfirmationContainer {
+	margin-top: 20px;
+
+	.details{
+		background: #efefef;
+		border-radius: 5px;
+		width: fit-content;
+		padding: 5px 30px;
+		margin-bottom: 20px;
+	}
+
+	.multiForm {
+		padding: 1rem;
+		background: #efefef;
+		border-radius: 7px;
+		margin: 0 auto;
+		margin-top: 15px;
+		.insertForm {
+			margin-bottom: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.addressInput {
+				width: 40%;
+			}
+			.amountInput {
+				width: 30%;
+			}
+
+			.checkBox {
+				svg {
+					background: #57d6af;
+					padding: 7px;
+					border-radius: 5px;
+					cursor: pointer;
+				}
+			}
+		}
+		input {
+			border-radius: 5px;
+			padding: 5px 10px;
+			border: 1px solid $seaGreen;
+			background: transparent;
+		}
+
+		.insertedList {
+			max-height: 400px;
+			overflow-y: auto;
+		}
+
+		.receiver {
+			margin: 10px 0px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+
+			.nameReceiver {
+				width: 30%;
+				overflow: hidden;
+			}
+
+			.walletReceiver {
+				width: 20%;
+				overflow: hidden;
+			}
+
+			input {
+				width: 20%;
+			}
+
+			.deleteBox {
+				svg {
+					background: $grayButton;
+					padding: 7px;
+					border-radius: 5px;
+					cursor: pointer;
+					height: 10px;
+					width: 10px;
+				}
+			}
+
+			.plusBox {
+				background: $grayButton;
+				padding: 7px;
+				border-radius: 5px;
+				cursor: pointer;
+				height: 10px;
+				width: 10px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+.inputConfirmationSide {
+	width: 55%;
+	padding: 2rem;
+}
+
+.buttonConfirmationContent {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	.buttonCancel {
+		@include cancelButton();
+	}
+	.buttonSend {
+		@include sendButton();
+	}
+}
