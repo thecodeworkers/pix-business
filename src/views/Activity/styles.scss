@@ -2,7 +2,6 @@
   background-color: #F6F6F6;
   border-radius: 14px;
   padding-top: 25px;
-  // max-height: 868px;
   overflow: hidden;
 }
 
@@ -28,4 +27,14 @@
   justify-content: space-between;
   padding-left: 28px;
   padding-right: 36px;
+
+  .tabComponent { 
+    width: 36%;
+
+    .tab {
+      width: 144px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
 }
