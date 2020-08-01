@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
-import { CREATE_WALLET, CREATE_WALLET_ASYNC, GET_WALLETS, GET_WALLETS_ASYNC } from './action-types';
+import { CREATE_WALLET, CREATE_WALLET_ASYNC, GET_WALLETS, GET_WALLETS_ASYNC, CREATE_FIRST_WALLET } from './action-types';
 import { actionObject, fetchService } from '../../utils';
 import { wallets } from '../../utils/path';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,6 +12,23 @@ function* getDepositAddress(wallet: any) {
       ...wallet,
       ...addresses
     }
+}
+
+function* createAddresses(wallet: any) {
+  const addressParams = {
+    idempotencyKey: uuidv4(),
+    currency: 'USD',
+    chain: 'ETH'
+  }
+
+  const { data } = yield call(fetchService, `${wallets}/${wallet.walletId}/addresses`, 'POST', addressParams, true);
+
+  const walletAndAddress = {
+    ...wallet,
+    ...data
+  }
+
+  return walletAndAddress;
 }
 
 function* getWalletsAsync() {
@@ -30,29 +47,31 @@ function* getWalletsAsync() {
   }
 }
 
-function* createWalletAsync() {
+function* createWalletAsync(action: any) {
   try {
     const params = {
       idempotencyKey: uuidv4()
     };
 
-    let wallet = yield call(fetchService, wallets, 'POST', params, true);
-    wallet = wallet.data
+    const wallet = yield call(fetchService, wallets, 'POST', params, true);
+    const realWallet = yield call(createAddresses, wallet.data);
 
-    const addressParams = {
-      idempotencyKey: uuidv4(),
-      currency: 'USD',
-      chain: 'ETH'
-    }
+    if(action.isSaving) realWallet['saving'] = true;
+    
+    yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
+    
+  } catch(error) {
+    console.log(error);
+  }
+}
 
-    const { data } = yield call(fetchService, `${wallets}/${wallet.walletId}/addresses`, 'POST', addressParams, true);
+function* createFirstWalletAsync() {
+  try {
+    const { data } = yield call(fetchService, wallets, 'GET', null, true);
+    const realWallet = yield call(createAddresses, data[0]);
     
-    const walletAndAddress = {
-      ...wallet,
-      ...data
-    }
-    
-    yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [walletAndAddress] } ));
+    yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
+    yield call(createWalletAsync, { isSaving: true });
     
   } catch(error) {
     console.log(error);
@@ -65,4 +84,8 @@ export function* watchGetWallets() {
 
 export function* watchCreateWallet() {
   yield takeLatest(CREATE_WALLET, createWalletAsync);
+}
+
+export function* watchCreateFirstWallet() {
+  yield takeLatest(CREATE_FIRST_WALLET, createFirstWalletAsync);
 }

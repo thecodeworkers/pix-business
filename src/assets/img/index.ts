@@ -33,3 +33,6 @@ export { default as Check } from './Components/check';
 export { default as XMark } from './Components/XMark';
 export { default as List } from './Components/list';
 export { default as UsdcCard } from './Components/usdc-card';
+export { default as BankLogo } from './Components/bank';
+export { default as PinCircle } from './Components/pin-circle';
+export { default as Close } from './Components/close';

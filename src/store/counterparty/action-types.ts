@@ -1,0 +1,1 @@
+export const GET_COUNTERPARTIES: string = 'GET_COUNTERPARTIES';
