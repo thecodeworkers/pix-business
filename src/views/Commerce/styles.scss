@@ -1,5 +1,54 @@
-._principalContainer {
-  width: calc(100% - 250px);
-  display: block;
-  margin-left: auto;
+._commerceContent {
+  background-color: #F6F6F6;
+  border-radius: 14px;
+  padding-top: 25px;
+  overflow: hidden;
+}
+
+._commerceLabel {
+  display: flex;
+  align-items: center;
+  width: 155px;
+  height: 40px;
+  padding: 0px 12px;
+  margin-left: 28px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  background: transparent linear-gradient(270deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+._commerceAdd {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 36px;
+  margin-bottom: 12px;
+}
+
+._exportOption {
+  padding: 12px;
+  background: #F1F1F1;
+  border-radius: 7px;
+}
+
+._commerceOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 28px;
+  padding-right: 36px;
+  margin-bottom: 32px;
+
+  .tabComponent { 
+    width: 36%;
+
+    .tabComponent .tab {
+      width: 144px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
 }
