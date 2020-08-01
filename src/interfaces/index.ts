@@ -30,4 +30,5 @@ export interface WalletProps {
   type: string
   walletId: string
   description?: string
+  saving?: boolean
 }
