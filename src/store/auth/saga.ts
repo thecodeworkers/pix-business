@@ -1,11 +1,16 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { fetchService } from '../../utils';
 import { LOGIN, LOGIN_ASYNC } from './action-types';
 import { actionObject } from '../../utils';
+import { DispatchProps } from '../../interfaces';
+import { getCommerce } from '../selectors';
 
-function* loginAsync() {
+function* loginAsync({ payload }: DispatchProps) {
   try {
-    yield put(actionObject(LOGIN_ASYNC, null));
+    const commerce = yield select(getCommerce);
+    console.log(payload);
+    
+    // yield put(actionObject(LOGIN_ASYNC));
     
   } catch(error) {
     console.log(error);

@@ -1,10 +1,19 @@
-import React, { FC, useState } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import React, { FC, useEffect } from 'react';
 import { Logo } from '../../assets/img';
+import { Formik, Form, Field } from 'formik';
+import { StateProps, Props } from './interface';
+import { bindActionCreators } from 'redux';
+import { login } from '../../store/actions';
+import { connect } from 'react-redux';
+import { navigate } from '@reach/router';
 import './styles.scss';
-import { Formik } from 'formik';
 
-const Login: FC<RouteComponentProps> = () => {
+const Login: FC<Props> = ({ auth }) => {
+  const { isAuth } = auth;
+
+  useEffect(() => {
+    if(auth) navigate('/dashboard');
+  }, [isAuth]);
 
   const colors: any = [
     { class: '_one_' },
@@ -18,8 +27,8 @@ const Login: FC<RouteComponentProps> = () => {
 
   const form: any = {
     email: '',
-    password:'',
-  }
+    password: '',
+  };
 
   return (
     <div className='_mainOne'>
@@ -66,28 +75,26 @@ const Login: FC<RouteComponentProps> = () => {
             onSubmit={values => console.log(values)}
           >
             {({
-              values,
-              handleSubmit,
-              handleChange
+             errors,
+             touched
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form>
                 <div className='_form-div-father'>
                   <div className='_form-div'>
                     <h3 className='_form-subtitle'>Username</h3>
-                    <input className='_input-half' type="text" name="email" placeholder='Username' onChange={handleChange} value={values.email} />
+                    <Field className='_input-half' type="text" name="email" placeholder='Username'/>
                   </div>
 
                   <div className='_form-div'>
                     <h3 className='_form-subtitle'>Password</h3>
-                    <input className='_input-half' type="password" name="password" placeholder='Password' onChange={handleChange} value={values.password} />
+                    <Field className='_input-half' type="password" name="password" placeholder='Password'/>
                   </div>
                 </div>
 
-                
                 <div className='_div_left'>
                   <button className='buttonSend' type="submit">Login</button>
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
@@ -98,4 +105,16 @@ const Login: FC<RouteComponentProps> = () => {
   );
 }
 
-export default Login;
+const mapStateToProps = ({ auth }: StateProps) => ({ auth });
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    login
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

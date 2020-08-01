@@ -1,8 +1,8 @@
 import { DispatchProps } from '../../interfaces';
-import { GET_COUNTERPARTIES } from './action-types';
+import { GET_COUNTERPARTIES, SAVE_COUNTERPARTY } from './action-types';
 
 const initialState: any = {
-  results: [
+  counterparties: [
     {
       'type': 'Employee',
       'counterparty': 'Darianna medina',
@@ -48,10 +48,18 @@ const initialState: any = {
   ]
 }
 
-export default (state = initialState, { type }: DispatchProps) => {
+export default (state = initialState, { type, payload }: DispatchProps) => {
   switch(type) {
     case GET_COUNTERPARTIES:
     return state;
+
+    case SAVE_COUNTERPARTY:
+    return {
+      results: [
+        ...state.counterparties,
+        ...payload.counterparty
+      ]
+    }
 
     default:
     return state;
