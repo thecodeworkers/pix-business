@@ -3,13 +3,14 @@ import { HOST_URI } from './path';
 import { API_KEY } from './constants';
 import axios from 'axios';
 
-export default function* (url: string, method: string = 'GET', data: any = null, auth: boolean = false) {
+export default function* (url: string, method: string = 'GET', data: any | null = null, auth: boolean = false) {
   const objectRequest: any = {
     method,
     url: `${HOST_URI}${url}`,
     data,
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json'
     }
   }
 

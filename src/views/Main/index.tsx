@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { StateProps, Props } from './interface';
 import Home from '../Home';
 import Onboarding from '../Onboarding';
+
 const Main: FC<Props> = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <>

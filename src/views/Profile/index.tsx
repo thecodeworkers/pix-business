@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { searchActivities } from '../../store/actions';
+import { searchActivities, getWallets, createWallet } from '../../store/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Search } from '../../components';
@@ -24,7 +24,9 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
-    searchActivities
+    searchActivities,
+    getWallets,
+    createWallet
   }
 
   return {
