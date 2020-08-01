@@ -20,3 +20,14 @@ export interface AuthProps {
   isAuth: boolean
   commerce: CommerceProps | null
 }
+
+export interface WalletProps {
+  address: string
+  balances: Array<any>
+  chain: string
+  currency: string
+  entityId: string
+  type: string
+  walletId: string
+  description?: string
+}

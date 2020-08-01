@@ -1,10 +1,10 @@
-import React, { FC, useState , useRef } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Capsule, Heart, Coin, Camera, Taxi, Cockie,Logo } from '../../assets/img';
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Props, StateProps } from './interface';
-import { manageService } from '../../store/actions';
+import { manageService, createCommerce, createFirstWallet } from '../../store/actions';
 import checked from '../../assets/img/Static/checked.png';
 import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
@@ -12,6 +12,10 @@ import './styles.scss';
 const Register: FC<Props> = ({ register, action }) => {
   const [ checkSecond, setCheckSecond ] = useState(0);
   const [year, setYear] = useState('');
+
+  useEffect(() => {
+    
+  }, []);
 
   const { services } = register;
 
@@ -29,9 +33,9 @@ const Register: FC<Props> = ({ register, action }) => {
     name: '',
     email: '',
     password:'',
+    optional: '',
     services: '',
     years:'',
-    optionalService: ''
   }
   
   const colors: any = [
@@ -43,6 +47,22 @@ const Register: FC<Props> = ({ register, action }) => {
     { class: '_six_' },
     { class: '_seven_' }
   ];
+
+  const registerCommerce = (data: any) => {    
+    const allServices = Object.keys(services)
+      .filter(serviceKey => services[serviceKey].selected)
+      .map(service => services[service].value);
+
+    const optionalService = data.optional;
+    if(optionalService) allServices.push(optionalService);
+
+    delete data['optional'];
+    data.services = allServices;
+    data.years = year;
+
+    action.createCommerce(data);
+    // action.createFirstWallet();
+  }
 
   return (
     <div className='_mainOne'>
@@ -87,16 +107,16 @@ const Register: FC<Props> = ({ register, action }) => {
 
           <Formik
             initialValues={form}
-            onSubmit={values => console.log(values)}
+            onSubmit={values => registerCommerce(values)}
           >
             {({
               values,
               handleSubmit,
               handleChange
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}>
                 <div>
-                  <input className='_input' type="text" name="name" placeholder='Name' onChange={handleChange} value={values.name} />
+                  <Field className='_input' type="text" name="name" placeholder='Name' />
                 </div>
 
                 <div className='_form-div-father'>
@@ -122,7 +142,7 @@ const Register: FC<Props> = ({ register, action }) => {
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={services.servicesAuto.selected ? checked : unchecked}  onClick={() => selectCheck(!services.servicesAuto.selected, 'servicesAuto')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesBeauty.selected ? checked : unchecked}  onClick={() => selectCheck(!services.servicesBeauty.selected, 'servicesBeauty')}></img>
                     <Heart />
                     <h3 className='_tab-title' id='Beauty Services' >Beauty Services</h3>
                   </div>
@@ -143,20 +163,22 @@ const Register: FC<Props> = ({ register, action }) => {
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={services.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesRent.selected, 'servicesRent')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesAuto.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesAuto.selected, 'servicesAuto')}></img>
                     <Taxi />
                     <h3 className='_tab-title' id='Auto Services'>Auto Services</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={services.servicesBeauty.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesBeauty.selected, 'servicesBeauty')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesRent.selected, 'servicesRent')}></img>
                     <Coin />
                     <h3 className='_tab-title' id='Rent and lease '>Rent and lease </h3>
                   </div>
                 </div>
 
                 <p className='_text_blue'>I didn't find my type of business</p>
-                <input className='_input' type="text" name="optional" placeholder='Write your type of business if necessary' />
+                <div>
+                  <input className='_input' type="text" name="optional" placeholder='Write your type of business if necessary' onChange={handleChange} value={values.optional} />
+                </div>
                 <h3 className='_form-subtitle'>How long have you been in business?</h3>
 
                 <div className='_form-tabs'>
@@ -180,7 +202,7 @@ const Register: FC<Props> = ({ register, action }) => {
                   <button className='buttonCancel'>Cancel</button>
                   <button className='buttonSend' type="submit">Done</button>
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
@@ -190,11 +212,13 @@ const Register: FC<Props> = ({ register, action }) => {
   )
 }
 
-const mapStateToProps = ({ register }: StateProps) => ({ register })
+const mapStateToProps = ({ register }: StateProps) => ({ register });
 
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
-    manageService
+    manageService,
+    createCommerce,
+    createFirstWallet
   }
 
   return {
