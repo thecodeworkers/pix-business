@@ -28,11 +28,7 @@
   margin-bottom: 12px;
 }
 
-._exportOption {
-  padding: 12px;
-  background: #F1F1F1;
-  border-radius: 7px;
-}
+
 
 ._commerceOptions {
   display: flex;
@@ -50,5 +46,11 @@
       padding-top: 6px;
       padding-bottom: 6px;
     }
+  }
+
+  ._exportOption {
+    padding: 12px;
+    background: #F1F1F1;
+    border-radius: 7px;
   }
 }
