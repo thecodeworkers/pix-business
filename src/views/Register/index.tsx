@@ -6,7 +6,7 @@ import './styles.scss';
 const Register: FC<RouteComponentProps> = () => (
 
   <div className='_main'>
-    <div className='_nav'>
+    <div className='_navb'>
       <div className='_rightContent'>
         <div className='_header'>
           <div className='_logotype'>

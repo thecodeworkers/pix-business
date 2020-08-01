@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { RouteComponentProps } from "@reach/router";
 import { Balance, ActionButton, Header } from '../../components';
 import { Send,Receive, MultiSend } from '../../assets/img';
