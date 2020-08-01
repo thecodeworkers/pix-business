@@ -1,0 +1,23 @@
+@import '../../assets/styles/index.scss';
+
+._destinationCard {
+  background: $whiteSmoke;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 7.5rem;
+  border: none;
+  align-items: center;
+  border-radius: 5px;
+  background: linear-gradient(to left, $greenToBlue);
+  position: relative;
+  padding: 0px 1rem;
+}
+
+._destinationCard {
+  & p {
+    color: $white;
+    font-size: 0.8;
+  }
+
+}
