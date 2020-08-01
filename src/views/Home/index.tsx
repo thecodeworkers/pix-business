@@ -8,6 +8,7 @@ import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
 import ConfirmSend from '../Payment/SendConfirm';
 import Activity from '../Activity';
+import  CounterParties from '../CounterParties';
 
 export default () => (
   <div className="_parentcont">
@@ -20,6 +21,7 @@ export default () => (
         <Payment path='/payments/*' />
         <ConfirmSend path='/confirm-send/*'/>
         <Activity path='/activity/*' />
+        <CounterParties path='/counterparties' />
       </Router>   
     </div>
   </div>

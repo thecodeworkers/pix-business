@@ -5,3 +5,5 @@ export * from './auth/action';
 export * from './search/action';
 export * from './wallet/action';
 export * from './register/action';
+export * from './bankAccount/action';
+export * from './counterparty/action';
