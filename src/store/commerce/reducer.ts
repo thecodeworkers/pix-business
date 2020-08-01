@@ -2,19 +2,16 @@ import { CommerceProps, DispatchProps } from '../../interfaces';
 import { CREATE_COMMERCE } from './action-types';
 
 type StateProps = {
-  commerce: CommerceProps | null,
-  wallets: any
+  commerce: CommerceProps | null
 }
 
 const initialState: StateProps = {
-  commerce: null,
-  wallets: null
+  commerce: null
 }
 
 export default (state = initialState, { type, payload }: DispatchProps) => {
   switch(type) {
     case CREATE_COMMERCE:
-      console.log(payload);
     return {
       ...payload
     };

@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Props, StateProps } from './interface';
-import { manageService, createCommerce } from '../../store/actions';
+import { manageService, createCommerce, getWallets } from '../../store/actions';
 import checked from '../../assets/img/Static/checked.png';
 import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
@@ -58,6 +58,7 @@ const Register: FC<Props> = ({ register, action }) => {
     data.years = year;
 
     action.createCommerce(data);
+    action.getWallets();
   }
 
   return (
@@ -213,7 +214,8 @@ const mapStateToProps = ({ register }: StateProps) => ({ register })
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     manageService,
-    createCommerce
+    createCommerce,
+    getWallets
   }
 
   return {
