@@ -6,6 +6,7 @@ import auth from './auth/reducer';
 import search from './search/reducer';
 import activity from './activity/reducer';
 import wallet from './wallet/reducer';
+import register from './register/reducer';
 
 const reducers = combineReducers({
   user,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
   auth,
   search,
   activity,
-  wallet
+  wallet,
+  register
 });
 
 export default reducers;

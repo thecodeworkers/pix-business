@@ -6,6 +6,7 @@ import { SideBar } from '../../components';
 import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
+import Activity from '../Activity';
 
 export default () => (
   <div className="_parentcont">
@@ -13,9 +14,9 @@ export default () => (
     <div className="_dcontainer">
       <Router>
         <Dashboard path="/dashboard"/>
-        <Profile path="/profile"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
+        <Activity path='/activity' />
       </Router>   
     </div>
   </div>

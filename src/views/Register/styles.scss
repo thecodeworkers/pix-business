@@ -8,7 +8,7 @@
 
 ._navOne {
   background:$black;
-  width: 30.625rem;
+  width: 35.625rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@
   // background-color: blue;
   width: 85%;
   display: block;
+  margin-left: auto;
 }
 
 ._footerOne{
@@ -239,15 +240,17 @@
 
 .buttonSend {
   @include sendButton();
+  margin-right: 43px;
+  margin-left: 20px;
 }
 
 .buttonCancel {
   @include cancelButton();
 }
 ._div_left{
+  margin-top: 20px;
 display: flex;
-justify-content: space-between;
-align-items: flex-end
+justify-content: flex-end;
 
 }
 
