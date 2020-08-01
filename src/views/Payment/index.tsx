@@ -29,7 +29,7 @@ const Payment: FC<RouteComponentProps> = ({
 	];
 
 	return (
-		<div>
+		<div className="_principalContainer">
 			<div className='paymentBanner'>
 				<Tabs location={location} navigate={navigate} tabs={tabs} />
 				<div className='totalAmount'>

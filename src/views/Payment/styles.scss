@@ -4,6 +4,13 @@
 	background-color: $color;
 	width: 12.5%;
 }
+
+._principalContainer {
+	width: calc(100% - 250px);
+  display: block;
+  margin-left: auto;
+}
+
 .paymentBanner {
 	display: flex;
 	justify-content: space-around;
