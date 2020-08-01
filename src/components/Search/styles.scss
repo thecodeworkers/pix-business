@@ -1,0 +1,23 @@
+@import '../../assets/styles/index.scss';
+
+._search{
+  width: 90%;
+  height:20px;
+  padding: 10px;
+  border:none;
+  font-size: 16px;
+  background-color: $whiteSmoke;
+  text-align: right;
+  &::placeholder{
+    color: $textGray;
+    font-weight: 500px;
+    font-size: 16px;
+    text-align: right;
+  }
+}
+
+._iconSearch{
+  position: relative;
+  top: 30px;
+  left: 5px;
+}
