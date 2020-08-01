@@ -11,10 +11,10 @@ const Main: FC<Props> = () => {
   return (
     <>
       {
-        isAuth ? (
+        !isAuth ? (
           <>
           <Home/>
-          <Commerce/>
+          {/* <Commerce/> */}
           </>
         ) : (
           <Onboarding/>
