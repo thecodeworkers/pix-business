@@ -1,64 +1,29 @@
 import React, { FC, useState , useRef } from 'react';
-import { RouteComponentProps } from '@reach/router';
 import { Logo } from '../../assets/img';
 import { Capsule, Heart, Coin, Camera, Taxi, Cockie } from '../../assets/img';
+import { Formik } from 'formik';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Props, StateProps } from './interface';
+import { manageService } from '../../store/actions';
 import checked from '../../assets/img/Static/checked.png';
 import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
-import { Formik } from 'formik';
 
-const Register: FC<RouteComponentProps> = () => {
-  const [ check, setCheck ] = useState(false);
+const Register: FC<Props> = ({ register, action }) => {
   const [ checkSecond, setCheckSecond ] = useState(0);
-  const [manageService, setManageService]: any = useState({
-    serviceFood: {
-      value: 'Service Food',
-      selected: false
-    },
-    servicesAuto: {
-      value: 'Service Food',
-      selected: false
-    },
-    servicesMedicine: {
-      value: 'Service Food',
-      selected: false
-    },
-    servicesEntertaiment: {
-      value: 'Service Food',
-      selected: false
-    },
-    servicesRent: {
-      value: 'Service Food',
-      selected: false
-    },
-    servicesBeauty: {
-      value: 'Service Food',
-      selected: false
-    }
-  });
+  const [year, setYear] = useState('');
 
-  const serviceFood = useRef(null);
-  const servicesAuto = useRef(null);
-  const servicesMedicine = useRef(null);
-  const servicesEntertaiment = useRef(null);
-  const servicesRent = useRef(null);
-  const servicesBeauty = useRef(null);
-  const yearsOne = useRef(null);
-  const yearsOnetoFive = useRef(null);
-  const yearsFive = useRef(null);
+  const { services } = register;
 
   const selectCheck = (selected: boolean, keySearch: string = '') => {
-    // setCheck(selected);
-    setCheck(selected);
-    manageService[keySearch].selected = selected;
-    console.log(manageService);
-    
-    form['services'] = [];
+    services[keySearch].selected = selected;
+    action.manageService(services);
   }
 
-  const selectYear = (value: any, number: number) => {
-    setCheckSecond(number);
-    form['years'] = value.id;
+  const selectYear = (year: string, selected: number) => {
+    setCheckSecond(selected);
+    setYear(year);
   }
 
   const form: any = {
@@ -66,7 +31,8 @@ const Register: FC<RouteComponentProps> = () => {
     email: '',
     password:'',
     services: '',
-    years:''
+    years:'',
+    optionalService: ''
   }
   
   const colors: any = [
@@ -78,10 +44,6 @@ const Register: FC<RouteComponentProps> = () => {
     { class: '_six_' },
     { class: '_seven_' }
   ];
-
-  const yearsHandle = (event: any) => {
-    form['years'] = event.value
-  }
 
   return (
     <div className='_mainOne'>
@@ -155,63 +117,63 @@ const Register: FC<RouteComponentProps> = () => {
                 <div className='_form-tabs'>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.serviceFood.selected ? checked : unchecked} onClick={() => selectCheck(!manageService.serviceFood.selected, 'serviceFood')}></img>
+                    <img className='_checkbox' width='45px' src={services.serviceFood.selected ? checked : unchecked} onClick={() => selectCheck(!services.serviceFood.selected, 'serviceFood')}></img>
                     <Cockie />
-                    <h3  ref={serviceFood}  className='_tab-title' id='Food-Services'>Food Services</h3>
+                    <h3 className='_tab-title' id='Food-Services'>Food Services</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.servicesAuto.selected ? checked : unchecked}  onClick={() => selectCheck(!manageService.servicesAuto.selected, 'servicesAuto')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesAuto.selected ? checked : unchecked}  onClick={() => selectCheck(!services.servicesAuto.selected, 'servicesAuto')}></img>
                     <Heart />
-                    <h3 ref={servicesBeauty} className='_tab-title' id='Beauty Services' >Beauty Services</h3>
+                    <h3 className='_tab-title' id='Beauty Services' >Beauty Services</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.servicesMedicine.selected ? checked : unchecked} onClick={() => selectCheck(!manageService.servicesMedicine.selected, 'servicesMedicine')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesMedicine.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesMedicine.selected, 'servicesMedicine')}></img>
                     <Capsule />
-                    <h3 ref={servicesMedicine} className='_tab-title' id='Medicine & Health'>Medicine & Health </h3>
+                    <h3 className='_tab-title' id='Medicine & Health'>Medicine & Health </h3>
                   </div>
                 </div>
 
                 <div className='_form-tabs'>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.servicesEntertaiment.selected ? checked : unchecked}  onClick={() => selectCheck(!manageService.servicesEntertaiment.selected, 'servicesEntertaiment')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesEntertaiment.selected ? checked : unchecked}  onClick={() => selectCheck(!services.servicesEntertaiment.selected, 'servicesEntertaiment')}></img>
                     <Camera />
-                    <h3 ref={servicesEntertaiment} className='_tab-title' id='Entertaiment'>Entertaiment</h3>
+                    <h3 className='_tab-title' id='Entertaiment'>Entertaiment</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!manageService.servicesRent.selected, 'servicesRent')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesRent.selected, 'servicesRent')}></img>
                     <Taxi />
-                    <h3 ref={servicesAuto} className='_tab-title' id='Auto Services'>Auto Services</h3>
+                    <h3 className='_tab-title' id='Auto Services'>Auto Services</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={manageService.servicesBeauty.selected ? checked : unchecked} onClick={() => selectCheck(!manageService.servicesBeauty.selected, 'servicesBeauty')}></img>
+                    <img className='_checkbox' width='45px' src={services.servicesBeauty.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesBeauty.selected, 'servicesBeauty')}></img>
                     <Coin />
-                    <h3 ref={servicesRent} className='_tab-title' id='Rent and lease '>Rent and lease </h3>
+                    <h3 className='_tab-title' id='Rent and lease '>Rent and lease </h3>
                   </div>
                 </div>
 
                 <p className='_text_blue'>I didn't find my type of business</p>
-                <input className='_input' type="text" name="name" placeholder='Write your type of business if necessary'  />
+                <input className='_input' type="text" name="optional" placeholder='Write your type of business if necessary' />
                 <h3 className='_form-subtitle'>How long have you been in business?</h3>
 
                 <div className='_form-tabs'>
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={checkSecond === 1 ? checked : unchecked} onChange={() => yearsHandle(yearsOne.current)} onClick={() => selectYear(yearsOne.current, 1)}></img>
-                    <h3 className='_tab-title' ref={yearsOne} id='- 1 year'>- 1 year </h3>
+                    <img className='_checkbox' width='45px' src={checkSecond === 1 ? checked : unchecked} onClick={() => selectYear('- 1 year', 1)}></img>
+                    <h3 className='_tab-title' id='- 1 year'>- 1 year </h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={checkSecond === 2 ? checked : unchecked} onChange={() => yearsHandle(yearsOnetoFive.current)} onClick={() => selectYear(yearsOnetoFive.current, 2)}></img>
-                    <h3 className='_tab-title' ref={yearsOnetoFive} id='1 & 5 years'> 1 & 5 years</h3>
+                    <img className='_checkbox' width='45px' src={checkSecond === 2 ? checked : unchecked} onClick={() => selectYear('1 & 5 years', 2)}></img>
+                    <h3 className='_tab-title' id='1 & 5 years'> 1 & 5 years</h3>
                   </div>
 
                   <div className='_divGray'>
-                    <img className='_checkbox' width='45px' src={checkSecond === 3 ? checked : unchecked} onChange={() => yearsHandle(yearsFive.current)} onClick={() => selectYear(yearsFive.current, 3)}></img>
-                    <h3 className='_tab-title' ref={yearsFive} id='+ 5years '> + 5years  </h3>
+                    <img className='_checkbox' width='45px' src={checkSecond === 3 ? checked : unchecked} onClick={() => selectYear('+ 5years', 3)}></img>
+                    <h3 className='_tab-title' id='+ 5years '> + 5years  </h3>
                   </div>
 
                 </div>
@@ -229,4 +191,16 @@ const Register: FC<RouteComponentProps> = () => {
   )
 }
 
-export default Register;
+const mapStateToProps = ({ register }: StateProps) => ({ register })
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    manageService
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

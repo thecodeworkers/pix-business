@@ -1,0 +1,17 @@
+@import '../../../assets/styles';
+
+._bankAccountTitle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0 0 1rem;
+  padding: 5px;
+  border-radius: 5px;
+  width: 50%;
+  background: rgb(51,163,220);
+  background: linear-gradient(90deg, rgba(51,163,220,1) 0%, rgba(92,214,177,1) 100%);
+
+  p {
+    color: $white;
+  }
+}
