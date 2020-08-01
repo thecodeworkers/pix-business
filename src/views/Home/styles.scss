@@ -1,6 +1,8 @@
 ._dcontainer {
   margin: 0 2rem;
-  width: 100%;
+  width: calc(100% - 300px);
+  display: block;
+  margin-left: auto;
 }
 
 ._parentcont {

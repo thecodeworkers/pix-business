@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/index.scss';
+
 .bodyWallet {
 	display: flex;
 	height: calc(100vh - 367px);
@@ -6,9 +8,71 @@
 
 .accountSide {
 	width: 45%;
+
+	.to {
+		display: flex;
+		width: 90%;
+		font-size: 1.2rem;
+		justify-content: space-between;
+		padding: 0rem 1rem;
+		margin: 0 auto;
+		align-items: center;
+		margin-bottom: 10px;
+		.accountButton {
+			font-size: 1rem;
+			background: #efefef;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100px;
+			padding: 0.3rem 0.5rem;
+			border-radius: 5px;
+			color: $textGray;
+		}
+	}
+	._account {
+		margin: 0 auto;
+	}
+
+	.QRWallet {
+		display: flex;
+		margin: 50px 0;
+		.copyWallet {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 1rem;
+			background: #efefef;
+			border-radius: 7px;
+			border: 1px solid $seaGreen;
+			width: 54%;
+			margin-left: 10px;
+			p {
+				width: 80%;
+				overflow: hidden;
+				margin-right: 10px;
+			}
+			.copy {
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .inputSide {
 	width: 55%;
 	padding: 2rem;
+}
+
+.buttonContent {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	.buttonCancel {
+		@include cancelButton();
+	}
+	.buttonSend {
+		@include sendButton();
+	}
 }
