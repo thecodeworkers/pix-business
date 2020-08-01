@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import {Notification, User} from '../../assets/img';
-import Pixel from './pixel';
+import { Notification, User, Pixel } from '../../assets/img';
 import Tabs from '../Tabs';
 import './styles.scss';
 
