@@ -15,7 +15,7 @@ const Header = ( props: any = false ) => {
 
       <div className="_enterprise _subcontainer">
         <div className="_image">
-          <Pixel />
+          <Pixel color={'#2699fb'} width={'32'} height={'24'} />
         </div>
         <div className="_text">Holy chicken</div>
       </div>

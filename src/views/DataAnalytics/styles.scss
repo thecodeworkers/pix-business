@@ -15,6 +15,7 @@
 
 ._parentGraphic {
   width: 100%;
+  margin-bottom: 2rem;
 
   ._row {
     display: flex;
@@ -23,9 +24,11 @@
   }
 
   ._graphicContainer {
-    height: 200px;
+    // height: 200px;
+    padding: 5px;
     background-color: $tableGray;
     position: relative;
+    border-radius: 13px;
   }
 
   ._filterButton {
