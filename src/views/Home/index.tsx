@@ -16,7 +16,7 @@ export default () => (
         <Dashboard path="/dashboard"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
-        <Activity path='/activity' />
+        <Activity path='/activity/*' />
       </Router>   
     </div>
   </div>

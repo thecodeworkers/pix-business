@@ -1,6 +1,5 @@
 import React, { FC, useState , useRef } from 'react';
-import { Logo } from '../../assets/img';
-import { Capsule, Heart, Coin, Camera, Taxi, Cockie } from '../../assets/img';
+import { Capsule, Heart, Coin, Camera, Taxi, Cockie,Logo } from '../../assets/img';
 import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
