@@ -7,6 +7,7 @@ import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
 import Activity from '../Activity';
+import  CounterParties from '../CounterParties';
 
 export default () => (
   <div className="_parentcont">
@@ -18,6 +19,7 @@ export default () => (
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
         <Activity path='/activity' />
+        <CounterParties path='/counterparties' />
       </Router>   
     </div>
   </div>
