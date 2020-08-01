@@ -1,12 +1,13 @@
-import React from "react";
-import Dashboard from "../Dashboard";
-import Profile from "../Profile";
-import { Router } from "@reach/router";
-import { SideBar, Header } from "../../components";
-import "./styles.scss";
-import Payment from "../Payment";
-import DataAnalytics from "../DataAnalytics";
-import Activity from "../Activity";
+import React from 'react';
+import Dashboard from '../Dashboard';
+import Profile from '../Profile';
+import { Router } from '@reach/router';
+import { SideBar, Header } from '../../components';
+import './styles.scss';
+import Payment from '../Payment';
+import DataAnalytics from '../DataAnalytics';
+import ConfirmSend from '../Payment/SendConfirm';
+import Activity from '../Activity';
 
 export default () => (
   <div className="_parentcont">
@@ -17,6 +18,7 @@ export default () => (
         <Dashboard path="/dashboard"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
+        <ConfirmSend path='/confirm-send/*'/>
         <Activity path='/activity/*' />
       </Router>   
     </div>
