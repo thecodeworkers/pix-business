@@ -1,37 +1,11 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { searchActivities, getWallets, createWallet } from '../../store/actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Search } from '../../components';
 import './styles.scss';
 
-const Profile: FC<RouteComponentProps> = (props: any) => {
-  const filterResults = (event: any) => {
-    event.preventDefault();
-    const currentValue = event.target.value;
-
-    props.action.searchActivities(currentValue);
-  }
-  
+const Profile: FC<RouteComponentProps> = (props: any) => {  
   return (
-    <>
-      <Search filter={filterResults}/>
-      <div>Profile</div>
-    </>
+    <div>Profile</div>
   );
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-  const actions = {
-    searchActivities,
-    getWallets,
-    createWallet
-  }
-
-  return {
-    action: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Profile);
+export default Profile;
