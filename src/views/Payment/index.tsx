@@ -3,6 +3,7 @@ import { RouteComponentProps, Router, navigate } from '@reach/router';
 import { Tabs, Balance, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
+import Multisend from './Multisend';
 import Send from './Send';
 
 const Payment: FC<RouteComponentProps> = ({
@@ -31,7 +32,7 @@ const Payment: FC<RouteComponentProps> = ({
 	];
 
 	return (
-		<div className="paymentContainer">
+		<div className='paymentContainer'>
 			<Header />
 			<div className='paymentBanner'>
 				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
@@ -44,6 +45,7 @@ const Payment: FC<RouteComponentProps> = ({
 			</div>
 			<Router>
 				<Receive path='receive/*' />
+				<Multisend path='multisend/*' />
 				<Send path='send/*' />
 			</Router>
 		</div>
