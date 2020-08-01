@@ -1,4 +1,4 @@
-@import '../../assets/styles';
+@import '../../assets/styles/index.scss';
 
 ._account {
   color: $white;
@@ -33,12 +33,13 @@
   }
 
   ._info {
-    width: 100%;
+    width: 74%;
     font-family: $muli;
+    overflow: hidden;
 
     ._title {
-      font-size: $large;
-      font-weight: 900;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
     ._desc {
@@ -63,7 +64,7 @@
 
     ._total {
       font-size: $extra-large;
-      font-weight: 600;
+      font-weight: bold;
     }
   }
 }

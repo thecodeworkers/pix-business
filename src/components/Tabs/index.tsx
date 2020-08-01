@@ -1,22 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import './styles.scss';
 import { Props } from './inteface';
+import { Link } from '@reach/router';
 
-const Tabs: FC<Props> = ({ location, navigate, tabs = {} }) => {
+const Tabs: FC<Props> = ({ path, tabs = {} }) => {
 	return (
 		<div className='tabComponent'>
 			{Object.keys(tabs).length
 				? Object.keys(tabs).map((value: string, index) => {
 						return (
-							<div
-								key={index}
-								className={tabs[value].route ? 'tab selected' : 'tab'}
-								onClick={() => {
-									console.log(location);
-								}}
-							>
-								<p>{value}</p>
-							</div>
+							<Link key={index} to={tabs[value].route}>
+								<div
+									className={path === tabs[value].route ? 'tab selected' : 'tab'}
+								>
+									<p>{value}</p>
+								</div>
+							</Link>
 						);
 				  })
 				: null}

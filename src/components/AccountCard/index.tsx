@@ -1,22 +1,23 @@
-import React from "react";
-import "./styles.scss";
+import React, { FC } from 'react';
+import './styles.scss';
+import { Props } from './interface';
 
-const AccountCard = (props: any) => {
-  return (
-    <div className="_account">
-      <div className="_decorator">X</div>
-      <div className="_img" />
-      <div className="_info">
-        <p className="_title">{props.data.title}</p>
-        <p className="_desc">{props.data.desc}</p>
-      </div>
-      <div className="_balance">
-        <p className="_percent">{props.data.percent}</p>
-        <p className="_value">{props.data.value}</p>
-        <p className="_total">{props.data.total}</p>
-      </div>
-    </div>
-  );
+const AccountCard: FC<Props> = ({ data, width = null, decorator = true }) => {
+	return (
+		<div className='_account' style={width ? { width: width } : {}}>
+			{decorator ? <div className='_decorator'>X</div> : null}
+			<div className='_img' />
+			<div className='_info'>
+				<p className='_title'>{data.title}</p>
+				<p className='_desc'>{data.desc}</p>
+				<div className='_balance'>
+					{data.percent ? <p className='_percent'>{data.percent}</p> : null}
+					{data.value ? <p className='_value'>$ {data.value}</p> : null}
+					{data.total ? <p className='_total'>{data.total} USDC</p> : null}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default AccountCard;

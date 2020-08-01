@@ -1,20 +1,21 @@
-import React, { FC } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
-import { Tabs } from '../../components';
+import React, { FC, useEffect } from 'react';
+import { RouteComponentProps, Router, navigate } from '@reach/router';
+import { Tabs, Balance } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 
 const Payment: FC<RouteComponentProps> = ({
 	location,
-	navigate,
-	uri,
-	path,
+	navigate = (nav: any) => {},
 }) => {
+	useEffect(() => {
+		navigate('transfer');
+	}, []);
 	const tabs = {
 		Transfer: { route: 'transfer' },
 		Send: { route: 'send' },
 		Receive: { route: 'receive' },
-		"Multi Send": { route: 'multisend' },
+		'Multi Send': { route: 'multisend' },
 	};
 
 	const colors: any = [
@@ -23,19 +24,16 @@ const Payment: FC<RouteComponentProps> = ({
 		{ class: '_two1' },
 		{ class: '_six1' },
 		{ class: '_five1' },
-		{ class: '_four1' },	
+		{ class: '_four1' },
 		{ class: '_three1' },
 		{ class: '_seven1' },
 	];
 
 	return (
-		<div className="paymentContainer">
+		<div className='paymentContainer'>
 			<div className='paymentBanner'>
-				<Tabs location={location} navigate={navigate} tabs={tabs} />
-				<div className='totalAmount'>
-					<h3>Total</h3>
-					<h1>$300.000</h1>
-				</div>
+				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
+				<Balance />
 			</div>
 			<div className='_lineWidth'>
 				{colors.map((res: any, index: any) => (
@@ -43,7 +41,7 @@ const Payment: FC<RouteComponentProps> = ({
 				))}
 			</div>
 			<Router>
-				<Receive path='/receive' default />
+				<Receive path='receive/*' />
 			</Router>
 		</div>
 	);
