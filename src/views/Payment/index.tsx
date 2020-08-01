@@ -14,7 +14,7 @@ const Payment: FC<RouteComponentProps> = ({
 		Transfer: { route: 'transfer' },
 		Send: { route: 'send' },
 		Receive: { route: 'receive' },
-		Multisend: { route: 'multisend' },
+		"Multi Send": { route: 'multisend' },
 	};
 
 	const colors: any = [
@@ -29,7 +29,7 @@ const Payment: FC<RouteComponentProps> = ({
 	];
 
 	return (
-		<div>
+		<div className="paymentContainer">
 			<div className='paymentBanner'>
 				<Tabs location={location} navigate={navigate} tabs={tabs} />
 				<div className='totalAmount'>

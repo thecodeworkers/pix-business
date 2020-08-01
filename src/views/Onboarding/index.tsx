@@ -5,7 +5,7 @@ import Register from '../Register';
 
 export default () => (
   <Router>
-    <Login path="/"/>
-    <Register path="/register"/>
+    <Login path="/login "/>
+    <Register path="/"/>
   </Router>
 );

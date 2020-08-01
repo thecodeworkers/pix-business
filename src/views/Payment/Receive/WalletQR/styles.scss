@@ -1,0 +1,14 @@
+.bodyWallet {
+	display: flex;
+	height: calc(100vh - 367px);
+	align-items: center;
+}
+
+.accountSide {
+	width: 45%;
+}
+
+.inputSide {
+	width: 55%;
+	padding: 2rem;
+}
