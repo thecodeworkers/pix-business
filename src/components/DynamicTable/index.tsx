@@ -12,7 +12,7 @@ const lineRainbow: Array<string> = [
   '#DCE35B'
 ];
 
-const DynamicTable: FC<Props> = ({ keys = [], records = [] }) => {
+const DynamicTable: FC<Props> = ({ keys = [], records = [], padding = '5px 15px' }) => {
   return (
     <table className="_tableContainer" width="100%" role="table" aria-label="Destinations">
       <thead>
@@ -20,7 +20,7 @@ const DynamicTable: FC<Props> = ({ keys = [], records = [] }) => {
           {
             keys.map((key: string | null, index: number) => (
               <th key={index} className="_flexRow _flexBorder" role="columnheader" style={{ borderBottomColor: lineRainbow[index] }}>
-                <div className="_backgroundRow">{key}</div>
+                <div className="_backgroundRow" style={{padding: padding}}>{key}</div>
               </th>
             ))
           }
