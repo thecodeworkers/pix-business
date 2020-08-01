@@ -1,7 +1,9 @@
 import React, { FC, useEffect } from 'react';
 import { RouteComponentProps } from "@reach/router";
 import { Balance, ActionButton, Header } from '../../components';
-import { Send,Receive, MultiSend } from '../../assets/img';
+import { Send,Receive, MultiSend, Arrow } from '../../assets/img';
+import BankAccounts  from './Accounts';
+import ProfitAndLost from './Balances';
 import './styles.scss';
 import Chart from 'chart.js';
 
@@ -19,59 +21,46 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
+        xAxes: [{
+          gridLines: {
+            color: 'transparent'
+          }
+        }],
         yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
+          gridLines: {
+            color: 'transparent'
+        },
+          ticks: {
+              beginAtZero: true
+          }
         }]
       }
     }
+
+    const optsPie = {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutoutPercentage: 70,
+      rotation: 1
+    }
     
-    var myObj = {
+    var myObjBar = {
       type: 'bar',
       data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
           {
             label: 'Money in',
-            data: [80, 25, 85, 20, 80, 40],
-            backgroundColor: [
-                '#FF8008',
-                '#FF8008',
-                '#FF8008',
-                '#FF8008',
-                '#FF8008',
-                '#FF8008',
-            ],
-            borderColor: [
-                '#FFC837',
-                '#FFC837',
-                '#FFC837',
-                '#FFC837',
-                '#FFC837',
-                '#FFC837',
-            ],
+            data: [80, 25, 85, 20, 80, 40, 100, 25, 80, 40, 90, 80],
+            backgroundColor: [ '#FF8008', '#FF8008', '#FF8008', '#FF8008','#FF8008', '#FF8008', '#FF8008','#FF8008','#FF8008','#FF8008','#FF8008','#FF8008'],
+            borderColor: ['#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837'],
             borderWidth: 1
         },
         {
           label: 'Money out',
-          data: [40, 45, 40, 80, 25, 60],
-          backgroundColor: [
-            '#03629B',
-            '#03629B',
-            '#03629B',
-            '#03629B',
-            '#03629B',
-            '#03629B',
-          ],
-          borderColor: [
-            '#008DE4',
-            '#008DE4',
-            '#008DE4',
-            '#008DE4',
-            '#008DE4',
-            '#008DE4',
-          ],
+          data: [40, 45, 40, 80, 25, 60, 50, 50, 20, 90, 80, 50],
+          backgroundColor: ['#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B'],
+          borderColor: ['#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4'],
           borderWidth: 1
         },
       
@@ -80,21 +69,20 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       options: opts
     }
 
-    var myLineObj = new Chart(myChartRefLine, {
+    new Chart(myChartRefLine, {
       type: 'line',
-      data: {labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      data: {labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [
             {
                 label: "Sales",
-                data: [4010, 3600, 2900, 3550, 3800, 2900, 3000, 3500, 4000, 3700, 3550, 3800],
-                fill: false,
-                borderColor: "#6610f2"
-            },
-            {
-                label: "National Average",
-                data: [500, 390, 670, 600, 780, 440, 600, 680, 550, 475, 700, 795],
-                fill: false,
-                borderColor: "#E0E0E0"
+                borderColor: "#35A7D6",
+                backgroundColor: "rgba(92, 214, 177, 0.63)",
+                data: [60, 40, 20, 70, 60, 50, 40, 50, 40, 40, 20, 30],
+                fill: true,
+                lineTension: 0.6,
+                pointBackgroundColor: "#35A7D6",
+                pointRadius: 1,
+                spanGaps: false
             }
         ]},
       options: opts
@@ -102,24 +90,23 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
 
     var myPieData = {
       datasets: [{
+        backgroundColor: ['#FFC837', '#00B4DB', '#5CD6B1'],
         data: [10, 20, 30]
     }],
-
-      // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: [
-          'Red',
-          'Yellow',
-          'Blue'
+          'Bill',
+          'Employees',
+          'Others'
       ]
     }
 
-    var myPieChart = new Chart(myChartRefPie, {
+    new Chart(myChartRefPie, {
       type: 'pie',
       data: myPieData,
-      options: opts
+      options: optsPie
     });
     
-    new Chart(myChartRef, myObj);
+    new Chart(myChartRef, myObjBar);
   }, []);
 
   return (
@@ -150,8 +137,14 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
             id="myChart"
             ref={chartRef}
           />
+          <button className="_filterButton">
+            <div>This month</div>
+            <Arrow />
+          </button>
         </div>
-        <div id="_bankAccount" className="_graphicContainer"></div>
+        <div id="_bankAccount" className="_graphicContainer">
+          <BankAccounts />
+        </div>
       </div>
 
       <div className="_row">
@@ -163,6 +156,10 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
               id="myLineChart"
               ref={chartRefLine}
             />
+            <button className="_filterButton">
+              <div>This month</div>
+              <Arrow />
+            </button>
           </div>
           <div id="_cake" className="_graphicContainer">
             <canvas 
@@ -173,7 +170,9 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
             />
           </div>
         </div>
-        <div id="_profitAndLost" className="_graphicContainer"></div>
+        <div id="_profitAndLost" className="_graphicContainer">
+          <ProfitAndLost />
+        </div>
       </div>
     </div>
   </div>
