@@ -28,4 +28,5 @@ export { default as Cockie } from './Components/cookie';
 export { default as Taxi } from './Components/taxi';
 export { default as Heart } from './Components/heart';
 export { default as Camera } from './Components/camera';
-
+export { default as List } from './Components/list';
+export { default as UsdcCard } from './Components/usdc-card';
