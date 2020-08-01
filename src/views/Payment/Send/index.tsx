@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
+import React, { FC, useEffect, useState } from 'react';
+import { RouteComponentProps, Router, Link } from '@reach/router';
 import { InputValue } from '../../../components';
 import {
   Commerce,
@@ -9,9 +9,8 @@ import {
   CreditCardBlue,
   CreditCardWhite,
 } from '../../../assets/img';
-import { IconTabs, Summary, AddNew, WhiteListButton, PasteWallet } from '../../../components';
+import { IconTabs, Summary, AddNew, WhiteListButton, PasteWallet, BankCard} from '../../../components';
 import { DownArrow } from '../../../assets/img';
-
 import AccountCard from '../../../components/AccountCard';
 import './styles.scss';
 
@@ -22,6 +21,8 @@ const Send: FC<RouteComponentProps> = ({
   useEffect(() => {
     navigate('wallet');
   }, []);
+
+  const [ currentTab, setCurrentTab ] = useState('wallet'); 
 
   const values = {
     Amount: 12000,
@@ -51,15 +52,26 @@ const Send: FC<RouteComponentProps> = ({
     total: '10,000',
   };
 
+  const ChangeTab = () => {
+    currentTab == 'wallet' ? setCurrentTab('bank') : setCurrentTab('wallet')
+  }
+
+  const walletInput = (value:any) => {
+    console.log(value);
+  }
+
   return (
     <div className='ReceiveContainer'>
+
+      <div onClick={() => ChangeTab()}>
       <IconTabs
         path={location?.pathname.split('/')[3]}
         tabs={iconTabs}
         width='40%'
         height='70px'
       />
-
+      </div>
+      
       <div className='_inputsRow'>
         <div className='_amountsTabs'>
           <div className='_largeCard'>
@@ -94,7 +106,6 @@ const Send: FC<RouteComponentProps> = ({
         </div>
       </div>
 
-
       <div className='_toContainer'>
         <p>
           To
@@ -104,19 +115,28 @@ const Send: FC<RouteComponentProps> = ({
           <div style={{ marginLeft: '0.5rem' }}>
             <WhiteListButton />
           </div>
-
         </div>
       </div>
 
 
       <div className='_lastRow'>
         <div className='_pasteStyles'>
-          <PasteWallet />
+
+          {
+            currentTab == 'wallet' 
+            ? <PasteWallet returnValue={walletInput}/>
+            : <BankCard />
+          }
+          
         </div>
 
         <div>
           <button className='_cancelBtn'> Cancel</button>
-          <button className='_sendBtn'> Send</button>
+          
+          <Link to='/confirm-send'>
+             <button className='_sendBtn' > Send</button>
+          </Link>
+          
         </div>
 
       </div>

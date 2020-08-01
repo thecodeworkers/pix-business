@@ -1,0 +1,41 @@
+@import '../../../assets/styles/index.scss';
+
+._transactionDetail {
+  background-color: $whiteSmoke;
+  color: $darkGray;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  padding: 5px;
+}
+
+._destinationRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+._destinationTwoRow {
+  display: flex;
+  justify-content: space-between;
+};
+
+._sendConfirmBtn {
+  @include sendButton;
+}
+
+._cancelConfirmBtn {
+  @include cancelButton;
+}
+
+._buttonsDivContainer {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+}
+
+._btnsEvenly {
+  display: flex;
+  justify-content: space-evenly;
+}
