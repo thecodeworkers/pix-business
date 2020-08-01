@@ -6,11 +6,8 @@
 }
 
 .paymentContainer {
-	width: calc(100% - 250px);
-  display: block;
-  margin-left: auto;
+	height: calc(100vh - 104px);
 }
-
 .paymentBanner {
 	display: flex;
 	justify-content: space-around;

@@ -4,9 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  width: calc(100% - 250px);
   display: block;
-  margin-left: auto;
 
   #options {
     background: #00aa00;
