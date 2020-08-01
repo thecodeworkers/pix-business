@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import './styles.scss';
 
-const Login: FC<Props> = ({ auth }) => {
+const Login: FC<Props> = ({ auth, action }) => {
   const { isAuth } = auth;
 
   useEffect(() => {
-    if(auth) navigate('/dashboard');
+    if(isAuth) navigate('/dashboard');
   }, [isAuth]);
 
   const colors: any = [
@@ -29,6 +29,10 @@ const Login: FC<Props> = ({ auth }) => {
     email: '',
     password: '',
   };
+
+  const login = (credentials: any) => {
+    action.login(credentials);
+  }
 
   return (
     <div className='_mainOne'>
@@ -72,7 +76,7 @@ const Login: FC<Props> = ({ auth }) => {
 
           <Formik
             initialValues={form}
-            onSubmit={values => console.log(values)}
+            onSubmit={values => login(values)}
           >
             {({
              errors,
