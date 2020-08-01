@@ -1,0 +1,19 @@
+@import '../../assets/styles/index.scss';
+
+._whiteListButton {
+  background-color: $blue;
+  border:none;
+  color: $white;
+  padding: 0.3rem 0.6rem;
+  width: 6rem;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+._listSize {
+  width: 0.8rem;
+  margin-right: 2px;
+}
+

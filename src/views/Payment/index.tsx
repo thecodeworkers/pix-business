@@ -3,6 +3,7 @@ import { RouteComponentProps, Router, navigate } from '@reach/router';
 import { Tabs, Balance, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
+import Send from './Send';
 
 const Payment: FC<RouteComponentProps> = ({
 	location,
@@ -43,6 +44,7 @@ const Payment: FC<RouteComponentProps> = ({
 			</div>
 			<Router>
 				<Receive path='receive/*' />
+				<Send path='send/*' />
 			</Router>
 		</div>
 	);

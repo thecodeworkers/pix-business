@@ -11,6 +11,8 @@ import {
 } from '../../../assets/img';
 import { IconTabs } from '../../../components';
 import WalletQR from './WalletQR';
+import Bank from './Bank';
+import CreditCard from './CreditCard';
 
 const Receive: FC<RouteComponentProps> = ({
 	location,
@@ -34,7 +36,7 @@ const Receive: FC<RouteComponentProps> = ({
 			iconSelected: <Commerce />,
 		},
 		'Credit Card': {
-			route: 'ccard',
+			route: 'credit-card',
 			description: 'Buy USDC with your credit card',
 			icon: <CreditCardBlue />,
 			iconSelected: <CreditCardWhite />,
@@ -51,6 +53,8 @@ const Receive: FC<RouteComponentProps> = ({
 			/>
 			<Router>
 				<WalletQR path='wallet' default />
+				<Bank path='bank' />
+				<CreditCard path="credit-card" />
 			</Router>
 		</div>
 	);
