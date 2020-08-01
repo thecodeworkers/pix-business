@@ -15,7 +15,6 @@ export default () => (
     <div className="_dcontainer">
       <Router>
         <Dashboard path="/dashboard"/>
-        <Profile path="/profile"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
         <Activity path='/activity' />

@@ -10,7 +10,8 @@ const persistConfig = {
   storage: storage,
   blacklist: [
     'search',
-    'circle'
+    'circle',
+    'register'
   ]
 }
 
