@@ -1,0 +1,123 @@
+@import '../../../assets/styles';
+
+._containerColor {
+  background-color: #F1F1F1;
+}
+
+._transactionCompletedContainer {
+  background-color: #F6F6F6;
+  min-height: 43rem;
+  display: flex;
+  border-radius: 13px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8rem;;
+
+  ._info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  ._sectionContainer {
+    min-height: 26rem;
+    border-radius: 16px;
+
+    ._oneItem {
+      margin: 1rem 0;
+    }
+
+    > p {
+      color: #484848;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+
+  ._cuteImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+  
+    ._svgImage {
+      background-color: #0D1319;
+      padding: 1rem;
+    }
+  }
+
+  ._cuteAmount {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ._first {
+      display: flex;
+      justify-content: space-between;
+
+      > p {
+        margin: 1.5rem;
+        font-size: $large
+      }
+
+      ._to {
+        color: #0D1216;
+      }
+
+      ._motive {
+        color: #35A7D6;
+      }
+    }
+
+    ._second {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 2rem;
+
+      > div {
+        height: 80px;
+        width: 2px;
+        background: $dimGray;
+        margin: 0 2rem;
+      }
+
+      > p {
+        margin: 2.5rem 1rem;
+        color: #484E53;
+        font-size: $extra-large;
+        font-weight: 700;
+      }
+    }
+  }
+
+  ._actionButton {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-end;
+
+    button._done {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 1rem 0 0 1rem;
+      padding: 1rem;
+      border-radius: 4px;
+      width: 20%;
+      cursor: pointer;
+      border: none;
+      background: rgb(51,163,220);
+      background: linear-gradient(90deg, rgba(51,163,220,1) 0%, rgba(92,214,177,1) 100%);
+    
+      p {
+        color: $white;
+        font-size: $medium;
+        font-weight: 600;
+      }
+    }
+  }
+
+}
