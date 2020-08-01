@@ -8,6 +8,8 @@
 ._container {
   display: flex;
   padding: 2rem 0;
+  width: calc(100% - 250px);
+  margin-left: auto;
 }
 
 ._subcontainer {

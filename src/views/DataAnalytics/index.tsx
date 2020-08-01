@@ -5,7 +5,7 @@ import { Send,Receive, MultiSend } from '../../assets/img';
 import './styles.scss';
 
 const DataAnalytics: FC<RouteComponentProps> = () => (
-  <div>
+  <div className="_principalContainer">
     <div className="_topGraphics">
       <div className="_balancecont">
         <Balance />

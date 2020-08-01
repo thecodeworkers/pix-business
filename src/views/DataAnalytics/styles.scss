@@ -1,13 +1,16 @@
+._principalContainer {
+  width: calc(100% - 250px);
+  display: block;
+  margin-left: auto;
+}
+
 ._balancecont {
-  width: 50%;
+  margin: 0 50px;
 }
 
 ._topGraphics {
   display: flex;
-}
-
-._buttonAction {
-  width: 50%;
+  justify-content: space-between;
 }
 
 ._parentGraphic {
@@ -16,16 +19,16 @@
   ._row {
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
   }
 
   ._graphicContainer {
     height: 200px;
     border: 1px solid black;
-    margin-top: 1rem;
   }
 
   ._left {
-    width: 65%;
+    width: 67%;
   }
 
   ._bottom {
@@ -35,7 +38,6 @@
 
   #_bankAccount, #_profitAndLost {
     width: 30%;
-    margin-right: 2rem;
   }
 
     #_lines, #_cake {
