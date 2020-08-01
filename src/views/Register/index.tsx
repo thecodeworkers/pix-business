@@ -100,7 +100,31 @@ const Register: FC<RouteComponentProps> = () => (
                 <h3 className='_tab-title'>Rent and lease </h3>
               </div>
             </div>
+            <p className='_text_blue'>I didn't find my type of business</p>
+            <input className='_input' type="text" name="name" placeholder='Write your type of business if necessary' />
+
+            <h3 className='_form-subtitle'>How long have you been in business?</h3>
+
+            <div className='_form-tabs'>
+              <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
+              
+                <h3 className='_tab-title'>- 1 year </h3>
+              </div>
+              <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
+               
+                <h3 className='_tab-title'>1& 5 years</h3>
+              </div>
+              <div className='_divGray'>
+              <img className='_checkbox' width='45px' src={unchecked}></img>
+               
+                <h3 className='_tab-title'>+ 5years  </h3>
+              </div>
+            </div>
           </form>
+            <button className='submit'></button>
+            <button className='cancel'></button>
         </div>
       </div>
     </div>
