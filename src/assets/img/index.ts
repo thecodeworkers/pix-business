@@ -21,3 +21,10 @@ export { default as MultiSend } from './Components/multiSend';
 export { default as Export } from './Components/export';
 export { default as DownArrow } from './Components/downArrow';
 export { default as Copy } from './Components/copy';
+export { default as Capsule } from './Components/capsule';
+export { default as Coin } from './Components/coin';
+export { default as Cockie } from './Components/cookie';
+export { default as Taxi } from './Components/taxi';
+export { default as Heart } from './Components/heart';
+export { default as Camera } from './Components/camera';
+
