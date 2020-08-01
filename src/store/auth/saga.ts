@@ -7,8 +7,14 @@ import { getCommerce } from '../selectors';
 
 function* loginAsync({ payload }: DispatchProps) {
   try {
-    const commerce = yield select(getCommerce);
-    console.log(payload);
+    const commerces = yield select(getCommerce);
+    const { commerce } = commerces;
+
+    if(commerce.email == payload.email && commerce.password == payload.password) {
+      console.log('enter');
+    }
+    
+    
     
     // yield put(actionObject(LOGIN_ASYNC));
     
