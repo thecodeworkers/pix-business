@@ -69,7 +69,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       options: opts
     }
 
-    var myLineObj = new Chart(myChartRefLine, {
+    new Chart(myChartRefLine, {
       type: 'line',
       data: {labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [
@@ -100,7 +100,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       ]
     }
 
-    var myPieChart = new Chart(myChartRefPie, {
+    new Chart(myChartRefPie, {
       type: 'pie',
       data: myPieData,
       options: optsPie

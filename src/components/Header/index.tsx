@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Notification, User, Pixel } from '../../assets/img';
 import Tabs from '../Tabs';
 import './styles.scss';
