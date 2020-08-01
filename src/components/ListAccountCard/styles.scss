@@ -1,0 +1,8 @@
+@import '../../assets/styles';
+
+._list-account {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-column: 1/3;
+}
