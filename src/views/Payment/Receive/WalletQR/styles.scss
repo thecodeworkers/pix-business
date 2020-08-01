@@ -4,6 +4,7 @@
 	display: flex;
 	height: calc(100vh - 367px);
 	align-items: center;
+	min-height: 500px;
 }
 
 .accountSide {
@@ -36,7 +37,10 @@
 
 	.QRWallet {
 		display: flex;
-		margin: 50px 0;
+		margin: 50px auto;
+		width: 85%;
+		justify-content: center;
+
 		.copyWallet {
 			display: flex;
 			justify-content: flex-start;
@@ -45,8 +49,8 @@
 			background: #efefef;
 			border-radius: 7px;
 			border: 1px solid $seaGreen;
-			width: 54%;
 			margin-left: 10px;
+			width: 60%;
 			p {
 				width: 80%;
 				overflow: hidden;

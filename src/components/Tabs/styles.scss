@@ -4,6 +4,9 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+	a {
+		text-decoration: none !important;
+	}
 	.tab {
 		min-width: 120px;
 		text-align: center;

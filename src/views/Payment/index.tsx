@@ -1,15 +1,16 @@
-import React, { FC } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
+import React, { FC, useEffect } from 'react';
+import { RouteComponentProps, Router, navigate } from '@reach/router';
 import { Tabs, Balance } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 
 const Payment: FC<RouteComponentProps> = ({
 	location,
-	navigate,
-	uri,
-	path,
+	navigate = (nav: any) => {},
 }) => {
+	useEffect(() => {
+		navigate('transfer');
+	}, []);
 	const tabs = {
 		Transfer: { route: 'transfer' },
 		Send: { route: 'send' },
@@ -31,7 +32,7 @@ const Payment: FC<RouteComponentProps> = ({
 	return (
 		<div className='paymentContainer'>
 			<div className='paymentBanner'>
-				<Tabs location={location} navigate={navigate} tabs={tabs} />
+				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
 				<Balance />
 			</div>
 			<div className='_lineWidth'>
@@ -40,7 +41,7 @@ const Payment: FC<RouteComponentProps> = ({
 				))}
 			</div>
 			<Router>
-				<Receive path='/receive' default />
+				<Receive path='receive/*' />
 			</Router>
 		</div>
 	);
