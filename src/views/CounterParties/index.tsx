@@ -28,10 +28,12 @@ const counterPartiesTabs = {
       <div className='_counter_div'>
     
         <Tabs tabs={ counterPartiesTabs }/>
+
+        <div className='_inline_div'>
    
         <div className='_timeLabel'>This month</div>
        <ExportButton />
-
+       </div>
       </div>
       <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
     </div>
