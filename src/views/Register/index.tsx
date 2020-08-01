@@ -49,10 +49,11 @@ const Register: FC<RouteComponentProps> = () => {
 
   const selectCheck = (selected: boolean, keySearch: string = '') => {
     // setCheck(selected);
+    setCheck(selected);
     manageService[keySearch].selected = selected;
     console.log(manageService);
     
-    form['services'] = [''];
+    form['services'] = [];
   }
 
   const selectYear = (value: any, number: number) => {
