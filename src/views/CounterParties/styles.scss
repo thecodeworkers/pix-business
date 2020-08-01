@@ -1,36 +1,66 @@
 @import '../../assets/styles/index.scss';
 
+._counterpartiesContent {
+  background-color: #F6F6F6;
+  border-radius: 14px;
+  padding-top: 25px;
+  // max-height: 868px;
+  overflow: hidden;
+}
+
 ._counterpartiesLabel {
   display: flex;
   align-items: center;
   width: 155px;
   height: 40px;
-  padding: 0px 6px;
+  padding: 0px 12px;
+  margin-left: 28px;
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
-  background: transparent linear-gradient(180deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
-  border-radius: 5px;
+  background: transparent linear-gradient(270deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
+  border-radius: 4px;
   opacity: 1;
+}
+
+._counterpartiesOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 28px;
+  padding-right: 36px;
 }
 
 ._timeLabel {
   display: flex;
   align-items: center;
-  width: 105px;
+  width: 160px;
   height: 20px;
-  padding: 0px 6px;
+  padding: 6px 6px;
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
-  background: transparent linear-gradient(180deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
-  border-radius: 5px;
+  background: $blue;
+  border-radius: 4px;
   opacity: 1;
+  margin-right: 15px;
 }
 ._counter_div{
   display: flex;
   justify-content: space-around;
+  align-items: flex-end;
+}
+
+._inline_div{
+display: flex;
+align-items: flex-end;
+
+}
+
+._div_shadow{
+  background-color: whiteSmoke;
+  display: flex;
   align-items: flex-end;
 }

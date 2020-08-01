@@ -1,0 +1,257 @@
+@import '../../assets/styles/index.scss';
+
+
+@mixin color($color) {
+  background-color: $color;
+  height: 14.29%;
+}
+
+._navOne {
+  background:$black;
+  width: 35.625rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+._title{
+  color: $white;
+  font-size: 3.313rem;
+}
+
+._subtitle{
+  color: $white;
+  font-size: 1.563rem;
+}
+
+
+._logotypeOne {
+  width: 8rem;
+  display: block;
+}
+
+._headerOne {
+  padding: 2.813rem 0px;
+}
+
+._listOne {
+  & li {
+    padding: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    color: $white;
+    list-style: none;
+    transition: all 0.6s;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      border-radius: 5px;
+      background: linear-gradient(to left, ($greenToBlue));
+      transition: all 0.6s;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+._rightContentOne {
+  // background-color: blue;
+  width: 85%;
+  display: block;
+  margin-left: auto;
+}
+
+._footerOne{
+  // background-color: green;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.813rem;
+}
+
+._copyrightOne {
+  color: $white;
+  margin-top: 30px;
+  font-size: 0.65rem;
+}
+
+._addOne {
+  margin-bottom: 1.25rem;
+
+  & button {
+    background-color: $black;
+    color: $white;
+    border: none;
+    border-bottom: 2px solid $seaGreen;
+    width: 100%;
+    text-align: left;
+    // padding: 10px;
+    color: $seaGreen;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+
+._mainOne {
+  display: flex;
+}
+
+._lineOne {
+  width: 3.5px;
+  height: 100vh;
+}
+
+._one_ {
+  @include color($yellow);
+}
+
+._two_ {
+  @include color($lightGreen);
+}
+
+._three_ {
+  @include color($perano);
+}
+
+._four_ {
+  @include color($sunGlow);
+}
+
+._five_ {
+  @include color($lineBlue);
+}
+
+._six_ {
+  @include color($green);
+}
+
+._seven_ {
+  @include color($arsenic);
+}
+
+._redirectOne {
+  text-decoration: none;
+}
+
+._formGrandFather {
+  display: block;
+  margin-left: auto;
+  width: calc(100% - 30.625rem);
+
+}
+._formSon {
+ display: flex;
+  justify-content: center;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+._form-title {
+  font-size: 2.563rem;
+}
+
+._form-subtitle {
+  font-size: 1.563rem;
+  color: $textGray;
+  font-weight: 100;
+  margin-top: 10px;
+}
+
+._tab-title {
+  font-size: 0.7rem;
+  color: $textGray;
+  margin-left:5px;
+  margin-top: 4px;
+}
+
+._input{
+  width: 90%;
+  height:42px;
+  padding: 10px;
+  border:none;
+  font-size: 16px;
+  background-color: $whiteSmoke;
+
+  &::placeholder{
+    color: $dimGray;
+    font-weight: 500px;
+    font-size: 16px;
+  }
+}
+
+._input-half{
+  width: 80%;
+  height:42px;
+  padding: 10px;
+  border:none;
+  font-size: 15px;
+  background-color: $whiteSmoke;
+
+  &::placeholder{
+    color: $dimGray;
+    font-weight: 500px;
+    font-size: 16px;
+  }
+}
+
+._form-div-father{
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+._form-div{
+  width: 337px;
+  display: inline-block;
+}
+
+._divGray{
+  background:whiteSmoke;
+  padding: 20px;
+  width: 20%;
+  display: flex;
+  margin: 10px;
+  position: relative;
+}
+._form-tabs{
+  justify-content: space-between;
+  width: 95%;
+  display: flex;
+}
+._checkbox{
+  position: absolute;
+  right: 0px;
+  top: -10px;
+}
+
+._text_blue{
+  font-size: 0.75;
+  color: $blue;
+  margin-bottom: 10px;
+}
+
+.buttonSend {
+  @include sendButton();
+  margin-right: 43px;
+  margin-left: 20px;
+}
+
+.buttonCancel {
+  @include cancelButton();
+}
+._div_left{
+  margin-top: 20px;
+display: flex;
+justify-content: flex-end;
+
+}
+
+
