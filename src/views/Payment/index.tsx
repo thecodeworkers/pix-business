@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { RouteComponentProps, Router, navigate } from '@reach/router';
-import { Tabs, Balance } from '../../components';
+import { Tabs, Balance, Header } from '../../components';
 import './styles.scss';
 import Receive from './Receive';
 
@@ -30,7 +30,8 @@ const Payment: FC<RouteComponentProps> = ({
 	];
 
 	return (
-		<div className='paymentContainer'>
+		<div className="paymentContainer">
+			<Header />
 			<div className='paymentBanner'>
 				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
 				<Balance />
