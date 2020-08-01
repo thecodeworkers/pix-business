@@ -6,7 +6,7 @@ import Onboarding from '../Onboarding';
 import Commerce from '../Commerce';
 
 const Main: FC<Props> = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <>

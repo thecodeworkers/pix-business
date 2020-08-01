@@ -1,0 +1,220 @@
+@import '../../assets/styles/index.scss';
+
+@mixin color($color) {
+  background-color: $color;
+  height: 14.29%;
+}
+
+._nav {
+  background:$black;
+  width: 30.625rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+._title{
+  color: $white;
+  font-size: 3.313rem;
+}
+
+._subtitle{
+  color: $white;
+  font-size: 1.563rem;
+}
+
+
+._logotype {
+  width: 8rem;
+  display: block;
+}
+
+._header {
+  padding: 2.813rem 0px;
+}
+
+._list {
+  & li {
+    padding: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    color: $white;
+    list-style: none;
+    transition: all 0.6s;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      border-radius: 5px;
+      background: linear-gradient(to left, ($greenToBlue));
+      transition: all 0.6s;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+._rightContent {
+  // background-color: blue;
+  width: 85%;
+  display: block;
+}
+
+._logout {
+  color: $red;
+}
+
+._footer {
+  // background-color: green;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.813rem;
+}
+
+._copyright {
+  color: $white;
+  margin-top: 30px;
+  font-size: 0.65rem;
+}
+
+._add {
+  margin-bottom: 1.25rem;
+
+  & button {
+    background-color: $black;
+    color: $white;
+    border: none;
+    border-bottom: 2px solid $seaGreen;
+    width: 100%;
+    text-align: left;
+    // padding: 10px;
+    color: $seaGreen;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+
+._main {
+  display: flex;
+}
+
+._line {
+  width: 3.5px;
+  height: 100vh;
+}
+
+._one {
+  @include color($yellow);
+}
+
+._two {
+  @include color($lightGreen);
+}
+
+._three {
+  @include color($perano);
+}
+
+._four {
+  @include color($sunGlow);
+}
+
+._five {
+  @include color($lineBlue);
+}
+
+._six {
+  @include color($green);
+}
+
+._seven {
+  @include color($arsenic);
+}
+
+._redirect {
+  text-decoration: none;
+}
+
+._formGrandFather {
+  display: block;
+  margin-left: auto;
+  width: calc(100% - 30.625rem);
+
+}
+._formSon {
+ display: flex;
+  justify-content: center;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ._form {
+  margin-top: 90px;
+  margin-left: 350px;;
+  width: 674px;
+  background-color: red;
+} */
+
+._form-title {
+  font-size: 2.563rem;
+  
+}
+._form-subtitle {
+  font-size: 1.563rem;
+  color: $textGray;
+  font-weight: 100;
+  margin-top: 10px;
+}
+
+._input{
+  width: 90%;
+  height:42px;
+  padding: 10px;
+  border:none;
+  font-size: 16px;
+  background-color: $whiteSmoke;
+
+  &::placeholder{
+    color: $dimGray;
+    font-weight: 500px;
+    font-size: 16px;
+  }
+}
+
+._input-half{
+  width: 80%;
+  height:42px;
+  padding: 10px;
+  border:none;
+  font-size: 15px;
+  background-color: $whiteSmoke;
+
+  &::placeholder{
+    color: $dimGray;
+    font-weight: 500px;
+    font-size: 16px;
+  }
+}
+
+._form-div-father{
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+._form-div{
+  width: 337px;
+  display: inline-block;
+}
+
+._divGray{
+  background:whiteSmoke;
+  width: 25%;
+}
