@@ -19,6 +19,7 @@ export { default as Send } from './Components/send';
 export { default as Receive } from './Components/receive';
 export { default as MultiSend } from './Components/multiSend';
 export { default as Export } from './Components/export';
+export { default as Pixel } from './Components/pixel';
 export { default as DownArrow } from './Components/downArrow';
 export { default as Copy } from './Components/copy';
 export { default as Capsule } from './Components/capsule';
