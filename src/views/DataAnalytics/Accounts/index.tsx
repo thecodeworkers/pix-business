@@ -9,7 +9,7 @@ const BankAccounts = () => (
       <p>Bank account</p>
       <Pixel color={'#ffffff'} width={'22'} height={'14'} />
     </div>
-    <DynamicTable keys={['Name', 'Address', 'Balance']} records={[]} />
+    <DynamicTable keys={['Name', 'Address', 'Balance']} records={[]} padding={'5px'} />
   </div>
 );
 
