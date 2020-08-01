@@ -7,7 +7,7 @@ const Commerce: FC<RouteComponentProps> = () => {
     <div> 
       {/* <SideBar />     */}
       <div style={{marginLeft: '350px', position: 'absolute', right: '10px'}}>
-        <ExportButton data={[{name: 'Giber', lastname: 'Jose'}]} flag='csv' name='commerce'/>
+        {/* <ExportButton data={[{name: 'Giber', lastname: 'Jose'}]} flag='csv' name='commerce'/> */}
       </div>
     </div>
   )
