@@ -3,6 +3,7 @@ import { BsArrowUpDown } from 'react-icons/bs';
 import './styles.scss';
 import { Props } from './interface';
 import { BankLogo, UsdcCard} from '../../assets/img';
+import { navigate } from '@reach/router';
 
 const AccountCard: FC<Props> = ({
 	data,
@@ -16,7 +17,7 @@ const AccountCard: FC<Props> = ({
 	return (
 		<div className={saving ? '_savingAccount' : '_account'} style={width ? { width: width } : {}}>
 			{decorator ? (
-				<div className='_decorator _pointerCardDetail'>
+				<div className='_decorator _pointerCardDetail' onClick={() => navigate('/payments')}>
 					<BsArrowUpDown color='#5CD6B1' size='20' />
 				</div>
 			) : null}

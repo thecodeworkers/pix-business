@@ -16,7 +16,8 @@ const persistConfig = {
     'activity',
     'bankAccount',
     'counterparty',
-    'multiSend'
+    'multiSend',
+    'product'
   ]
 }
 
