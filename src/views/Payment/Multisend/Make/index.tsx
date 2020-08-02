@@ -264,7 +264,7 @@ const Make: FC<Props> = ({
 					{/* <Link to='confirmation'> */}
 					<button
 						className='buttonSend'
-						onClick={() => navigate('confirmation')}
+						onClick={() => navigate('/payments/confirmation')}
 					>
 						Send
 					</button>

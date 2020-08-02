@@ -2,14 +2,17 @@
 
 .bodyWallet {
 	display: flex;
-	height: calc(100vh - 367px);
-	align-items: center;
-	min-height: 500px;
+	align-items: flex-start;
+	min-height: 400px;
+	padding: 2rem 0;
 }
 
 .accountSide {
-	width: 45%;
-
+	width: 50%;
+	padding: 1rem;
+	._savingAccount {
+		margin: 0 auto;
+	}
 	.to {
 		display: flex;
 		width: 90%;
@@ -30,7 +33,6 @@
 			padding: 0.3rem 0.5rem;
 			border-radius: 5px;
 			color: $textGray;
-			font-weight: bold;
 		}
 
 		.selected {
@@ -95,11 +97,13 @@
 }
 
 .inputSide {
-	width: 55%;
+	width: 50%;
 	padding: 2rem;
+	padding-top: 3.5rem;
 	._qrCode {
 		width: 90%;
 		height: 100%;
+		margin: 0 auto;
 		margin-bottom: 20px;
 		svg {
 			width: 100%;
@@ -118,5 +122,6 @@
 	}
 	.buttonSend {
 		@include sendButton();
+		margin: 0;
 	}
 }

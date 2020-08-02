@@ -32,12 +32,12 @@ const Activity: FC<RouteComponentProps | any> = ({ location, navigate = (nav: an
         </div>
         <div className='_activityOptions'>
           <Tabs path={location?.pathname.split('/')[2]} tabs={ activityTabs } />
-          <Search filter={''} />
+          <Search filter={action.searchActivities} />
           <div className="_exportOption">
-            <div className="_filterBtnContainer">
+            {/* <div className="_filterBtnContainer">
               <FilterbyTimeButton />
-            </div>
-            <ExportButton />
+            </div> */}
+            <ExportButton data={activities} name='activities' flag='csv' />
           </div>
         </div>
         <div className="_activityTabs">

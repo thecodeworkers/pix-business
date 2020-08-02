@@ -10,7 +10,7 @@ const dataTest = {
   records: new Array(5).fill(0)
 };
 
-const ProducsServices: FC<RouteComponentProps> = () => {
+const ProducsServices: FC<RouteComponentProps | any> = ({  }) => {
   return (
     <div>
       <div className='_colorBar'></div>
