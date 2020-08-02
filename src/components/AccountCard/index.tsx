@@ -2,14 +2,17 @@ import React, { FC } from 'react';
 import { BsArrowUpDown } from 'react-icons/bs';
 import './styles.scss';
 import { Props } from './interface';
-import { Usdc, BankBlue } from '../../assets/img';
+import { Usdc, BankBlue, BankLogo, UsdcCard} from '../../assets/img';
 
 const AccountCard: FC<Props> = ({
 	data,
 	width = null,
 	decorator = true,
 	banking = false,
+	index = 0
 }) => {
+	const { address, balances, type, saving } = data;
+	
 	return (
 		<div className='_account' style={width ? { width: width } : {}}>
 			{decorator ? (
@@ -17,21 +20,12 @@ const AccountCard: FC<Props> = ({
 					<BsArrowUpDown color='#5CD6B1' size='20' />
 				</div>
 			) : null}
-			<div className='_img'>{banking ? <BankBlue /> : <Usdc />}</div>
+			<div className='_img'>{banking ? <BankLogo /> : <UsdcCard />}</div>
 			<div className='_info'>
-				<p className='_title'>{data.title}</p>
-				<p className='_desc'>{data.desc}</p>
-				<div className='_balance'>
-					{data.percent !== undefined || null ? (
-						<p className='_percent'>{data.percent}</p>
-					) : null}
-					{data.value !== undefined || null ? (
-						<p className='_value'>$ {data.value}</p>
-					) : null}
-					{data.total !== undefined || null ? (
-						<p className='_total'>{data.total} USDC</p>
-					) : null}
-				</div>
+				<p className='_cardNewtitle'>{saving ? 'Saving Account' : `Checking Account ${index >= 2 ? index : ''}`}</p>
+				<p className='_desc _resizeCard'>{address}</p>
+				<p className='_smallBalance'>{balances.length ? `$${balances[0].amount}` : '$0'}</p>
+				<p className='_cardBankBalance'>{balances.length ? `${balances[0].amount} USDC` : '0 USDC'}</p>
 			</div>
 		</div>
 	);

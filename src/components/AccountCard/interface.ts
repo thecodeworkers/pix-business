@@ -3,4 +3,5 @@ export interface Props {
   width?: any,
   decorator?: any
   banking?: any
+  index?: number
 }

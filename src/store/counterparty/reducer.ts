@@ -1,5 +1,5 @@
 import { DispatchProps } from '../../interfaces';
-import { GET_COUNTERPARTIES, SAVE_COUNTERPARTY } from './action-types';
+import { GET_COUNTERPARTIES, SAVE_COUNTERPARTY, SET_COUNTERPARTIES_TEMP, GET_BACKUP_COUNTERPARTIES } from './action-types';
 
 const initialState: any = {
   counterparties: [
@@ -12,9 +12,9 @@ const initialState: any = {
     },
     {
       'type': 'Employee',
-      'counterparty': 'Darianna medina',
+      'counterparty': 'Andreucha',
       'address': '0xdwdd8u.....',
-      'email': 'Darianna@gmail.com',
+      'email': 'andreucha@gmail.com',
       'phone': '+58-414332982'
     },
     {
@@ -45,6 +45,92 @@ const initialState: any = {
       'email': 'Darianna@gmail.com',
       'phone': '+58-414332982'
     },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    }
+  ],
+  results: [
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Andreucha',
+      'address': '0xdwdd8u.....',
+      'email': 'andreucha@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    }
   ]
 }
 
@@ -53,12 +139,29 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
     case GET_COUNTERPARTIES:
     return state;
 
-    case SAVE_COUNTERPARTY:
+    case SAVE_COUNTERPARTY:     
     return {
+      counterparties: [
+        ...state.counterparties,
+        ...payload.counterparty
+      ],
       results: [
         ...state.counterparties,
         ...payload.counterparty
       ]
+    }
+
+
+    case SET_COUNTERPARTIES_TEMP:
+    return {
+      ...state,
+      counterparties: payload
+    }
+
+    case GET_BACKUP_COUNTERPARTIES:
+    return {
+      ...state,
+      counterparties: state.results
     }
 
     default:

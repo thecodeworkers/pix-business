@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import './styles.scss';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Link } from '@reach/router';
 import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
 import { DownArrow, Check, XMark } from '../../../../assets/img';
@@ -70,7 +70,9 @@ const Confirmation: FC<RouteComponentProps> = () => {
 				<Summary values={values} multi={true} array={Counter} />
 				<div className='buttonConfirmationContent'>
 					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend'>Send</button>
+					<Link to='/transaction-completed'>
+						<button className='buttonSend'>Send</button>
+					</Link>
 				</div>
 			</div>
 		</div>

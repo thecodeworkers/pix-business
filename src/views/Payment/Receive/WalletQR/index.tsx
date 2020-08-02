@@ -56,7 +56,7 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 					</div>
 					{selection ? (
 						<div className='cardSelection'>
-							{wallet.wallets.map((value, key) => {
+							{wallet.wallets.map((value: any, key: any) => {
 								let values = {
 									title: !value.saving ? 'Checking Account' : 'Saving Account',
 									desc: value.address,
@@ -97,7 +97,7 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 			<div className='inputSide'>
 				<CodeQR wallet={mainWallet.desc} />
 				<div className='buttonContent'>
-					<button className='buttonSend' onClick={() => navigate('/dashboard')}>
+					<button className='buttonSend' onClick={() => navigate('/transaction-completed')}>
 						Done
 					</button>
 				</div>

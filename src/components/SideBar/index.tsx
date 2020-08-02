@@ -43,7 +43,7 @@ const SideBar = ({ action }: any) => {
           </div>
 
           <ul className='_list'>
-            <Link to='/dashboard' className='_redirect'> <li> <div className='_icon'><DashboardICon /></div>Dashboard</li></Link>
+            <Link to='/' className='_redirect'> <li> <div className='_icon'><DashboardICon /></div>Dashboard</li></Link>
             <Link to='/data-analitycs' className='_redirect'> <li> <div className='_icon'><Analytics /></div>Data analytics</li> </Link>
             <Link to='/payments' className='_redirect'> <li> <div className='_icon'><Payment /></div>Payments</li> </Link>
             <Link to='/counterparties' className='_redirect'> <li> <div className='_icon'><CounterParties /></div>Counterparties</li> </Link>

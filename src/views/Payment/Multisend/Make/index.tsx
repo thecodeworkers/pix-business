@@ -14,7 +14,12 @@ import { getWallets, updateMultiSend } from '../../../../store/actions';
 import { connect } from 'react-redux';
 import { StateProps, Props } from './interface';
 
-const Make: FC<Props> = ({ wallet, action, multiSend }) => {
+const Make: FC<Props> = ({
+	wallet,
+	action,
+	multiSend,
+	navigate = () => {},
+}) => {
 	useEffect(() => {
 		if (!wallet) action.getWallets();
 	}, [action]);
@@ -179,7 +184,14 @@ const Make: FC<Props> = ({ wallet, action, multiSend }) => {
 				<Summary values={values} multi={true} array={multiSend.result} />
 				<div className='buttonMakeContent'>
 					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend'>Send</button>
+					{/* <Link to='confirmation'> */}
+					<button
+						className='buttonSend'
+						onClick={() => navigate('confirmation')}
+					>
+						Send
+					</button>
+					{/* </Link> */}
 				</div>
 			</div>
 		</div>

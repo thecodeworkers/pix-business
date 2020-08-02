@@ -5,9 +5,11 @@ import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
-import ConfirmSend from './Send';
+import ConfirmSend  from './Send';
+import Transfer from './Transfer';
+import TransferDetails from './Transfer/Details';
 
-const Payment: FC<RouteComponentProps> = ({
+const Payment: FC<RouteComponentProps>  = ({
 	location,
 	navigate = (nav: any) => {},
 }) => {
@@ -45,6 +47,7 @@ const Payment: FC<RouteComponentProps> = ({
 				))}
 			</div>
 			<Router>
+				<Transfer path='transfer/*' />
 				<Receive path='receive/*' />
 				<Multisend path='multisend/*' />
 				<Send path='send/*' />

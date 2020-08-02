@@ -5,7 +5,7 @@ import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
 import { DownArrow, Copy } from '../../../../assets/img';
 
-const CreditCard: FC<RouteComponentProps> = () => {
+const CreditCard: FC<RouteComponentProps> = (props:any) => {
 	const getValue = (value: any) => {
 		console.log(value);
 	};
@@ -74,7 +74,7 @@ const CreditCard: FC<RouteComponentProps> = () => {
 				<Summary values={values} />
 				<div className='buttonCreditContent'>
 					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend'>Send</button>
+					<button className='buttonSend' onClick={() => props.navigate('/transaction-completed')}>Send</button>
 				</div>
 			</div>
 		</div>
