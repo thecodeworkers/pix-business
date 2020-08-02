@@ -11,7 +11,7 @@ const AccountCard: FC<Props> = ({
 	banking = false,
 	index = 0
 }) => {
-	const { address, balances, saving } = data;
+	const { address, balances = [], saving } = data;
 	
 	return (
 		<div className={saving ? '_savingAccount' : '_account'} style={width ? { width: width } : {}}>
