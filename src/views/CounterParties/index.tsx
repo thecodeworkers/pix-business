@@ -52,8 +52,6 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
       ...value
     }
     props.action.saveCounterparty(newObject);
-    console.log(newObject);
-    
   };
 
   return (
