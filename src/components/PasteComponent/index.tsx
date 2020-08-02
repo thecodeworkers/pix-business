@@ -16,10 +16,12 @@ const PasteWallet = (props: any) => {
 	};
 
 	const Paste = () => {
-		navigator.clipboard.readText().then((text) => {
-			setValue(text);
-			returnValue(text);
-		});
+		if (navigator.clipboard) {
+			navigator.clipboard.readText().then((text) => {
+				setValue(text);
+				returnValue(text);
+			});
+		}
 	};
 
 	return (
@@ -28,11 +30,12 @@ const PasteWallet = (props: any) => {
 				<UsdcCard />
 			</div>
 
-			<div>
+			<div style={{width: '75%'}}>
 				<p style={{ textAlign: 'center', cursor: 'pointer' }} onClick={Paste}>
 					Tap to paste
 				</p>
 				<input
+					style={{width: '100%'}}
 					type='text'
 					value={value}
 					placeholder='Or enter your wallet'

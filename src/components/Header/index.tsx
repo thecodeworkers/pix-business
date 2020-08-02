@@ -20,7 +20,7 @@ const Header = ( props: any = false ) => {
    setShow(true);
  }
  
- const close = () => {
+ const close = (): any => {
    setShow(false);
  }
 
@@ -41,17 +41,16 @@ const Header = ( props: any = false ) => {
          <Tabs tabs={minitabs} />
        </div> : null
      } 
-
+  
      <div className="_actions _subcontainer">
        <div className="_icon"><Notification color='#c9c9c9' width='22' height='27' /></div>
        <div onClick={openForm} className="_icon"><User bcolor='none' color='#c9c9c9' width='22' height='27'/></div>
      </div>
-
      <div className={show ? '_blur1' : '_blurNone1'} >
-       
        <div className={show ? '_showTool1' : '_noneTool1'} >
        
        <div className='_medium'>
+    
        <Profile/> 
        </div>
       

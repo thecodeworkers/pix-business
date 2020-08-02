@@ -31,6 +31,7 @@ const Send: FC<Props> = ({
 	counterparty,
 	wallet,
 	action,
+	send,
 	navigate = () => {},
 	location,
 }) => {
@@ -43,6 +44,7 @@ const Send: FC<Props> = ({
 	const [show, setShow] = useState(false);
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 	const [selectionWallet, setSelectionWallet] = useState(false);
+	const [selectionBank, setSelectionBank] = useState(false);
 	const [mainBank, setMainBank] = useState(
 		bankAccount.bankAccounts[0]
 			? {
@@ -82,6 +84,10 @@ const Send: FC<Props> = ({
 
 	const getWallets = () => {
 		setSelectionWallet(!selectionWallet);
+	};
+
+	const getBanks = () => {
+		setSelectionBank(!selectionBank);
 	};
 
 	const walletInput = (value: any) => {
@@ -165,15 +171,62 @@ const Send: FC<Props> = ({
 					<div className='toAccount'>
 						<div className='to'>
 							<p>To</p>
-							<div className='buttonContainer'>
-								<div style={{ marginLeft: '0.5rem' }}>
-									<AddNew />
+							{currentTab == 'wallet' ? (
+								<div className='buttonContainer'>
+									<div style={{ marginLeft: '0.5rem' }}>
+										<AddNew />
+									</div>
+									<div style={{ marginLeft: '0.5rem' }} onClick={showModal}>
+										<WhiteListButton />
+									</div>
 								</div>
-								<div style={{ marginLeft: '0.5rem' }} onClick={showModal}>
-									<WhiteListButton />
+							) : (
+								<div
+									className={
+										selectionBank ? 'accountButton selected' : 'accountButton'
+									}
+									onClick={getBanks}
+								>
+									<p>Account</p>
+									<DownArrow />
 								</div>
-							</div>
+							)}
 						</div>
+						{selectionBank ? (
+							<div className='cardSelection'>
+								{bankAccount.bankAccounts.map((value: any, key: any) => {
+									value = {
+										title: value.bankName + ' Account',
+										address: value.checkingAccount,
+									};
+									let Check =
+										mainBank.address === value.address
+											? BoxCheckedGreen
+											: BoxCheckedGray;
+
+									return (
+										<div className='selectCard' key={key}>
+											<div
+												className='checkedVal'
+												onClick={() => {
+													setMainBank(value);
+
+													setSelectionBank(false);
+												}}
+											>
+												<Check />
+											</div>
+											<AccountCard
+												data={value}
+												banking={true}
+												width='85%'
+												decorator={false}
+											/>
+										</div>
+									);
+								})}
+							</div>
+						) : null}
 						{currentTab == 'wallet' ? (
 							<PasteWallet returnValue={walletInput} />
 						) : (
@@ -227,10 +280,12 @@ const mapStateToProps = ({
 	wallet,
 	bankAccount,
 	counterparty,
-}:StateProps): StateProps => ({
+	send
+}: StateProps): StateProps => ({
 	wallet,
 	bankAccount,
 	counterparty,
+	send
 });
 
 const mapDispatchToProps = (dispatch: any) => {

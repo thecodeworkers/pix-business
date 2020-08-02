@@ -10,3 +10,4 @@ export * from './counterparty/action';
 export * from './multisend/action';
 export * from './finished/action';
 export * from './product/action';
+export * from './send/action';
