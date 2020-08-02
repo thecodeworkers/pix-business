@@ -6,9 +6,9 @@
   height: 14.29%;
 }
 
-._navOne {
+._navO {
   background:$black;
-  width: 35.625rem;
+  width: 59.75rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,16 +26,17 @@
 }
 
 
-._logotypeOne {
+._logotypeO {
   width: 8rem;
   display: block;
 }
 
-._headerOne {
+._headerO {
   padding: 2.813rem 0px;
+  margin-left: 10%;
 }
 
-._listOne {
+._listO {
   & li {
     padding: 0.75rem;
     cursor: pointer;
@@ -56,14 +57,14 @@
   }
 }
 
-._rightContentOne {
+._rightContentO {
   // background-color: blue;
-  width: 85%;
+  width: 100%;
   display: block;
   margin-left: auto;
 }
 
-._footerOne{
+._footerO{
   // background-color: green;
   width: 80%;
   display: block;
@@ -72,33 +73,21 @@
   margin-bottom: 2.813rem;
 }
 
-._copyrightOne {
+._copyrightO {
   color: $white;
   margin-top: 30px;
   font-size: 0.65rem;
 }
 
-._addOne {
-  margin-bottom: 1.25rem;
 
-  & button {
-    background-color: $black;
-    color: $white;
-    border: none;
-    border-bottom: 2px solid $seaGreen;
-    width: 100%;
-    text-align: left;
-    // padding: 10px;
-    color: $seaGreen;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-  }
-}
-
-
-._mainOne {
+._mainO {
   display: flex;
+  background-image: url('../../assets/img/Static/pix_dark.png');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
 }
 
 ._lineOne {
@@ -138,31 +127,28 @@
   text-decoration: none;
 }
 
-._formGrandFather {
-  display: block;
-  margin-left: auto;
-  width: calc(100% - 30.625rem);
 
-}
-._formSon {
+._formSonOne {
+  color: $white;
  display: flex;
   justify-content: center;
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
 }
 
 
-._form-title {
-  font-size: 2.563rem;
+._form-titleO {
+  font-size: 3.3rem;
+  margin-bottom: 80px;
 }
 
-._form-subtitle {
+._form-subtitleO {
   font-size: 1.563rem;
-  color: $textGray;
+  color: $white;
   font-weight: 100;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 ._tab-title {
@@ -172,8 +158,8 @@
   margin-top: 4px;
 }
 
-._input{
-  width: 90%;
+._inputO{
+  width: 100%;
   height:42px;
   padding: 10px;
   border:none;
@@ -187,29 +173,29 @@
   }
 }
 
-._input-half{
-  width: 80%;
+._input-halfO{
+  width: 97%;
   height:42px;
   padding: 10px;
   border:none;
   font-size: 15px;
   background-color: $whiteSmoke;
+  margin-bottom: 20px;
 
   &::placeholder{
-    color: $dimGray;
+    color: $subaGrey;
     font-weight: 500px;
     font-size: 16px;
   }
 }
 
-._form-div-father{
-  justify-content: space-between;
-  width: 100%;
+._form-div-fatherO{
   align-items: center;
+  display: grid;
 }
 
-._form-div{
-  width: 337px;
+._form-divO{
+  width: 536px;
   display: inline-block;
 }
 
@@ -238,20 +224,31 @@
   margin-bottom: 10px;
 }
 
-.buttonSend {
-  @include sendButton();
-  margin-right: 43px;
-  margin-left: 20px;
+.buttonSendO {
+  width: 14rem;
+  padding: 13px 2px;
+  background: linear-gradient(to left, #5CD6B1, #33A3DC);
+  color: #ffffff;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
 }
 
-.buttonCancel {
-  @include cancelButton();
-}
-._div_left{
+._div_leftO{
   margin-top: 20px;
 display: flex;
 justify-content: flex-end;
 
 }
+
+._text-center{
+  text-align: center;
+}
+
+._backg{
+  height: 100vh;
+}
+
+
 
 
