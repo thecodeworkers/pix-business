@@ -1,13 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { RouteComponentProps } from '@reach/router';
 import { Logo } from '../../assets/img';
-import { Formik, Form, Field } from 'formik';
-import { StateProps, Props } from './interface';
-import { bindActionCreators } from 'redux';
-import { login } from '../../store/actions';
-import { connect } from 'react-redux';
+import background from '../../assets/img/Static/pix_dark.png';
 import './styles.scss';
+import { Formik } from 'formik';
 
-const Login: FC<Props> = ({ action }) => {
+const Login: FC<RouteComponentProps> = () => {
+
   const colors: any = [
     { class: '_one_' },
     { class: '_two_' },
@@ -20,27 +19,61 @@ const Login: FC<Props> = ({ action }) => {
 
   const form: any = {
     email: '',
-    password: '',
-  };
-
-  const login = (credentials: any) => {
-    action.login(credentials);
+    password:'',
   }
 
   return (
-    <div className='_mainOne'>
-      <div className='_navOne'>
-        <div className='_rightContentOne'>
-          <div className='_headerOne'>
-            <div className='_logotypeOne'>
+    <div className='_mainO'>
+{/*     <img src={background}></img> */}
+      <div className='_navO'>
+        <div className='_rightContentO'>
+          <div className='_headerO'>
+            <div className='_logotypeO'>
               <Logo />
             </div>
           </div>
-          <div className='_listOne'>
+          <div className='_listO'>
+          <div className='_formGrandFatherOne'>
+      <div className='_formSonOne'>
+        <div className='_form'>
+          <div className='_text-center'>
+            <h3 className='_form-titleO'>Welcome</h3>
+          </div>
 
-            <h3 className='_title'>Hello! Tell us about your business.</h3>
+          <Formik
+            initialValues={form}
+            onSubmit={values => console.log(values)}
+          >
+            {({
+              values,
+              handleSubmit,
+              handleChange
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <div className='_form-div-fatherO'>
+                  <div className='_form-divO'>
+                    <h3 className='_form-subtitleO'>Username</h3>
+                    <input className='_input-halfO' type="text" name="email" placeholder='Username' onChange={handleChange} value={values.email} />
+                  </div>
 
-            <h5 className='_subtitle'>Please let us know your business details.</h5>
+                  <div className='_form-divO'>
+                    <h3 className='_form-subtitleO'>Password</h3>
+                    <input className='_input-halfO' type="password" name="password" placeholder='Password' onChange={handleChange} value={values.password} />
+                  </div>
+                </div>
+
+                
+                <div className='_div_leftO'>
+                <button className='buttonSendO' type="submit">Log in</button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
+      </div>
+    </div>
+            
+            
           </div>
         </div>
 
@@ -60,54 +93,8 @@ const Login: FC<Props> = ({ action }) => {
         }
       </div>
 
-      <div className='_formGrandFather'>
-      <div className='_formSon'>
-        <div className='_form'>
-          <div>
-            <h3 className='_form-title'>Welcome</h3>
-          </div>
-
-          <Formik
-            initialValues={form}
-            onSubmit={values => login(values)}
-          >
-            {() => (
-              <Form>
-                <div className='_form-div-father'>
-                  <div className='_form-div'>
-                    <h3 className='_form-subtitle'>Username</h3>
-                    <Field className='_input-half' type="text" name="email" placeholder='Username'/>
-                  </div>
-
-                  <div className='_form-div'>
-                    <h3 className='_form-subtitle'>Password</h3>
-                    <Field className='_input-half' type="password" name="password" placeholder='Password'/>
-                  </div>
-                </div>
-
-                <div className='_div_left'>
-                  <button className='buttonSend' type="submit">Login</button>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      </div>
-    </div>
     </div>
   );
 }
 
-const mapStateToProps = ({ auth }: StateProps) => ({ auth });
-
-const mapDispatchToProps = (dispatch: any) => {
-  const actions = {
-    login
-  }
-
-  return {
-    action: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
