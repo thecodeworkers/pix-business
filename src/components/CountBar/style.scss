@@ -29,7 +29,13 @@
   font-size: 1rem;
 }
 
-._countBarTitle::before {
+._countBarTitleRed._countBarTitle::before {
+  content: '\25A0';
+  display: inline;
+  color: #E41F2C;
+}
+
+._countBarTitleYellow._countBarTitle::before {
   content: '\25A0';
   display: inline;
   color: #FFC837;
@@ -62,73 +68,42 @@
       position: absolute;
       bottom: -30px;
       color: #929292;
-      width: 3%;
+      width: 1%;
       font-size: 12px;
     }
 
     ._progressBar::before {
       content: '|    0';
+      left: 0;
     }
 
     ._progressBar::after {
       content: '|    100';
+      right: 0;
     }
 
   ._progressBar {
     width: 60%;
     flex: 1 60%;
+    position: relative;  
+  }
+
+  ._progressContainer {
+    width: 100%;
+    height: 2rem;
+    background-color: white;
     position: relative;
 
-    progress {
-      -webkit-appearance: none;
-      height: 32px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 8px;
-      color: green;
+    ._internProgress {
+      height: 2rem;
     }
-
-    progress::-webkit-progress-bar {
-      border-radius: 8px;
-      background: #ffffff;
-    }
-  
-    progress::-webkit-progress-value {
-      border-radius: 8px;
-      background: #FFC837;
-    }
-
-    progress[value]::-webkit-progress-value {
-      background-image:
-         -webkit-linear-gradient(-45deg, 
-                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
-                                 rgba(0,0, 0, .1) 66%, transparent 66%),
-         -webkit-linear-gradient(top, 
-                                 rgba(255, 255, 255, .25), 
-                                 rgba(0, 0, 0, .25)),
-         -webkit-linear-gradient(left, #09c, #f44);
     
-        border-radius: 2px; 
-        background-size: 35px 20px, 100% 100%, 100% 100%;
+    ._progressBarRed {
+      background-color: #E41F2C;
     }
 
-    progress[value]::-moz-progress-bar { 
-      background-image:
-        -moz-linear-gradient(
-          0deg, 
-          transparent 33%, 
-          #FFC837 33%, 
-          #FFC837 66%, 
-          transparent 66% 
-        ),
-        -moz-linear-gradient(
-          0deg, 
-          #FFC837, 
-          #FFC837
-        );
-    
-      border-radius: 2px; 
-      // background-size: 35px 20px, 100% 100%, 100% 100%; 
+    ._progressBarYellow {
+      background-color: #FFC837;
     }
   }
 

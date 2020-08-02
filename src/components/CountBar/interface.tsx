@@ -6,5 +6,6 @@ export interface Props {
   percentage?: string,
   counter: number,
   icon: any,
-  number?: string
+  number?: string,
+  color?: string
 }
