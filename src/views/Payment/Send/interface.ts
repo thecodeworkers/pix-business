@@ -1,4 +1,4 @@
-import { WalletProps } from "../../../../interfaces";
+import { WalletProps } from '../../../interfaces';
 import { RouteComponentProps } from "@reach/router";
 
 export interface StateProps {
@@ -9,4 +9,3 @@ export interface Props extends RouteComponentProps {
   action: any
   wallet: WalletProps
 }
-

@@ -5,8 +5,7 @@ import './styles.scss';
 import { StateProps, Props } from './interface';
 import { connect } from 'react-redux';
 
-const TransactionCompleted: FC<Props> = ({ finished, navigate }) => {
-	console.log(finished);
+const TransactionCompleted: FC<Props> = ({ finished, navigate = (nav: any) => { } }) => {
 	return (
 		<div>
 			<div className='_transactionCompletedContainer'>
