@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { Logo, Add, DashboardICon, Analytics, Payment, CounterParties, Activity, Commerce, Logout } from '../../assets/img';
 import './styles.scss';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { logout } from '../../store/actions';
 
-const SideBar = () => {
+const SideBar = ({ action }: any) => {
+  const closeCommerce = () => {
+    action.logout()
+    navigate('/');
+  }
 
   const colors: any = [
     {class: '_one'},
@@ -36,7 +43,7 @@ const SideBar = () => {
           </div>
 
           <ul className='_list'>
-            <Link to='/dashboard' className='_redirect'> <li> <div className='_icon'><DashboardICon /></div>Dashboard</li></Link>
+            <Link to='/' className='_redirect'> <li> <div className='_icon'><DashboardICon /></div>Dashboard</li></Link>
             <Link to='/data-analitycs' className='_redirect'> <li> <div className='_icon'><Analytics /></div>Data analytics</li> </Link>
             <Link to='/payments' className='_redirect'> <li> <div className='_icon'><Payment /></div>Payments</li> </Link>
             <Link to='/counterparties' className='_redirect'> <li> <div className='_icon'><CounterParties /></div>Counterparties</li> </Link>
@@ -49,7 +56,7 @@ const SideBar = () => {
       <div className='_footer'>
         <div className='_parentLogout'>
             <p className='_logout'>Log out</p>
-            <div className='_icon'>
+            <div className='_icon' onClick={() => closeCommerce()}>
               <Logout />
             </div>
         </div>
@@ -71,4 +78,14 @@ const SideBar = () => {
   )
 }
 
-export default SideBar;
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    logout
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SideBar);

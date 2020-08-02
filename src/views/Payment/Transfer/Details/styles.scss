@@ -1,0 +1,23 @@
+@import '../../../../assets/styles';
+
+._transButton {
+  min-width: 120px;
+  text-align: center;
+  color: $black;
+  background: #efefef;
+  padding: 0.3rem 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 10rem;
+  border: none;
+}
+
+._cardContainer {
+  > p {
+    margin: 1rem 0;
+  }
+}
+
+._topMargin {
+  margin: 4rem 0;
+}

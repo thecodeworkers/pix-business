@@ -46,7 +46,7 @@
   @include flexible-container;
   justify-content: flex-end;
 
-  > div {
+  > div._icon {
     margin-left: 2rem;
     cursor: pointer;
   }

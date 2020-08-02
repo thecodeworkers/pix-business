@@ -1,0 +1,33 @@
+._mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 4rem;
+
+  ._firstColumn {
+    width: 40%;
+  }
+
+  ._secondColumn {
+    width: 50%;
+
+    ._buttonsContainer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  ._cardContainer {
+    ._fromD {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+    }
+
+    ._cards {
+      background-color: #F1F1F1;
+      width: '97%';
+      margin-top: '20px';
+    }
+  }
+}

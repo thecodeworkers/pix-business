@@ -6,8 +6,10 @@ import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
 import ConfirmSend  from './Send';
+import Transfer from './Transfer';
+import TransferDetails from './Transfer/Details';
 
-const Payment: FC<RouteComponentProps> = ({
+const Payment: FC<RouteComponentProps>  = ({
 	location,
 	navigate = (nav: any) => {},
 }) => {
@@ -35,7 +37,6 @@ const Payment: FC<RouteComponentProps> = ({
 
 	return (
 		<div className='paymentContainer'>
-			<Header />
 			<div className='paymentBanner'>
 				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
 				<Balance />
@@ -46,6 +47,7 @@ const Payment: FC<RouteComponentProps> = ({
 				))}
 			</div>
 			<Router>
+				<Transfer path='transfer/*' />
 				<Receive path='receive/*' />
 				<Multisend path='multisend/*' />
 				<Send path='send/*' />

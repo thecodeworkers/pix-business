@@ -1,13 +1,15 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { SEARCH_ACTIVITIES, SEARCH_COUNTERPARTIES, SEARCH_PRODUCTS } from './action-types';
 import { actionObject } from '../../utils';
 import { DispatchProps } from '../../interfaces';
+import { getCounterparty } from '../selectors';
+import { SET_COUNTERPARTIES_TEMP } from '../counterparty/action-types';
 
 const filterRecords = (record: any, searchValue: string) => {
-  const keys = Object.keys(record);
+  const keys = Object.keys(record);  
 
   for(let key of keys) {
-    const match = String(record[key]).search(searchValue);
+    const match = String(record[key].toLowerCase()).search(searchValue);      
     if(match > -1) return record;
   }
 }
@@ -21,7 +23,6 @@ const filterResults = (currentValue: string, records: Array<any>) => {
   return records;
 }
 
-
 function* searchActivitiesAsync({ payload }: DispatchProps) {
   try {
     // yield put(actionObject(LOGIN_ASYNC, null));
@@ -31,9 +32,12 @@ function* searchActivitiesAsync({ payload }: DispatchProps) {
   }
 }
 
-function* searchCounterpartiesAsync() {
+function* searchCounterpartiesAsync({ payload }: DispatchProps) {
   try {
-    // yield put(actionObject(LOGIN_ASYNC, null));
+    const { results } = yield select(getCounterparty);
+    const currentCounterparties = yield call(filterResults, payload, results);
+
+    yield put(actionObject(SET_COUNTERPARTIES_TEMP, currentCounterparties));
     
   } catch(error) {
     console.log(error);
