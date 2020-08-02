@@ -10,7 +10,7 @@ const Main: FC<Props> = ({ auth }) => {
   return (
     <>
       {
-        isAuth ? (
+        !isAuth ? (
           <>
           <Home/>
           </>
