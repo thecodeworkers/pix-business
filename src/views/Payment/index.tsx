@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
+import { RouteComponentProps, Router, Redirect, redirectTo } from '@reach/router';
 import { Tabs, Balance } from '../../components';
 import { Pixel } from '../../assets/img';
 import './styles.scss';
@@ -18,7 +18,7 @@ const Payment: FC<RouteComponentProps | any> = ({
 	intermittence
 }) => {
 	useEffect(() => {
-		if(intermittence.isNav) navigate('transfer');
+		// navigate('transfer');
 	}, []);
 
 	const tabs = {
@@ -56,7 +56,7 @@ const Payment: FC<RouteComponentProps | any> = ({
 					))}
 				</div>
 				<Router>
-					<Transfer path='transfer/*' />
+					<Transfer path='/*' />
 					<Receive path='receive/*' />
 					<Multisend path='multisend/*' />
 					<Send path='send/*' />

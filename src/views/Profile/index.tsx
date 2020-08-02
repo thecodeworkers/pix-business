@@ -13,7 +13,7 @@ import { Close } from '../../assets/img';
 const Profile: FC<RouteComponentProps> = (props: any) => {
 
   const commerce = props.commerce.commerce
-  console.log(props);
+  
   const [show, setShow] = useState(false);
   const [formValid, setFormValid] = useState(false);
 
@@ -36,7 +36,7 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
     const newObject = {
       value
     }
-    console.log(newObject);
+    
     props.action.saveBankAccount(newObject);
   };
 

@@ -22,7 +22,7 @@ import { DownArrow, Close } from '../../../assets/img';
 import AccountCard from '../../../components/AccountCard';
 import './styles.scss';
 import { StateProps, Props } from './interface';
-import { getWallets } from '../../../store/actions';
+import { getWallets, decideNavigation } from '../../../store/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -36,7 +36,6 @@ const Send: FC<Props> = ({
 	location,
 }) => {
 	useEffect(() => {
-		navigate('wallet');
 		if (!wallet) action.getWallets();
 	}, []);
 
@@ -291,6 +290,7 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch: any) => {
 	const actions = {
 		getCounterparties,
+		decideNavigation
 	};
 
 	return {
