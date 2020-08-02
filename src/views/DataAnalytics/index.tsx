@@ -51,14 +51,14 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
         datasets: [
           {
             label: 'Money in',
-            data: [80, 25, 85, 20, 80, 40, 100, 25, 80, 40, 90, 80],
+            data: [55, 25, 42, 20, 50, 40, 33, 25, 47, 29, 40, 55],
             backgroundColor: [ '#FF8008', '#FF8008', '#FF8008', '#FF8008','#FF8008', '#FF8008', '#FF8008','#FF8008','#FF8008','#FF8008','#FF8008','#FF8008'],
             borderColor: ['#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837','#FFC837'],
             borderWidth: 1
         },
         {
           label: 'Money out',
-          data: [40, 45, 40, 80, 25, 60, 50, 50, 20, 90, 80, 50],
+          data: [40, 45, 40, 48, 25, 45, 35, 20, 15, 20, 45, 50],
           backgroundColor: ['#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B','#03629B'],
           borderColor: ['#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4','#008DE4'],
           borderWidth: 1
@@ -77,7 +77,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
                 label: "Sales",
                 borderColor: "#35A7D6",
                 backgroundColor: "rgba(92, 214, 177, 0.63)",
-                data: [60, 40, 20, 70, 60, 50, 40, 50, 40, 40, 20, 30],
+                data: [58, 40, 20, 35, 45, 50, 40, 50, 40, 40, 20, 30],
                 fill: true,
                 lineTension: 0.6,
                 pointBackgroundColor: "#35A7D6",
@@ -111,12 +111,19 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
 
   return (
   <div className="_principalContainer">
-    {/* <Header tabs={true} /> */}
+
     <div className="_topGraphics">
-      <div className="_balancecont">
         <Balance />
-      </div>
-      <div className="_buttonAction">
+        <div className="_options">
+          <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} />
+          <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} />
+          <ActionButton
+            url={"/payments/multisend"}
+            img={<MultiSend />}
+            title={"Multi send"}
+          />
+        </div>
+      {/* <div className="_buttonAction">
         <ActionButton url={'dashboard'} img={<Send />} title={'Send'} />
       </div>
       <div className="_buttonAction">
@@ -124,21 +131,24 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       </div>
       <div className="_buttonAction">
         <ActionButton url={'dashboard'} img={<MultiSend />} title={'Multi send'} />
-      </div>
+      </div> */}
     </div>
 
     <div className="_parentGraphic">
       
       <div className="_row">
         <div className="_graphicContainer _left">
-          <canvas 
-            width="100%"
-            height="200px"
-            id="myChart"
-            ref={chartRef}
-          />
+          <p className="_textUSDC">USDC</p>
+          <div>
+            <canvas 
+              width="100%"
+              height="200px"
+              id="myChart"
+              ref={chartRef}
+            />
+          </div>
           <button className="_filterButton">
-            <div>This month</div>
+            <div>This year</div>
             <Arrow />
           </button>
         </div>
@@ -150,24 +160,31 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
       <div className="_row">
         <div className="_left _bottom">
           <div id="_lines" className="_graphicContainer">
-            <canvas 
-              width="100%"
-              height="200px"
-              id="myLineChart"
-              ref={chartRefLine}
-            />
+            <p className="_textUSDC">Sales USDC</p>
+            <div style={{height: '100%'}}>
+              <canvas 
+                width="100%"
+                height="200px"
+                id="myLineChart"
+                ref={chartRefLine}
+              />
+            </div>
             <button className="_filterButton">
-              <div>This month</div>
+              <div>This year</div>
               <Arrow />
             </button>
           </div>
           <div id="_cake" className="_graphicContainer">
-            <canvas 
-              width="100%"
-              height="200px"
-              id="myLineChart"
-              ref={chartRefPie}
-            />
+            <p className="_textUSDC">Expenses</p>
+            <p className="_textUSDC" style={{top: '10%'}}>USDC</p>
+            <div style={{height: '100%'}}>
+              <canvas 
+                width="100%"
+                height="200px"
+                id="myLineChart"
+                ref={chartRefPie}
+              />
+            </div>
           </div>
         </div>
         <div id="_profitAndLost" className="_graphicContainer">
