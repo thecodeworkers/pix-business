@@ -21,8 +21,6 @@ const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
 
   return (
     <div className='_activityContainer'>
-      <Header />
-      
       <div className='_activityContent'>
         <div className='_activityLabel'> Activity </div>
         <div className='_activityOptions'>

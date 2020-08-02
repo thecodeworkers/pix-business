@@ -111,7 +111,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
 
   return (
   <div className="_principalContainer">
-    <Header tabs={true} />
+    {/* <Header tabs={true} /> */}
     <div className="_topGraphics">
       <div className="_balancecont">
         <Balance />

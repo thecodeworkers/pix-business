@@ -14,7 +14,6 @@ const TransactionCompleted: FC<RouteComponentProps> = () => {
   
   return (
     <div>
-      <Header />
       <div className="_transactionCompletedContainer">
         <div className="_info">
           <div className="_sectionContainer _cuteImage _containerColor">
