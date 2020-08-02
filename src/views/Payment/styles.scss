@@ -5,6 +5,17 @@
 	width: 12.5%;
 }
 
+.paymentContainer {
+	padding-bottom: 10px;
+}
+
+._paymentContent {
+	background-color: #F6F6F6;
+  border-radius: 14px;
+  padding-top: 25px;
+  overflow: hidden;
+}
+
 .paymentBanner {
 	display: flex;
 	justify-content: space-around;

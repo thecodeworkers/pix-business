@@ -11,17 +11,17 @@
 ._counterpartiesLabel {
   display: flex;
   align-items: center;
-  width: 10rem;
-  // height: 40px;
-  padding: 3px 5px;
-  margin-left: 28px;
+  justify-content: space-between;
+  width: 155px;
+  height: 40px;
+  padding: 0px 12px;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 24px;
   background: transparent linear-gradient(270deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
-  border-radius: 4px;
-  display: block;
+  border-radius: 5px;
+  opacity: 1;
 }
 
 ._counterpartiesOptions {
@@ -219,4 +219,9 @@ align-items: flex-end;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+
+._testingParent {
+  background-color: red;
+  width: 100%;
+  height: 100vh;
 }

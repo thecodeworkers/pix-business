@@ -7,6 +7,7 @@ const Overview: FC<RouteComponentProps | any> = ({ activity }) => (
   <DynamicTable 
     keys={['status', 'account', 'date', 'counterparty', 'type', 'address', 'amount', 'balance']} 
     records={activity.activities}
+    extraProps={{ status: 'bold' }}
   />
 );
 

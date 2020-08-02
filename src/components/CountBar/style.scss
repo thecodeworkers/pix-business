@@ -15,35 +15,96 @@
   text-align: center;
   border-radius: 3px;
   background-color: #F1F1F1;
+  margin-right: 2rem;
 }
 
 ._countBarTitle {
-  font-size: 34px;
-  line-height: 44px;
+  font-size: 24px;
   color: #484848;
+  margin-right: 2rem;
+}
+
+._countBarPercent {
+  color: #C9C9C9;
+  font-size: 1rem;
+}
+
+._countBarTitleRed._countBarTitle::before {
+  content: '\25A0';
+  display: inline;
+  color: #E41F2C;
+}
+
+._countBarTitleYellow._countBarTitle::before {
+  content: '\25A0';
+  display: inline;
+  color: #FFC837;
 }
 
 ._countBarContent1,
 ._countBarContent2 {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 ._countBarContent2 {
-
-  progress {
-    -webkit-appearance: none;
-    height: 32px;
-    flex: 1;
+  margin-top: 1rem;
+  height: 5rem;
+  justify-content: space-between;
+  
+  ._bigNumber {
+    color: #929292;
+    font-size: 5rem;
+    flex: 1 20%;
   }
 
-  progress::-webkit-progress-bar {
-    border-radius: 8px;
-    background: #ffffff;
+  ._icon {
+    flex: 1 20%;
   }
 
-  progress::-webkit-progress-value {
-    border-radius: 8px;
-    background: #FFC837;
+  ._progressBar::before,
+  ._progressBar::after {
+      position: absolute;
+      bottom: -30px;
+      color: #929292;
+      width: 1%;
+      font-size: 12px;
+    }
+
+    ._progressBar::before {
+      content: '|    0';
+      left: 0;
+    }
+
+    ._progressBar::after {
+      content: '|    100';
+      right: 0;
+    }
+
+  ._progressBar {
+    width: 60%;
+    flex: 1 60%;
+    position: relative;  
   }
+
+  ._progressContainer {
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+    position: relative;
+
+    ._internProgress {
+      height: 2rem;
+    }
+    
+    ._progressBarRed {
+      background-color: #E41F2C;
+    }
+
+    ._progressBarYellow {
+      background-color: #FFC837;
+    }
+  }
+
 }

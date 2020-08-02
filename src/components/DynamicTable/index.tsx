@@ -1,21 +1,22 @@
-import React, { FC } from "react";
-import { Props } from "./interface";
-import "./styles.scss";
+import React, { FC } from 'react';
+import { Props } from './interface';
+import './styles.scss';
 
 const lineRainbow: Array<string> = [
-  "#304352",
-  "#24C93F",
-  "#0083B0",
-  "#FFC837",
-  "#AEAEE6",
-  "#57D6AF",
-  "#DCE35B",
+  '#304352',
+  '#24C93F',
+  '#0083B0',
+  '#FFC837',
+  '#AEAEE6',
+  '#57D6AF',
+  '#DCE35B',
 ];
 
 const DynamicTable: FC<Props> = ({
   keys = [],
   records = [],
-  padding = "5px 15px",
+  padding = '5px 15px',
+  extraProps = {}
 }) => {
   return (
     <table
@@ -33,11 +34,9 @@ const DynamicTable: FC<Props> = ({
               role="columnheader"
               style={{ borderBottomColor: lineRainbow[index] }}
             >
-              {key !== "hidden" && (
-                <div className="_backgroundRow" style={{ padding: padding }}>
-                  {key}
-                </div>
-              )}
+              <div className="_backgroundRow" style={{ padding }}>
+                {key}
+              </div>
             </th>
           ))}
         </tr>
@@ -47,7 +46,9 @@ const DynamicTable: FC<Props> = ({
           <tr key={index} className="_flexTable" role="rowgroup">
             {keys.map((key: string, index: number) => (
               <td key={index} className="_flexRow" role="cell">
-                <p>{record[key]}</p>
+                <div className="_nodeContainer">
+                  <p style={extraProps[key] == 'bold' ? { fontWeight: 'bold', color: '#0D1216' } : {}}>{record[key]}</p>
+                </div>
               </td>
             ))}
           </tr>

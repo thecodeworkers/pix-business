@@ -1,15 +1,17 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router, navigate } from '@reach/router';
-import { Tabs, Balance, Header } from '../../components';
+import { RouteComponentProps, Router } from '@reach/router';
+import { Tabs, Balance } from '../../components';
+import { Pixel } from '../../assets/img';
 import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
-import ConfirmSend  from './Send';
+import ConfirmSend from './Send';
 import Transfer from './Transfer';
 import TransferDetails from './Transfer/Details';
+import TransactionCompleted from './Finished';
 
-const Payment: FC<RouteComponentProps>  = ({
+const Payment: FC<RouteComponentProps> = ({
 	location,
 	navigate = (nav: any) => {},
 }) => {
@@ -37,22 +39,29 @@ const Payment: FC<RouteComponentProps>  = ({
 
 	return (
 		<div className='paymentContainer'>
-			<div className='paymentBanner'>
-				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
-				<Balance />
+			<div className='_paymentContent'>
+				<div className='_activityLabel'> 
+						<p>Payments</p>
+						<span> <Pixel width={'30'} height={'17'} color={'white'} /> </span> 
+				</div>
+				<div className='paymentBanner'>
+					<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
+					<Balance />
+				</div>
+				<div className='_lineWidth'>
+					{colors.map((res: any, index: any) => (
+						<div key={index} className={res.class}></div>
+					))}
+				</div>
+				<Router>
+					<Transfer path='transfer/*' />
+					<Receive path='receive/*' />
+					<Multisend path='multisend/*' />
+					<Send path='send/*' />
+					<ConfirmSend path='confirm-send/*' />
+					<TransactionCompleted path='transaction-completed/*' />
+				</Router>
 			</div>
-			<div className='_lineWidth'>
-				{colors.map((res: any, index: any) => (
-					<div key={index} className={res.class}></div>
-				))}
-			</div>
-			<Router>
-				<Transfer path='transfer/*' />
-				<Receive path='receive/*' />
-				<Multisend path='multisend/*' />
-				<Send path='send/*' />
-				<ConfirmSend path='confirm-send/*' />
-			</Router>
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 export interface Props {
   keys: Array<string>
-  records: any,
+  records: any
   padding?: string
   callback?: any
+  extraProps?: any
 }

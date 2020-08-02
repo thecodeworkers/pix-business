@@ -5,6 +5,9 @@
 	background: #efefef;
 	border-radius: 13px;
 	margin: 20px 0;
+	max-height: 155px;
+	overflow-y: auto;
+	
 	.summaryValues {
 		display: flex;
 		justify-content: flex-end;
@@ -32,7 +35,7 @@
 		}
 	}
 }
-.Outer{
+.Outer {
 	padding: 0 1rem;
 }
 .summaryOuter {

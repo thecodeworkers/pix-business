@@ -17,22 +17,7 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 		if (!wallet) action.getWallets();
 	}, [action]);
 
-	const [mainWallet, setMainWallet] = useState(
-		wallet.wallets[0]
-			? {
-					title: !wallet.wallets[0].saving
-						? 'Checking Account'
-						: 'Saving Account',
-					desc: wallet.wallets[0].address,
-					value: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-					total: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-			  }
-			: {}
-	);
+	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [selection, setSelection] = useState(false);
 
@@ -56,16 +41,9 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 					</div>
 					{selection ? (
 						<div className='cardSelection'>
-							{wallet.wallets.map((value, key) => {
-								let values = {
-									title: !value.saving ? 'Checking Account' : 'Saving Account',
-									desc: value.address,
-									value: value.balances.length ? value.balances[0] : 0,
-									total: value.balances.length ? value.balances[0] : 0,
-								};
-
+							{wallet.wallets.map((value: any, key: any) => {
 								let Check =
-									mainWallet.desc === values.desc
+									mainWallet.address === value.address
 										? BoxCheckedGreen
 										: BoxCheckedGray;
 
@@ -73,11 +51,11 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(values)}
+											onClick={() => setMainWallet(value)}
 										>
 											<Check />
 										</div>
-										<AccountCard data={values} width='85%' decorator={false} />
+										<AccountCard data={value} width='85%' decorator={false} />
 									</div>
 								);
 							})}
@@ -87,7 +65,7 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 				</div>
 				<div className='QRWallet'>
 					<div className='copyWallet'>
-						<p>{mainWallet.desc}</p>
+						<p>{mainWallet.address}</p>
 						<div className='copy'>
 							<Copy />
 						</div>
@@ -95,9 +73,12 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 				</div>
 			</div>
 			<div className='inputSide'>
-				<CodeQR wallet={mainWallet.desc} />
+				<CodeQR wallet={mainWallet.address} />
 				<div className='buttonContent'>
-					<button className='buttonSend' onClick={() => navigate('/dashboard')}>
+					<button
+						className='buttonSend'
+						onClick={() => navigate('/transaction-completed')}
+					>
 						Done
 					</button>
 				</div>

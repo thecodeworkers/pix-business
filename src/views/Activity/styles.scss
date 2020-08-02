@@ -8,17 +8,28 @@
 ._activityLabel {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 155px;
   height: 40px;
   padding: 0px 12px;
   margin-left: 28px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 24px;
   background: transparent linear-gradient(270deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
   border-radius: 5px;
   opacity: 1;
+}
+
+._exportOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ._filterBtnContainer {
+    margin-right: 1rem;
+  }
 }
 
 ._activityOptions {

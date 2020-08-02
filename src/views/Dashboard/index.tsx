@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import "./styles.scss";
 
@@ -10,42 +10,17 @@ import {
   ListAccountCard,
   ActionButton,
   DynamicTable,
-  PixelTitle,
-  Header
+  PixelTitle
 } from "../../components";
 import { Send, Receive, MultiSend } from "../../assets/img";
-
-const listAccount = [
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-];
+import { connect } from "react-redux";
 
 const activityKeys = [
-  "hidden",
   "status",
-  "date",
   "counterparty",
   "type",
   "address",
+  'amount'
 ];
 
 const activityRecord = [
@@ -91,88 +66,50 @@ const activityRecord = [
   },
 ];
 
-const cpKeys = ["name", "email", "address"];
+const cpKeys = ["counterparty", "email", "address"];
 
-const cpRecord = [
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-];
+const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet }) => {
+  const [activities, setActivities] = useState([]);
+  const [counterparties, setCounterparties] = useState([]);
 
-const Dashboard: FC<RouteComponentProps> = () => (
-  <div id="dashboard">
-    {/* <Header tabs={false} /> */}
-    <Balance />
+  useEffect(() => {
+    setActivities(activity.results);
+    setCounterparties(counterparty.results);
 
-    <div className="_options">
-      <ActionButton url={"/dashboard"} img={<Send />} title={"Send"} />
-      <ActionButton url={"/dashboard"} img={<Receive />} title={"Recieve"} />
-      <ActionButton
-        url={"/dashboard"}
-        img={<MultiSend />}
-        title={"Multi send"}
-      />
+    return () => {
+      setActivities([]);
+      setCounterparties([]);
+    }
+  }, []);
+
+  return (
+    <div id="dashboard">
+      <Balance />
+      <div className="_options">
+        <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} />
+        <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} />
+        <ActionButton
+          url={"/payments/multisend"}
+          img={<MultiSend />}
+          title={"Multi send"}
+        />
+      </div>
+  
+      <ListAccountCard data={wallet.wallets} />
+  
+      <div className="_activity" style={{marginTop: '-3.2rem'}}>
+        <PixelTitle title="Activity" />
+        <DynamicTable keys={activityKeys} records={activities.reverse()} />
+      </div>
+  
+      <div className="_counterparties">
+        <PixelTitle title="Counterparties" />
+        <DynamicTable keys={cpKeys} records={counterparties.reverse()} />
+      </div>
     </div>
+  );
+}
 
-    <ListAccountCard data={listAccount} />
+const mapStateToProps = ({ activity, counterparty, wallet }: any) => ({ activity, counterparty, wallet });
 
-    <div className="_activity" style={{marginTop: '-3.2rem'}}>
-      <PixelTitle title="Activity" />
-      <DynamicTable keys={activityKeys} records={activityRecord} />
-    </div>
-
-    <div className="_counterparties">
-      <PixelTitle title="Counterparties" />
-      <DynamicTable keys={cpKeys} records={cpRecord} />
-    </div>
-  </div>
-);
-
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);

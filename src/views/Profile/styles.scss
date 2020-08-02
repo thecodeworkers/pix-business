@@ -1,0 +1,121 @@
+@import '../../assets/styles/index.scss';
+
+._formCountierParties {
+  background-color: #F1F1F1;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+._formCounterparties {
+  // background-color: orange;
+  width: 80%;
+}
+
+._inputParty {
+  background-color: $shadowGray;
+  border:solid 1px $seaGreen;
+  width: 100%;
+  // display: block;
+  // margin-right: auto;
+  // margin-left: auto;;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  padding: 0.4rem 0.5rem;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+// ._formCounterparties {
+//   background-color: green;
+//   width: 300px;
+//   ;
+// }
+
+._widthForm {
+  width: 80%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  // background-color: red;
+}
+
+._buttonActionParent {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+._image {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 9px;  
+  display: flex;
+  align-items: center; 
+  background-color: $white;
+}
+._name{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+._nameTitle{
+font-size: 35px;
+margin-left: 20px;
+}
+
+._nameSubTitle{
+  font-size: 15px;
+color: $superDarkGray;
+  }
+
+.div_white{
+  display: flex;
+  justify-content: space-between;
+}
+._inline{
+  display: flex;
+  padding: 4px;
+  background-color: $white;
+}
+
+.div_space{
+  margin-bottom: 30px;
+}
+
+
+._medium{
+  height: 30vh;
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+}
+
+._testinParents{
+  height: 40vh;
+}
+._addon{
+  background-color: red;
+  width: 100%;
+}
+
+._div_full{
+  width: 100%;
+}
+
+._addBankButton {
+  width: 14rem;
+  background: $black;
+  color: $white;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight:600;
+  display: flex;
+  justify-content: space-between;
+}
+
+

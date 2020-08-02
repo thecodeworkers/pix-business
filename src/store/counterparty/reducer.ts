@@ -45,6 +45,27 @@ const initialState: any = {
       'email': 'Darianna@gmail.com',
       'phone': '+58-414332982'
     },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    }
   ],
   results: [
     {
@@ -89,6 +110,27 @@ const initialState: any = {
       'email': 'Darianna@gmail.com',
       'phone': '+58-414332982'
     },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    },
+    {
+      'type': 'Employee',
+      'counterparty': 'Darianna medina',
+      'address': '0xdwdd8u.....',
+      'email': 'Darianna@gmail.com',
+      'phone': '+58-414332982'
+    }
   ]
 }
 

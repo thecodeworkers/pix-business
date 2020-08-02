@@ -1,5 +1,11 @@
+import { Component } from "react";
+
 export interface Props {
   label: string,
   title: string,
-  counter: number
+  percentage?: string,
+  counter: number,
+  icon: any,
+  number?: string,
+  color?: string
 }
