@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { BsArrowUpDown } from 'react-icons/bs';
 import './styles.scss';
 import { Props } from './interface';
-import { Usdc, BankBlue, BankLogo, UsdcCard} from '../../assets/img';
+import { BankLogo, UsdcCard} from '../../assets/img';
 
 const AccountCard: FC<Props> = ({
 	data,
@@ -11,10 +11,10 @@ const AccountCard: FC<Props> = ({
 	banking = false,
 	index = 0
 }) => {
-	const { address, balances = [], type, saving } = data;
+	const { address, balances = [], saving } = data;
 	
 	return (
-		<div className='_account' style={width ? { width: width } : {}}>
+		<div className={saving ? '_savingAccount' : '_account'} style={width ? { width: width } : {}}>
 			{decorator ? (
 				<div className='_decorator'>
 					<BsArrowUpDown color='#5CD6B1' size='20' />

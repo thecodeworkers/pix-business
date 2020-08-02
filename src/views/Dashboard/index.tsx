@@ -15,30 +15,6 @@ import {
 import { Send, Receive, MultiSend } from "../../assets/img";
 import { connect } from "react-redux";
 
-const listAccount = [
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-  {
-    title: "Checking account",
-    desc: "0xdwdd8udhqdhiwdidjojd",
-    percent: "4%",
-    value: "12,000.00",
-    total: "10,000.00",
-  },
-];
-
 const activityKeys = [
   "status",
   "counterparty",
@@ -93,14 +69,27 @@ const activityRecord = [
 const cpKeys = ["counterparty", "email", "address"];
 
 const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet }) => {
+  const [activities, setActivities] = useState([]);
+  const [counterparties, setCounterparties] = useState([]);
+
+  useEffect(() => {
+    setActivities(activity.results);
+    setCounterparties(counterparty.results);
+
+    return () => {
+      setActivities([]);
+      setCounterparties([]);
+    }
+  }, []);
+
   return (
     <div id="dashboard">
       <Balance />
       <div className="_options">
-        <ActionButton url={"/dashboard"} img={<Send />} title={"Send"} />
-        <ActionButton url={"/dashboard"} img={<Receive />} title={"Recieve"} />
+        <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} />
+        <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} />
         <ActionButton
-          url={"/dashboard"}
+          url={"/payments/multisend"}
           img={<MultiSend />}
           title={"Multi send"}
         />
@@ -110,12 +99,12 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
   
       <div className="_activity" style={{marginTop: '-3.2rem'}}>
         <PixelTitle title="Activity" />
-        <DynamicTable keys={activityKeys} records={activity.results.reverse()} />
+        <DynamicTable keys={activityKeys} records={activities.reverse()} />
       </div>
   
       <div className="_counterparties">
         <PixelTitle title="Counterparties" />
-        <DynamicTable keys={cpKeys} records={counterparty.results.reverse()} />
+        <DynamicTable keys={cpKeys} records={counterparties.reverse()} />
       </div>
     </div>
   );
