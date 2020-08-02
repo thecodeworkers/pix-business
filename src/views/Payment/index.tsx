@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router, navigate } from '@reach/router';
-import { Tabs, Balance, Header } from '../../components';
+import { RouteComponentProps, Router } from '@reach/router';
+import { Tabs, Balance } from '../../components';
+import { Pixel } from '../../assets/img';
 import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
@@ -37,22 +38,28 @@ const Payment: FC<RouteComponentProps>  = ({
 
 	return (
 		<div className='paymentContainer'>
-			<div className='paymentBanner'>
-				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
-				<Balance />
+			<div className='_paymentContent'>
+				<div className='_activityLabel'> 
+						<p>Payments</p>
+						<span> <Pixel width={'30'} height={'17'} color={'white'} /> </span> 
+				</div>
+				<div className='paymentBanner'>
+					<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
+					<Balance />
+				</div>
+				<div className='_lineWidth'>
+					{colors.map((res: any, index: any) => (
+						<div key={index} className={res.class}></div>
+					))}
+				</div>
+				<Router>
+					<Transfer path='transfer/*' />
+					<Receive path='receive/*' />
+					<Multisend path='multisend/*' />
+					<Send path='send/*' />
+					<ConfirmSend path='confirm-send/*' />
+				</Router>
 			</div>
-			<div className='_lineWidth'>
-				{colors.map((res: any, index: any) => (
-					<div key={index} className={res.class}></div>
-				))}
-			</div>
-			<Router>
-				<Transfer path='transfer/*' />
-				<Receive path='receive/*' />
-				<Multisend path='multisend/*' />
-				<Send path='send/*' />
-				<ConfirmSend path='confirm-send/*' />
-			</Router>
 		</div>
 	);
 };
