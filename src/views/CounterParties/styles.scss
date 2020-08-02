@@ -11,17 +11,18 @@
 ._counterpartiesLabel {
   display: flex;
   align-items: center;
-  width: 155px;
-  height: 40px;
-  padding: 0px 12px;
+  width: 10rem;
+  // height: 40px;
+  padding: 3px 5px;
   margin-left: 28px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 0.9rem;
   font-weight: 600;
   line-height: 24px;
   background: transparent linear-gradient(270deg, #5CD6B1 0%, #33A3DC 100%) 0% 0% no-repeat padding-box;
   border-radius: 4px;
-  opacity: 1;
+  display: block;
+
 }
 
 ._counterpartiesOptions {
@@ -30,27 +31,41 @@
   justify-content: space-between;
   padding-left: 28px;
   padding-right: 36px;
-
 }
 
 ._optionsTab{
   width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+._tabFilterStyles {
+  background: $whiteSmoke ;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 5rem;
+  justify-content: center;
+  display: flex;
 }
 
 ._timeLabel {
   display: flex;
   align-items: center;
-  width: 160px;
-  height: 20px;
-  padding: 6px 6px;
+  width: 7rem;
+  padding: 0px 5px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 0.8rem;
   font-weight: 600;
   line-height: 24px;
   background: $blue;
   border-radius: 4px;
   opacity: 1;
   margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 ._counter_div{
   display: flex;
@@ -65,8 +80,107 @@ align-items: flex-end;
 }
 
 ._div_shadow{
-
   display: flex;
   align-items: flex-end;
   margin-left: 50px;
 }
+
+@mixin modal {
+  background-color: #F6F6F6;
+  height: 100vh;
+  z-index: 999;
+  width: 25%;
+  display: block;
+  margin-left: auto;
+  transition: all 1s;
+  border-radius: 5px;
+}
+
+._blur1 {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 1;
+  display: block;
+  z-index: 999;
+}
+
+._blurNone1 {
+  display: none;
+  opacity: 0;
+  animation: out 1s;
+}
+
+._showTool1 {
+  @include modal;
+  // display: block;
+  animation: entry 1s;
+}
+
+._noneTool1 {
+  // display: none;
+  // width:-50%;
+  animation: out 1s;
+  display: none;
+}
+
+._closeTools1 {
+  width: 0.9rem;
+  height: 0.9rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+@keyframes entry {
+  from {
+    width: 0%
+  }
+  to {
+    width: 25%;
+  }
+}
+
+@keyframes out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+._formCountierParties {
+  background-color: #F1F1F1;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+._formCounterparties {
+  // background-color: orange;
+  width: 80%;
+}
+
+._inputParty {
+  background-color: $shadowGray;
+  border:solid 1px $seaGreen;
+  width: 80%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  padding: 0.4rem 0.5rem;
+}
+// ._formCounterparties {
+//   background-color: green;
+//   width: 300px;
+//   ;
+// }
+
+
