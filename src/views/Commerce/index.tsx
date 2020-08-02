@@ -11,9 +11,11 @@ import { bindActionCreators } from 'redux';
 import { searchActivities } from '../../store/actions';
 
 const Commerce: FC<RouteComponentProps | any> = ({ location, navigate = (nav: any) => {}, product }) => {
+  const { products } = product;
+
   useEffect(() => {
 		navigate('products-services');
-	}, []);
+  }, []);
 
   const commerceTabs = {
     'Products/Services': { route: 'products-services' },
@@ -40,7 +42,7 @@ const Commerce: FC<RouteComponentProps | any> = ({ location, navigate = (nav: an
       </div>
       
       <Router>
-        <ProductsServices path='products-services/' />
+        <ProductsServices products={products} path='products-services/' />
         <Sales path='sales/' />
         <Expenses path='expenses/' />
       </Router>
