@@ -1,95 +1,119 @@
 @import '../../../assets/styles/index.scss';
 
 ._inputsRow {
-  // background-color: blue;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
+	// background-color: blue;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0.5rem;
 }
 
 ._amountsTabs {
-  // background-color: red;
-  width: 45%;
+	// background-color: red;
+	width: 45%;
 }
 
 ._largeCard {
-  background-color: $whiteSmoke;
-  border-radius: 3px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+	background-color: $whiteSmoke;
+	border-radius: 3px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
 }
 
 ._cardButton {
-  background-color: $whiteSmoke ;
-  border: none;
-  width: 7rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  color: $white;
-  border-radius: 3px;
-  font-weight: bold;
-  color: $superDarkGray;
-  
-  &:hover {
-    background: linear-gradient(to left, $greenToBlue);
-    color: $white;
-  } 
-}
+	background-color: $whiteSmoke;
+	border: none;
+	width: 7rem;
+	padding: 0.5rem;
+	cursor: pointer;
+	color: $white;
+	border-radius: 3px;
+	font-weight: bold;
+	color: $superDarkGray;
 
+	&:hover {
+		background: linear-gradient(to left, $greenToBlue);
+		color: $white;
+	}
+}
+.cardSelection {
+	position: fixed;
+	max-height: 400px;
+	overflow-y: auto;
+	z-index: 1;
+	width: 35%;
+	background: #dcdcdc;
+	border-radius: 15px;
+	.selectCard {
+		margin: 10px 0px;
+		.checkedVal {
+			width: 25px;
+			position: relative;
+			right: -80%;
+			padding: 5px;
+			z-index: 1;
+			background: #ffffff;
+			height: 25px;
+			border-radius: 5px;
+			top: 16px;
+			box-shadow: -1px 1px 4px 0px #000000cc;
+			cursor: pointer;
+		}
+	}
+}
 ._rowsCard {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 ._fromDiv {
-  display: flex;
-  justify-content: space-between;
-  width: 45%;
+	display: flex;
+	justify-content: space-between;
+	width: 45%;
 }
 
 ._fakeSelect {
-  background: $whiteSmoke;
-  width: 6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.3rem; 
-  box-sizing: border-box;
-  color: #B7B7B7;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 3px;
+	background: $whiteSmoke;
+	width: 6rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.3rem;
+	box-sizing: border-box;
+	color: #b7b7b7;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 3px;
 }
 
 ._toContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 45%;
+	display: flex;
+	justify-content: space-between;
+	width: 45%;
 }
 
 ._actBtn {
-  display: flex;
+	display: flex;
 }
 
 ._pasteStyles {
-  width: 46%;
-  margin: 1.4rem 0px;
-  display: flex;
+	width: 46%;
+	margin: 1.4rem 0px;
+	display: flex;
 }
 
 ._lastRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 ._sendBtn {
-  @include sendButton();
-  margin-left: 15px;
+	@include sendButton();
+	margin-left: 15px;
 }
 
 ._cancelBtn {
-  @include cancelButton();
+	@include cancelButton();
 }

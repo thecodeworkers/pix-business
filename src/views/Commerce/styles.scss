@@ -53,6 +53,9 @@
     padding: 12px;
     background: #F1F1F1;
     border-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -69,4 +72,20 @@
     $shineYellow $porcent*7);
   height: 4px;
   margin-bottom: 30px;
+}
+
+._filterButton {
+  width: 6rem;
+  height: 1.5rem;
+  background-color: $buttonLightBlue;
+  border-radius: 5px;
+  opacity: 1;
+  border: none;
+  color: $white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 11px;
+  cursor: pointer;
+  margin-right: 1rem;
 }

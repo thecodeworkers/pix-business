@@ -33,7 +33,7 @@ const Make: FC<Props> = ({
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [form, setForm] = useState({
-		wallet: '',
+		address: '',
 		amount: '',
 	});
 
@@ -123,9 +123,9 @@ const Make: FC<Props> = ({
 								type='text'
 								className='addressInput'
 								placeholder='address'
-								value={form.wallet}
+								value={form.address}
 								onChange={(event) => {
-									setForm({ ...form, ...{ wallet: event.target.value } });
+									setForm({ ...form, ...{ address: event.target.value } });
 								}}
 							/>
 							<input
@@ -172,18 +172,39 @@ const Make: FC<Props> = ({
 							{multiSend.result.map((value: any, index: any) => (
 								<div className='receiver' key={index}>
 									<p className='nameReceiver'>{value.name}</p>
-									<p className='walletReceiver'>{value.wallet}</p>
+									<p className='walletReceiver'>{value.address}</p>
 									<input
 										disabled={value.disabledInput}
 										type='text'
 										value={value.amount}
+										onChange={(event) => {
+											value.amount = event.target.value;
+											multiSend.result[index] = value;
+											let sum = multiSend.result.reduce(
+												(prex: any, next: any) => {
+													return (
+														Number(
+															typeof prex === 'object' ? prex.amount : prex
+														) + Number(next.amount)
+													);
+												}
+											);
+											sum = typeof sum === 'object' ? sum.amount : sum;
+											let newValues = {
+												Fee: multiSend.result.length,
+												Total: sum + multiSend.result.length,
+											};
+
+											setValues(newValues);
+											setSumValue(sum);
+											action.updateMultiSend(multiSend.result);
+										}}
 										placeholder='Amount'
 									/>
 									<div
 										className='deleteBox'
 										onClick={() => {
 											deleteArray(index);
-											enableInput(index);
 										}}
 									>
 										<XMark />
