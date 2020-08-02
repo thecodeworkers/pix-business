@@ -11,7 +11,11 @@ const persistConfig = {
   blacklist: [
     'search',
     'circle',
-    'register'
+    'register',
+
+    'activity',
+    'bankAccount',
+    'counterparty'
   ]
 }
 
