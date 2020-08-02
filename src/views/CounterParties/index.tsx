@@ -4,19 +4,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import { DownArrow, Close } from '../../assets/img';
-import { getCounterparties, saveCounterparty } from '../../store/actions';
-import { Formik, Form, Field } from 'formik';
+import { getCounterparties, saveCounterparty, searchCounterparties, getBackupCounterparties } from '../../store/actions';
 import './styles.scss';
+import { Formik, Form, Field } from 'formik';
 
 const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
-  const { counterparty } = props;
+  const { counterparty, saveCounterparty } = props;
   const [ show, setShow ] = useState(false);
   const [ select, setSelect  ] = useState('Employee');
 
   const type = useRef(null);
   useEffect(() => {
-    // console.log(counterparty.counterparties);
+    return () => props.action.getBackupCounterparties()
   }, []);
 
   const form: any = {
@@ -51,7 +51,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
       type: select,
       ...value
     }
-
+    props.action.saveCounterparty(newObject);
     console.log(newObject);
     
   };
@@ -74,14 +74,14 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
             <div className='_tabFilterStyles'>Customer</div>
           </div>
           <div className="_inline_div">
-            <Search filter={''} />
+            <Search filter={props.action.searchCounterparties} />
             <div className='_div_shadow'>
               {/* <div className='_timeLabel'>This Month <DownArrow /></div> */}
               <ExportButton data={counterparty.counterparties} name='counterparties' flag='csv' />
             </div>
           </div>
         </div>
-        <DynamicTable keys={dataTest.keys} records={dataTest.records} />
+        <DynamicTable keys={dataTest.keys} records={counterparty.counterparties} />
       </div>
 
       <div className={show ? '_blur1' : '_blurNone1'} >
@@ -143,7 +143,9 @@ const mapStateToProps = ({ counterparty }: any) => ({ counterparty });
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     getCounterparties,
-    saveCounterparty
+    saveCounterparty,
+    searchCounterparties,
+    getBackupCounterparties
   }
 
   return {
@@ -152,6 +154,3 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterParties);
-
-
-// export default CounterParties
