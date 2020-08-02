@@ -110,12 +110,12 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
   
       <div className="_activity" style={{marginTop: '-3.2rem'}}>
         <PixelTitle title="Activity" />
-        <DynamicTable keys={activityKeys} records={activity.results.reverse()} />
+        <DynamicTable keys={activityKeys} records={activity.results ? activity.results.reverse() : []} />
       </div>
   
       <div className="_counterparties">
         <PixelTitle title="Counterparties" />
-        <DynamicTable keys={cpKeys} records={counterparty.results.reverse()} />
+        <DynamicTable keys={cpKeys} records={counterparty.results ? counterparty.results.reverse() : []} />
       </div>
     </div>
   );
