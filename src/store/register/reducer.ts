@@ -4,27 +4,27 @@ import { MANAGE_SERVICE } from './action-types'
 const initialState: any = {
   services: {
     serviceFood: {
-      value: 'Service Food',
+      value: 'Food Services',
       selected: false
     },
     servicesAuto: {
-      value: 'Service Auto',
+      value: 'Auto Service',
       selected: false
     },
     servicesMedicine: {
-      value: 'Service Medicene',
+      value: 'Medicine Service ',
       selected: false
     },
     servicesEntertaiment: {
-      value: 'Service Entertaiment',
+      value: 'Entertaiment Service ',
       selected: false
     },
     servicesRent: {
-      value: 'Service Rent',
+      value: 'Rent Service ',
       selected: false
     },
     servicesBeauty: {
-      value: 'Service Beauty',
+      value: 'Beauty Service ',
       selected: false
     }
   }
