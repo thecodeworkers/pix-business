@@ -1,8 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link } from '@reach/router';
 import { InputValue } from '../../../components';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
 import {
 	Commerce,
 	BankBlue,
@@ -11,7 +8,15 @@ import {
 	BoxCheckedGreen,
 	BoxCheckedGray,
 } from '../../../assets/img';
-import { IconTabs, Summary, AddNew, WhiteListButton, PasteWallet, BankCard, Tool, DynamicTable } from '../../../components';
+import {
+	IconTabs,
+	Summary,
+	AddNew,
+	WhiteListButton,
+	PasteWallet,
+	Tool,
+	DynamicTable,
+} from '../../../components';
 import { getCounterparties } from '../../../store/actions';
 import { DownArrow, Close } from '../../../assets/img';
 import AccountCard from '../../../components/AccountCard';
@@ -20,181 +25,222 @@ import { StateProps, Props } from './interface';
 import { getWallets } from '../../../store/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from '@reach/router';
 
-const Send: FC<RouteComponentProps> = (props: any,{
-  location, 
-  navigate = (nav: any) => { },
+const Send: FC<Props> = ({
+	bankAccount,
+	counterparty,
+	wallet,
+	action,
+	navigate = () => {},
+	location,
 }) => {
-  useEffect(() => {
-    console.log(props);
-    navigate('wallet');
-  }, []);
+	useEffect(() => {
+		navigate('wallet');
+		if (!wallet) action.getWallets();
+	}, []);
 
-  const { counterparty } = props;
+	const [currentTab, setCurrentTab] = useState('wallet');
+	const [show, setShow] = useState(false);
+	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
+	const [selectionWallet, setSelectionWallet] = useState(false);
+	const [mainBank, setMainBank] = useState(
+		bankAccount.bankAccounts[0]
+			? {
+					title: bankAccount.bankAccounts[0].bankName + ' Account',
+					address: bankAccount.bankAccounts[0].checkingAccount,
+			  }
+			: {}
+	);
+	const dataTable = {
+		keys: ['hidden', 'counterparty', 'email', 'address'],
+		records: counterparty.counterparties,
+	};
+	const [values, setValues] = useState({
+		Amount: 0,
+		Fee: 0,
+		Total: 0,
+	});
 
-  const [currentTab, setCurrentTab] = useState('wallet');
-  const [show, setShow] = useState(false);
+	const iconTabs = {
+		'Wallet or QR Code': {
+			route: 'wallet',
+			description: 'Receive funds to other USDC address ',
+			icon: <QrBlue />,
+			iconSelected: <QrWhite />,
+		},
+		'Bank Account': {
+			route: 'bank',
+			description: 'Receive funds to your bank account in the US',
+			icon: <BankBlue />,
+			iconSelected: <Commerce />,
+		},
+	};
 
-  const values = {
-    Amount: 12000,
-    Fee: 10000,
-    Total: 80000,
-  };
+	const ChangeTab = () => {
+		currentTab == 'wallet' ? setCurrentTab('bank') : setCurrentTab('wallet');
+	};
 
-  const dataTable = {
-    keys: ['hidden', 'counterparty', 'email', 'address'],
-    records: counterparty.counterparties
-  };
+	const getWallets = () => {
+		setSelectionWallet(!selectionWallet);
+	};
 
-  const iconTabs = {
-    'Wallet or QR Code': {
-      route: 'wallet',
-      description: 'Receive funds to other USDC address ',
-      icon: <QrBlue />,
-      iconSelected: <QrWhite />,
-    },
-    'Bank Account': {
-      route: 'bank',
-      description: 'Receive funds to your bank account in the US',
-      icon: <BankBlue />,
-      iconSelected: <Commerce />,
-    },
-  };
+	const walletInput = (value: any) => {
+		console.log(value);
+	};
 
-  const data = {
-    title: 'Checking account',
-    desc: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-    value: '10,000',
-    total: '10,000',
-  };
+	const changeValue = (value: any) => {
+		let newValue = {
+			Amount: value,
+			Fee: 1,
+			Total: 1 + Number(value),
+		};
 
-  const ChangeTab = () => {
-    currentTab == 'wallet' ? setCurrentTab('bank') : setCurrentTab('wallet')
-  }
+		setValues(newValue);
+	};
 
-  const walletInput = (value: any) => {
-    console.log(value);
-  }
+	const showModal = () => {
+		!show ? setShow(true) : setShow(false);
+	};
 
-  const showModal = () => {
-    !show ? setShow(true) : setShow(false)
-  }
+	return (
+		<div>
+			<div onClick={() => ChangeTab()}>
+				<IconTabs
+					path={location?.pathname.split('/')[3]}
+					tabs={iconTabs}
+					width='40%'
+					height='70px'
+				/>
+			</div>
+			<div className='bodySend'>
+				<div className='accountSendSide'>
+					<div className='_amountsTabs'>
+						<div className='_largeCard'>
+							<button className='_cardButton'>Min</button>
+							<button className='_cardButton'>Parcial</button>
+							<button className='_cardButton'>Max</button>
+						</div>
+					</div>
+					<div className='toAccount'>
+						<div className='to'>
+							<p>From</p>
+							<div
+								className={
+									selectionWallet ? 'accountButton selected' : 'accountButton'
+								}
+								onClick={getWallets}
+							>
+								<p>Account</p>
+								<DownArrow />
+							</div>
+						</div>
+						{selectionWallet ? (
+							<div className='cardSelection'>
+								{wallet.wallets.map((value: any, key: any) => {
+									let Check =
+										mainWallet.address === value.address
+											? BoxCheckedGreen
+											: BoxCheckedGray;
 
-  const close = () => { 
-    setShow(false);
-  }
+									return (
+										<div className='selectCard' key={key}>
+											<div
+												className='checkedVal'
+												onClick={() => {
+													setMainWallet(value);
 
-  return (
-    <div className='ReceiveContainer'>
+													setSelectionWallet(false);
+												}}
+											>
+												<Check />
+											</div>
+											<AccountCard data={value} width='85%' decorator={false} />
+										</div>
+									);
+								})}
+							</div>
+						) : null}
+						<AccountCard data={mainWallet} width='85%' decorator={false} />
+					</div>
+					<div className='toAccount'>
+						<div className='to'>
+							<p>To</p>
+							<div className='buttonContainer'>
+								<div style={{ marginLeft: '0.5rem' }}>
+									<AddNew />
+								</div>
+								<div style={{ marginLeft: '0.5rem' }} onClick={showModal}>
+									<WhiteListButton />
+								</div>
+							</div>
+						</div>
+						{currentTab == 'wallet' ? (
+							<PasteWallet returnValue={walletInput} />
+						) : (
+							<AccountCard
+								data={mainBank}
+								width='85%'
+								banking={true}
+								decorator={false}
+							/>
+						)}
+					</div>
+				</div>
 
-      <div onClick={() => ChangeTab()}>
-        <IconTabs
-          path={location?.pathname.split('/')[3]}
-          tabs={iconTabs}
-          width='40%'
-          height='70px'
-        />
-      </div>
-
-      <div className='_inputsRow'>
-        <div className='_amountsTabs'>
-          <div className='_largeCard'>
-            <button className='_cardButton'>Min</button>
-            <button className='_cardButton'>Parcial</button>
-            <button className='_cardButton'>Max</button>
-          </div>
-        </div>
-
-        <div style={{ width: '50%' }}>
-          <InputValue defaulValue={0} returnValue={null} />
-        </div>
-      </div>
-
-      <div className='_fromDiv'>
-        <p>From</p>
-
-        <div className='_fakeSelect'>
-          select
-       <DownArrow />
-        </div>
-
-      </div>
-
-      <div className='_rowsCard'>
-        <div style={{ width: '45%', marginTop: '20px' }}>
-          <AccountCard data={data} width='95%' decorator={false} />
-        </div>
-
-        <div style={{ width: '50%' }}>
-          <Summary values={values} />
-        </div>
-      </div>
-
-      <div className='_toContainer'>
-        <p>
-          To
-        </p>
-        <div className='_actBtn'>
-          <AddNew />
-          <div style={{ marginLeft: '0.5rem' }}>
-            <WhiteListButton action={showModal}/>
-          </div>
-        </div>
-      </div>
-
-      <div className='_lastRow'>
-        <div className='_pasteStyles'>
-
-          {
-            currentTab == 'wallet'
-              ? <PasteWallet returnValue={walletInput} />
-              : <BankCard />
-          }
-
-        </div>
-
-        <div>
-          <button > Cancel</button>
-
-          <Link to='/confirm-send'>
-            <button className='_sendBtn' > Send</button>
-          </Link>
-        </div>
-
-        <div className={show ? '_blur' : '_blurNone'} >
-      <div className={show ? '_showTool' : '_noneTool'} >
-        <div className='_closeTools' onClick={() => close()}>
-          <Close />
-         
-        </div>
-        <div className='_DynamicTableLayOut'>
-
-          <p style={{marginBottom: '20px', textAlign: 'left'}}>Whitelist</p>
-          <div className='_whilistStyles'>
-          <DynamicTable  keys={dataTable.keys} records={dataTable.records}/>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-        {/* <Tool show={show} callback={() => showModal()} > </Tool> */}
-      </div>
-    </div>
-  )
+				<div className='inputSendSide'>
+					<InputValue defaulValue={0} returnValue={changeValue} />
+					<Summary values={values} />
+					<div className='buttonSendContent'>
+						<button
+							className='buttonCancel'
+							onClick={() => navigate('/dashboard')}
+						>
+							Cancel
+						</button>
+						<button
+							className='buttonSend'
+							onClick={() => navigate('/payments/transfer/details')}
+						>
+							Send
+						</button>
+					</div>
+				</div>
+			</div>
+			<div className={show ? '_blur' : '_blurNone'}>
+				<div className={show ? '_showTool' : '_noneTool'}>
+					<div className='_closeTools' onClick={() => showModal()}>
+						<Close />
+					</div>
+					<div className='_DynamicTableLayOut'>
+						<p style={{ marginBottom: '20px', textAlign: 'left' }}>Whitelist</p>
+						<div className='_whilistStyles'>
+							<DynamicTable keys={dataTable.keys} records={dataTable.records} />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-const mapStateToProps = ({ counterparty }: any) => ({ counterparty });
+const mapStateToProps = ({
+	wallet,
+	bankAccount,
+	counterparty,
+}: StateProps): StateProps => ({
+	wallet,
+	bankAccount,
+	counterparty,
+});
 
 const mapDispatchToProps = (dispatch: any) => {
-  const actions = {
-    getCounterparties
-  }
+	const actions = {
+		getCounterparties,
+	};
 
-  return {
-    action: bindActionCreators(actions, dispatch)
-  }
-}
+	return {
+		action: bindActionCreators(actions, dispatch),
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Send);

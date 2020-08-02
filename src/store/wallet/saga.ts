@@ -56,7 +56,12 @@ function* createWalletAsync(action: any) {
     const wallet = yield call(fetchService, wallets, 'POST', params, true);
     const realWallet = yield call(createAddresses, wallet.data);
 
-    if(action.isSaving) realWallet['saving'] = true;
+    if(action.isSaving) {
+      realWallet['saving'] = true;
+      realWallet['balances'] = [{
+        amount: 3000
+      }];
+    }
     
     yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
     
@@ -69,6 +74,9 @@ function* createFirstWalletAsync() {
   try {
     const { data } = yield call(fetchService, wallets, 'GET', null, true);
     const realWallet = yield call(createAddresses, data[0]);
+    realWallet['balances'] =[ {
+      amount: 7000
+    }];
     
     yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
     yield call(createWalletAsync, { isSaving: true });

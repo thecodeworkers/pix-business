@@ -2,10 +2,9 @@
 
 .bodyMultiConfirmation {
 	display: flex;
-	height: calc(100vh - 367px);
 	align-items: flex-start;
-	min-height: 500px;
 	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
 .accountConfirmationSide {
@@ -67,7 +66,7 @@
 .multiFormConfirmationContainer {
 	margin-top: 20px;
 
-	.details{
+	.details {
 		background: #efefef;
 		border-radius: 5px;
 		width: fit-content;

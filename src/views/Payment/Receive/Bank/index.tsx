@@ -21,10 +21,10 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [mainBank, setMainBank] = useState(
-		bankAccount.results[0]
+		bankAccount.bankAccounts[0]
 			? {
-					title: bankAccount.results[0].bankName + ' Account',
-					address: bankAccount.results[0].checkingAccount,
+					title: bankAccount.bankAccounts[0].bankName + ' Account',
+					address: bankAccount.bankAccounts[0].checkingAccount,
 			  }
 			: {}
 	);
@@ -57,7 +57,7 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 					</div>
 					{selectionAccount ? (
 						<div className='cardSelection'>
-							{bankAccount.results.map((value: any, key: any) => {
+							{bankAccount.bankAccounts.map((value: any, key: any) => {
 								let values = {
 									title: value.bankName + ' Account',
 									address: value.checkingAccount,
@@ -72,7 +72,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainBank(values)}
+											onClick={() => {
+												setMainBank(values);
+
+												setSelectionAccount(false);
+											}}
 										>
 											<Check />
 										</div>
@@ -114,7 +118,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(value)}
+											onClick={() => {
+												setMainWallet(value);
+
+												setSelection(false);
+											}}
 										>
 											<Check />
 										</div>
