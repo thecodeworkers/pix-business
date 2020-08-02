@@ -205,7 +205,6 @@ const Make: FC<Props> = ({
 										className='deleteBox'
 										onClick={() => {
 											deleteArray(index);
-											enableInput(index);
 										}}
 									>
 										<XMark />

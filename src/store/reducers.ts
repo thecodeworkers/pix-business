@@ -10,6 +10,7 @@ import register from './register/reducer';
 import bankAccount from './bankAccount/reducer';
 import counterparty from './counterparty/reducer';
 import multiSend from './multisend/reducer';
+import finished from './finished/reducer';
 
 const reducers = combineReducers({
   user,
@@ -23,6 +24,7 @@ const reducers = combineReducers({
   bankAccount,
   counterparty,
   multiSend,
+  finished
 });
 
 export default reducers;

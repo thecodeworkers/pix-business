@@ -5,7 +5,7 @@ import { InputValue, Summary, CodeQR } from '../../../../components';
 import { Props, StateProps } from './interface';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { multiTransfer } from '../../../../store/actions';
+import { multiTransfer, updateFinished } from '../../../../store/actions';
 
 const Confirmation: FC<Props> = ({
 	action,
@@ -35,7 +35,14 @@ const Confirmation: FC<Props> = ({
 
 	const sendData = () => {
 		//if (multiSend.result.length) action.multiTransfer(multiSend.result);
-		navigate('transaction-complete');
+		action.updateFinished({
+			to: 'Multiples Address',
+			amount: sum,
+			data: values,
+			dataArray: multiSend.result,
+			array: true,
+		});
+		navigate('/payments/transaction-completed');
 	};
 
 	return (
@@ -76,11 +83,9 @@ const Confirmation: FC<Props> = ({
 					>
 						Cancel
 					</button>
-					<Link to='/transaction-completed'>
-						<button className='buttonSend' onClick={sendData}>
-							Send
-						</button>
-					</Link>
+					<button className='buttonSend' onClick={sendData}>
+						Send
+					</button>
 				</div>
 			</div>
 		</div>
@@ -94,6 +99,7 @@ const mapStateToProps = ({ multiSend }: StateProps): StateProps => ({
 const mapDispatchToProps = (dispatch: any) => {
 	const actions = {
 		multiTransfer,
+		updateFinished,
 	};
 
 	return {

@@ -53,7 +53,7 @@ const Payment: FC<RouteComponentProps> = ({
 				<Multisend path='multisend/*' />
 				<Send path='send/*' />
 				<ConfirmSend path='confirm-send/*' />
-				<TransactionCompleted path='transaction-complete/*' />
+				<TransactionCompleted path='transaction-completed/*' />
 			</Router>
 		</div>
 	);
