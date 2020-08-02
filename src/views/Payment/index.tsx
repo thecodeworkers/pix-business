@@ -6,11 +6,12 @@ import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
-import ConfirmSend  from './Send';
+import ConfirmSend from './Send';
 import Transfer from './Transfer';
 import TransferDetails from './Transfer/Details';
+import TransactionCompleted from './Finished';
 
-const Payment: FC<RouteComponentProps>  = ({
+const Payment: FC<RouteComponentProps> = ({
 	location,
 	navigate = (nav: any) => {},
 }) => {
@@ -58,6 +59,7 @@ const Payment: FC<RouteComponentProps>  = ({
 					<Multisend path='multisend/*' />
 					<Send path='send/*' />
 					<ConfirmSend path='confirm-send/*' />
+					<TransactionCompleted path='transaction-completed/*' />
 				</Router>
 			</div>
 		</div>

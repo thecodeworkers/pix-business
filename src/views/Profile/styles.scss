@@ -68,3 +68,54 @@ margin-left: 20px;
   font-size: 15px;
 color: $superDarkGray;
   }
+
+.div_white{
+  display: flex;
+  justify-content: space-between;
+}
+._inline{
+  display: flex;
+  padding: 4px;
+  background-color: $white;
+}
+
+.div_space{
+  margin-bottom: 30px;
+}
+
+
+._medium{
+  height: 30vh;
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+}
+
+._testinParents{
+  height: 40vh;
+}
+._addon{
+  background-color: red;
+  width: 100%;
+}
+
+._div_full{
+  width: 100%;
+}
+
+._addBankButton {
+  width: 14rem;
+  background: $black;
+  color: $white;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight:600;
+  display: flex;
+  justify-content: space-between;
+}
+
+
