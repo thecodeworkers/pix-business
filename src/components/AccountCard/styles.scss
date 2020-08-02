@@ -1,15 +1,14 @@
 @import '../../assets/styles/index.scss';
 
 ._account {
-	color: $white;
-	background: transparent linear-gradient(180deg, $darkBlueToBlue 100%) 0% 0%
-		no-repeat padding-box;
-	border-radius: 9px;
-	margin-bottom: 2rem;
-	width: 45%;
-	padding: 20px;
-	display: flex;
-	position: relative;
+  color: $white;
+  background: transparent linear-gradient(180deg, $darkBlueToBlue 100%) 0% 0% no-repeat padding-box;
+  border-radius: 9px;
+  margin-bottom: 2rem;
+  width: calc(45% - 1rem);
+  padding: 20px;
+  display: flex;
+  position: relative;
 
 	._decorator {
 		height: 40px;
@@ -73,9 +72,15 @@
 			font-size: $small;
 		}
 
-		._total {
-			font-size: $extra-large;
-			font-weight: bold;
-		}
-	}
+    ._total {
+      font-size: $extra-large;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  ._account {
+    width: 100%;
+  }
 }

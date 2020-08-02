@@ -47,7 +47,7 @@ function* getWalletsAsync() {
   }
 }
 
-function* createWalletAsync() {
+function* createWalletAsync(action: any) {
   try {
     const params = {
       idempotencyKey: uuidv4()
@@ -55,6 +55,8 @@ function* createWalletAsync() {
 
     const wallet = yield call(fetchService, wallets, 'POST', params, true);
     const realWallet = yield call(createAddresses, wallet.data);
+
+    if(action.isSaving) realWallet['saving'] = true;
     
     yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
     
@@ -69,6 +71,7 @@ function* createFirstWalletAsync() {
     const realWallet = yield call(createAddresses, data[0]);
     
     yield put(actionObject(CREATE_WALLET_ASYNC, { wallet: [realWallet] } ));
+    yield call(createWalletAsync, { isSaving: true });
     
   } catch(error) {
     console.log(error);

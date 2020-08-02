@@ -1,5 +1,5 @@
 import { actionObject } from '../../utils';
-import { LOGIN } from './action-types';
+import { LOGIN, LOGOUT } from './action-types';
 
 type CredentialProps = {
   email: string
@@ -7,3 +7,4 @@ type CredentialProps = {
 }
 
 export const login = (credentials: CredentialProps) => actionObject(LOGIN, credentials);
+export const logout = () => actionObject(LOGOUT);

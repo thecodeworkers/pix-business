@@ -1,10 +1,11 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import { Capsule, Heart, Coin, Camera, Taxi, Cockie,Logo } from '../../assets/img';
 import { Formik, Form, Field } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Props, StateProps } from './interface';
-import { manageService, createCommerce, createFirstWallet } from '../../store/actions';
+import { manageService, createCommerce, createFirstWallet, getWallets } from '../../store/actions';
+import { navigate } from "@reach/router"
 import checked from '../../assets/img/Static/checked.png';
 import unchecked from '../../assets/img/Static/unchecked.png';
 import './styles.scss';
@@ -12,10 +13,6 @@ import './styles.scss';
 const Register: FC<Props> = ({ register, action }) => {
   const [ checkSecond, setCheckSecond ] = useState(0);
   const [year, setYear] = useState('');
-
-  useEffect(() => {
-    
-  }, []);
 
   const { services } = register;
 
@@ -56,12 +53,12 @@ const Register: FC<Props> = ({ register, action }) => {
     const optionalService = data.optional;
     if(optionalService) allServices.push(optionalService);
 
-    delete data['optional'];
     data.services = allServices;
     data.years = year;
 
     action.createCommerce(data);
-    // action.createFirstWallet();
+    action.createFirstWallet();
+    navigate('/');
   }
 
   return (
@@ -109,12 +106,7 @@ const Register: FC<Props> = ({ register, action }) => {
             initialValues={form}
             onSubmit={values => registerCommerce(values)}
           >
-            {({
-              values,
-              handleSubmit,
-              handleChange
-            }) => (
-              <Form onSubmit={handleSubmit}>
+              <Form>
                 <div>
                   <Field className='_input' type="text" name="name" placeholder='Name' />
                 </div>
@@ -122,12 +114,12 @@ const Register: FC<Props> = ({ register, action }) => {
                 <div className='_form-div-father'>
                   <div className='_form-div'>
                     <h3 className='_form-subtitle'>Username</h3>
-                    <input className='_input-half' type="text" name="email" placeholder='Username' onChange={handleChange} value={values.email} />
+                    <Field className='_input-half' type="text" name="email" placeholder='Email' />
                   </div>
 
                   <div className='_form-div'>
                     <h3 className='_form-subtitle'>Password</h3>
-                    <input className='_input-half' type="password" name="password" placeholder='Password' onChange={handleChange} value={values.password} />
+                    <Field className='_input-half' type="password" name="password" placeholder='Password' />
                   </div>
                 </div>
 
@@ -177,7 +169,7 @@ const Register: FC<Props> = ({ register, action }) => {
 
                 <p className='_text_blue'>I didn't find my type of business</p>
                 <div>
-                  <input className='_input' type="text" name="optional" placeholder='Write your type of business if necessary' onChange={handleChange} value={values.optional} />
+                  <Field className='_input' type="text" name="optional" placeholder='Write your type of business if necessary' />
                 </div>
                 <h3 className='_form-subtitle'>How long have you been in business?</h3>
 
@@ -203,7 +195,6 @@ const Register: FC<Props> = ({ register, action }) => {
                   <button className='buttonSend' type="submit">Done</button>
                 </div>
               </Form>
-            )}
           </Formik>
         </div>
       </div>
@@ -218,7 +209,8 @@ const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     manageService,
     createCommerce,
-    createFirstWallet
+    createFirstWallet,
+    getWallets
   }
 
   return {

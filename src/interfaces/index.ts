@@ -26,7 +26,6 @@ export interface BankProps {
 
 export interface AuthProps {
   isAuth: boolean
-  commerce: CommerceProps | null
 }
 
 export interface WalletProps {
@@ -39,5 +38,13 @@ export interface WalletProps {
   walletId: string
   description?: string
   wallets: Array<WalletProps>
-  saving: any
+  saving?: boolean
+}
+
+export interface CounterpartyProps {
+  type: string,
+  counterparty: string
+  address: string
+  email: string
+  phone: string
 }
