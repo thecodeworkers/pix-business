@@ -8,7 +8,7 @@ const Header = ( props: any = false ) => {
   const minitabs = {
 		Banking: { route: 'transfer' },
 		"Data Analytics": { route: 'send' },
-	};
+  };
 
   return (
     <div className="_container">

@@ -4,6 +4,10 @@ import { RouteComponentProps } from '@reach/router';
 import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
 import { DownArrow, Check, XMark } from '../../../../assets/img';
+import { bindActionCreators } from 'redux';
+import { getWallets } from '../../../../store/actions';
+import { connect } from 'react-redux';
+import { StateProps } from './interface';
 
 const Make: FC<RouteComponentProps> = () => {
 	const [Counter, setCounter] = useState([
@@ -98,6 +102,18 @@ const Make: FC<RouteComponentProps> = () => {
 			</div>
 		</div>
 	);
+};
+
+const mapStateToProps = ({ wallet }: StateProps): StateProps => ({ wallet });
+
+const mapDispatchToProps = (dispatch: any) => {
+	const actions = {
+		getWallets,
+	};
+
+	return {
+		action: bindActionCreators(actions, dispatch),
+	};
 };
 
 export default Make;

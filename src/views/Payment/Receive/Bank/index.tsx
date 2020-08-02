@@ -1,34 +1,58 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import './styles.scss';
-import { RouteComponentProps } from '@reach/router';
-import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
-import { DownArrow, Copy } from '../../../../assets/img';
+import {
+	DownArrow,
+	BoxCheckedGreen,
+	BoxCheckedGray,
+} from '../../../../assets/img';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getWallets } from '../../../../store/actions';
+import { StateProps, Props } from './interface';
 
-const Bank: FC<RouteComponentProps> = () => {
-	const getValue = (value: any) => {
-		console.log(value);
+const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
+	const [selectionWallet, setSelection] = useState(false);
+
+	useEffect(() => {
+		if (!wallet) action.getWallets();
+	}, [action]);
+
+	const [mainWallet, setMainWallet] = useState(
+		wallet.wallets[0]
+			? {
+					title: !wallet.wallets[0].saving
+						? 'Checking Account'
+						: 'Saving Account',
+					desc: wallet.wallets[0].address,
+					value: wallet.wallets[0].balances.length
+						? wallet.wallets[0].balances[0]
+						: 0,
+					total: wallet.wallets[0].balances.length
+						? wallet.wallets[0].balances[0]
+						: 0,
+			  }
+			: {}
+	);
+
+	const [mainBank, setMainBank] = useState(
+		bankAccount.results[0]
+			? {
+					title: bankAccount.results[0].bankName + ' Account',
+					desc: bankAccount.results[0].checkingAccount,
+			  }
+			: {}
+	);
+
+	const [selectionAccount, setSelectionAccount] = useState(false);
+
+	const getWallets = () => {
+		setSelection(!selectionWallet);
 	};
 
-	const values = {
-		Amount: 12000,
-		Fee: 10000,
-		Total: 80000,
+	const getAccounts = () => {
+		setSelectionAccount(!selectionAccount);
 	};
-
-	const data2 = {
-		title: 'Chase account',
-		desc: '*********************1234',
-	};
-
-	const data = {
-		title: 'Checking account',
-		desc: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-		value: '10,000',
-		total: '10,000',
-	};
-
-	const wallet = '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed';
 
 	return (
 		<div className='bodyBank'>
@@ -36,22 +60,93 @@ const Bank: FC<RouteComponentProps> = () => {
 				<div className='toAccount'>
 					<div className='to'>
 						<p>From</p>
-						<div className='accountButton'>
+						<div
+							className={
+								selectionAccount ? 'accountButton selected' : 'accountButton'
+							}
+							onClick={getAccounts}
+						>
 							<p>Account</p>
 							<DownArrow />
 						</div>
 					</div>
-					<AccountCard data={data2} width='85%' decorator={false} />
+					{selectionAccount ? (
+						<div className='cardSelection'>
+							{bankAccount.results.map((value: any, key: any) => {
+								let values = {
+									title: value.bankName + ' Account',
+									desc: value.checkingAccount,
+								};
+
+								let Check =
+									mainBank.desc === values.desc
+										? BoxCheckedGreen
+										: BoxCheckedGray;
+
+								return (
+									<div className='selectCard' key={key}>
+										<div
+											className='checkedVal'
+											onClick={() => setMainBank(values)}
+										>
+											<Check />
+										</div>
+										<AccountCard data={values} width='85%' decorator={false} />
+									</div>
+								);
+							})}
+						</div>
+					) : null}
+					<AccountCard
+						data={mainBank}
+						banking={true}
+						width='85%'
+						decorator={false}
+					/>
 				</div>
 				<div className='toAccount'>
 					<div className='to'>
 						<p>To</p>
-						<div className='accountButton'>
+						<div
+							className={
+								selectionWallet ? 'accountButton selected' : 'accountButton'
+							}
+							onClick={getWallets}
+						>
 							<p>Account</p>
 							<DownArrow />
 						</div>
 					</div>
-					<AccountCard data={data} width='85%' decorator={false} />
+					{selectionWallet ? (
+						<div className='cardSelection'>
+							{wallet.wallets.map((value: any, key: any) => {
+								let values = {
+									title: !value.saving ? 'Checking Account' : 'Saving Account',
+									desc: value.address,
+									value: value.balances.length ? value.balances[0] : 0,
+									total: value.balances.length ? value.balances[0] : 0,
+								};
+
+								let Check =
+									mainWallet.desc === values.desc
+										? BoxCheckedGreen
+										: BoxCheckedGray;
+
+								return (
+									<div className='selectCard' key={key}>
+										<div
+											className='checkedVal'
+											onClick={() => setMainWallet(values)}
+										>
+											<Check />
+										</div>
+										<AccountCard data={values} width='85%' decorator={false} />
+									</div>
+								);
+							})}
+						</div>
+					) : null}
+					<AccountCard data={mainWallet} width='85%' decorator={false} />
 				</div>
 			</div>
 			<div className='bankSide'>
@@ -87,16 +182,23 @@ const Bank: FC<RouteComponentProps> = () => {
 					</div>
 				</div>
 			</div>
-			<div className='inputBankSide'>
-				<InputValue defaulValue={0} returnValue={getValue} />
-				<Summary values={values} />
-				<div className='buttonBankContent'>
-					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend'>Send</button>
-				</div>
-			</div>
 		</div>
 	);
 };
 
-export default Bank;
+const mapStateToProps = ({ wallet, bankAccount }: StateProps): StateProps => ({
+	wallet,
+	bankAccount,
+});
+
+const mapDispatchToProps = (dispatch: any) => {
+	const actions = {
+		getWallets,
+	};
+
+	return {
+		action: bindActionCreators(actions, dispatch),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bank);
