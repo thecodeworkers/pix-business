@@ -5,7 +5,10 @@ import './styles.scss';
 import { StateProps, Props } from './interface';
 import { connect } from 'react-redux';
 
-const TransactionCompleted: FC<Props> = ({ finished, navigate = (nav: any) => { } }) => {
+const TransactionCompleted: FC<Props> = ({
+	finished,
+	navigate = (nav: any) => {},
+}) => {
 	return (
 		<div>
 			<div className='_transactionCompletedContainer'>
@@ -31,7 +34,11 @@ const TransactionCompleted: FC<Props> = ({ finished, navigate = (nav: any) => { 
 						</div>
 						<div className='_containerColor'>
 							<Summary
-								values={finished.data}
+								values={
+									finished.data
+										? finished.data
+										: { Amount: 0, Fee: 0, Total: 0 }
+								}
 								multi={finished.array}
 								array={finished.dataArray}
 							/>

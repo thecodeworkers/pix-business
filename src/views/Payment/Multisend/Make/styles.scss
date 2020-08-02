@@ -9,8 +9,8 @@
 }
 
 .accountMakeSide {
-	width: 45%;
-
+	width: 50%;
+	padding: 1rem;
 	.to {
 		display: flex;
 		width: 90%;
@@ -36,6 +36,11 @@
 			color: $darkBlue;
 		}
 	}
+
+	._savingAccount {
+		margin: 0 auto;
+	}
+
 	.buttonContainer {
 		display: flex;
 		justify-content: flex-end;
@@ -208,7 +213,7 @@
 }
 
 .inputMakeSide {
-	width: 55%;
+	width: 50%;
 	padding: 2rem;
 }
 

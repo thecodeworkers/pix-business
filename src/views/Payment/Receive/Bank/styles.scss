@@ -2,9 +2,8 @@
 
 .bodyBank {
 	display: flex;
-	height: calc(100vh - 367px);
 	align-items: flex-start;
-	min-height: 500px;
+	min-height: 400px;
 	padding: 2rem 0;
 	padding-bottom: 0;
 }
@@ -12,11 +11,13 @@
 .accountBankSide {
 	width: 50%;
 	padding: 1rem;
-
+	._savingAccount {
+		margin: 0 auto;
+	}
 	.toAccount {
 		margin: 20px 0px;
-		&:first-child{
-			margin-top: 0	;
+		&:first-child {
+			margin-top: 0;
 		}
 	}
 	.cardSelection {
@@ -102,7 +103,7 @@
 }
 
 .bankSide {
-	padding: 3.5rem 1rem;
+	padding: 3.5rem 2rem;
 	width: 50%;
 	color: $black;
 	.bankData {
@@ -110,6 +111,7 @@
 		padding: 1rem;
 		border-radius: 15px;
 	}
+
 	.bankRow {
 		margin: 5px 0px;
 		display: flex;
