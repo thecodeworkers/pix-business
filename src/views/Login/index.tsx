@@ -1,20 +1,13 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Logo } from '../../assets/img';
 import { Formik, Form, Field } from 'formik';
 import { StateProps, Props } from './interface';
 import { bindActionCreators } from 'redux';
 import { login } from '../../store/actions';
 import { connect } from 'react-redux';
-import { navigate } from '@reach/router';
 import './styles.scss';
 
-const Login: FC<Props> = ({ auth, action }) => {
-  const { isAuth } = auth;
-
-  useEffect(() => {
-    if(isAuth) navigate('/dashboard');
-  }, [isAuth]);
-
+const Login: FC<Props> = ({ action }) => {
   const colors: any = [
     { class: '_one_' },
     { class: '_two_' },
@@ -78,10 +71,7 @@ const Login: FC<Props> = ({ auth, action }) => {
             initialValues={form}
             onSubmit={values => login(values)}
           >
-            {({
-             errors,
-             touched
-            }) => (
+            {() => (
               <Form>
                 <div className='_form-div-father'>
                   <div className='_form-div'>

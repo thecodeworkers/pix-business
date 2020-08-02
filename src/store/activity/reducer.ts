@@ -10,7 +10,8 @@ const initialState: any = {
       'counterparty': 'Income',
       'type': 'Deposit',
       'address': '0xDadlsjf',
-      'amount': 66.22
+      'amount': 66.22,
+      balance: 0.00000
     },
     {
       'status': 'sent',
@@ -19,7 +20,8 @@ const initialState: any = {
       'counterparty': 'Income',
       'type': 'Deposit',
       'address': '0xDadlsjf',
-      'amount': 66.22
+      'amount': 66.22,
+      balance: 0.00000
     },
     {
       'status': 'sent',
@@ -28,7 +30,8 @@ const initialState: any = {
       'counterparty': 'Income',
       'type': 'Deposit',
       'address': '0xDadlsjf',
-      'amount': 66.22
+      'amount': 66.22,
+      balance: 0.00000
     },
     {
       'status': 'sent',
@@ -37,7 +40,8 @@ const initialState: any = {
       'counterparty': 'Income',
       'type': 'Deposit',
       'address': '0xDadlsjf',
-      'amount': 66.22
+      'amount': 66.22,
+      balance: 0.00000
     }
   ]
 }

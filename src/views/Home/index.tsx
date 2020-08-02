@@ -17,7 +17,7 @@ export default () => (
     <div className="_dcontainer">
       <Header tabs={false} />
       <Router>
-        <Dashboard path="/dashboard"/>
+        <Dashboard path="/"/>
         <DataAnalytics path="/data-analitycs/"/>
         <Payment path='/payments/*' />
         <ConfirmSend path='/confirm-send/*'/>
