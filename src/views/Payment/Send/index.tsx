@@ -17,7 +17,6 @@ import {
 	AddNew,
 	WhiteListButton,
 	PasteWallet,
-	BankCard,
 	Tool,
 	DynamicTable,
 } from '../../../components';
@@ -55,7 +54,10 @@ const Send: FC<Props> = ({
 			  }
 			: {}
 	);
-
+	const dataTable = {
+		keys: ['hidden', 'counterparty', 'email', 'address'],
+		records: counterparty.counterparties,
+	};
 	const [values, setValues] = useState({
 		Amount: 0,
 		Fee: 0,
@@ -200,6 +202,19 @@ const Send: FC<Props> = ({
 						>
 							Send
 						</button>
+					</div>
+				</div>
+			</div>
+			<div className={show ? '_blur' : '_blurNone'}>
+				<div className={show ? '_showTool' : '_noneTool'}>
+					<div className='_closeTools' onClick={() => close()}>
+						<Close />
+					</div>
+					<div className='_DynamicTableLayOut'>
+						<p style={{ marginBottom: '20px', textAlign: 'left' }}>Whitelist</p>
+						<div className='_whilistStyles'>
+							<DynamicTable keys={dataTable.keys} records={dataTable.records} />
+						</div>
 					</div>
 				</div>
 			</div>
