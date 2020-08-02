@@ -1,6 +1,12 @@
 import React, { FC, useState, useEffect } from 'react';
 import './styles.scss';
-import { InputValue, Summary, CodeQR } from '../../../../components';
+import {
+	InputValue,
+	Summary,
+	CodeQR,
+	WhiteListButton,
+	AddNew,
+} from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
 import {
 	DownArrow,
@@ -8,6 +14,7 @@ import {
 	XMark,
 	BoxCheckedGreen,
 	BoxCheckedGray,
+	Share,
 } from '../../../../assets/img';
 import { bindActionCreators } from 'redux';
 import { getWallets, updateMultiSend } from '../../../../store/actions';
@@ -49,20 +56,30 @@ const Make: FC<Props> = ({
 	const deleteArray = (index: any) => {
 		multiSend.result.splice(index, 1);
 
-		let sum = multiSend.result.reduce((prex: any, next: any) => {
-			return (
-				Number(typeof prex === 'object' ? prex.amount : prex) +
-				Number(next.amount)
-			);
-		});
-		sum = typeof sum === 'object' ? sum.amount : sum;
-		let newValues = {
-			Fee: multiSend.result.length,
-			Total: sum + multiSend.result.length,
-		};
+		if (multiSend.result.length) {
+			let sum = multiSend.result.reduce((prex: any, next: any) => {
+				return (
+					Number(typeof prex === 'object' ? prex.amount : prex) +
+					Number(next.amount)
+				);
+			});
+			sum = typeof sum === 'object' ? sum.amount : sum;
+			let newValues = {
+				Fee: multiSend.result.length,
+				Total: sum + multiSend.result.length,
+			};
 
-		setValues(newValues);
-		setSumValue(sum);
+			setValues(newValues);
+			setSumValue(sum);
+			action.updateMultiSend(multiSend.result);
+			return;
+		}
+
+		setValues({
+			Fee: 0,
+			Total: 0,
+		});
+		setSumValue(0);
 
 		action.updateMultiSend(multiSend.result);
 	};
@@ -115,6 +132,15 @@ const Make: FC<Props> = ({
 					) : null}
 					<AccountCard data={mainWallet} width='85%' decorator={false} />
 				</div>
+				<div className='buttonContainer'>
+					<button className='importButton'><Share/> Import</button>
+					<div style={{ marginLeft: '0.5rem' }}>
+						<AddNew />
+					</div>
+					<div style={{ marginLeft: '0.5rem' }}>
+						<WhiteListButton />
+					</div>
+				</div>
 				<div className='multiFormContainer'>
 					<div className='multiForm'>
 						<p>To</p>
@@ -145,24 +171,27 @@ const Make: FC<Props> = ({
 									let newForm: any = {};
 									newForm['name'] = 'counterparty ' + counter;
 									newForm['disabledInput'] = true;
-
-									console.log(multiSend.result);
-									multiSend.result.push({ ...form, ...newForm });
-									let sum = multiSend.result.reduce((prex: any, next: any) => {
-										return (
-											Number(typeof prex === 'object' ? prex.amount : prex) +
-											Number(next.amount)
+									if (form.amount && form.address) {
+										multiSend.result.push({ ...form, ...newForm });
+										let sum = multiSend.result.reduce(
+											(prex: any, next: any) => {
+												return (
+													Number(
+														typeof prex === 'object' ? prex.amount : prex
+													) + Number(next.amount)
+												);
+											}
 										);
-									});
-									sum = typeof sum === 'object' ? sum.amount : sum;
-									let newValues = {
-										Fee: multiSend.result.length,
-										Total: sum + multiSend.result.length,
-									};
+										sum = typeof sum === 'object' ? sum.amount : sum;
+										let newValues = {
+											Fee: multiSend.result.length,
+											Total: sum + multiSend.result.length,
+										};
 
-									setValues(newValues);
-									setSumValue(sum);
-									action.updateMultiSend(multiSend.result);
+										setValues(newValues);
+										setSumValue(sum);
+										action.updateMultiSend(multiSend.result);
+									}
 								}}
 							>
 								<Check />
