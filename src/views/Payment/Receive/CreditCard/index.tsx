@@ -74,7 +74,7 @@ const CreditCard: FC<RouteComponentProps> = (props:any) => {
 				<Summary values={values} />
 				<div className='buttonCreditContent'>
 					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend' onClick={() => props.navigate('/transaction-completed')}>Send</button>
+					<button className='buttonSend' onClick={() => props.navigate('/payments/transaction-completed')}>Send</button>
 				</div>
 			</div>
 		</div>

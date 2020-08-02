@@ -3,7 +3,7 @@ import { RouteComponentProps, Link } from '@reach/router';
 import { InputValue, Summary, AccountCard } from '../../../../components';
 import './styles.scss';
 
-const TransferDetails: FC<RouteComponentProps> = () => {
+const TransferDetails: FC<RouteComponentProps> = ({ navigate = () => {} }) => {
 	const data = {
 		title: 'Checking account',
 		desc: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
@@ -13,32 +13,41 @@ const TransferDetails: FC<RouteComponentProps> = () => {
 	};
 
 	const values = {
-		Amount: 12000,
-		Fee: 10000,
-		Total: 80000,
+		Amount: 0,
+		Fee: 0,
+		Total: 0,
 	};
 
 	return (
-		<div className='_mainContainer'>
-			<div className='_firstColumn'>
-				<button className='_transButton'>Transaction details</button>
-				<div className='_cardContainer'>
-					<p>Destination</p>
-					<div className='_cards'>
-						<AccountCard data={data} width='95%' decorator={false} />
+		<div className='bodyTransfer'>
+			<div className='accountTransferSide'>
+				<div className='details'>
+					<p>Transaction Details</p>
+				</div>
+				<div className='toAccount'>
+					<div className='to'>
+						<p>To</p>
 					</div>
+					<AccountCard data={data} width='85%' decorator={false} />
 				</div>
 			</div>
 
-			<div className='_secondColumn _topMargin'>
-				<InputValue defaulValue={0} returnValue={null} />
+			<div className='inputTransferSide'>
+				<InputValue defaulValue={0} returnValue={null} disables={true} />
 				<Summary values={values} />
-				<div className='_buttonsContainer'>
-					<button className='_cancelBtn'>Cancel</button>
-
-					<Link to='/transaction-completed'>
-						<button className='_sendBtn'>Done</button>
-					</Link>
+				<div className='buttonTransferContent'>
+					<button
+						className='buttonCancel'
+						onClick={() => navigate('/payments/transfer')}
+					>
+						Cancel
+					</button>
+					<button
+						className='buttonSend'
+						onClick={() => navigate('/payments/transaction-completed')}
+					>
+						Send
+					</button>
 				</div>
 			</div>
 		</div>

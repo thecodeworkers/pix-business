@@ -6,9 +6,11 @@ import { Pixel, Arrow } from '../../assets/img';
 import Sales from './Sales';
 import Expenses from './Expenses';
 import './styles.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { searchActivities } from '../../store/actions';
 
-const Commerce: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => {} }) => {
-
+const Commerce: FC<RouteComponentProps | any> = ({ location, navigate = (nav: any) => {}, product }) => {
   useEffect(() => {
 		navigate('products-services');
 	}, []);
@@ -33,7 +35,7 @@ const Commerce: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
             <div>This month</div>
             <Arrow />
           </button>
-          <ExportButton />
+          <ExportButton data={product.products} name='products' flag='csv' />
         </div>
       </div>
       
@@ -47,4 +49,16 @@ const Commerce: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
   )
 }
 
-export default Commerce;
+const mapStateToProps = ({ product }: any) => ({ product });
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    searchActivities
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Commerce);

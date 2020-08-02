@@ -1,41 +1,43 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef} from 'react';
 import { RouteComponentProps } from '@reach/router';
+import { bindActionCreators } from 'redux';
 import { ExportButton, AddNew} from '../../components';
 import './styles.scss';
 import { Pixel, Heart, Coin, Capsule, Camera, Cockie, Taxi, Add} from '../../assets/img';
 import { Formik, Form, Field } from 'formik';
-import { getCounterparties, saveCounterparty, getBackupCounterparties, filterCounterparties } from '../../store/actions';
+import {saveBankAccount } from '../../store/actions';
 import { connect } from 'react-redux';
 import { Close } from '../../assets/img';
 
 
 const Profile: FC<RouteComponentProps> = (props: any) => {
   
-  
   const commerce = props.commerce.commerce
   console.log(commerce);
   const [ show, setShow ] = useState(false);
   const [ formValid, setFormValid ] = useState(false);
 
+
   const form: any = {
-    name: '',
-    email: '',
+    bankname: '',
     address: '',
-    phone: '',
+    routingNumber: '',
+    checkingAccount: '',
   };
+
 
   const close = () => {
     setFormValid(false)
+    setShow(false);
   }
 
-
-  const registerCommerce = (value: any) => {
-    console.log(value);
+  const registerAcount = (value: any) => {
 
     const newObject = {
-      ...value
+      value
     }
-    props.action.saveCounterparty(newObject);
+    console.log(newObject);
+     props.action.saveBankAccount(newObject);
   };
 
   return (
@@ -68,7 +70,7 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
      
       </div>
       <div className='_addon'> 
-      <ExportButton/>
+      <div className='div_spaceTwo'><ExportButton/></div>
       <div className='_addBankButton' onClick={() => setFormValid(true)}><span>+ Add New Bank Account</span></div>
       </div>
         </div>
@@ -80,7 +82,7 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
             
          <Formik
               initialValues={form}
-              onSubmit={values => registerCommerce(values)}
+              onSubmit={values => registerAcount(values)}
             >
             
           <Form>
@@ -91,35 +93,21 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
                   <h4 style={{marginBottom:'20px', textAlign: 'center'}}>Add Bank</h4>
   
                   <label> Bank Name </label>
-                  <Field type='text' className='_inputParty' placeholder='BankName' name='bankname' />
-                  <label> Country </label>
-                  <select className='_inputParty'>
-                    <option value="U.S.A">U.S.A</option>
-                    <option value="England">England</option>
-                    <option value="Venezuela">Venezuela</option>
-                  </select>
-                  <label> City </label>
-                  <select className='_inputParty'>
-                    <option value="New York">New York</option>
-                    <option value="Chicago">Chicago</option>
-                    <option value="Seatlle">Seatlle</option>
-                  </select>
+                  <Field type='text' className='_inputParty' placeholder='Bank Name' name='bankname' />
+
+                  <label> Address </label>
+                  <Field  row='2' component='textarea' className='_inputPartyArea' placeholder='Address' name='address' />
+                  
+                  <label> Routing Number </label>
+                  <Field type='text' className='_inputParty' placeholder='Routing Number' name='routingNumber' />
+                  
             
-                  <label> line One </label>
-                  <Field type='text' className='_inputParty' placeholder='LineOne' name='lineOne' />
-
-                  <label> line Two </label>
-                  <Field type='text' className='_inputParty' placeholder='LineTwo' name='lineTwo' />
-
-                  <label> District </label>
-                  <Field type='text' className='_inputParty' placeholder='District' name='district' />
-
-                  <label> Postal Code </label>
-                  <Field type='text' className='_inputParty' placeholder='PostalCode' name='postal_code' />
+                  <label> Checking Account </label>
+                  <Field type='text' className='_inputParty' placeholder='Checking Account' name='checkingAccount' />
 
                   <div className='_buttonActionParent'>
-                   
-                    <AddNew action={registerCommerce} />
+                  <button className='_addNewButtonTwo' type="submit">+ Add New</button>
+        
                   
                   </div>
                 </div>
@@ -135,15 +123,24 @@ const Profile: FC<RouteComponentProps> = (props: any) => {
 }
         </div>
 
-      
-      
-
   );
 }
+
+
 
 const mapStateToProps = ({ commerce }: any) => ({ commerce });
 
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+      saveBankAccount
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 
