@@ -16,7 +16,7 @@ const Sales: FC<RouteComponentProps> = () => {
       <div className='_colorBar'></div>
       <div className="_productServicesCounters">
         <CountBar label="Most Sold Product" title="Holy Chicken" counter={40} icon={<CartDownload />} percentage={'0.00%'} />
-        <CountBar label="Least Sold Product" title="Tenders" counter={60} icon={<CartDownload />} percentage={'0.00%'} />
+        <CountBar label="Least Sold Product" title="Tenders" counter={60} icon={<CartDownload />} percentage={'0.00%'} color={'red'} />
       </div>
       <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
     </div>
