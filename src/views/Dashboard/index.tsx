@@ -97,7 +97,7 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
   
       <ListAccountCard data={wallet.wallets} />
   
-      <div className="_activity" style={{marginTop: '-3.2rem'}}>
+      <div className="_activity" style={{marginTop: '-15rem'}}>
         <PixelTitle title="Activity" />
         <DynamicTable keys={activityKeys} records={activities.reverse()} />
       </div>

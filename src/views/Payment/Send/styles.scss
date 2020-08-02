@@ -122,7 +122,7 @@
   background-color: #F6F6F6;
   height: 100vh;
   z-index: 999;
-  width: 35%;
+  width: 45%;
   display: block;
   margin-left: auto;
   transition: all 1s;
@@ -143,7 +143,7 @@
 ._blurNone {
   display: none;
   opacity: 0;
-  animation: out 1s;
+  animation: out 0.6s;
 }
 
 ._showTool {
@@ -155,7 +155,7 @@
 ._noneTool {
   // display: none;
   // width:-50%;
-  animation: out 1s;
+  animation: out 0.6s;
   display: none;
 }
 
@@ -173,7 +173,7 @@
     width: 0%
   }
   to {
-    width: 35%;
+    width: 45%;
   }
 }
 
@@ -197,5 +197,7 @@
 
 ._whilistStyles {
   height: 70vh;
-  overflow-y: auto;
+	overflow-y: auto;
+	padding: 10px;
+	;
 }

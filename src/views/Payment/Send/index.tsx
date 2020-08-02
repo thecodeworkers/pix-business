@@ -43,8 +43,8 @@ const Send: FC<RouteComponentProps> = (props: any,{
   };
 
   const dataTable = {
-    keys: ['hidden', 'counterparty', 'email', 'address'],
-    records: counterparty.counterparties
+    keys: [ 'counterparty', 'email', 'address' ],
+		records: counterparty.counterparties,
   };
 
   const iconTabs = {
@@ -83,7 +83,11 @@ const Send: FC<RouteComponentProps> = (props: any,{
 
   const close = () => { 
     setShow(false);
-  }
+	}
+	
+	const tableData = (value: any) => {
+		console.log(value);
+	}
 
   return (
     <div className='ReceiveContainer'>
@@ -123,7 +127,7 @@ const Send: FC<RouteComponentProps> = (props: any,{
 
       <div className='_rowsCard'>
         <div style={{ width: '45%', marginTop: '20px' }}>
-          <AccountCard data={data} width='95%' decorator={false} />
+          <AccountCard data={data} width='95%' decorator={false} callback={dataTable} />
         </div>
 
         <div style={{ width: '50%' }}>
@@ -172,7 +176,7 @@ const Send: FC<RouteComponentProps> = (props: any,{
 
           <p style={{marginBottom: '20px', textAlign: 'left'}}>Whitelist</p>
           <div className='_whilistStyles'>
-          <DynamicTable  keys={dataTable.keys} records={dataTable.records}/>
+          <DynamicTable  keys={dataTable.keys} records={dataTable.records} showSelect={true} callback={tableData}/>
           </div>
 
         </div>
