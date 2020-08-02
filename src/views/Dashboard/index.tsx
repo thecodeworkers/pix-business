@@ -86,10 +86,10 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
     <div id="dashboard">
       <Balance />
       <div className="_options">
-        <ActionButton url={"/dashboard"} img={<Send />} title={"Send"} />
-        <ActionButton url={"/dashboard"} img={<Receive />} title={"Recieve"} />
+        <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} />
+        <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} />
         <ActionButton
-          url={"/dashboard"}
+          url={"/payments/multisend"}
           img={<MultiSend />}
           title={"Multi send"}
         />
