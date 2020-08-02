@@ -1,8 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link } from '@reach/router';
 import { InputValue } from '../../../components';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
 import {
 	Commerce,
 	BankBlue,
@@ -40,17 +37,17 @@ const Send: FC<Props> = ({
 	useEffect(() => {
 		navigate('wallet');
 		if (!wallet) action.getWallets();
-	}, []);
+  }, []);
 
 	const [currentTab, setCurrentTab] = useState('wallet');
 	const [show, setShow] = useState(false);
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 	const [selectionWallet, setSelectionWallet] = useState(false);
 	const [mainBank, setMainBank] = useState(
-		bankAccount.results[0]
+		bankAccount.bankAccounts[0]
 			? {
-					title: bankAccount.results[0].bankName + ' Account',
-					address: bankAccount.results[0].checkingAccount,
+					title: bankAccount.bankAccounts[0].bankName + ' Account',
+					address: bankAccount.bankAccounts[0].checkingAccount,
 			  }
 			: {}
 	);
@@ -103,7 +100,9 @@ const Send: FC<Props> = ({
 
 	const showModal = () => {
 		!show ? setShow(true) : setShow(false);
-	};
+  };
+  
+
 
 	return (
 		<div>
@@ -207,7 +206,7 @@ const Send: FC<Props> = ({
 			</div>
 			<div className={show ? '_blur' : '_blurNone'}>
 				<div className={show ? '_showTool' : '_noneTool'}>
-					<div className='_closeTools' onClick={() => close()}>
+					<div className='_closeTools' onClick={() => showModal()}>
 						<Close />
 					</div>
 					<div className='_DynamicTableLayOut'>
