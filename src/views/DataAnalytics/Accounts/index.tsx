@@ -6,9 +6,9 @@ import './styles.scss';
 const dataTest = {
   keys: ['Name', 'Address', 'Balance'],
   records: [
-    {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"},
-    {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"},
-    {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"}]
+    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"},
+    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"},
+    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"}]
 }
 
 const BankAccounts = () => (
