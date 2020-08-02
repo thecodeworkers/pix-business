@@ -7,14 +7,16 @@ const Summary: FC<Props> = ({ values = {}, multi = false, array = [] }) => {
 		<div>
 			<div className='summaryComponent'>
 				{multi
-					? array.map((value: any, index: any) => {
-							return (
-								<div key={index} className='summaryValues'>
-									<p>{value.name}</p>
-									<p>{value.amount} USDC</p>
-								</div>
-							);
-					  })
+					? array.length
+						? array.map((value: any, index: any) => {
+								return (
+									<div key={index} className='summaryValues'>
+										<p>{value.name}</p>
+										<p>{value.amount} USDC</p>
+									</div>
+								);
+						  })
+						: null
 					: Object.keys(values).length
 					? Object.keys(values).map((value: string, index) => {
 							return (
@@ -26,7 +28,7 @@ const Summary: FC<Props> = ({ values = {}, multi = false, array = [] }) => {
 					  })
 					: null}
 			</div>
-			<div className="Outer">
+			<div className='Outer'>
 				{multi
 					? Object.keys(values).length
 						? Object.keys(values).map((value: string, index) => {

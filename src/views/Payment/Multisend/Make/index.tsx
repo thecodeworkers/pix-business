@@ -1,32 +1,49 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import './styles.scss';
-import { RouteComponentProps } from '@reach/router';
 import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
-import { DownArrow, Check, XMark } from '../../../../assets/img';
+import {
+	DownArrow,
+	Check,
+	XMark,
+	BoxCheckedGreen,
+	BoxCheckedGray,
+} from '../../../../assets/img';
 import { bindActionCreators } from 'redux';
-import { getWallets } from '../../../../store/actions';
+import { getWallets, updateMultiSend } from '../../../../store/actions';
 import { connect } from 'react-redux';
-import { StateProps } from './interface';
+import { StateProps, Props } from './interface';
 
-const Make: FC<RouteComponentProps> = () => {
-	const [Counter, setCounter] = useState([
-		{
-			name: 'CounterParty 1',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 300,
-		},
-		{
-			name: 'CounterParty 2',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 700,
-		},
-		{
-			name: 'CounterParty 3',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 900,
-		},
-	]);
+const Make: FC<Props> = ({ wallet, action, multiSend }) => {
+	useEffect(() => {
+		if (!wallet) action.getWallets();
+	}, [action]);
+
+	const [sumValue, setSumValue] = useState(0);
+
+	const [selection, setSelection] = useState(false);
+
+	const [mainWallet, setMainWallet] = useState(
+		wallet.wallets[0]
+			? {
+					title: !wallet.wallets[0].saving
+						? 'Checking Account'
+						: 'Saving Account',
+					desc: wallet.wallets[0].address,
+					value: wallet.wallets[0].balances.length
+						? wallet.wallets[0].balances[0]
+						: 0,
+					total: wallet.wallets[0].balances.length
+						? wallet.wallets[0].balances[0]
+						: 0,
+			  }
+			: {}
+	);
+
+	const [form, setForm] = useState({
+		wallet: '',
+		amount: '',
+	});
 
 	const getValue = (value: any) => {
 		console.log(value);
@@ -37,11 +54,13 @@ const Make: FC<RouteComponentProps> = () => {
 		Total: 80000,
 	};
 
-	const data = {
-		title: 'Checking account',
-		desc: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-		value: '10,000',
-		total: '10,000',
+	const deleteArray = (index: any) => {
+		delete multiSend.result[index];
+		action.updateMultiSend(multiSend.result);
+	};
+
+	const getWallets = () => {
+		setSelection(!selection);
 	};
 
 	return (
@@ -50,12 +69,44 @@ const Make: FC<RouteComponentProps> = () => {
 				<div className='toAccount'>
 					<div className='to'>
 						<p>From</p>
-						<div className='accountButton'>
+						<div
+							className={selection ? 'accountButton selected' : 'accountButton'}
+							onClick={getWallets}
+						>
 							<p>Account</p>
 							<DownArrow />
 						</div>
 					</div>
-					<AccountCard data={data} width='85%' decorator={false} />
+					{selection ? (
+						<div className='cardSelection'>
+							{wallet.wallets.map((value, key) => {
+								let values = {
+									title: !value.saving ? 'Checking Account' : 'Saving Account',
+									desc: value.address,
+									value: value.balances.length ? value.balances[0] : 0,
+									total: value.balances.length ? value.balances[0] : 0,
+								};
+
+								let Check =
+									mainWallet.desc === values.desc
+										? BoxCheckedGreen
+										: BoxCheckedGray;
+
+								return (
+									<div className='selectCard' key={key}>
+										<div
+											className='checkedVal'
+											onClick={() => setMainWallet(values)}
+										>
+											<Check />
+										</div>
+										<AccountCard data={values} width='85%' decorator={false} />
+									</div>
+								);
+							})}
+						</div>
+					) : null}
+					<AccountCard data={mainWallet} width='85%' decorator={false} />
 				</div>
 				<div className='multiFormContainer'>
 					<div className='multiForm'>
@@ -65,36 +116,67 @@ const Make: FC<RouteComponentProps> = () => {
 								type='text'
 								className='addressInput'
 								placeholder='address'
+								value={form.wallet}
+								onChange={(event) => {
+									setForm({ ...form, ...{ wallet: event.target.value } });
+								}}
 							/>
-							<input type='text' className='amountInput' placeholder='Amount' />
-							<div className='checkBox'>
+							<input
+								type='text'
+								className='amountInput'
+								placeholder='Amount'
+								value={form.amount}
+								onChange={(event) => {
+									setForm({ ...form, ...{ amount: event.target.value } });
+								}}
+							/>
+							<div
+								className='checkBox'
+								onClick={() => {
+									let counter = multiSend.result.length;
+									counter++;
+									let newForm: any = {};
+									newForm['name'] = 'counterparty ' + counter;
+									multiSend.result.push({ ...form, ...newForm });
+									let sum = multiSend.result.reduce((prex: any, next: any) => {
+										return Number(prex.amount) + Number(next.amount);
+									});
+									setSumValue(sum);
+									action.updateMultiSend(multiSend.result);
+								}}
+							>
 								<Check />
 							</div>
 						</div>
 						<div className='insertedList'>
-							{Counter.map((value, index) => (
+							{multiSend.result.map((value: any, index: any) => (
 								<div className='receiver' key={index}>
 									<p className='nameReceiver'>{value.name}</p>
 									<p className='walletReceiver'>{value.wallet}</p>
 									<input
+										disabled={true}
 										type='text'
 										value={value.amount}
 										placeholder='Amount'
 									/>
-									<div className='deleteBox'>
+									<div
+										className='deleteBox'
+										onClick={() => {
+											deleteArray(index);
+										}}
+									>
 										<XMark />
 									</div>
 									<div className='plusBox'>+</div>
 								</div>
 							))}
-							<div></div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className='inputMakeSide'>
-				<InputValue defaulValue={0} returnValue={getValue} />
-				<Summary values={values} multi={true} array={Counter} />
+				<InputValue defaulValue={sumValue} returnValue={getValue} />
+				<Summary values={values} multi={true} array={multiSend.result} />
 				<div className='buttonMakeContent'>
 					<button className='buttonCancel'>Cancel</button>
 					<button className='buttonSend'>Send</button>
@@ -104,11 +186,15 @@ const Make: FC<RouteComponentProps> = () => {
 	);
 };
 
-const mapStateToProps = ({ wallet }: StateProps): StateProps => ({ wallet });
+const mapStateToProps = ({ wallet, multiSend }: StateProps): StateProps => ({
+	wallet,
+	multiSend,
+});
 
 const mapDispatchToProps = (dispatch: any) => {
 	const actions = {
 		getWallets,
+		updateMultiSend,
 	};
 
 	return {
@@ -116,4 +202,4 @@ const mapDispatchToProps = (dispatch: any) => {
 	};
 };
 
-export default Make;
+export default connect(mapStateToProps, mapDispatchToProps)(Make);

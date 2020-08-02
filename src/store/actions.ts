@@ -7,3 +7,4 @@ export * from './wallet/action';
 export * from './register/action';
 export * from './bankAccount/action';
 export * from './counterparty/action';
+export * from './multisend/action';
