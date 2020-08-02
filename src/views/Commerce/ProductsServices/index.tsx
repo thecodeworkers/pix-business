@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { DynamicTable } from '../../../components';
+import { DynamicTable, CountBar } from '../../../components';
 import './styles.scss';
 
 const dataTest = { 
@@ -12,8 +12,9 @@ const dataTest = {
 const ProducsServices: FC<RouteComponentProps> = () => {
   return (
     <div>
-      <div>
-        progress components
+      <div className="_productServicesCounters">
+        <CountBar label="Products" title="Low Stock" counter={40}/>
+        <CountBar label="Products" title="Out of Stock" counter={60}/>
       </div>
       <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
     </div>
