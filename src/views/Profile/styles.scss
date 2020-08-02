@@ -1,8 +1,7 @@
 @import '../../assets/styles/index.scss';
 
-._formCountierParties {
+._formCountierPartieso {
   background-color: #F1F1F1;
-  height: 100vh;
   display: flex;
   justify-content:center;
   align-items: center;
@@ -106,18 +105,11 @@ text-align: center;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
-}
 
-
-._medium{
-  height: 30vh;
-  justify-content: center;
-  align-items: flex-end;
-  display: flex;
 }
 
 ._testinParents{
-  height: 40vh;
+  height: vh;
 }
 ._addon{
   width: 100%;
