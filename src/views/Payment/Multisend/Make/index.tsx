@@ -33,7 +33,7 @@ const Make: FC<Props> = ({
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [form, setForm] = useState({
-		wallet: '',
+		address: '',
 		amount: '',
 	});
 
@@ -123,9 +123,9 @@ const Make: FC<Props> = ({
 								type='text'
 								className='addressInput'
 								placeholder='address'
-								value={form.wallet}
+								value={form.address}
 								onChange={(event) => {
-									setForm({ ...form, ...{ wallet: event.target.value } });
+									setForm({ ...form, ...{ address: event.target.value } });
 								}}
 							/>
 							<input
@@ -172,7 +172,7 @@ const Make: FC<Props> = ({
 							{multiSend.result.map((value: any, index: any) => (
 								<div className='receiver' key={index}>
 									<p className='nameReceiver'>{value.name}</p>
-									<p className='walletReceiver'>{value.wallet}</p>
+									<p className='walletReceiver'>{value.address}</p>
 									<input
 										disabled={value.disabledInput}
 										type='text'

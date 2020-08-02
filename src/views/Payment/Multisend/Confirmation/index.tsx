@@ -5,6 +5,7 @@ import { InputValue, Summary, CodeQR } from '../../../../components';
 import { Props, StateProps } from './interface';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { multiTransfer } from '../../../../store/actions';
 
 const Confirmation: FC<Props> = ({
 	action,
@@ -15,12 +16,14 @@ const Confirmation: FC<Props> = ({
 		console.log(value);
 	};
 
-	const sum = multiSend.result.reduce((prex: any, next: any) => {
-		return (
-			Number(typeof prex === 'object' ? prex.amount : prex) +
-			Number(next.amount)
-		);
-	});
+	const sum = multiSend.result.length
+		? multiSend.result.reduce((prex: any, next: any) => {
+				return (
+					Number(typeof prex === 'object' ? prex.amount : prex) +
+					Number(next.amount)
+				);
+		  })
+		: 0;
 
 	const values = {
 		Fee: multiSend.result.length,
@@ -28,6 +31,11 @@ const Confirmation: FC<Props> = ({
 			typeof sum === 'object'
 				? sum.amount + multiSend.result.length
 				: sum + multiSend.result.length,
+	};
+
+	const sendData = () => {
+		//if (multiSend.result.length) action.multiTransfer(multiSend.result);
+		navigate('transaction-complete');
 	};
 
 	return (
@@ -43,7 +51,7 @@ const Confirmation: FC<Props> = ({
 							{multiSend.result.map((value: any, index: any) => (
 								<div className='receiver' key={index}>
 									<p className='nameReceiver'>{value.name}</p>
-									<p className='walletReceiver'>{value.wallet}</p>
+									<p className='walletReceiver'>{value.address}</p>
 									<p className='realReceiver'>{value.realName}</p>
 								</div>
 							))}
@@ -69,7 +77,9 @@ const Confirmation: FC<Props> = ({
 						Cancel
 					</button>
 					<Link to='/transaction-completed'>
-						<button className='buttonSend'>Send</button>
+						<button className='buttonSend' onClick={sendData}>
+							Send
+						</button>
 					</Link>
 				</div>
 			</div>
@@ -82,7 +92,9 @@ const mapStateToProps = ({ multiSend }: StateProps): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => {
-	const actions = {};
+	const actions = {
+		multiTransfer,
+	};
 
 	return {
 		action: bindActionCreators(actions, dispatch),

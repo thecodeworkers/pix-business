@@ -5,6 +5,7 @@
 	height: calc(100vh - 367px);
 	align-items: flex-start;
 	min-height: 500px;
+	padding-top: 2rem;
 }
 
 .accountMakeSide {
@@ -128,7 +129,7 @@
 			border: 1px solid $seaGreen;
 			background: transparent;
 
-			&:disabled{
+			&:disabled {
 				border: none;
 			}
 		}
