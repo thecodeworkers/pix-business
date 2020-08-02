@@ -45,8 +45,6 @@ const activityKeys = [
   "counterparty",
   "type",
   "address",
-  "amount",
-  "balance",
 ];
 
 const activityRecord = [
@@ -163,7 +161,7 @@ const Dashboard: FC<RouteComponentProps> = () => (
 
     <ListAccountCard data={listAccount} />
 
-    <div className="_activity">
+    <div className="_activity" style={{marginTop: '-3.2rem'}}>
       <PixelTitle title="Activity" />
       <DynamicTable keys={activityKeys} records={activityRecord} />
     </div>

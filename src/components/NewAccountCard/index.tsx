@@ -9,7 +9,7 @@ const NewAccountCard = () => {
         <FaPlus color="#FFFFFF" size="18" />
         Add New
       </a>
-      <p>Add a new checking account</p>
+      <p className='_rightCardText'>Add a new checking account</p>
     </div>
   );
 };

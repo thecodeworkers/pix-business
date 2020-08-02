@@ -11,7 +11,7 @@ const persistConfig = {
   blacklist: [
     'search',
     'circle',
-    'register'
+    'register',
   ]
 }
 

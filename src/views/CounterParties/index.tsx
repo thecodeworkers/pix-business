@@ -10,17 +10,20 @@ import { Formik, Form, Field } from 'formik';
 
 const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
-  const { counterparty, saveCounterparty } = props;
+  // console.log(props);
+  
+  const { counterparty } = props;
   const [ show, setShow ] = useState(false);
   const [ select, setSelect  ] = useState('Employee');
 
-  const type = useRef(null);
+  const selectTyppe = useRef(null);
+
   useEffect(() => {
     return () => props.action.getBackupCounterparties()
   }, []);
 
   const form: any = {
-    name: '',
+    counterparty: '',
     email: '',
     address: '',
     phone: '',
@@ -43,14 +46,13 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
     setSelect(target.value);
   }
 
-
-  const registerCommerce = (value: any) => {
-    console.log(value);    
-
+  const registerCommerce = (value: any) => {   
+    
     const newObject = {
       type: select,
       ...value
     }
+
     props.action.saveCounterparty(newObject);
   };
 
@@ -102,13 +104,13 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
                   <h4 style={{marginBottom:'20px', textAlign: 'center'}}>Add Counterparty</h4>
                   <label> Type </label>
-                  <select className='_inputParty' ref={type} onChange={() => selectValue(type.current)}>
+                  <select className='_inputParty' ref={selectTyppe} onChange={() => selectValue(selectTyppe.current)}>
                     <option value="Employee"> Employee</option>
                     <option value="Supplier"> Supplier</option>
                     <option value="Customer"> Customer</option>
                   </select>
                   <label> Name </label>
-                  <Field type='text' className='_inputParty' placeholder='Name' name='name' />
+                  <Field type='text' className='_inputParty' placeholder='Name' name='counterparty' />
                   <label> Email </label>
                   <Field type='text' className='_inputParty' placeholder='Email' name='email' />
 

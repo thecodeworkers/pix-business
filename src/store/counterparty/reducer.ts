@@ -98,8 +98,7 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
     return state;
 
     case SAVE_COUNTERPARTY:
-      console.log(payload);
-      
+      // console.log(payload);
     return {
       counterparties: [
         ...state.counterparties,
@@ -110,6 +109,7 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
         ...payload.counterparty
       ]
     }
+
 
     case SET_COUNTERPARTIES_TEMP:
     return {

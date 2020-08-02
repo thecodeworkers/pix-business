@@ -5,24 +5,33 @@
   background: $tableGray;
   border-radius: 9px;
   margin-bottom: 2rem;
-  width: calc(45% - 1rem);
-  padding: 24px;
+  width: 48%;
+  // padding: 24px;
+  box-sizing: border-box;
   display: flex;
+  padding: 0rem 1rem;
   align-items: center;
   justify-content: space-between;
   font-size: $medium;
+  height: 5.8rem;
+  box-sizing: border-box;
 
   ._btn {
     background: transparent linear-gradient(180deg, $darkBlueToBlue 100%) 0% 0% no-repeat padding-box;
     border-radius: 7px;
     color: $white;
     font-size: $large;
-    padding: 13px 26px;
+    padding:8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 40%;
+    width: 37%;
   }
+}
+
+._rightCardText {
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 1366px) {
