@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Link } from '@reach/router';
 import { Header, Summary } from '../../../components';
 import { Pixel, Check, Usdc } from '../../../assets/img';
 import './styles.scss';
 
-const TransactionCompleted: FC<RouteComponentProps> = () => {
+const TransactionCompleted: FC<RouteComponentProps> = (props:any) => {
 
   const values = {
 		Amount: 12000,
@@ -41,7 +41,7 @@ const TransactionCompleted: FC<RouteComponentProps> = () => {
           </div>
         </div>
         <div className="_actionButton">
-          <button className="_done"><p>Done</p></button>
+          <button className="_done" onClick={() => props.navigate('/payments') }><p>Done</p></button>
         </div>
       </div>
     </div>

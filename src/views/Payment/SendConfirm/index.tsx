@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
+import { RouteComponentProps, Link } from '@reach/router';
 import { Tabs, Balance, Header, DestinationAccount, InputValue, PinCard, Summary } from '../../../components';
 import './styles.scss';
 
@@ -79,9 +79,9 @@ const ConfirmSend: FC<RouteComponentProps> = ({
           Cancel
         </button>
 
-        <button className='_sendConfirmBtn'>
-          Send
-        </button>
+        <Link to='/transaction-completed'>  
+          <button className='_sendConfirmBtn'>Send</button>
+        </Link>
         </div>
 
       </div>

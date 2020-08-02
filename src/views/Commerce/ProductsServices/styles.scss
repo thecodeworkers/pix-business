@@ -1,6 +1,23 @@
+@import '../../../assets/styles';
+
 ._productServicesCounters {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 7%;
   margin-bottom: 50px;
+}
+
+._colorBar {
+  $porcent: 14.4%;
+  background: linear-gradient(to right, 
+  $arsenic $porcent,
+  $sunGlow $porcent $porcent*2,
+  $green $porcent*2 $porcent*3,
+  $lineBlue $porcent*3 $porcent*4,
+  $yellow $porcent*4 $porcent*5,
+  $lightGreen $porcent*5 $porcent*6,
+  $perano $porcent*6 $porcent*7,
+  $shineYellow $porcent*7);
+  height: 4px;
+  margin-bottom: 30px;
 }
