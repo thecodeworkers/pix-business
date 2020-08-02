@@ -12,7 +12,7 @@ const Balance: FC<any> = ({ wallet }) => {
       let count = 0;
 
       for(let wallet of wallets) {
-        totals[count] = wallet.balances.length ? wallet.balance[0].amount : 0;
+        totals[count] = wallet.balances.length ? wallet.balances[0].amount : 0;
         count++;
       }
   
