@@ -22,7 +22,7 @@ const AccountCard: FC<Props> = ({
 			) : null}
 			<div className='_img'>{banking ? <BankLogo /> : <UsdcCard />}</div>
 			<div className='_info'>
-				<p className='_cardNewtitle'>{saving ? 'Saving Account' : `Checking Account ${index >= 2 ? index : ''}`}</p>
+				<p className='_cardNewtitle'>{banking? data.title :saving ? 'Saving Account' : `Checking Account ${index >= 2 ? index : ''}`}</p>
 				<p className='_desc _resizeCard'>{address}</p>
 				<p className='_smallBalance'>{balances.length ? `$${balances[0].amount}` : '$0'}</p>
 				<p className='_cardBankBalance'>{balances.length ? `${balances[0].amount} USDC` : '0 USDC'}</p>
