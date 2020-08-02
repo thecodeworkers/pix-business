@@ -1,14 +1,12 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router, navigate } from '@reach/router';
-import { Header, ExportButton, Tabs } from '../../components';
+import { RouteComponentProps, Router } from '@reach/router';
+import { ExportButton, Tabs } from '../../components';
 import Overview from './Overview';
 import Checking from './Checking';
 import Savings from './Savings';
 import './styles.scss';
 
-
 const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => {} }) => {
-
   useEffect(() => {
 		navigate('overview');
 	}, []);
