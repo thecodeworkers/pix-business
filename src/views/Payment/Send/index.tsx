@@ -22,7 +22,7 @@ import { DownArrow, Close } from '../../../assets/img';
 import AccountCard from '../../../components/AccountCard';
 import './styles.scss';
 import { StateProps, Props } from './interface';
-import { getWallets, decideNavigation } from '../../../store/actions';
+import { getWallets, updateSend } from '../../../store/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -31,11 +31,12 @@ const Send: FC<Props> = ({
 	counterparty,
 	wallet,
 	action,
-	send,
+	sendData,
 	navigate = () => {},
 	location,
 }) => {
 	useEffect(() => {
+		navigate('wallet');
 		if (!wallet) action.getWallets();
 	}, []);
 
@@ -52,6 +53,8 @@ const Send: FC<Props> = ({
 			  }
 			: {}
 	);
+
+	const [sendWallet, SetSendWallet] = useState('');
 	const dataTable = {
 		keys: ['hidden', 'counterparty', 'email', 'address'],
 		records: counterparty.counterparties,
@@ -90,7 +93,15 @@ const Send: FC<Props> = ({
 	};
 
 	const walletInput = (value: any) => {
-		console.log(value);
+		SetSendWallet(value);
+	};
+
+	const confirmSend = () => {
+		sendData.wallet = mainWallet;
+		sendData.wallet.address = sendWallet;
+		sendData.values = values;
+
+		action.updateSend(sendData);
 	};
 
 	const changeValue = (value: any) => {
@@ -251,7 +262,10 @@ const Send: FC<Props> = ({
 						</button>
 						<button
 							className='buttonSend'
-							onClick={() => navigate('/payments/transfer/details')}
+							onClick={() => {
+								navigate('/payments/confirm-send');
+								confirmSend();
+							}}
 						>
 							Send
 						</button>
@@ -274,23 +288,25 @@ const Send: FC<Props> = ({
 		</div>
 	);
 };
-{}
+{
+}
 const mapStateToProps = ({
 	wallet,
 	bankAccount,
 	counterparty,
-	send
+	sendData,
 }: StateProps): StateProps => ({
 	wallet,
 	bankAccount,
 	counterparty,
-	send
+	sendData,
 });
 
 const mapDispatchToProps = (dispatch: any) => {
 	const actions = {
 		getCounterparties,
-		decideNavigation
+		updateSend,
+		getWallets,
 	};
 
 	return {

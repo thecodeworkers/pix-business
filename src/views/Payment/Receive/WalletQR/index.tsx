@@ -77,7 +77,7 @@ const WalletQR: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 				<div className='buttonContent'>
 					<button
 						className='buttonSend'
-						onClick={() => navigate('/transaction-completed')}
+						onClick={() => navigate('/dashboard')}
 					>
 						Done
 					</button>

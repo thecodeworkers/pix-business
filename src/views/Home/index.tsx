@@ -6,7 +6,6 @@ import { SideBar, Header } from '../../components';
 import './styles.scss';
 import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
-import ConfirmSend from '../Payment/SendConfirm';
 import Activity from '../Activity';
 import Commerce from '../Commerce';
 import CounterParties from '../CounterParties';
@@ -20,7 +19,6 @@ export default () => (
 				<Dashboard path='/' />
 				<DataAnalytics path='/data-analitycs/' />
 				<Payment path='/payments/*' />
-				<ConfirmSend path='/confirm-send/*' />
 				<Activity path='/activity/*' />
 				<Commerce path='/commerce/*' />
 				<CounterParties path='/counterparties' />

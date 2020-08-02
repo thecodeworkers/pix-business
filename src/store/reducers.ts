@@ -12,6 +12,7 @@ import counterparty from './counterparty/reducer';
 import multiSend from './multisend/reducer';
 import finished from './finished/reducer';
 import product from './product/reducer';
+import sendData from './send/reducer';
 import intermittence from './intermittence/reducer';
 
 const reducers = combineReducers({
@@ -28,6 +29,7 @@ const reducers = combineReducers({
   multiSend,
   finished,
   product,
+  sendData,
   intermittence
 });
 
