@@ -38,7 +38,7 @@ const ConfirmSend: FC<RouteComponentProps> = ({
 
   return (
     <div className="paymentContainer">
-      <Header />
+      {/* <Header /> */}
       <div className='paymentBanner'>
         <Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
         <Balance />
