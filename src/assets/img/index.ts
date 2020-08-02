@@ -40,3 +40,4 @@ export { default as BoxCheckedGray } from './Components/boxCheckedGray';
 export { default as Close } from './Components/close';
 export { default as Boxchart } from './Components/boxChart';
 export { default as CartDownload } from './Components/cartDownload';
+export { default as Share } from './Components/share';
