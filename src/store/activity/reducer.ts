@@ -25,7 +25,7 @@ const initialState: any = {
     },
     {
       'status': 'sent',
-      'account': 'Checking',
+      'account': 'Savings',
       'date': '12/05/20',
       'counterparty': 'Income',
       'type': 'Deposit',
@@ -35,7 +35,7 @@ const initialState: any = {
     },
     {
       'status': 'sent',
-      'account': 'Checking',
+      'account': 'Savings',
       'date': '12/05/20',
       'counterparty': 'Income',
       'type': 'Deposit',
@@ -67,7 +67,7 @@ const initialState: any = {
     },
     {
       'status': 'sent',
-      'account': 'Checking',
+      'account': 'Savings',
       'date': '12/05/20',
       'counterparty': 'Income',
       'type': 'Deposit',
@@ -77,7 +77,7 @@ const initialState: any = {
     },
     {
       'status': 'sent',
-      'account': 'Checking',
+      'account': 'Savings',
       'date': '12/05/20',
       'counterparty': 'Income',
       'type': 'Deposit',
