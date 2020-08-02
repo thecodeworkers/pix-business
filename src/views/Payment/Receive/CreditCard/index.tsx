@@ -11,9 +11,9 @@ const CreditCard: FC<RouteComponentProps> = (props:any) => {
 	};
 
 	const values = {
-		Amount: 12000,
-		Fee: 10000,
-		Total: 80000,
+		Amount: 0,
+		Fee: 0,
+		Total: 0,
 	};
 
 	const data = {
