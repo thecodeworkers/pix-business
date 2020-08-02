@@ -1,15 +1,20 @@
-import { FILTER_COUNTERPARTIES, GET_BACKUP_COUNTERPARTIES } from './action-types';
-import { takeLatest, select } from 'redux-saga/effects';
+import { FILTER_COUNTERPARTIES, GET_BACKUP_COUNTERPARTIES, SET_COUNTERPARTIES_TEMP } from './action-types';
+import { takeLatest, select, put } from 'redux-saga/effects';
 import { DispatchProps } from '../../interfaces';
 import { getCounterparty } from '../selectors';
+import { actionObject } from '../../utils';
 
 function* filterCounterpartiesAsync({ payload }: DispatchProps) {
   try {
-    console.log(payload);
     const { results } = yield select(getCounterparty);
-    console.log(results);
+    let currentValues = results;
 
-    // yield put(actionObject(LOGIN_ASYNC, null));
+    if(payload != 'all') {
+      currentValues = results.filter((result: any) => result.type.toLowerCase() == payload);
+    }
+
+    yield put(actionObject(SET_COUNTERPARTIES_TEMP, currentValues));
+    
   } catch(error) {
     console.log(error);
   }

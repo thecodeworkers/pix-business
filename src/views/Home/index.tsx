@@ -8,6 +8,7 @@ import Payment from '../Payment';
 import DataAnalytics from '../DataAnalytics';
 import ConfirmSend from '../Payment/SendConfirm';
 import Activity from '../Activity';
+import Commerce from '../Commerce'
 import TransactionCompleted from '../Payment/Finished';
 import  CounterParties from '../CounterParties';
 
@@ -22,6 +23,7 @@ export default () => (
         <Payment path='/payments/*' />
         <ConfirmSend path='/confirm-send/*'/>
         <Activity path='/activity/*' />
+        <Commerce path='/commerce/*' />
         <TransactionCompleted path='/transaction-completed/*' />
         <CounterParties path='/counterparties' />
       </Router>   

@@ -11,6 +11,7 @@ import {
   ActionButton,
   DynamicTable,
   PixelTitle,
+  Header
 } from "../../components";
 import { Send, Receive, MultiSend } from "../../assets/img";
 
@@ -147,6 +148,7 @@ const cpRecord = [
 
 const Dashboard: FC<RouteComponentProps> = () => (
   <div id="dashboard">
+    {/* <Header tabs={false} /> */}
     <Balance />
 
     <div className="_options">
