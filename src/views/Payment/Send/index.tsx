@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { RouteComponentProps, Router, Link } from '@reach/router';
 import { InputValue } from '../../../components';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Commerce,
   BankBlue,
@@ -9,18 +11,22 @@ import {
   CreditCardBlue,
   CreditCardWhite,
 } from '../../../assets/img';
-import { IconTabs, Summary, AddNew, WhiteListButton, PasteWallet, BankCard, Tool } from '../../../components';
-import { DownArrow } from '../../../assets/img';
+import { IconTabs, Summary, AddNew, WhiteListButton, PasteWallet, BankCard, Tool, DynamicTable } from '../../../components';
+import { getCounterparties } from '../../../store/actions';
+import { DownArrow, Close } from '../../../assets/img';
 import AccountCard from '../../../components/AccountCard';
 import './styles.scss';
 
-const Send: FC<RouteComponentProps> = ({
-  location,
+const Send: FC<RouteComponentProps> = (props: any,{
+  location, 
   navigate = (nav: any) => { },
 }) => {
   useEffect(() => {
+    console.log(props);
     navigate('wallet');
   }, []);
+
+  const { counterparty } = props;
 
   const [currentTab, setCurrentTab] = useState('wallet');
   const [show, setShow] = useState(false);
@@ -29,6 +35,11 @@ const Send: FC<RouteComponentProps> = ({
     Amount: 12000,
     Fee: 10000,
     Total: 80000,
+  };
+
+  const dataTable = {
+    keys: ['hidden', 'counterparty', 'email', 'address'],
+    records: counterparty.counterparties
   };
 
   const iconTabs = {
@@ -63,6 +74,10 @@ const Send: FC<RouteComponentProps> = ({
 
   const showModal = () => {
     !show ? setShow(true) : setShow(false)
+  }
+
+  const close = () => { 
+    setShow(false);
   }
 
   return (
@@ -118,7 +133,7 @@ const Send: FC<RouteComponentProps> = ({
         <div className='_actBtn'>
           <AddNew />
           <div style={{ marginLeft: '0.5rem' }}>
-            <WhiteListButton />
+            <WhiteListButton action={showModal}/>
           </div>
         </div>
       </div>
@@ -135,17 +150,46 @@ const Send: FC<RouteComponentProps> = ({
         </div>
 
         <div>
-          <button className='_cancelBtn' onClick={() => showModal()}> Cancel</button>
+          <button > Cancel</button>
 
           <Link to='/confirm-send'>
             <button className='_sendBtn' > Send</button>
           </Link>
         </div>
 
-        <Tool show={show} callback={() => showModal()} > </Tool>
+        <div className={show ? '_blur' : '_blurNone'} >
+      <div className={show ? '_showTool' : '_noneTool'} >
+        <div className='_closeTools' onClick={() => close()}>
+          <Close />
+         
+        </div>
+        <div className='_DynamicTableLayOut'>
+
+          <p style={{marginBottom: '20px', textAlign: 'left'}}>Whitelist</p>
+          <div className='_whilistStyles'>
+          <DynamicTable  keys={dataTable.keys} records={dataTable.records}/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+        {/* <Tool show={show} callback={() => showModal()} > </Tool> */}
       </div>
     </div>
   )
 };
 
-export default Send;
+const mapStateToProps = ({ counterparty }: any) => ({ counterparty });
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    getCounterparties
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Send);
