@@ -177,6 +177,28 @@ const Make: FC<Props> = ({
 										disabled={value.disabledInput}
 										type='text'
 										value={value.amount}
+										onChange={(event) => {
+											value.amount = event.target.value;
+											multiSend.result[index] = value;
+											let sum = multiSend.result.reduce(
+												(prex: any, next: any) => {
+													return (
+														Number(
+															typeof prex === 'object' ? prex.amount : prex
+														) + Number(next.amount)
+													);
+												}
+											);
+											sum = typeof sum === 'object' ? sum.amount : sum;
+											let newValues = {
+												Fee: multiSend.result.length,
+												Total: sum + multiSend.result.length,
+											};
+
+											setValues(newValues);
+											setSumValue(sum);
+											action.updateMultiSend(multiSend.result);
+										}}
 										placeholder='Amount'
 									/>
 									<div

@@ -3,7 +3,7 @@
 .bodyMultiMake {
 	display: flex;
 	height: calc(100vh - 367px);
-	align-items: center;
+	align-items: flex-start;
 	min-height: 500px;
 }
 
@@ -127,6 +127,10 @@
 			padding: 5px 10px;
 			border: 1px solid $seaGreen;
 			background: transparent;
+
+			&:disabled{
+				border: none;
+			}
 		}
 
 		.insertedList {

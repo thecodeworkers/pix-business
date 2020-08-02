@@ -1,46 +1,33 @@
 import React, { FC, useState } from 'react';
 import './styles.scss';
-import { RouteComponentProps, Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { InputValue, Summary, CodeQR } from '../../../../components';
-import AccountCard from '../../../../components/AccountCard';
-import { DownArrow, Check, XMark } from '../../../../assets/img';
+import { Props, StateProps } from './interface';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const Confirmation: FC<RouteComponentProps> = () => {
-	const [Counter, setCounter] = useState([
-		{
-			name: 'CounterParty 1',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 300,
-			realName: 'El Perro',
-		},
-		{
-			name: 'CounterParty 2',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 700,
-			realName: 'El Perro',
-		},
-		{
-			name: 'CounterParty 3',
-			wallet: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-			amount: 900,
-			realName: 'El Perro',
-		},
-	]);
-
+const Confirmation: FC<Props> = ({
+	action,
+	multiSend,
+	navigate = () => {},
+}) => {
 	const getValue = (value: any) => {
 		console.log(value);
 	};
 
-	const values = {
-		Fee: 10000,
-		Total: 80000,
-	};
+	const sum = multiSend.result.reduce((prex: any, next: any) => {
+		return (
+			Number(typeof prex === 'object' ? prex.amount : prex) +
+			Number(next.amount)
+		);
+	});
 
-	const data = {
-		title: 'Checking account',
-		desc: '0x43b9b3e34147857ef928ce13ccdd5193b60fc4ed',
-		value: '10,000',
-		total: '10,000',
+	const values = {
+		Fee: multiSend.result.length,
+		Total:
+			typeof sum === 'object'
+				? sum.amount + multiSend.result.length
+				: sum + multiSend.result.length,
 	};
 
 	return (
@@ -53,7 +40,7 @@ const Confirmation: FC<RouteComponentProps> = () => {
 					<p>Destination</p>
 					<div className='multiForm'>
 						<div className='insertedList'>
-							{Counter.map((value, index) => (
+							{multiSend.result.map((value: any, index: any) => (
 								<div className='receiver' key={index}>
 									<p className='nameReceiver'>{value.name}</p>
 									<p className='walletReceiver'>{value.wallet}</p>
@@ -66,10 +53,21 @@ const Confirmation: FC<RouteComponentProps> = () => {
 				</div>
 			</div>
 			<div className='inputConfirmationSide'>
-				<InputValue defaulValue={0} returnValue={getValue} />
-				<Summary values={values} multi={true} array={Counter} />
+				<InputValue
+					defaulValue={typeof sum === 'object' ? sum.amount : sum}
+					returnValue={getValue}
+					disables={true}
+				/>
+				<Summary values={values} multi={true} array={multiSend.result} />
 				<div className='buttonConfirmationContent'>
-					<button className='buttonCancel'>Cancel</button>
+					<button
+						className='buttonCancel'
+						onClick={() => {
+							navigate('make');
+						}}
+					>
+						Cancel
+					</button>
 					<Link to='/transaction-completed'>
 						<button className='buttonSend'>Send</button>
 					</Link>
@@ -79,4 +77,16 @@ const Confirmation: FC<RouteComponentProps> = () => {
 	);
 };
 
-export default Confirmation;
+const mapStateToProps = ({ multiSend }: StateProps): StateProps => ({
+	multiSend,
+});
+
+const mapDispatchToProps = (dispatch: any) => {
+	const actions = {};
+
+	return {
+		action: bindActionCreators(actions, dispatch),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);
