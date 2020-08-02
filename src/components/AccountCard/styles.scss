@@ -10,57 +10,67 @@
   display: flex;
   position: relative;
 
-  ._decorator {
-    height: 40px;
-    width: 40px;
-    background: transparent linear-gradient(132deg, $grayTowhite 100%) 0% 0% no-repeat padding-box;
-    box-shadow: 5px 6px 8px #49495D47;
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    color: $lightGreen;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
+	._decorator {
+		height: 40px;
+		width: 40px;
+		background: transparent linear-gradient(132deg, $grayTowhite 100%) 0% 0%
+			no-repeat padding-box;
+		box-shadow: 5px 6px 8px #49495d47;
+		position: absolute;
+		top: -20px;
+		right: 20px;
+		color: $lightGreen;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
 
-  ._img {
+	._img {
     min-width: 80px;
     height: 80px;
-    background: $white;
+    max-width: 80px;
+    width: 80px;
+    display: flex;
+    background: #ffffff;
     margin-right: 18px;
     border-radius: 9px;
-  }
+    align-items: center;
+    justify-content: center;
+		svg {
+      height: 80%;
+      width: 80%;
+		}
+	}
 
-  ._info {
-    width: 74%;
-    font-family: $muli;
-    overflow: hidden;
+	._info {
+		width: 74%;
+		font-family: $muli;
+		overflow: hidden;
 
-    ._title {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+		._title {
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
 
-    ._desc {
-      font-size: $small;
-    }
-  }
+		._desc {
+			font-size: $small;
+		}
+	}
 
-  ._balance {
-    min-width: fit-content;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+	._balance {
+		min-width: fit-content;
+		text-align: right;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
 
-    ._percent {
-      font-size: $small;
-    }
+		._percent {
+			font-size: $small;
+		}
 
-    ._value {
-      font-size: $small;
-    }
+		._value {
+			font-size: $small;
+		}
 
     ._total {
       font-size: $extra-large;
