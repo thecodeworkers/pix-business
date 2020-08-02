@@ -7,8 +7,9 @@ const dataTest = {
   keys: ['Name', 'Address', 'Balance'],
   records: [
     {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"},
-    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"},
-    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "12.000USDC"}]
+    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "10.000USDC"},
+    {"Name": "Checking account", "Address": "0xasDsA...", "Balance": "8.000USDC"},
+    {"Name": "Total", "Balance": "$30.000"}]
 }
 
 const BankAccounts = () => (
