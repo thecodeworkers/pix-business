@@ -45,7 +45,8 @@ const initialState: any = {
       'email': 'Darianna@gmail.com',
       'phone': '+58-414332982'
     },
-  ]
+  ],
+  results: []
 }
 
 export default (state = initialState, { type, payload }: DispatchProps) => {
@@ -55,7 +56,7 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
 
     case SAVE_COUNTERPARTY:
     return {
-      results: [
+      counterparties: [
         ...state.counterparties,
         ...payload.counterparty
       ]

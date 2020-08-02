@@ -31,9 +31,9 @@ function* searchActivitiesAsync({ payload }: DispatchProps) {
   }
 }
 
-function* searchCounterpartiesAsync() {
+function* searchCounterpartiesAsync({ payload }: DispatchProps) {
   try {
-    // yield put(actionObject(LOGIN_ASYNC, null));
+    console.log(payload);    
     
   } catch(error) {
     console.log(error);

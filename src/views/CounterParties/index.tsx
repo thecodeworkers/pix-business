@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import { DownArrow, Close } from '../../assets/img';
-import { getCounterparties, saveCounterparty } from '../../store/actions';
+import { getCounterparties, saveCounterparty, searchCounterparties } from '../../store/actions';
 import './styles.scss';
 
 const CounterParties: FC<RouteComponentProps> = (props: any) => {
@@ -13,7 +13,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // console.log(counterparty.counterparties);
+    
   }, []);
 
   const dataTest = {
@@ -54,7 +54,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
             <div className='_tabFilterStyles'>Customer</div>
           </div>
           <div className="_inline_div">
-            <Search filter={''} />
+            <Search filter={props.action.searchCounterparties} />
             <div className='_div_shadow'>
               <div className='_timeLabel'>This Month <DownArrow /></div>
               <ExportButton data={counterparty.counterparties} name='counterparties' flag='csv' />
@@ -102,7 +102,8 @@ const mapStateToProps = ({ counterparty }: any) => ({ counterparty });
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     getCounterparties,
-    saveCounterparty
+    saveCounterparty,
+    searchCounterparties
   }
 
   return {
@@ -111,6 +112,3 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterParties);
-
-
-// export default CounterParties
