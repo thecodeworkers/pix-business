@@ -10,7 +10,7 @@ import ConfirmSend from '../Payment/SendConfirm';
 import Activity from '../Activity';
 import Commerce from '../Commerce'
 import TransactionCompleted from '../Payment/Finished';
-// import  CounterParties from '../CounterParties';
+import  CounterParties from '../CounterParties';
 
 export default () => (
   <div className="_parentcont">
@@ -25,7 +25,7 @@ export default () => (
         <Activity path='/activity/*' />
         <Commerce path='/commerce/*' />
         <TransactionCompleted path='/transaction-completed/*' />
-        {/* <CounterParties path='/counterparties' /> */}
+        <CounterParties path='/counterparties' />
       </Router>   
     </div>
   </div>
