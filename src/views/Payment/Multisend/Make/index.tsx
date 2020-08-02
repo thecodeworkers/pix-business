@@ -120,7 +120,10 @@ const Make: FC<Props> = ({
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(value)}
+											onClick={() => {
+												setMainWallet(value);
+												setSelection(false);
+											}}
 										>
 											<Check />
 										</div>
@@ -133,7 +136,9 @@ const Make: FC<Props> = ({
 					<AccountCard data={mainWallet} width='85%' decorator={false} />
 				</div>
 				<div className='buttonContainer'>
-					<button className='importButton'><Share/> Import</button>
+					<button className='importButton'>
+						<Share /> Import
+					</button>
 					<div style={{ marginLeft: '0.5rem' }}>
 						<AddNew />
 					</div>
@@ -264,7 +269,7 @@ const Make: FC<Props> = ({
 					{/* <Link to='confirmation'> */}
 					<button
 						className='buttonSend'
-						onClick={() => navigate('/payments/confirmation')}
+						onClick={() => navigate('/payments/multisend/confirmation')}
 					>
 						Send
 					</button>

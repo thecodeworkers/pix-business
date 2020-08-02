@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link } from '@reach/router';
 import { InputValue, AccountCard, Summary } from '../../../../components';
 import {
 	DownArrow,
@@ -80,7 +79,10 @@ const TransferMain: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(value)}
+											onClick={() => {
+												setMainWallet(value);
+												setSelection(false);
+											}}
 										>
 											<Check />
 										</div>
@@ -122,7 +124,11 @@ const TransferMain: FC<Props> = ({ wallet, action, navigate = () => {} }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet2(value)}
+											onClick={() => {
+												setMainWallet2(value);
+
+												setSelectionWallet2(false);
+											}}
 										>
 											<Check />
 										</div>
