@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, Router } from '@reach/router';
+import { RouteComponentProps, Router, Redirect, redirectTo } from '@reach/router';
 import { Tabs, Balance } from '../../components';
 import { Pixel } from '../../assets/img';
 import './styles.scss';
@@ -9,13 +9,15 @@ import Send from './Send';
 import ConfirmSend from './SendConfirm';
 import Transfer from './Transfer';
 import TransactionCompleted from './Finished';
+import { connect } from 'react-redux';
 
-const Payment: FC<RouteComponentProps> = ({
+const Payment: FC<RouteComponentProps | any> = ({
 	location,
 	navigate = (nav: any) => {},
+	intermittence
 }) => {
 	useEffect(() => {
-		navigate('transfer');
+		// navigate('transfer');
 	}, []);
 
 	const tabs = {
@@ -56,7 +58,7 @@ const Payment: FC<RouteComponentProps> = ({
 					))}
 				</div>
 				<Router>
-					<Transfer path='transfer/*' />
+					<Transfer path='/*' />
 					<Receive path='receive/*' />
 					<Multisend path='multisend/*' />
 					<Send path='send/*' />
@@ -68,4 +70,6 @@ const Payment: FC<RouteComponentProps> = ({
 	);
 };
 
-export default Payment;
+const mapStateToProps = ({ intermittence }: any) => ({ intermittence })
+
+export default connect(mapStateToProps)(Payment);

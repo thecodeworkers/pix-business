@@ -1,0 +1,1 @@
+export const DECIDE_NAVIGATION: string = 'DECIDE_NAVIGATION';

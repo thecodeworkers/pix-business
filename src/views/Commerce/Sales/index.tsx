@@ -5,12 +5,12 @@ import { CartDown, CartUp } from '../../../assets/img';
 import './styles.scss';
 
 const dataTest = { 
-  keys: ['Date', 'Type', 'Invoice', 'Customer', 'Memo', 'Balance', 'Status', 'Action'],
+  keys: ['date', 'type', 'invoice', 'customer', 'memo', 'balance', 'status'],
   // temporary example data
   records: new Array(5).fill(0)
 };
 
-const Sales: FC<RouteComponentProps> = () => {
+const Sales: FC<RouteComponentProps | any> = ({ sales }) => {
   return (
     <div>
       <div className='_colorBar'></div>
@@ -18,7 +18,7 @@ const Sales: FC<RouteComponentProps> = () => {
         <CountBar label="Most Sold Product" title="Holy Chicken" counter={40} icon={<CartUp />} percentage={'0.00%'} />
         <CountBar label="Least Sold Product" title="Tenders" counter={60} icon={<CartDown />} percentage={'0.00%'} color={'red'} />
       </div>
-      <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
+      <DynamicTable keys={ dataTest.keys } records={ sales } />
     </div>
   );
 }

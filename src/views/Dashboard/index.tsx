@@ -14,6 +14,8 @@ import {
 } from "../../components";
 import { Send, Receive, MultiSend } from "../../assets/img";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { decideNavigation } from '../../store/actions';
 
 const activityKeys = [
   "status",
@@ -68,7 +70,7 @@ const activityRecord = [
 
 const cpKeys = ["counterparty", "email", "address"];
 
-const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet }) => {
+const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet, action }) => {
   const [activities, setActivities] = useState([]);
   const [counterparties, setCounterparties] = useState([]);
 
@@ -86,18 +88,19 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
     <div id="dashboard">
       <Balance />
       <div className="_options">
-        <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} />
-        <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} />
+        <ActionButton url={"/payments/send/"} img={<Send />} title={"Send"} decide={action.decideNavigation} />
+        <ActionButton url={"/payments/receive/wallet"} img={<Receive />} title={"Recieve"} decide={action.decideNavigation} />
         <ActionButton
           url={"/payments/multisend"}
           img={<MultiSend />}
           title={"Multi send"}
+          decide={action.decideNavigation}
         />
       </div>
   
       <ListAccountCard data={wallet.wallets} />
   
-      <div className="_activity" style={{marginTop: '-3.2rem'}}>
+      <div className="_activity" style={{marginTop: '-15rem'}}>
         <PixelTitle title="Activity" />
         <DynamicTable keys={activityKeys} records={activities.reverse()} />
       </div>
@@ -112,4 +115,14 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
 
 const mapStateToProps = ({ activity, counterparty, wallet }: any) => ({ activity, counterparty, wallet });
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    decideNavigation
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

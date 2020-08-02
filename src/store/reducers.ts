@@ -13,6 +13,8 @@ import multiSend from './multisend/reducer';
 import finished from './finished/reducer';
 import product from './product/reducer';
 import sendData from './send/reducer';
+import intermittence from './intermittence/reducer';
+
 const reducers = combineReducers({
   user,
   circle,
@@ -27,7 +29,8 @@ const reducers = combineReducers({
   multiSend,
   finished,
   product,
-  sendData
+  sendData,
+  intermittence
 });
 
 export default reducers;

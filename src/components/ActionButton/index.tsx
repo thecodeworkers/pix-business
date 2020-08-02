@@ -5,7 +5,7 @@ import { Link } from '@reach/router'
 const ActionButton = (props: any) => {
 
 	return (
-		<div className='_div'>
+		<div className='_div' onClick={() => props.decide(false)}>
 			<div className='_divButton'>
 				<Link to={props.url}>
 					<button className='_action'>
@@ -23,4 +23,3 @@ const ActionButton = (props: any) => {
 }
 
 export default ActionButton;
-
