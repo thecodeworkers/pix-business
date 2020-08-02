@@ -16,7 +16,7 @@ const AccountCard: FC<Props> = ({
 	return (
 		<div className={saving ? '_savingAccount' : '_account'} style={width ? { width: width } : {}}>
 			{decorator ? (
-				<div className='_decorator'>
+				<div className='_decorator _pointerCardDetail'>
 					<BsArrowUpDown color='#5CD6B1' size='20' />
 				</div>
 			) : null}
