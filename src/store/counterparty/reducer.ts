@@ -109,6 +109,7 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
       ]
     }
 
+
     case SET_COUNTERPARTIES_TEMP:
     return {
       ...state,

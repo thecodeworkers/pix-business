@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { BsArrowUpDown } from 'react-icons/bs';
 import './styles.scss';
 import { Props } from './interface';
-import { Usdc, BankBlue } from '../../assets/img';
+import { Usdc, BankBlue, BankLogo, UsdcCard} from '../../assets/img';
 
 const AccountCard: FC<Props> = ({
 	data,
@@ -17,21 +17,12 @@ const AccountCard: FC<Props> = ({
 					<BsArrowUpDown color='#5CD6B1' size='20' />
 				</div>
 			) : null}
-			<div className='_img'>{banking ? <BankBlue /> : <Usdc />}</div>
+			<div className='_img'>{banking ? <BankLogo /> : <UsdcCard />}</div>
 			<div className='_info'>
-				<p className='_title'>{data.title}</p>
+				<p className='_cardNewtitle'>{data.title}</p>
 				<p className='_desc'>{data.desc}</p>
-				<div className='_balance'>
-					{data.percent !== undefined || null ? (
-						<p className='_percent'>{data.percent}</p>
-					) : null}
-					{data.value !== undefined || null ? (
-						<p className='_value'>$ {data.value}</p>
-					) : null}
-					{data.total !== undefined || null ? (
-						<p className='_total'>{data.total} USDC</p>
-					) : null}
-				</div>
+				<p className='_smallBalance'>12,000.00 </p>
+				<p className='_cardBankBalance'>12,000.00 USDC</p>
 			</div>
 		</div>
 	);
