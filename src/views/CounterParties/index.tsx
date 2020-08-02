@@ -66,10 +66,10 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
         <div className='_counterpartiesOptions'>
           <div className='_optionsTab'>
             {/* <Tabs tabs={counterPartiesTabs} /> */}
-            <div className='_tabFilterStyles' onClick={() => {}}>All</div>
-            <div className='_tabFilterStyles'>Employe</div>
-            <div className='_tabFilterStyles'>Supplier</div>
-            <div className='_tabFilterStyles'>Customer</div>
+            <div className='_tabFilterStyles' onClick={() => props.action.filterCounterparties('all')}>All</div>
+            <div className='_tabFilterStyles' onClick={() => props.action.filterCounterparties('employee')}>Employe</div>
+            <div className='_tabFilterStyles' onClick={() => props.action.filterCounterparties('supplier')}>Supplier</div>
+            <div className='_tabFilterStyles' onClick={() => props.action.filterCounterparties('customer')}>Customer</div>
           </div>
           <div className="_inline_div">
             <Search filter={props.action.searchCounterparties} />
