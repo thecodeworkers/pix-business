@@ -14,7 +14,7 @@ const ProfitAndLost = () => (
     <div className="_firstRow">
       <p className="_textTitlePL">Profit and Lost</p>
       <button className="_filterButtonPL">
-        <div>This month</div>
+        <div>This year</div>
         <Arrow />
       </button>
     </div>
