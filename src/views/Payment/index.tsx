@@ -10,13 +10,15 @@ import ConfirmSend from './Send';
 import Transfer from './Transfer';
 import TransferDetails from './Transfer/Details';
 import TransactionCompleted from './Finished';
+import { connect } from 'react-redux';
 
-const Payment: FC<RouteComponentProps> = ({
+const Payment: FC<RouteComponentProps | any> = ({
 	location,
 	navigate = (nav: any) => {},
+	intermittence
 }) => {
 	useEffect(() => {
-		navigate('transfer');
+		if(intermittence.isNav) navigate('transfer');
 	}, []);
 
 	const tabs = {
@@ -66,4 +68,6 @@ const Payment: FC<RouteComponentProps> = ({
 	);
 };
 
-export default Payment;
+const mapStateToProps = ({ intermittence }: any) => ({ intermittence })
+
+export default connect(mapStateToProps)(Payment);

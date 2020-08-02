@@ -12,12 +12,13 @@ const persistConfig = {
     'search',
     'circle',
     'register',
+    'intermittence',
 
     'activity',
     'bankAccount',
     'counterparty',
     'multiSend',
-    'product'
+    'product',
   ]
 }
 
