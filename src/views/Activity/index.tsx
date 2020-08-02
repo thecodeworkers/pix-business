@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { RouteComponentProps, Router } from '@reach/router';
-import { ExportButton, Tabs,Search } from '../../components';
+import { ExportButton, Tabs,Search, FilterbyTimeButton } from '../../components';
 import { Pixel } from '../../assets/img';
 import Overview from './Overview';
 import Checking from './Checking';
@@ -28,8 +28,10 @@ const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
         <div className='_activityOptions'>
           <Tabs path={location?.pathname.split('/')[2]} tabs={ activityTabs } />
           <Search filter={''} />
-          <div className="_exportOption"> 
-            <span className='_exportLabel'> Monthly Report </span>
+          <div className="_exportOption">
+            <div className="_filterBtnContainer">
+              <FilterbyTimeButton />
+            </div>
             <ExportButton />
           </div>
         </div>
