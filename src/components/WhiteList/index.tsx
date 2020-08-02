@@ -2,9 +2,11 @@ import React from 'react';
 import { List } from '../../assets/img';
 import './styles.scss';
 
-const WhiteListButton = () => {
+const WhiteListButton = (props: any) => {
+  const { action } = props;
+  
   return (
-    <button className='_whiteListButton'> <div className='_listSize'><List/></div>  White list</button>
+    <button onClick={action} className='_whiteListButton' > <div className='_listSize'><List/></div>  White list</button>
   )
 };
 
