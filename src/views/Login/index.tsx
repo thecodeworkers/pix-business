@@ -1,11 +1,20 @@
-import React, { FC, useState } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import React, { FC, useEffect } from 'react';
 import { Logo } from '../../assets/img';
-import background from '../../assets/img/Static/pix_dark.png';
+import { Formik, Form, Field } from 'formik';
+import { StateProps, Props } from './interface';
+import { bindActionCreators } from 'redux';
+import { login } from '../../store/actions';
+import { connect } from 'react-redux';
+import { navigate } from '@reach/router';
 import './styles.scss';
-import { Formik } from 'formik';
+import background from '../../assets/img/Static/pix_dark.png';
 
-const Login: FC<RouteComponentProps> = () => {
+const Login: FC<Props> = ({ auth, action }) => {
+  const { isAuth } = auth;
+
+  useEffect(() => {
+    if(isAuth) navigate('/dashboard');
+  }, [isAuth]);
 
   const colors: any = [
     { class: '_one_' },
@@ -19,8 +28,13 @@ const Login: FC<RouteComponentProps> = () => {
 
   const form: any = {
     email: '',
-    password:'',
+    password: '',
+  };
+
+  const login = (credentials: any) => {
+    action.login(credentials);
   }
+
 
   return (
     <div className='_mainO'>
@@ -97,4 +111,18 @@ const Login: FC<RouteComponentProps> = () => {
   );
 }
 
-export default Login;
+
+const mapStateToProps = ({ auth }: StateProps) => ({ auth });
+
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    login
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
