@@ -157,6 +157,14 @@ const Send: FC<Props> = ({
 					<div className='toAccount'>
 						<div className='to'>
 							<p>To</p>
+							<div className='buttonContainer'>
+								<div style={{ marginLeft: '0.5rem' }}>
+									<AddNew />
+								</div>
+								<div style={{ marginLeft: '0.5rem' }}>
+									<WhiteListButton />
+								</div>
+							</div>
 						</div>
 						{currentTab == 'wallet' ? (
 							<PasteWallet returnValue={walletInput} />

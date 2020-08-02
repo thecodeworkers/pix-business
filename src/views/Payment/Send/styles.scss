@@ -98,7 +98,11 @@
 		.selected {
 			color: $darkBlue;
 		}
-	}
+  }
+  
+  .buttonContainer{
+    display: flex;
+  }
 	._cardUsdComponent {
 		width: 77%;
 		margin: 0 auto;
