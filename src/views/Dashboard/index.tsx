@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import "./styles.scss";
 
@@ -10,10 +10,10 @@ import {
   ListAccountCard,
   ActionButton,
   DynamicTable,
-  PixelTitle,
-  Header
+  PixelTitle
 } from "../../components";
 import { Send, Receive, MultiSend } from "../../assets/img";
+import { connect } from "react-redux";
 
 const listAccount = [
   {
@@ -40,12 +40,11 @@ const listAccount = [
 ];
 
 const activityKeys = [
-  "hidden",
   "status",
-  "date",
   "counterparty",
   "type",
   "address",
+  'amount'
 ];
 
 const activityRecord = [
@@ -91,88 +90,37 @@ const activityRecord = [
   },
 ];
 
-const cpKeys = ["name", "email", "address"];
+const cpKeys = ["counterparty", "email", "address"];
 
-const cpRecord = [
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-  {
-    name: "Darianna Medina",
-    email: "Darianna@gmail.com",
-    address: "0xdwdd8u.....",
-  },
-];
-
-const Dashboard: FC<RouteComponentProps> = () => (
-  <div id="dashboard">
-    {/* <Header tabs={false} /> */}
-    <Balance />
-
-    <div className="_options">
-      <ActionButton url={"/dashboard"} img={<Send />} title={"Send"} />
-      <ActionButton url={"/dashboard"} img={<Receive />} title={"Recieve"} />
-      <ActionButton
-        url={"/dashboard"}
-        img={<MultiSend />}
-        title={"Multi send"}
-      />
+const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet }) => {
+  return (
+    <div id="dashboard">
+      <Balance />
+      <div className="_options">
+        <ActionButton url={"/dashboard"} img={<Send />} title={"Send"} />
+        <ActionButton url={"/dashboard"} img={<Receive />} title={"Recieve"} />
+        <ActionButton
+          url={"/dashboard"}
+          img={<MultiSend />}
+          title={"Multi send"}
+        />
+      </div>
+  
+      <ListAccountCard data={wallet.wallets} />
+  
+      <div className="_activity" style={{marginTop: '-3.2rem'}}>
+        <PixelTitle title="Activity" />
+        <DynamicTable keys={activityKeys} records={activity.results.reverse()} />
+      </div>
+  
+      <div className="_counterparties">
+        <PixelTitle title="Counterparties" />
+        <DynamicTable keys={cpKeys} records={counterparty.results.reverse()} />
+      </div>
     </div>
+  );
+}
 
-    <ListAccountCard data={listAccount} />
+const mapStateToProps = ({ activity, counterparty, wallet }: any) => ({ activity, counterparty, wallet });
 
-    <div className="_activity" style={{marginTop: '-3.2rem'}}>
-      <PixelTitle title="Activity" />
-      <DynamicTable keys={activityKeys} records={activityRecord} />
-    </div>
-
-    <div className="_counterparties">
-      <PixelTitle title="Counterparties" />
-      <DynamicTable keys={cpKeys} records={cpRecord} />
-    </div>
-  </div>
-);
-
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);

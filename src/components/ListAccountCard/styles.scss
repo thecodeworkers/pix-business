@@ -8,3 +8,17 @@
   // background-color: red;
   height: 2rem;
 }
+
+._savingAccount {
+  color: $white;
+  background: transparent linear-gradient(180deg, $darkBlueToBlue 100%) 0% 0% no-repeat padding-box;
+	height: 5.5rem;
+	position: relative;
+	width: 48%;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	padding: 0rem 1rem;
+	box-sizing: border-box;
+	margin-bottom: 2.5rem;
+}

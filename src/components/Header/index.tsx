@@ -4,10 +4,9 @@ import Tabs from '../Tabs';
 import './styles.scss';
 import { Close } from '../../assets/img';
 import Profile from '../../views/Profile';
-
+import { connect } from 'react-redux';
 
 const Header = ( props: any = false ) => {
-
    const [ show, setShow ] = useState(false);
 
   const minitabs = {
@@ -31,7 +30,7 @@ const Header = ( props: any = false ) => {
         <div className="_image">
           <Pixel color={'#2699fb'} width={'32'} height={'24'} />
         </div>
-        <div className="_text">Holy chicken</div>
+        <div className="_text">{props.commerce.commerce.name}</div>
       </div>
 
       {
@@ -47,23 +46,21 @@ const Header = ( props: any = false ) => {
       </div>
 
       <div className={show ? '_blur1' : '_blurNone1'} >
-        
         <div className={show ? '_showTool1' : '_noneTool1'} >
         
         <div className='_closeTools' onClick={() => close()}>
           <Close />
         </div>
         <div className='_medium'>
-        <Profile/> 
+          <Profile/> 
         </div>
-       
+        
         </div>
-        </div>
-      
+      </div>
     </div>
-
-    
   )
 }
 
-export default Header;
+const mapStateToProps = ({ commerce }: any) => ({ commerce })
+
+export default connect(mapStateToProps)(Header);
