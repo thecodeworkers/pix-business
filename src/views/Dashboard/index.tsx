@@ -14,6 +14,8 @@ import {
 } from "../../components";
 import { Send, Receive, MultiSend } from "../../assets/img";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { decideNavigation } from '../../store/actions';
 
 const activityKeys = [
   "status",
@@ -68,7 +70,7 @@ const activityRecord = [
 
 const cpKeys = ["counterparty", "email", "address"];
 
-const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet }) => {
+const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wallet, action }) => {
   const [activities, setActivities] = useState([]);
   const [counterparties, setCounterparties] = useState([]);
 
@@ -112,4 +114,14 @@ const Dashboard: FC<RouteComponentProps | any> = ({ activity, counterparty, wall
 
 const mapStateToProps = ({ activity, counterparty, wallet }: any) => ({ activity, counterparty, wallet });
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch: any) => {
+  const actions = {
+    decideNavigation
+  }
+
+  return {
+    action: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

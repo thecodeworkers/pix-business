@@ -12,6 +12,7 @@ import counterparty from './counterparty/reducer';
 import multiSend from './multisend/reducer';
 import finished from './finished/reducer';
 import product from './product/reducer';
+import intermittence from './intermittence/reducer';
 
 const reducers = combineReducers({
   user,
@@ -26,7 +27,8 @@ const reducers = combineReducers({
   counterparty,
   multiSend,
   finished,
-  product
+  product,
+  intermittence
 });
 
 export default reducers;

@@ -5,7 +5,7 @@ import './styles.scss';
 import { Boxchart } from '../../../assets/img';
 
 const dataTest = { 
-  keys: ['name', 'sku', 'tag', 'description', 'selfPrice', 'cost', 'quantity', 'action'],
+  keys: ['name', 'sku', 'tag', 'description', 'rate', 'cost', 'quantity'],
   // temporary example data
   records: new Array(5).fill(0)
 };
