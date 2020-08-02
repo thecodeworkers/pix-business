@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import { DownArrow, Close } from '../../assets/img';
-import { getCounterparties, saveCounterparty, searchCounterparties, getBackupCounterparties } from '../../store/actions';
+import { getCounterparties, saveCounterparty, searchCounterparties, getBackupCounterparties, filterCounterparties } from '../../store/actions';
 import './styles.scss';
 import { Formik, Form, Field } from 'formik';
 
@@ -143,7 +143,8 @@ const mapDispatchToProps = (dispatch: any) => {
     getCounterparties,
     saveCounterparty,
     searchCounterparties,
-    getBackupCounterparties
+    getBackupCounterparties,
+    filterCounterparties
   }
 
   return {
