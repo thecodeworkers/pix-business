@@ -64,10 +64,18 @@
   }
 
   ._incomeNumbers {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
     ._numberText {
       color: $textBlack;
       font-size: 1.5rem;
       font-weight: 700;
+    }
+
+    ._arrowUp {
+      margin-left: 0.5rem;
     }
   }
 }

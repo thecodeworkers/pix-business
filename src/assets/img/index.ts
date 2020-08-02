@@ -43,3 +43,4 @@ export { default as CartDown } from './Components/cartDown';
 export { default as CartUp } from './Components/cartUp';
 export { default as Share } from './Components/share';
 export { default as Edit } from './Components/edit';
+export { default as ArrowUp } from './Components/arrowUp';
