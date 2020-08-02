@@ -6,10 +6,10 @@ import { getCounterparty } from '../selectors';
 import { SET_COUNTERPARTIES_TEMP } from '../counterparty/action-types';
 
 const filterRecords = (record: any, searchValue: string) => {
-  const keys = Object.keys(record);
+  const keys = Object.keys(record);  
 
   for(let key of keys) {
-    const match = String(record[key]).search(searchValue);
+    const match = String(record[key].toLowerCase()).search(searchValue);      
     if(match > -1) return record;
   }
 }
@@ -22,7 +22,6 @@ const filterResults = (currentValue: string, records: Array<any>) => {
 
   return records;
 }
-
 
 function* searchActivitiesAsync({ payload }: DispatchProps) {
   try {

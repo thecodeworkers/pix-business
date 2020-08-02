@@ -68,7 +68,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
         <div className='_counterpartiesOptions'>
           <div className='_optionsTab'>
             {/* <Tabs tabs={counterPartiesTabs} /> */}
-            <div className='_tabFilterStyles'>All</div>
+            <div className='_tabFilterStyles' onClick={() => {}}>All</div>
             <div className='_tabFilterStyles'>Employe</div>
             <div className='_tabFilterStyles'>Supplier</div>
             <div className='_tabFilterStyles'>Customer</div>
@@ -81,7 +81,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
             </div>
           </div>
         </div>
-        <DynamicTable keys={dataTest.keys} records={counterparty.counterparties} />
+        <DynamicTable keys={dataTest.keys} records={dataTest.records} />
       </div>
 
       <div className={show ? '_blur1' : '_blurNone1'} >
