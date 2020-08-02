@@ -98,7 +98,8 @@ const Register: FC<Props> = ({ register, action }) => {
 
             <h3 className='_title'>Hello! Tell us about your business.</h3>
 
-            <h5 className='_subtitle'>Please let us know your business details.</h5>
+            <h5 className='_subtitle'>Please let us know your </h5>
+            <h5 className='_subtitle'> business details.</h5>
           </div>
         </div>
 
@@ -213,7 +214,6 @@ const Register: FC<Props> = ({ register, action }) => {
                       <img className='_checkbox' width='45px' src={checkSecond === 3 ? checked : unchecked} onClick={() => selectYear('+ 5years', 3)}></img>
                       <h3 className='_tab-title' id='+ 5years '> + 5years  </h3>
                     </div>
-
                   </div>
                   {errors.email || errors.name || errors.password ? <div className='_error'>All Fields are required</div> : null}
                   <div className='_div_left'>
