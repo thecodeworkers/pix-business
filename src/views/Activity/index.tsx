@@ -24,19 +24,19 @@ const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
       <div className='_activityContent'>
         <div className='_activityLabel'> Activity </div>
         <div className='_activityOptions'>
-          <Tabs tabs={ activityTabs } />
+          <Tabs path={location?.pathname.split('/')[2]} tabs={ activityTabs } />
           <div className="_exportOption"> 
             <span className='_exportLabel'> Monthly Report </span>
             <ExportButton />
           </div>
         </div>
-  
-        <Router>
-          <Overview path='/overview' />
-          <Checking path='/checking' />
-          <Savings path='/savings' />
-        </Router>
-  
+        <div className="_activityTabs">
+          <Router>
+            <Overview path='/overview' />
+            <Checking path='/checking' />
+            <Savings path='/savings' />
+          </Router>
+        </div>
       </div>
     </div>
   );

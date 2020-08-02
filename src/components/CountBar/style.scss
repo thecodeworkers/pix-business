@@ -1,0 +1,49 @@
+._countBarContainer {
+  padding: 36px 48px;
+  background-color: #F6F6F6;
+  border-radius: 12px;
+}
+
+._countBarLabel {
+  display: inline-block;
+  min-width: 152px;
+  padding: 6px;
+  font-size: 18px;
+  color: #57D6AF;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #F1F1F1;
+}
+
+._countBarTitle {
+  font-size: 34px;
+  line-height: 44px;
+  color: #484848;
+}
+
+._countBarContent1,
+._countBarContent2 {
+  display: flex;
+  align-items: center;
+}
+
+._countBarContent2 {
+
+  progress {
+    -webkit-appearance: none;
+    height: 32px;
+    flex: 1;
+  }
+
+  progress::-webkit-progress-bar {
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  progress::-webkit-progress-value {
+    border-radius: 8px;
+    background: #FFC837;
+  }
+}
