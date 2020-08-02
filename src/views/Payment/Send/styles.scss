@@ -289,5 +289,87 @@
 }
 
 ._cancelBtn {
-	@include cancelButton();
+  @include cancelButton();
+}
+
+@mixin modal {
+  background-color: #F6F6F6;
+  height: 100vh;
+  z-index: 999;
+  width: 35%;
+  display: block;
+  margin-left: auto;
+  transition: all 1s;
+  border-radius: 5px;
+}
+
+._blur {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 1;
+  display: block;
+  z-index: 999;
+}
+
+._blurNone {
+  display: none;
+  opacity: 0;
+  animation: out 1s;
+}
+
+._showTool {
+  @include modal;
+  // display: block;
+  animation: entry 0.6s;
+}
+
+._noneTool {
+  // display: none;
+  // width:-50%;
+  animation: out 1s;
+  display: none;
+}
+
+._closeTools {
+  width: 0.9rem;
+  height: 0.9rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+@keyframes entry {
+  from {
+    width: 0%
+  }
+  to {
+    width: 35%;
+  }
+}
+
+@keyframes out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+._DynamicTableLayOut {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+._whilistStyles {
+  height: 70vh;
+  overflow-y: auto;
 }

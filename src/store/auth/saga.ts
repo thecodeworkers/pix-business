@@ -3,6 +3,8 @@ import { LOGIN, LOGIN_ASYNC } from './action-types';
 import { actionObject } from '../../utils';
 import { DispatchProps } from '../../interfaces';
 import { getCommerce } from '../selectors';
+import Swal from 'sweetalert2';
+
 
 function* loginAsync({ payload }: DispatchProps) {
   try {
@@ -18,6 +20,13 @@ function* loginAsync({ payload }: DispatchProps) {
     
   } catch(error) {
     console.log(error);
+    
+    Swal.fire({
+      title: 'Ups!',
+      text: error,
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
   }
 }
 

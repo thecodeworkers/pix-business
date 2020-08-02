@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import { InputValue } from '../../../components';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 import {
 	Commerce,
 	BankBlue,
@@ -17,8 +19,10 @@ import {
 	PasteWallet,
 	BankCard,
 	Tool,
+	DynamicTable,
 } from '../../../components';
-import { DownArrow } from '../../../assets/img';
+import { getCounterparties } from '../../../store/actions';
+import { DownArrow, Close } from '../../../assets/img';
 import AccountCard from '../../../components/AccountCard';
 import './styles.scss';
 import { StateProps, Props } from './interface';
@@ -28,6 +32,7 @@ import { connect } from 'react-redux';
 
 const Send: FC<Props> = ({
 	bankAccount,
+	counterparty,
 	wallet,
 	action,
 	navigate = () => {},
@@ -161,7 +166,7 @@ const Send: FC<Props> = ({
 								<div style={{ marginLeft: '0.5rem' }}>
 									<AddNew />
 								</div>
-								<div style={{ marginLeft: '0.5rem' }}>
+								<div style={{ marginLeft: '0.5rem' }} onClick={showModal}>
 									<WhiteListButton />
 								</div>
 							</div>
@@ -202,14 +207,19 @@ const Send: FC<Props> = ({
 	);
 };
 
-const mapStateToProps = ({ wallet, bankAccount }: StateProps): StateProps => ({
+const mapStateToProps = ({
 	wallet,
 	bankAccount,
+	counterparty,
+}: StateProps): StateProps => ({
+	wallet,
+	bankAccount,
+	counterparty,
 });
 
 const mapDispatchToProps = (dispatch: any) => {
 	const actions = {
-		getWallets,
+		getCounterparties,
 	};
 
 	return {
