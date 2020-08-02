@@ -1,20 +1,30 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import { RouteComponentProps } from "@reach/router";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import { DownArrow, Close } from '../../assets/img';
 import { getCounterparties, saveCounterparty } from '../../store/actions';
+import { Formik, Form, Field } from 'formik';
 import './styles.scss';
 
 const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
   const { counterparty } = props;
-  const [show, setShow] = useState(false);
+  const [ show, setShow ] = useState(false);
+  const [ select, setSelect  ] = useState('Employee');
 
+  const type = useRef(null);
   useEffect(() => {
     // console.log(counterparty.counterparties);
   }, []);
+
+  const form: any = {
+    name: '',
+    email: '',
+    address: '',
+    phone: '',
+  };
 
   const dataTest = {
     keys: ['type', 'counterparty', 'address', 'email', 'phone', 'actions'],
@@ -29,12 +39,22 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
     setShow(false);
   }
 
-  // const counterPartiesTabs = {
-  //   All: { route: 'all' },
-  //   Employe: { route: 'employe' },
-  //   Supplier: { route: 'supplier' },
-  //   Customer: { route: 'customer' }
-  // };
+  const selectValue = (target: any) => {
+    setSelect(target.value);
+  }
+
+
+  const registerCommerce = (value: any) => {
+    console.log(value);    
+
+    const newObject = {
+      type: select,
+      ...value
+    }
+
+    console.log(newObject);
+    
+  };
 
   return (
     <div className='_activityContainer'>
@@ -56,7 +76,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
           <div className="_inline_div">
             <Search filter={''} />
             <div className='_div_shadow'>
-              <div className='_timeLabel'>This Month <DownArrow /></div>
+              {/* <div className='_timeLabel'>This Month <DownArrow /></div> */}
               <ExportButton data={counterparty.counterparties} name='counterparties' flag='csv' />
             </div>
           </div>
@@ -72,25 +92,46 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
             </div>
           </div>
 
-          {/* <form> */}
+          <Formik
+              initialValues={form}
+              onSubmit={values => registerCommerce(values)}
+            >
+            
+          <Form>
             <div className='_formCountierParties'>
               <div className='_formCounterparties'>
-              <h1>Add Counterperty</h1>
+                <div className='_widthForm'>
 
-              {/* <label for='name'> </label> */}
-              <input type='_text' className='_inputParty' placeholder='Type'/> 
-              <input type='_text' className='_inputParty' placeholder='Name'/> 
-              <input type='_text' className='_inputParty' placeholder='Email'/> 
-              <input type='_text' className='_inputParty' placeholder='Address'/> 
-              
-              {/* <input type='_text' className='_inputParty'> </input>
-              <input type='_text' className='_inputParty'></input>
-              <input type='_text' className='_inputParty'></input>
-              <input type='_text' className='_inputParty'></input> */}
+                  <h4 style={{marginBottom:'20px', textAlign: 'center'}}>Add Counterparty</h4>
+                  <label> Type </label>
+                  <select className='_inputParty' ref={type} onChange={() => selectValue(type.current)}>
+                    <option value="Employee"> Employee</option>
+                    <option value="Supplier"> Supplier</option>
+                    <option value="Customer"> Customer</option>
+                  </select>
+                  <label> Name </label>
+                  <Field type='text' className='_inputParty' placeholder='Name' name='name' />
+                  <label> Email </label>
+                  <Field type='text' className='_inputParty' placeholder='Email' name='email' />
+
+                  <label> Address </label>
+                  <Field type='text' className='_inputParty' placeholder='Address' name='address' />
+
+                  <label> Phone </label>
+                  <Field type='text' className='_inputParty' placeholder='Phone' name='phone' />
+
+                  <div className='_buttonActionParent'>
+                    <AddNew action={registerCommerce} />
+
+                    {/* <button type='submit'> submit</button> */}
+                  </div>
+                </div>
               </div>
-               
+
             </div>
-          {/* </form> */}
+          </Form>
+
+          </Formik>
         </div>
       </div>
     </div>
