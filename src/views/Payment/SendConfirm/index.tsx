@@ -44,7 +44,11 @@ const ConfirmSend: FC<Props> = ({
 			<p>Enter your 2 step verification code</p>
 			<div className='_destinationTwoRow'>
 				<div style={{ width: '40%', marginTop: '20px' }}>
-					<PinCard />
+					<PinCard
+						returnValue={(value: any) => {
+							console.log(value);
+						}}
+					/>
 				</div>
 
 				<div style={{ width: '55%' }}>
