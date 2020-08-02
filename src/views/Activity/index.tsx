@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { RouteComponentProps, Router } from '@reach/router';
-import { ExportButton, Tabs,Search } from '../../components';
+import { ExportButton, Tabs,Search, FilterbyTimeButton } from '../../components';
 import { Pixel } from '../../assets/img';
 import { connect } from 'react-redux';
 import { searchActivities } from '../../store/actions';
@@ -32,10 +32,12 @@ const Activity: FC<RouteComponentProps | any> = ({ location, navigate = (nav: an
         </div>
         <div className='_activityOptions'>
           <Tabs path={location?.pathname.split('/')[2]} tabs={ activityTabs } />
-          <Search filter={action.searchActivities} />
-          <div className="_exportOption"> 
-            <span className='_exportLabel'> Monthly Report </span>
-            <ExportButton data={activities} name='activities' flag='csv'/>
+          <Search filter={''} />
+          <div className="_exportOption">
+            <div className="_filterBtnContainer">
+              <FilterbyTimeButton />
+            </div>
+            <ExportButton />
           </div>
         </div>
         <div className="_activityTabs">
