@@ -12,11 +12,14 @@ const lineRainbow: Array<string> = [
   '#DCE35B',
 ];
 
+
 const DynamicTable: FC<Props> = ({
   keys = [],
   records = [],
   padding = '5px 15px',
-  extraProps = {}
+  extraProps = {},
+  showSelect = false,
+  callback 
 }) => {
   return (
     <table
@@ -44,6 +47,9 @@ const DynamicTable: FC<Props> = ({
       <tbody>
         {records.map((record: any, index: number) => (
           <tr key={index} className="_flexTable" role="rowgroup">
+            {/* {
+              showSelect ? <tr>new element</tr> : null
+            } */}
             {keys.map((key: string, index: number) => (
               <td key={index} className="_flexRow" role="cell">
                 <div className="_nodeContainer">
@@ -51,7 +57,14 @@ const DynamicTable: FC<Props> = ({
                 </div>
               </td>
             ))}
+             {
+              showSelect ? <th className='_iconTable' onClick={() => callback('enter')}> x</th> : null
+            }
+
           </tr>
+
+          
+
         ))}
       </tbody>
     </table>

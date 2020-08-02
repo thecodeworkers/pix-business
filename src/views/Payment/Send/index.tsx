@@ -275,7 +275,7 @@ const Send: FC<Props> = ({
 		</div>
 	);
 };
-
+{}
 const mapStateToProps = ({
 	wallet,
 	bankAccount,
