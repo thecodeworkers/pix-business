@@ -39,4 +39,5 @@ export { default as BoxCheckedGreen } from './Components/boxCheckedGreen';
 export { default as BoxCheckedGray } from './Components/boxCheckedGray';
 export { default as Close } from './Components/close';
 export { default as Boxchart } from './Components/boxChart';
-export { default as CartDownload } from './Components/cartDownload';
+export { default as CartDown } from './Components/cartDown';
+export { default as CartUp } from './Components/cartUp';

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { DynamicTable, CountBar } from '../../../components';
-import { CartDownload } from '../../../assets/img';
+import { CartDown, CartUp } from '../../../assets/img';
 import './styles.scss';
 
 const dataTest = { 
@@ -15,8 +15,8 @@ const Sales: FC<RouteComponentProps> = () => {
     <div>
       <div className='_colorBar'></div>
       <div className="_productServicesCounters">
-        <CountBar label="Most Sold Product" title="Holy Chicken" counter={40} icon={<CartDownload />} percentage={'0.00%'} />
-        <CountBar label="Least Sold Product" title="Tenders" counter={60} icon={<CartDownload />} percentage={'0.00%'} color={'red'} />
+        <CountBar label="Most Sold Product" title="Holy Chicken" counter={40} icon={<CartUp />} percentage={'0.00%'} />
+        <CountBar label="Least Sold Product" title="Tenders" counter={60} icon={<CartDown />} percentage={'0.00%'} color={'red'} />
       </div>
       <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
     </div>
