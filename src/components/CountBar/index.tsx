@@ -19,7 +19,6 @@ const CountBar: FC<Props> = ({ label, title, percentage, counter, icon, number, 
         <div className="_progressContainer">
           <div className={color == 'red' ? '_progressBarRed _internProgress' : '_progressBarYellow _internProgress' } style={{width: counter+'%'}}></div>
         </div>
-        {/* <progress max="100" value={ counter } ></progress> */}
       </div>
     </div>
   </div>

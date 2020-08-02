@@ -9,3 +9,4 @@ export * from './bankAccount/action';
 export * from './counterparty/action';
 export * from './multisend/action';
 export * from './finished/action';
+export * from './product/action';
