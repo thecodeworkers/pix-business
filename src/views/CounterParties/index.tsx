@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
 import { DownArrow, Close } from '../../assets/img';
-import { getCounterparties, saveCounterparty, searchCounterparties } from '../../store/actions';
+import { getCounterparties, saveCounterparty, searchCounterparties, getBackupCounterparties } from '../../store/actions';
 import './styles.scss';
+import { Formik, Form } from 'formik';
 
 const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
@@ -13,7 +14,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    
+    return () => props.action.getBackupCounterparties()
   }, []);
 
   const dataTest = {
@@ -61,7 +62,7 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
             </div>
           </div>
         </div>
-        <DynamicTable keys={dataTest.keys} records={dataTest.records} />
+        <DynamicTable keys={dataTest.keys} records={counterparty.counterparties} />
       </div>
 
       <div className={show ? '_blur1' : '_blurNone1'} >
@@ -103,7 +104,8 @@ const mapDispatchToProps = (dispatch: any) => {
   const actions = {
     getCounterparties,
     saveCounterparty,
-    searchCounterparties
+    searchCounterparties,
+    getBackupCounterparties
   }
 
   return {
