@@ -35,4 +35,6 @@ export { default as List } from './Components/list';
 export { default as UsdcCard } from './Components/usdc-card';
 export { default as BankLogo } from './Components/bank';
 export { default as PinCircle } from './Components/pin-circle';
+export { default as BoxCheckedGreen } from './Components/boxCheckedGreen';
+export { default as BoxCheckedGray } from './Components/boxCheckedGray';
 export { default as Close } from './Components/close';

@@ -5,9 +5,13 @@ import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
+<<<<<<< HEAD
 import ConfirmSend  from './Send';
 import Transfer from './Transfer';
 import TransferDetails from './Transfer/Details';
+=======
+import ConfirmSend from './Send';
+>>>>>>> c81f4f3c5409d0e15df3359806a4962a909f24ec
 
 const Payment: FC<RouteComponentProps>  = ({
 	location,
@@ -37,7 +41,6 @@ const Payment: FC<RouteComponentProps>  = ({
 
 	return (
 		<div className='paymentContainer'>
-			{/* <Header tabs={location} /> */}
 			<div className='paymentBanner'>
 				<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
 				<Balance />
