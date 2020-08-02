@@ -8,7 +8,7 @@ const Multisend: FC<RouteComponentProps> = () => {
 	return (
 		<Router>
 			<Make path='/make' default />
-			<Confirmation path='confirmation' />
+			<Confirmation path='/confirmation' />
 		</Router>
 	);
 };
