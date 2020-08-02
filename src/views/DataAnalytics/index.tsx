@@ -142,7 +142,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
           <div>
             <canvas 
               width="100%"
-              height="250px"
+              height="200px"
               id="myChart"
               ref={chartRef}
             />
@@ -164,7 +164,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
             <div style={{height: '100%'}}>
               <canvas 
                 width="100%"
-                height="250px"
+                height="200px"
                 id="myLineChart"
                 ref={chartRefLine}
               />
@@ -180,7 +180,7 @@ const DataAnalytics: FC<RouteComponentProps> = () => {
             <div style={{height: '100%'}}>
               <canvas 
                 width="100%"
-                height="250px"
+                height="200px"
                 id="myLineChart"
                 ref={chartRefPie}
               />

@@ -7,6 +7,7 @@ const dataTest = {
   keys: ['Name', 'Address', 'Balance'],
   records: [
     {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"},
+    {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"},
     {"Name": "Checking account", "Address": "asDsAsd...", "Balance": "12.000USDC"}]
 }
 
