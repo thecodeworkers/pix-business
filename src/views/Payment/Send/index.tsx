@@ -37,7 +37,7 @@ const Send: FC<Props> = ({
 	useEffect(() => {
 		navigate('wallet');
 		if (!wallet) action.getWallets();
-  }, []);
+	}, []);
 
 	const [currentTab, setCurrentTab] = useState('wallet');
 	const [show, setShow] = useState(false);
@@ -100,9 +100,7 @@ const Send: FC<Props> = ({
 
 	const showModal = () => {
 		!show ? setShow(true) : setShow(false);
-  };
-  
-
+	};
 
 	return (
 		<div>
@@ -148,7 +146,11 @@ const Send: FC<Props> = ({
 										<div className='selectCard' key={key}>
 											<div
 												className='checkedVal'
-												onClick={() => setMainWallet(value)}
+												onClick={() => {
+													setMainWallet(value);
+
+													setSelectionWallet(false);
+												}}
 											>
 												<Check />
 											</div>

@@ -72,7 +72,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainBank(values)}
+											onClick={() => {
+												setMainBank(values);
+
+												setSelectionAccount(false);
+											}}
 										>
 											<Check />
 										</div>
@@ -114,7 +118,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(value)}
+											onClick={() => {
+												setMainWallet(value);
+
+												setSelection(false);
+											}}
 										>
 											<Check />
 										</div>
