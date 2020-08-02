@@ -9,7 +9,7 @@ const initialState = {
 export default (state = initialState, { type, payload }: DispatchProps) => {
   switch (type) {
     case UPDATE_SEND:
-      return { ...initialState, ...payload }
+      return { ...state, ...payload }
     default:
       return state;
   }

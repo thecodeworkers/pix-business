@@ -31,7 +31,7 @@ const Send: FC<Props> = ({
 	counterparty,
 	wallet,
 	action,
-	send,
+	sendData,
 	navigate = () => {},
 	location,
 }) => {
@@ -97,12 +97,11 @@ const Send: FC<Props> = ({
 	};
 
 	const confirmSend = () => {
-		console.log(send)
-		/* send.wallet = mainWallet;
-		send.wallet.address = sendWallet;
-		send.values = values;
+		sendData.wallet = mainWallet;
+		sendData.wallet.address = sendWallet;
+		sendData.values = values;
 
-		action.updateSend(send); */
+		action.updateSend(sendData);
 	};
 
 	const changeValue = (value: any) => {
@@ -294,12 +293,12 @@ const mapStateToProps = ({
 	wallet,
 	bankAccount,
 	counterparty,
-	send,
+	sendData,
 }: StateProps): StateProps => ({
 	wallet,
 	bankAccount,
 	counterparty,
-	send,
+	sendData,
 });
 
 const mapDispatchToProps = (dispatch: any) => {

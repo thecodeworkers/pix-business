@@ -6,9 +6,8 @@ import './styles.scss';
 import Receive from './Receive';
 import Multisend from './Multisend';
 import Send from './Send';
-import ConfirmSend from './Send';
+import ConfirmSend from './SendConfirm';
 import Transfer from './Transfer';
-import TransferDetails from './Transfer/Details';
 import TransactionCompleted from './Finished';
 
 const Payment: FC<RouteComponentProps> = ({
@@ -40,9 +39,12 @@ const Payment: FC<RouteComponentProps> = ({
 	return (
 		<div className='paymentContainer'>
 			<div className='_paymentContent'>
-				<div className='_activityLabel'> 
-						<p>Payments</p>
-						<span> <Pixel width={'30'} height={'17'} color={'white'} /> </span> 
+				<div className='_activityLabel'>
+					<p>Payments</p>
+					<span>
+						{' '}
+						<Pixel width={'30'} height={'17'} color={'white'} />{' '}
+					</span>
 				</div>
 				<div className='paymentBanner'>
 					<Tabs path={location?.pathname.split('/')[2]} tabs={tabs} />
@@ -58,7 +60,7 @@ const Payment: FC<RouteComponentProps> = ({
 					<Receive path='receive/*' />
 					<Multisend path='multisend/*' />
 					<Send path='send/*' />
-					<ConfirmSend path='confirm-send/*' />
+					<ConfirmSend path='confirm-send' />
 					<TransactionCompleted path='transaction-completed/*' />
 				</Router>
 			</div>

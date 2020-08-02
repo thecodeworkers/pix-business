@@ -46,7 +46,7 @@ const TransactionCompleted: FC<Props> = ({
 					</div>
 				</div>
 				<div className='_actionButton'>
-					<button className='_done' onClick={() => navigate('/payments')}>
+					<button className='_done' onClick={() => navigate('/dashboard')}>
 						<p>Done</p>
 					</button>
 				</div>
