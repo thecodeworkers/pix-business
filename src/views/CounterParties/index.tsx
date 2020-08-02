@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, ExportButton, Tabs, DynamicTable, Search, AddNew } from '../../components';
-import { DownArrow, Close } from '../../assets/img';
+import { DownArrow, Close, Pixel } from '../../assets/img';
 import { getCounterparties, saveCounterparty, searchCounterparties, getBackupCounterparties, filterCounterparties } from '../../store/actions';
 import './styles.scss';
 import { Formik, Form, Field } from 'formik';
@@ -61,7 +61,10 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
 
       <div className='_counterpartiesContent'>
         <div className='_counterpartiesOptions'>
-          <div className='_counterpartiesLabel'> CounterParties </div>
+          <div className='_counterpartiesLabel'> 
+            <p>CounterParties</p>
+            <span> <Pixel width={'30'} height={'17'} color={'white'} /> </span> 
+          </div>
           <AddNew action={openForm} />
         </div>
 
@@ -82,9 +85,10 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
           </div>
         </div>
         <DynamicTable keys={dataTest.keys} records={dataTest.records} />
-      </div>
 
-      <div className={show ? '_blur1' : '_blurNone1'} >
+
+
+        <div className={show ? '_blur1' : '_blurNone1'} >
         <div className={show ? '_showTool1' : '_noneTool1'} >
           <div className='_closeTools' onClick={() => close()}>
             <Close />
@@ -134,6 +138,9 @@ const CounterParties: FC<RouteComponentProps> = (props: any) => {
           </Formik>
         </div>
       </div>
+      </div>
+
+      
     </div>
   );
 }

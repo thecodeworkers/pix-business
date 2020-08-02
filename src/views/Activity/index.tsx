@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { RouteComponentProps, Router } from '@reach/router';
 import { ExportButton, Tabs } from '../../components';
+import { Pixel } from '../../assets/img';
 import Overview from './Overview';
 import Checking from './Checking';
 import Savings from './Savings';
@@ -20,7 +21,10 @@ const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => 
   return (
     <div className='_activityContainer'>
       <div className='_activityContent'>
-        <div className='_activityLabel'> Activity </div>
+        <div className='_activityLabel'> 
+          <p>Activity</p>
+          <span> <Pixel width={'30'} height={'17'} color={'white'} /> </span> 
+        </div>
         <div className='_activityOptions'>
           <Tabs path={location?.pathname.split('/')[2]} tabs={ activityTabs } />
           <div className="_exportOption"> 
