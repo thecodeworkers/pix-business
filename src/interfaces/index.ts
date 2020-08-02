@@ -21,7 +21,7 @@ export interface BankProps {
   checkingAccount: string,
   routingNumber: string,
   bankName: string,
-  results: Array<BankProps>
+  bankAccounts: Array<BankProps>
 }
 
 export interface AuthProps {
