@@ -7,7 +7,6 @@ import { login } from '../../store/actions';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import './styles.scss';
-import background from '../../assets/img/Static/pix_dark.png';
 
 const Login: FC<Props> = ({ auth, action }) => {
   const { isAuth } = auth;

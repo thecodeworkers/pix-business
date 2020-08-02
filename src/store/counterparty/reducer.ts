@@ -1,5 +1,5 @@
 import { DispatchProps } from '../../interfaces';
-import { GET_COUNTERPARTIES, SAVE_COUNTERPARTY, SET_COUNTERPARTIES_TEMP, GET_BACKUP_COUNTERPARTIES, FILTER_COUNTERPARTIES } from './action-types';
+import { GET_COUNTERPARTIES, SAVE_COUNTERPARTY, SET_COUNTERPARTIES_TEMP, GET_BACKUP_COUNTERPARTIES } from './action-types';
 
 const initialState: any = {
   counterparties: [
@@ -108,6 +108,7 @@ export default (state = initialState, { type, payload }: DispatchProps) => {
         ...payload.counterparty
       ]
     }
+
 
     case SET_COUNTERPARTIES_TEMP:
     return {

@@ -153,19 +153,19 @@ const Register: FC<Props> = ({ register, action }) => {
                   <div className='_form-tabs'>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.serviceFood.selected ? checked : unchecked} onClick={() => selectCheck(!services.serviceFood.selected, 'serviceFood')}></img>
+                      <img alt="service food" className='_checkbox' width='45px' src={services.serviceFood.selected ? checked : unchecked} onClick={() => selectCheck(!services.serviceFood.selected, 'serviceFood')}></img>
                       <Cockie />
                       <h3 className='_tab-title' id='Food-Services'>Food Services</h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.servicesBeauty.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesBeauty.selected, 'servicesBeauty')}></img>
+                      <img alt="service beauty" className='_checkbox' width='45px' src={services.servicesBeauty.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesBeauty.selected, 'servicesBeauty')}></img>
                       <Heart />
                       <h3 className='_tab-title' id='Beauty Services' >Beauty Services</h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.servicesMedicine.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesMedicine.selected, 'servicesMedicine')}></img>
+                      <img alt="service medicine" className='_checkbox' width='45px' src={services.servicesMedicine.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesMedicine.selected, 'servicesMedicine')}></img>
                       <Capsule />
                       <h3 className='_tab-title' id='Medicine & Health'>Medicine & Health </h3>
                     </div>
@@ -174,19 +174,19 @@ const Register: FC<Props> = ({ register, action }) => {
                   <div className='_form-tabs'>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.servicesEntertaiment.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesEntertaiment.selected, 'servicesEntertaiment')}></img>
+                      <img alt="service entertaiment" className='_checkbox' width='45px' src={services.servicesEntertaiment.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesEntertaiment.selected, 'servicesEntertaiment')}></img>
                       <Camera />
                       <h3 className='_tab-title' id='Entertaiment'>Entertaiment</h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.servicesAuto.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesAuto.selected, 'servicesAuto')}></img>
+                      <img alt="service auto" className='_checkbox' width='45px' src={services.servicesAuto.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesAuto.selected, 'servicesAuto')}></img>
                       <Taxi />
                       <h3 className='_tab-title' id='Auto Services'>Auto Services</h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={services.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesRent.selected, 'servicesRent')}></img>
+                      <img alt="service rent" className='_checkbox' width='45px' src={services.servicesRent.selected ? checked : unchecked} onClick={() => selectCheck(!services.servicesRent.selected, 'servicesRent')}></img>
                       <Coin />
                       <h3 className='_tab-title' id='Rent and lease '>Rent and lease </h3>
                     </div>
@@ -200,17 +200,17 @@ const Register: FC<Props> = ({ register, action }) => {
 
                   <div className='_form-tabs'>
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={checkSecond === 1 ? checked : unchecked} onClick={() => selectYear('- 1 year', 1)}></img>
+                      <img alt="one" className='_checkbox' width='45px' src={checkSecond === 1 ? checked : unchecked} onClick={() => selectYear('- 1 year', 1)}></img>
                       <h3 className='_tab-title' id='- 1 year'>- 1 year </h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={checkSecond === 2 ? checked : unchecked} onClick={() => selectYear('1 & 5 years', 2)}></img>
+                      <img alt="more one" className='_checkbox' width='45px' src={checkSecond === 2 ? checked : unchecked} onClick={() => selectYear('1 & 5 years', 2)}></img>
                       <h3 className='_tab-title' id='1 & 5 years'> 1 & 5 years</h3>
                     </div>
 
                     <div className='_divGray'>
-                      <img className='_checkbox' width='45px' src={checkSecond === 3 ? checked : unchecked} onClick={() => selectYear('+ 5years', 3)}></img>
+                      <img className='_checkbox' alt="more more one" width='45px' src={checkSecond === 3 ? checked : unchecked} onClick={() => selectYear('+ 5years', 3)}></img>
                       <h3 className='_tab-title' id='+ 5years '> + 5years  </h3>
                     </div>
 

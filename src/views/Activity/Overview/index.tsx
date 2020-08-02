@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { DynamicTable } from '../../../components';
+import { connect } from 'react-redux';
 
-const dataTest = { 
-  keys: ['Status', 'Account', 'Counterparty', 'Counterparty', 'Type', 'Address', 'Amount', 'Balance'],
-  // temporary example data
-  records: new Array(10).fill(0)
-};
-
-const Overview: FC<RouteComponentProps> = () => (
-  <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
+const Overview: FC<RouteComponentProps | any> = ({ activity }) => (
+  <DynamicTable 
+    keys={['status', 'account', 'date', 'counterparty', 'type', 'address', 'amount', 'balance']} 
+    records={activity.activities}
+    extraProps={{ status: 'bold' }}
+  />
 );
 
-export default Overview;
+const mapStateToProps = ({ activity }: any) => ({ activity });
+
+export default connect(mapStateToProps)(Overview);
