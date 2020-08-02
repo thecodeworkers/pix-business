@@ -56,23 +56,23 @@ const Login: FC<Props> = ({ auth, action }) => {
 
           <Formik
             initialValues={form}
-            onSubmit={values => console.log(values)}
+            onSubmit={values => login(values)}
           >
             {({
-              values,
-              handleSubmit,
-              handleChange
+             errors,
+             touched
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form>
                 <div className='_form-div-fatherO'>
                   <div className='_form-divO'>
                     <h3 className='_form-subtitleO'>Username</h3>
-                    <input className='_input-halfO' type="text" name="email" placeholder='Username' onChange={handleChange} value={values.email} />
+    
+                    <Field className='_input-halfO' type="text" name="email" placeholder='Username'/>
                   </div>
 
                   <div className='_form-divO'>
                     <h3 className='_form-subtitleO'>Password</h3>
-                    <input className='_input-halfO' type="password" name="password" placeholder='Password' onChange={handleChange} value={values.password} />
+                    <Field className='_input-halfO' type="password" name="password" placeholder='Password'/>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ const Login: FC<Props> = ({ auth, action }) => {
                 <div className='_div_leftO'>
                 <button className='buttonSendO' type="submit">Log in</button>
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
