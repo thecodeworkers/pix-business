@@ -7,9 +7,6 @@ const ConfirmSend: FC<RouteComponentProps> = ({
   location,
   navigate = (nav: any) => { },
 }) => {
-  useEffect(() => {
-    navigate('confimr-send');
-  }, []);
 
   const colors: any = [
     { class: '_one1' },
