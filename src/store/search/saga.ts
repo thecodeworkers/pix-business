@@ -10,7 +10,7 @@ const filterRecords = (record: any, searchValue: string) => {
   const keys = Object.keys(record);  
 
   for(let key of keys) {
-    const match = String(record[key].toLowerCase()).search(searchValue);      
+    const match = String(record[key]).toLocaleLowerCase().search(searchValue);      
     if(match > -1) return record;
   }
 }
@@ -25,7 +25,7 @@ const filterResults = (currentValue: string, records: Array<any>) => {
 }
 
 function* searchActivitiesAsync({ payload }: DispatchProps) {
-  try {
+  try {    
     const { results } = yield select(getActivity);
     const currentActivities = yield call(filterResults, payload, results);
 

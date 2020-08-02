@@ -2,14 +2,14 @@
 
 .bodyCredit {
 	display: flex;
-	height: calc(100vh - 367px);
-	align-items: center;
-	min-height: 500px;
+	align-items: flex-start;
+	min-height: 400px;
+	padding: 2rem 0;
 }
 
 .accountCreditSide {
-	width: 45%;
-
+	width: 50%;
+	padding: 1rem;
 	.to {
 		display: flex;
 		width: 90%;
@@ -64,15 +64,23 @@
 }
 
 .inputCreditSide {
-	width: 55%;
+	width: 50%;
 	padding: 2rem;
+	padding-top: 3.5rem;
+
+	.inputComponent {
+		margin-top: 0;
+	}
 }
 
 .creditCard {
 	margin-top: 20px;
+	._savingAccount {
+		margin: 0 auto;
+	}
 	.creditContent {
-    width: 85%;
-    margin: 0 auto;
+		width: 85%;
+		margin: 0 auto;
 		padding: 1rem;
 		background: #efefef;
 		border-radius: 15px;
@@ -114,7 +122,15 @@
 		}
 	}
 }
+.inputCreditSide {
+	width: 50%;
+	padding: 2rem;
+	padding-top: 3.5rem;
 
+	.inputComponent {
+		margin-top: 0;
+	}
+}
 .buttonCreditContent {
 	display: flex;
 	justify-content: space-around;

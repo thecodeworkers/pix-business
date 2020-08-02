@@ -22,6 +22,16 @@
   opacity: 1;
 }
 
+._exportOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ._filterBtnContainer {
+    margin-right: 1rem;
+  }
+}
+
 ._activityOptions {
   display: flex;
   align-items: center;
