@@ -5,12 +5,12 @@ import './styles.scss';
 import { Boxchart } from '../../../assets/img';
 
 const dataTest = { 
-  keys: ['Name', 'Sku', 'Tag', 'Description', 'Self Price', 'Cost', 'Quantity', 'Action'],
+  keys: ['name', 'sku', 'tag', 'description', 'selfPrice', 'cost', 'quantity', 'action'],
   // temporary example data
   records: new Array(5).fill(0)
 };
 
-const ProducsServices: FC<RouteComponentProps | any> = ({  }) => {
+const ProducsServices: FC<RouteComponentProps | any> = ({ products }) => {
   return (
     <div>
       <div className='_colorBar'></div>
@@ -18,7 +18,7 @@ const ProducsServices: FC<RouteComponentProps | any> = ({  }) => {
         <CountBar label="Products" title="Low Stock" counter={40} icon={<Boxchart />} number={'1'} color={'yellow'} />
         <CountBar label="Products" title="Out of Stock" counter={60} icon={<Boxchart />} number={'2'} color={'red'} />
       </div>
-      <DynamicTable keys={ dataTest.keys } records={ dataTest.records } />
+      <DynamicTable keys={ dataTest.keys } records={products} />
     </div>
   );
 }
