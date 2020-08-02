@@ -30,6 +30,11 @@
 
 ._backgroundRow {
   background-color: $whiteSmoke;
-  // padding: 5px 15px 5px 15px;
   font-size: .9rem;
+}
+
+._nodeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

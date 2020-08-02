@@ -8,7 +8,7 @@ import './styles.scss';
 
 const Activity: FC<RouteComponentProps> = ({ location, navigate = (nav: any) => {} }) => {
   useEffect(() => {
-		navigate('overview');
+    navigate('overview');
 	}, []);
 
   const activityTabs = {
