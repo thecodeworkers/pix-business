@@ -22,28 +22,15 @@ const Make: FC<Props> = ({
 }) => {
 	useEffect(() => {
 		if (!wallet) action.getWallets();
+
+		action.updateMultiSend([]);
 	}, [action]);
 
 	const [sumValue, setSumValue] = useState(0);
 
 	const [selection, setSelection] = useState(false);
 
-	const [mainWallet, setMainWallet] = useState(
-		wallet.wallets[0]
-			? {
-					title: !wallet.wallets[0].saving
-						? 'Checking Account'
-						: 'Saving Account',
-					desc: wallet.wallets[0].address,
-					value: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-					total: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-			  }
-			: {}
-	);
+	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [form, setForm] = useState({
 		wallet: '',
@@ -54,13 +41,35 @@ const Make: FC<Props> = ({
 		console.log(value);
 	};
 
-	const values = {
-		Fee: 10000,
-		Total: 80000,
-	};
+	const [values, setValues] = useState({
+		Fee: 0,
+		Total: 0,
+	});
 
 	const deleteArray = (index: any) => {
-		delete multiSend.result[index];
+		multiSend.result.splice(index, 1);
+
+		let sum = multiSend.result.reduce((prex: any, next: any) => {
+			return (
+				Number(typeof prex === 'object' ? prex.amount : prex) +
+				Number(next.amount)
+			);
+		});
+		sum = typeof sum === 'object' ? sum.amount : sum;
+		let newValues = {
+			Fee: multiSend.result.length,
+			Total: sum + multiSend.result.length,
+		};
+
+		setValues(newValues);
+		setSumValue(sum);
+
+		action.updateMultiSend(multiSend.result);
+	};
+
+	const enableInput = (index: any) => {
+		multiSend.result[index].disabledInput = !multiSend.result[index]
+			.disabledInput;
 		action.updateMultiSend(multiSend.result);
 	};
 
@@ -85,15 +94,8 @@ const Make: FC<Props> = ({
 					{selection ? (
 						<div className='cardSelection'>
 							{wallet.wallets.map((value, key) => {
-								let values = {
-									title: !value.saving ? 'Checking Account' : 'Saving Account',
-									desc: value.address,
-									value: value.balances.length ? value.balances[0] : 0,
-									total: value.balances.length ? value.balances[0] : 0,
-								};
-
 								let Check =
-									mainWallet.desc === values.desc
+									mainWallet.address === value.address
 										? BoxCheckedGreen
 										: BoxCheckedGray;
 
@@ -101,11 +103,11 @@ const Make: FC<Props> = ({
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(values)}
+											onClick={() => setMainWallet(value)}
 										>
 											<Check />
 										</div>
-										<AccountCard data={values} width='85%' decorator={false} />
+										<AccountCard data={value} width='85%' decorator={false} />
 									</div>
 								);
 							})}
@@ -142,10 +144,23 @@ const Make: FC<Props> = ({
 									counter++;
 									let newForm: any = {};
 									newForm['name'] = 'counterparty ' + counter;
+									newForm['disabledInput'] = true;
+
+									console.log(multiSend.result);
 									multiSend.result.push({ ...form, ...newForm });
 									let sum = multiSend.result.reduce((prex: any, next: any) => {
-										return Number(prex.amount) + Number(next.amount);
+										return (
+											Number(typeof prex === 'object' ? prex.amount : prex) +
+											Number(next.amount)
+										);
 									});
+									sum = typeof sum === 'object' ? sum.amount : sum;
+									let newValues = {
+										Fee: multiSend.result.length,
+										Total: sum + multiSend.result.length,
+									};
+
+									setValues(newValues);
 									setSumValue(sum);
 									action.updateMultiSend(multiSend.result);
 								}}
@@ -159,7 +174,7 @@ const Make: FC<Props> = ({
 									<p className='nameReceiver'>{value.name}</p>
 									<p className='walletReceiver'>{value.wallet}</p>
 									<input
-										disabled={true}
+										disabled={value.disabledInput}
 										type='text'
 										value={value.amount}
 										placeholder='Amount'
@@ -168,11 +183,19 @@ const Make: FC<Props> = ({
 										className='deleteBox'
 										onClick={() => {
 											deleteArray(index);
+											enableInput(index);
 										}}
 									>
 										<XMark />
 									</div>
-									<div className='plusBox'>+</div>
+									<div
+										className='plusBox'
+										onClick={() => {
+											enableInput(index);
+										}}
+									>
+										+
+									</div>
 								</div>
 							))}
 						</div>
@@ -180,7 +203,11 @@ const Make: FC<Props> = ({
 				</div>
 			</div>
 			<div className='inputMakeSide'>
-				<InputValue defaulValue={sumValue} returnValue={getValue} />
+				<InputValue
+					defaulValue={sumValue}
+					returnValue={getValue}
+					disables={true}
+				/>
 				<Summary values={values} multi={true} array={multiSend.result} />
 				<div className='buttonMakeContent'>
 					<button className='buttonCancel'>Cancel</button>

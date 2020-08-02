@@ -18,28 +18,13 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 		if (!wallet) action.getWallets();
 	}, [action]);
 
-	const [mainWallet, setMainWallet] = useState(
-		wallet.wallets[0]
-			? {
-					title: !wallet.wallets[0].saving
-						? 'Checking Account'
-						: 'Saving Account',
-					desc: wallet.wallets[0].address,
-					value: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-					total: wallet.wallets[0].balances.length
-						? wallet.wallets[0].balances[0]
-						: 0,
-			  }
-			: {}
-	);
+	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 
 	const [mainBank, setMainBank] = useState(
 		bankAccount.results[0]
 			? {
 					title: bankAccount.results[0].bankName + ' Account',
-					desc: bankAccount.results[0].checkingAccount,
+					address: bankAccount.results[0].checkingAccount,
 			  }
 			: {}
 	);
@@ -75,11 +60,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 							{bankAccount.results.map((value: any, key: any) => {
 								let values = {
 									title: value.bankName + ' Account',
-									desc: value.checkingAccount,
+									address: value.checkingAccount,
 								};
 
 								let Check =
-									mainBank.desc === values.desc
+									mainBank.address === values.address
 										? BoxCheckedGreen
 										: BoxCheckedGray;
 
@@ -120,15 +105,8 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 					{selectionWallet ? (
 						<div className='cardSelection'>
 							{wallet.wallets.map((value: any, key: any) => {
-								let values = {
-									title: !value.saving ? 'Checking Account' : 'Saving Account',
-									desc: value.address,
-									value: value.balances.length ? value.balances[0] : 0,
-									total: value.balances.length ? value.balances[0] : 0,
-								};
-
 								let Check =
-									mainWallet.desc === values.desc
+									mainWallet.address === value.address
 										? BoxCheckedGreen
 										: BoxCheckedGray;
 
@@ -136,11 +114,11 @@ const Bank: FC<Props> = ({ wallet, action, bankAccount }) => {
 									<div className='selectCard' key={key}>
 										<div
 											className='checkedVal'
-											onClick={() => setMainWallet(values)}
+											onClick={() => setMainWallet(value)}
 										>
 											<Check />
 										</div>
-										<AccountCard data={values} width='85%' decorator={false} />
+										<AccountCard data={value} width='85%' decorator={false} />
 									</div>
 								);
 							})}
