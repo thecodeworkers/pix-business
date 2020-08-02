@@ -1,7 +1,5 @@
-
 import { DispatchProps } from '../../interfaces';
 import { CREATE_PRODUCT } from './action-types';
-
 
 const initialState: any = {
   products : []
