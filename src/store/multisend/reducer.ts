@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, { type, payload }: DispatchProps) => {
   switch (type) {
     case UPDATE_MULTISEND:
-      return { ...initialState, ...payload }
+      return { ...initialState, result: payload }
     default:
       return state;
   }

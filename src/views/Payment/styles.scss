@@ -5,11 +5,16 @@
 	width: 12.5%;
 }
 
+.paymentContainer {
+	padding-bottom: 10px;
+}
+
 ._paymentContent {
-  background-color: $white;
-  border-radius: 14px;
-  padding-top: 25px;
-  overflow: hidden;
+	background-color: $white;
+	border-radius: 14px;
+	padding-top: 25px;
+	overflow: hidden;
+	padding-bottom: 10px;
 }
 
 .paymentBanner {

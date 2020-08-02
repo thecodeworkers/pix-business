@@ -36,6 +36,26 @@
 			color: $darkBlue;
 		}
 	}
+	.buttonContainer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+
+	.importButton {
+		background-color: $sunGlow;
+		border: none;
+		color: #ffffff;
+		padding: 0.3rem 0.6rem;
+		width: 6rem;
+		border-radius: 3px;
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+	}
 
 	.cardSelection {
 		position: fixed;
