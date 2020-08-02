@@ -19,5 +19,5 @@ export { default as PinCard } from './PinCard';
 export { default as Tool } from './Tool';
 export { default as ListAccountCard } from './ListAccountCard';
 export { default as PixelTitle } from './PixelTitle';
-export { default as CountBar } from './CountBar'
+export { default as CountBar } from './CountBar';
 export { default as AccountCard } from './AccountCard';
