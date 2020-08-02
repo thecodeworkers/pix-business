@@ -26,7 +26,13 @@ import { getWallets } from '../../../store/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const Send: FC<Props> = ({ wallet, action, navigate = () => {}, location }) => {
+const Send: FC<Props> = ({
+	bankAccount,
+	wallet,
+	action,
+	navigate = () => {},
+	location,
+}) => {
 	useEffect(() => {
 		navigate('wallet');
 		if (!wallet) action.getWallets();
@@ -36,6 +42,14 @@ const Send: FC<Props> = ({ wallet, action, navigate = () => {}, location }) => {
 	const [show, setShow] = useState(false);
 	const [mainWallet, setMainWallet] = useState(wallet.wallets[0]);
 	const [selectionWallet, setSelectionWallet] = useState(false);
+	const [mainBank, setMainBank] = useState(
+		bankAccount.results[0]
+			? {
+					title: bankAccount.results[0].bankName + ' Account',
+					address: bankAccount.results[0].checkingAccount,
+			  }
+			: {}
+	);
 
 	const [values, setValues] = useState({
 		Amount: 0,
@@ -85,7 +99,7 @@ const Send: FC<Props> = ({ wallet, action, navigate = () => {}, location }) => {
 	};
 
 	return (
-		<div className='ReceiveContainer'>
+		<div>
 			<div onClick={() => ChangeTab()}>
 				<IconTabs
 					path={location?.pathname.split('/')[3]}
@@ -94,102 +108,95 @@ const Send: FC<Props> = ({ wallet, action, navigate = () => {}, location }) => {
 					height='70px'
 				/>
 			</div>
+			<div className='bodySend'>
+				<div className='accountSendSide'>
+					<div className='_amountsTabs'>
+						<div className='_largeCard'>
+							<button className='_cardButton'>Min</button>
+							<button className='_cardButton'>Parcial</button>
+							<button className='_cardButton'>Max</button>
+						</div>
+					</div>
+					<div className='toAccount'>
+						<div className='to'>
+							<p>From</p>
+							<div
+								className={
+									selectionWallet ? 'accountButton selected' : 'accountButton'
+								}
+								onClick={getWallets}
+							>
+								<p>Account</p>
+								<DownArrow />
+							</div>
+						</div>
+						{selectionWallet ? (
+							<div className='cardSelection'>
+								{wallet.wallets.map((value: any, key: any) => {
+									let Check =
+										mainWallet.address === value.address
+											? BoxCheckedGreen
+											: BoxCheckedGray;
 
-			<div className='_inputsRow'>
-				<div className='_amountsTabs'>
-					<div className='_largeCard'>
-						<button className='_cardButton'>Min</button>
-						<button className='_cardButton'>Parcial</button>
-						<button className='_cardButton'>Max</button>
+									return (
+										<div className='selectCard' key={key}>
+											<div
+												className='checkedVal'
+												onClick={() => setMainWallet(value)}
+											>
+												<Check />
+											</div>
+											<AccountCard data={value} width='85%' decorator={false} />
+										</div>
+									);
+								})}
+							</div>
+						) : null}
+						<AccountCard data={mainWallet} width='85%' decorator={false} />
+					</div>
+					<div className='toAccount'>
+						<div className='to'>
+							<p>To</p>
+						</div>
+						{currentTab == 'wallet' ? (
+							<PasteWallet returnValue={walletInput} />
+						) : (
+							<AccountCard
+								data={mainBank}
+								width='85%'
+								banking={true}
+								decorator={false}
+							/>
+						)}
 					</div>
 				</div>
 
-				<div style={{ width: '50%' }}>
+				<div className='inputSendSide'>
 					<InputValue defaulValue={0} returnValue={changeValue} />
-				</div>
-			</div>
-
-			<div className='_fromDiv'>
-				<p>From</p>
-
-				<div className='_fakeSelect' onClick={getWallets}>
-					select
-					<DownArrow />
-				</div>
-				{selectionWallet ? (
-					<div className='cardSelection'>
-						{wallet.wallets.map((value: any, key: any) => {
-							let Check =
-								mainWallet.address === value.address
-									? BoxCheckedGreen
-									: BoxCheckedGray;
-
-							return (
-								<div className='selectCard' key={key}>
-									<div
-										className='checkedVal'
-										onClick={() => setMainWallet(value)}
-									>
-										<Check />
-									</div>
-									<AccountCard data={value} width='85%' decorator={false} />
-								</div>
-							);
-						})}
-					</div>
-				) : null}
-			</div>
-
-			<div className='_rowsCard'>
-				<div style={{ width: '45%', marginTop: '20px' }}>
-					<AccountCard data={mainWallet} width='95%' decorator={false} />
-				</div>
-
-				<div style={{ width: '50%' }}>
 					<Summary values={values} />
-				</div>
-			</div>
-
-			<div className='_toContainer'>
-				<p>To</p>
-				<div className='_actBtn'>
-					<AddNew />
-					<div style={{ marginLeft: '0.5rem' }}>
-						<WhiteListButton />
+					<div className='buttonSendContent'>
+						<button
+							className='buttonCancel'
+							onClick={() => navigate('/dashboard')}
+						>
+							Cancel
+						</button>
+						<button
+							className='buttonSend'
+							onClick={() => navigate('/payments/transfer/details')}
+						>
+							Send
+						</button>
 					</div>
 				</div>
-			</div>
-
-			<div className='_lastRow'>
-				<div className='_pasteStyles'>
-					{currentTab == 'wallet' ? (
-						<PasteWallet returnValue={walletInput} />
-					) : (
-						<BankCard />
-					)}
-				</div>
-
-				<div>
-					<button className='_cancelBtn' onClick={() => showModal()}>
-						{' '}
-						Cancel
-					</button>
-
-					<Link to='/confirm-send'>
-						<button className='_sendBtn'> Send</button>
-					</Link>
-				</div>
-
-				<Tool show={show} callback={() => showModal()}>
-					{' '}
-				</Tool>
 			</div>
 		</div>
 	);
 };
 
-const mapStateToProps = ({ wallet }: StateProps): StateProps => ({
+const mapStateToProps = ({ wallet, bankAccount }: StateProps): StateProps => ({
 	wallet,
+	bankAccount,
 });
 
 const mapDispatchToProps = (dispatch: any) => {
