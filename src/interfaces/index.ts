@@ -16,6 +16,14 @@ export interface CommerceProps {
   password?: string
 }
 
+export interface BankProps {
+  branchAddress: string,
+  checkingAccount: string,
+  routingNumber: string,
+  bankName: string,
+  results: Array<BankProps>
+}
+
 export interface AuthProps {
   isAuth: boolean
 }
@@ -29,6 +37,7 @@ export interface WalletProps {
   type: string
   walletId: string
   description?: string
+  wallets: Array<WalletProps>
   saving?: boolean
 }
 

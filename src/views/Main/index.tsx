@@ -4,8 +4,8 @@ import { StateProps, Props } from './interface';
 import Home from '../Home';
 import Onboarding from '../Onboarding';
 
-const Main: FC<Props> = () => {
-  const isAuth = false;
+const Main: FC<Props> = ({ auth }) => {
+  const { isAuth } = auth;
 
   return (
     <>
