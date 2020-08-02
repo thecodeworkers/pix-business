@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import './styles.scss';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Link } from '@reach/router';
 import { InputValue, Summary, CodeQR } from '../../../../components';
 import AccountCard from '../../../../components/AccountCard';
 import { DownArrow, Check, XMark } from '../../../../assets/img';
@@ -9,7 +9,7 @@ import { getWallets } from '../../../../store/actions';
 import { connect } from 'react-redux';
 import { StateProps } from './interface';
 
-const Make: FC<RouteComponentProps> = () => {
+const Make: FC<RouteComponentProps> = (props: any) => {
 	const [Counter, setCounter] = useState([
 		{
 			name: 'CounterParty 1',
@@ -97,7 +97,9 @@ const Make: FC<RouteComponentProps> = () => {
 				<Summary values={values} multi={true} array={Counter} />
 				<div className='buttonMakeContent'>
 					<button className='buttonCancel'>Cancel</button>
-					<button className='buttonSend'>Send</button>
+					{/* <Link to='confirmation'> */}
+						<button className='buttonSend' onClick={() => props.navigate('confirmation')}>Send</button>
+					{/* </Link> */}
 				</div>
 			</div>
 		</div>
