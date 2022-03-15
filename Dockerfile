@@ -6,6 +6,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 ADD package.json /usr/src/app
 ADD yarn.lock /usr/src/app
+RUN apk add --no-cache python2
 RUN yarn
 
 ADD . /usr/src/app
