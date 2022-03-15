@@ -14,18 +14,18 @@ pipeline {
           withSonarQubeEnv('Sonarqube TCW') {
             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=pix-business-web"
           }
-          timeout(time: 1, unit: 'HOURS') {
+          /* timeout(time: 1, unit: 'HOURS') {
             waitForQualityGate abortPipeline: true
-          }
+          } */
         }
       }
-      stage('Build Test') {
+      /* stage('Build Test') {
         steps {
           yarn 'install'
           yarn 'build'
           sh 'rm -R node_modules'
         }
-      }
+      } */
       stage('Docker Build') {
         when {
           anyOf {
