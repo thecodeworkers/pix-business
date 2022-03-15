@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pix-business-web
+  namespace: pix-business
+  labels:
+    app: pix-business-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pix-business-web
+  template:
+    metadata:
+      labels:
+        app: pix-business-web
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+        - name: pix-business-web
+          imagePullPolicy: Always
+          image: registry.thecodeworkers.com/pix-business-web:latest-dev
+          ports:
+            - name: http-port
+              containerPort: 3000
