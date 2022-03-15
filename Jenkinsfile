@@ -1,6 +1,6 @@
 pipeline {
     environment {
-      registry = 'http://10.244.0.190'
+      registry = 'https://registry.thecodeworkers.com'
       tag = 'registry.thecodeworkers.com/pix-business-web'
       registryCredential = 'DockerRegistry'
       dockerImage = ''
